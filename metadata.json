@@ -1,0 +1,6 @@
+{
+  "name": "War Computers",
+  "description": "Wholesale and retail computer e-commerce platform for computers, laptops, chromebooks, tablets, and bulk inventory with AI customer support and real-time analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
