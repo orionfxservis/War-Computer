@@ -7,7 +7,14 @@ export type ProductCategory =
   | 'workstations' 
   | 'wholesale_lots';
 
-export type ProductCondition = 'Brand New' | 'Factory Certified' | 'Bulk Refurbished Grade-A';
+export type ProductCondition = 
+  | 'NEW' 
+  | 'USED' 
+  | 'REFURBISHED' 
+  | 'OPEN BOX'
+  | 'Brand New' 
+  | 'Factory Certified' 
+  | 'Bulk Refurbished Grade-A';
 
 export interface ProductSpecs {
   cpu: string;

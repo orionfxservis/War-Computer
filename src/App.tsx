@@ -28,6 +28,37 @@ import { WholesaleQuoteModal } from './components/WholesaleQuoteModal';
 import { AnalyticsDashboardModal } from './components/AnalyticsDashboardModal';
 import { OrderTrackingModal } from './components/OrderTrackingModal';
 
+// Helper functions to remove any duplicate entries
+const deduplicateProducts = (list: Product[]): Product[] => {
+  const seenId = new Set<string>();
+  const seenSku = new Set<string>();
+  const deduped: Product[] = [];
+  for (const item of list) {
+    if (!item) continue;
+    const idKey = item.id || '';
+    const skuKey = item.sku ? item.sku.toLowerCase().trim() : '';
+    if (idKey && seenId.has(idKey)) continue;
+    if (skuKey && seenSku.has(skuKey)) continue;
+    if (idKey) seenId.add(idKey);
+    if (skuKey) seenSku.add(skuKey);
+    deduped.push(item);
+  }
+  return deduped;
+};
+
+const deduplicateOrders = (list: OrderTrackingInfo[]): OrderTrackingInfo[] => {
+  const seen = new Set<string>();
+  const deduped: OrderTrackingInfo[] = [];
+  for (const order of list) {
+    if (!order || !order.orderId) continue;
+    const key = order.orderId.trim();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    deduped.push(order);
+  }
+  return deduped;
+};
+
 export default function App() {
   // Navigation & Route state (Supports /admin.html, /admin, #/admin)
   const [currentRoute, setCurrentRoute] = useState<'store' | 'admin'>(() => {
@@ -76,74 +107,73 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Dynamic Catalog State with LocalStorage Persistence
+  // Dynamic Catalog State with LocalStorage Persistence & Auto-Deduplication
   const [products, setProducts] = useState<Product[]>(() => {
     try {
       const saved = localStorage.getItem('war_computers_custom_products');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return deduplicateProducts(parsed);
+        }
       }
     } catch (e) {
       console.error(e);
     }
-    return MOCK_PRODUCTS;
+    return deduplicateProducts(MOCK_PRODUCTS);
   });
 
   useEffect(() => {
     try {
-      localStorage.setItem('war_computers_custom_products', JSON.stringify(products));
+      localStorage.setItem('war_computers_custom_products', JSON.stringify(deduplicateProducts(products)));
     } catch (e) {
       console.error(e);
     }
   }, [products]);
 
-  // Dynamic Orders & Dispatch State with LocalStorage Persistence
+  // Dynamic Orders & Dispatch State with LocalStorage Persistence & Auto-Deduplication
   const [orders, setOrders] = useState<OrderTrackingInfo[]>(() => {
     try {
       const saved = localStorage.getItem('war_computers_orders');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return deduplicateOrders(parsed);
+        }
       }
     } catch (e) {
       console.error(e);
     }
-    return INITIAL_ORDERS;
+    return deduplicateOrders(INITIAL_ORDERS);
   });
 
   useEffect(() => {
     try {
-      localStorage.setItem('war_computers_orders', JSON.stringify(orders));
+      localStorage.setItem('war_computers_orders', JSON.stringify(deduplicateOrders(orders)));
     } catch (e) {}
   }, [orders]);
 
   const handleUpdateOrder = (updatedOrder: OrderTrackingInfo) => {
     setOrders(prev => {
-      const idx = prev.findIndex(o => o.orderId === updatedOrder.orderId);
-      if (idx > -1) {
-        const copy = [...prev];
-        copy[idx] = updatedOrder;
-        return copy;
-      }
-      return [updatedOrder, ...prev];
+      const filtered = prev.filter(o => o.orderId !== updatedOrder.orderId);
+      return [updatedOrder, ...filtered];
     });
     showToast(`Updated logistics tracking for Order #${updatedOrder.orderId}`);
   };
 
   const handleAddOrder = (newOrder: OrderTrackingInfo) => {
-    setOrders(prev => [newOrder, ...prev]);
+    setOrders(prev => deduplicateOrders([newOrder, ...prev]));
     showToast(`Added Order #${newOrder.orderId} to logistics desk.`);
   };
 
   // Product CRUD Handlers
   const handleAddProduct = (newProd: Product) => {
-    setProducts(prev => [newProd, ...prev]);
+    setProducts(prev => deduplicateProducts([newProd, ...prev]));
     showToast(`Added "${newProd.name}" to catalog!`);
   };
 
   const handleUpdateProduct = (updatedProd: Product) => {
-    setProducts(prev => prev.map(p => p.id === updatedProd.id ? updatedProd : p));
+    setProducts(prev => deduplicateProducts(prev.map(p => p.id === updatedProd.id ? updatedProd : p)));
     showToast(`Updated "${updatedProd.name}"!`);
   };
 

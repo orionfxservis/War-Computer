@@ -3,7 +3,8 @@ import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
-import { INITIAL_PRODUCTS, MOCK_ANALYTICS_DATA, MOCK_ORDERS } from './src/data/products';
+import { INITIAL_PRODUCTS, MOCK_ANALYTICS_DATA } from './src/data/products';
+import { INITIAL_ORDERS } from './src/data/orders';
 
 dotenv.config();
 
@@ -156,7 +157,7 @@ app.get('/api/analytics', (req, res) => {
 // Order Tracking API
 app.get('/api/orders/:id', (req, res) => {
   const { id } = req.params;
-  const order = MOCK_ORDERS.find(o => o.orderId.toLowerCase() === id.toLowerCase());
+  const order = INITIAL_ORDERS.find(o => o.orderId.toLowerCase() === id.toLowerCase());
   if (order) {
     res.json(order);
   } else {

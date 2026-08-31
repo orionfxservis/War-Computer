@@ -2,6 +2,8 @@ import React from 'react';
 import { X, ShoppingCart, Trash2, Check, Layers, Cpu, Zap, HardDrive, ShieldCheck } from 'lucide-react';
 import { Product, PricingMode } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
+import { ConditionBadge } from './ConditionBadge';
+import { StockBadge } from './StockBadge';
 
 interface ComparisonModalProps {
   products: Product[];
@@ -122,12 +124,16 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 {products.map(p => <td key={p.id} className="p-3">{p.specs.os}</td>)}
               </tr>
               <tr>
-                <td className="p-3 font-bold text-slate-400 bg-slate-950/20">Warranty & SLA</td>
-                {products.map(p => <td key={p.id} className="p-3">{p.specs.warranty}</td>)}
+                <td className="p-3 font-bold text-slate-400 bg-slate-950/20">Availability & Stock</td>
+                {products.map(p => <td key={p.id} className="p-3"><StockBadge stockQuantity={p.stockQuantity} size="xs" showExactUnits /></td>)}
               </tr>
               <tr>
-                <td className="p-3 font-bold text-slate-400 bg-slate-950/20">Condition</td>
-                {products.map(p => <td key={p.id} className="p-3"><span className="px-2 py-0.5 rounded bg-slate-800 text-slate-200 font-semibold">{p.condition}</span></td>)}
+                <td className="p-3 font-bold text-slate-400 bg-slate-950/20">Warranty & Checking SLA</td>
+                {products.map(p => <td key={p.id} className="p-3 text-emerald-400 font-semibold">{p.specs.warranty}</td>)}
+              </tr>
+              <tr>
+                <td className="p-3 font-bold text-slate-400 bg-slate-950/20">Hardware Condition</td>
+                {products.map(p => <td key={p.id} className="p-3"><ConditionBadge condition={p.condition} size="sm" /></td>)}
               </tr>
             </tbody>
           </table>

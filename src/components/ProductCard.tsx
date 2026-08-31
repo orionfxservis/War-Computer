@@ -10,10 +10,13 @@ import {
   Zap, 
   Sparkles,
   ShieldCheck,
-  PackageCheck
+  PackageCheck,
+  CheckCircle2
 } from 'lucide-react';
 import { Product, PricingMode } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
+import { ConditionBadge, getConditionInfo } from './ConditionBadge';
+import { StockBadge } from './StockBadge';
 
 interface ProductCardProps {
   product: Product;
@@ -37,6 +40,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const savingsPercent = Math.round(((product.retailPrice - product.wholesalePrice) / product.retailPrice) * 100);
 
   const minUnits = isWholesale ? product.wholesaleMOQ : 1;
+  const conditionInfo = getConditionInfo(product.condition);
+
+  // Warranty text determination
+  const displayWarranty = product.specs?.warranty || conditionInfo.defaultWarranty;
 
   return (
     <div className="group relative flex flex-col">
@@ -70,13 +77,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 {product.lotUnitCount}-Unit Pallet Lot
               </span>
             ) : (
-              <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-md shadow-md backdrop-blur-xl border ${
-                product.condition === 'Brand New' 
-                  ? 'bg-emerald-500/80 text-white border-emerald-300/40 shadow-emerald-500/20'
-                  : 'bg-blue-500/80 text-white border-blue-300/40 shadow-blue-500/20'
-              }`}>
-                {product.condition}
-              </span>
+              <ConditionBadge condition={product.condition} />
             )}
 
             {product.isFeatured && (
@@ -106,30 +107,40 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Product Information Body */}
-        <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-4">
+        <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3.5">
           
           <div className="space-y-2.5">
             
+            {/* Condition Key Summary Line: e.g. "USED • TESTED • 16GB • 512GB SSD" */}
+            <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold tracking-wide uppercase px-2.5 py-1 rounded-lg bg-slate-950/80 border border-white/10 text-slate-200 shadow-inner">
+              <span className={conditionInfo.tagColor}>
+                {conditionInfo.label}
+              </span>
+              <span className="text-slate-500">•</span>
+              <span className="text-slate-300">TESTED</span>
+              {product.specs?.ram && (
+                <>
+                  <span className="text-slate-500">•</span>
+                  <span className="text-slate-200 truncate">{product.specs.ram.split(' ')[0]}</span>
+                </>
+              )}
+              {product.specs?.storage && (
+                <>
+                  <span className="text-slate-500">•</span>
+                  <span className="text-slate-200 truncate">{product.specs.storage.split(' ')[0]}</span>
+                </>
+              )}
+            </div>
+
             {/* Rating and Stock Indicator */}
-            <div className="flex items-center justify-between text-xs">
-              <div className="flex items-center gap-1 text-amber-400 font-bold">
+            <div className="flex items-center justify-between text-xs gap-2">
+              <div className="flex items-center gap-1 text-amber-400 font-bold flex-shrink-0">
                 <Star className="w-3.5 h-3.5 fill-amber-400" />
                 <span>{product.rating}</span>
-                <span className="text-slate-500 font-normal">({product.reviewsCount})</span>
+                <span className="text-slate-500 font-normal text-[11px]">({product.reviewsCount})</span>
               </div>
 
-              <div className="flex items-center gap-1.5 bg-slate-950/40 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10">
-                <span className={`w-2 h-2 rounded-full ${
-                  product.stockQuantity > 20 
-                    ? 'bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]' 
-                    : product.stockQuantity > 5 
-                      ? 'bg-amber-400 shadow-[0_0_8px_#fbbf24]' 
-                      : 'bg-red-400 shadow-[0_0_8px_#f87171]'
-                }`} />
-                <span className="text-[11px] text-slate-300 font-medium">
-                  {product.stockQuantity > 0 ? `${product.stockQuantity} in depot` : 'Backorder'}
-                </span>
-              </div>
+              <StockBadge stockQuantity={product.stockQuantity} size="xs" />
             </div>
 
             {/* Product Title */}
@@ -157,8 +168,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </div>
           </div>
 
-          {/* Pricing & Footer Actions */}
-          <div className="pt-2 border-t border-white/10 space-y-3">
+          {/* Pricing & Warranty & Footer Actions */}
+          <div className="pt-2.5 border-t border-white/10 space-y-2.5">
             
             {/* Price Layout */}
             <div className="flex items-baseline justify-between">
@@ -184,7 +195,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                     </span>
                   </div>
                 ) : (
-                  <p className="text-[10px] text-slate-400">Retail Unit MSRP • Free 2-Day Air</p>
+                  <div className="flex items-center gap-1.5 mt-0.5 text-[11px] font-semibold text-emerald-400">
+                    <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 text-emerald-400" />
+                    <span className="truncate">✓ {displayWarranty}</span>
+                  </div>
                 )}
               </div>
 
@@ -203,7 +217,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </div>
 
             {/* Action Buttons */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 pt-1">
               <button
                 id={`card-specs-btn-${product.id}`}
                 onClick={() => onQuickView(product)}
@@ -230,3 +244,4 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     </div>
   );
 };
+

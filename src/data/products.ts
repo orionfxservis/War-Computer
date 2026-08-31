@@ -1,256 +1,660 @@
 import { Product } from '../types';
 
 export const INITIAL_PRODUCTS: Product[] = [
+  // 1. HP EliteBook 840 G7 - 50k to 75k (Rs. 70,000) - Student, Office, Freelancing, Business
   {
-    id: 'prod-dt-01',
-    sku: 'WC-TITAN-4090',
-    name: 'War Apex Titan X - RTX 4090 Gaming & AI Beast',
-    brand: 'Custom Rig',
-    category: 'desktops',
-    retailPrice: 3499.00,
-    wholesalePrice: 2899.00,
+    id: 'prod-lp-hp840',
+    sku: 'WC-HP-840G7-USED',
+    name: 'HP EliteBook 840 G7 Business Ultrabook',
+    brand: 'HP',
+    category: 'laptops',
+    retailPrice: 70000,
+    wholesalePrice: 62000,
     wholesaleMOQ: 3,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 2, pricePerUnit: 3499.00, discountPercentage: 0 },
-      { minUnits: 3, maxUnits: 5, pricePerUnit: 2899.00, discountPercentage: 17 },
-      { minUnits: 6, maxUnits: 15, pricePerUnit: 2699.00, discountPercentage: 23 },
-      { minUnits: 16, pricePerUnit: 2499.00, discountPercentage: 28 }
+      { minUnits: 1, maxUnits: 2, pricePerUnit: 70000, discountPercentage: 0 },
+      { minUnits: 3, maxUnits: 5, pricePerUnit: 62000, discountPercentage: 11 },
+      { minUnits: 6, maxUnits: 15, pricePerUnit: 58000, discountPercentage: 17 },
+      { minUnits: 16, pricePerUnit: 55000, discountPercentage: 21 }
     ],
-    stockQuantity: 42,
-    condition: 'Brand New',
+    stockQuantity: 48,
+    condition: 'USED',
     rating: 4.9,
-    reviewsCount: 128,
+    reviewsCount: 184,
     isFeatured: true,
     isBestSeller: true,
-    isNewArrival: true,
     images: [
-      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=75'
     ],
     specs: {
-      cpu: 'Intel Core i9-14900KS (24 Cores, up to 6.2GHz)',
-      gpu: 'NVIDIA GeForce RTX 4090 24GB GDDR6X',
-      ram: '64GB DDR5 6400MHz RGB Dual Channel',
-      storage: '4TB (2x 2TB) PCIe 4.0 NVMe SSD RAID-0',
-      os: 'Windows 11 Pro 64-bit Workstation',
-      ports: '2x Thunderbolt 4, 6x USB 3.2 Gen2, 2.5GbE LAN, Wi-Fi 7',
-      warranty: '3-Year Premium On-Site & Lifetime Tech Support',
-      cooling: '360mm AIO Liquid Cooler with OLED Display',
-      powerSupply: '1200W 80+ Platinum Fully Modular'
+      cpu: 'Intel Core i5-10310U vPro (10th Gen Quad-Core up to 4.4GHz)',
+      gpu: 'Intel UHD Graphics 620',
+      ram: '16GB DDR4 High-Speed RAM',
+      storage: '512GB NVMe PCIe M.2 High-Speed SSD',
+      display: '14.0" FHD IPS Anti-Glare (1920 x 1080) 400 nits',
+      os: 'Windows 11 Pro 64-bit Genuine OEM Activated',
+      battery: '3-Cell 53Wh Li-ion (3-5 Hours Battery Backup)',
+      warranty: '7-Day Checking Warranty',
+      weight: '1.33 kg',
+      ports: '2x USB-C Thunderbolt 3, 2x USB 3.1 Gen 1, HDMI 1.4, Audio Combo'
     },
     highlights: [
-      'Unthrottled 4K/8K Gaming & Generative AI Training',
-      'Custom Tempered Glass War Edition Chassis with Amber RGB',
-      'B2B Wholesale volume discounts available with instant shipping'
+      '100% Tested & Verified: Keyboard, Screen, Battery & Thermals checked',
+      'Premium Silver Aluminum Unibody with Backlit Keyboard & Fingerprint Reader',
+      '7-Day Checking Warranty with prompt customer support'
     ],
-    description: 'The pinnacle of desktop computational power. Engineered by War Computers for competitive e-sports champions, 3D architectural rendering, and local LLM/deep learning researchers.',
-    tags: ['rtx4090', 'intel-i9', 'gaming-pc', 'ai-workstation', 'liquid-cooled']
+    description: 'Executive class lightweight business laptop imported directly. Clean grade-A condition, tested by War Computers technicians. Perfect for office multitasking, remote software development, and everyday demanding workloads.',
+    tags: ['hp', 'elitebook', 'used-laptop', 'tested', 'core-i5', '16gb-ram', '512gb-ssd', 'student', 'office', 'freelancing', 'business']
   },
+
+  // 2. Dell Latitude 7400 - 50k to 75k (Rs. 58,000) - Office, Freelancing, Student, Business
   {
-    id: 'prod-lp-01',
-    sku: 'WC-ROG-SCAR18',
-    name: 'ASUS ROG Strix SCAR 18 QHD+ 240Hz Nebula HDR',
-    brand: 'ASUS',
+    id: 'prod-lp-dell7400',
+    sku: 'WC-DELL-7400-USED',
+    name: 'Dell Latitude 7400 Enterprise Carbon Ultrabook',
+    brand: 'Dell',
     category: 'laptops',
-    retailPrice: 2899.99,
-    wholesalePrice: 2399.00,
-    wholesaleMOQ: 5,
+    retailPrice: 58000,
+    wholesalePrice: 52000,
+    wholesaleMOQ: 3,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 4, pricePerUnit: 2899.99, discountPercentage: 0 },
-      { minUnits: 5, maxUnits: 10, pricePerUnit: 2399.00, discountPercentage: 17 },
-      { minUnits: 11, maxUnits: 25, pricePerUnit: 2249.00, discountPercentage: 22 },
-      { minUnits: 26, pricePerUnit: 2099.00, discountPercentage: 27 }
+      { minUnits: 1, maxUnits: 2, pricePerUnit: 58000, discountPercentage: 0 },
+      { minUnits: 3, maxUnits: 5, pricePerUnit: 52000, discountPercentage: 10 },
+      { minUnits: 6, pricePerUnit: 48000, discountPercentage: 17 }
     ],
-    stockQuantity: 65,
-    condition: 'Brand New',
+    stockQuantity: 36,
+    condition: 'USED',
     rating: 4.8,
-    reviewsCount: 94,
+    reviewsCount: 112,
     isFeatured: true,
-    isBestSeller: true,
     images: [
-      'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75'
     ],
     specs: {
-      cpu: 'Intel Core i9-14900HX 24-Core',
-      gpu: 'NVIDIA GeForce RTX 4080 12GB (175W TGP)',
-      ram: '32GB DDR5 5600MHz (Upgradable to 64GB)',
-      storage: '2TB PCIe Gen4 NVMe M.2 SSD',
-      display: '18-inch ROG Nebula HDR QHD+ 240Hz Mini-LED (1100 nits)',
-      os: 'Windows 11 Home 64-bit',
-      battery: '90Whr with Fast Charging (50% in 30 mins)',
-      warranty: '2-Year Global Manufacturer Warranty',
-      weight: '3.1 kg'
+      cpu: 'Intel Core i7-8665U Quad-Core (8th Gen up to 4.8GHz)',
+      gpu: 'Intel UHD Graphics 620',
+      ram: '16GB DDR4 2666MHz RAM',
+      storage: '256GB PCIe NVMe SSD (Upgradable to 1TB)',
+      display: '14.0" FHD (1920x1080) WVA Anti-Glare Narrow Border',
+      os: 'Windows 11 Pro Activated',
+      battery: '60Wh ExpressCharge (Tested 85%+ Health)',
+      warranty: '7-Day Checking Warranty',
+      weight: '1.36 kg',
+      ports: 'Thunderbolt 3, 2x USB 3.1 Gen 1, HDMI 1.4a, MicroSD'
     },
     highlights: [
-      'Massive 18-inch 240Hz Mini-LED Gaming Masterpiece',
-      'Tri-Fan Cooling System with Conductonaut Extreme Liquid Metal',
-      'Per-key RGB mechanical keyboard with Aura Sync'
+      'Core i7 Enterprise processor with robust carbon-fiber composite lid',
+      'All ports, Wi-Fi, audio, and webcam 100% bench tested',
+      'Ready to ship across Pakistan with secure packaging'
     ],
-    description: 'Command the virtual battlefield with the ROG Strix SCAR 18. Equipped with an immense 18-inch Mini-LED panel and desktop-grade cooling.',
-    tags: ['asus', 'rog-strix', 'gaming-laptop', 'rtx4080', '240hz']
+    description: 'Dependable Dell Latitude performance. Premium build with exceptional keyboard tactile feedback and snappy day-to-day productivity.',
+    tags: ['dell', 'latitude', 'used-laptop', 'core-i7', 'tested', 'pakistan-delivery', 'student', 'office', 'freelancing', 'business']
   },
+
+  // 3. HP ProBook 440 G5 - Under 50K (Rs. 44,000) - Student, Office, Freelancing
   {
-    id: 'prod-lp-02',
-    sku: 'WC-THINK-X1CARB',
-    name: 'Lenovo ThinkPad X1 Carbon Gen 12 Ultralight',
+    id: 'prod-lp-hp440',
+    sku: 'WC-HP-440G5-USED',
+    name: 'HP ProBook 440 G5 Core i5 (8th Gen)',
+    brand: 'HP',
+    category: 'laptops',
+    retailPrice: 44000,
+    wholesalePrice: 39000,
+    wholesaleMOQ: 3,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 2, pricePerUnit: 44000, discountPercentage: 0 },
+      { minUnits: 3, maxUnits: 5, pricePerUnit: 39000, discountPercentage: 11 },
+      { minUnits: 6, pricePerUnit: 36000, discountPercentage: 18 }
+    ],
+    stockQuantity: 40,
+    condition: 'USED',
+    rating: 4.8,
+    reviewsCount: 88,
+    isFeatured: false,
+    images: [
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Intel Core i5-8250U Quad-Core (8th Gen up to 3.4GHz)',
+      gpu: 'Intel UHD Graphics 620',
+      ram: '8GB DDR4 RAM (Upgradable to 32GB)',
+      storage: '256GB High Speed NVMe SSD',
+      display: '14.0" HD Anti-Glare LED Display',
+      os: 'Windows 10 / 11 Pro 64-bit Genuine',
+      battery: '3-Cell 48Wh (Tested 3-4 Hours Backup)',
+      warranty: '7-Day Checking Warranty',
+      weight: '1.63 kg',
+      ports: 'USB-C, 2x USB 3.0, HDMI, VGA, SD Card Reader, RJ-45'
+    },
+    highlights: [
+      'Best value under 50K in Pakistan with quad-core 8th Gen processor',
+      'Tested keyboard, trackpad, screen, and battery health',
+      '7-Day Checking Warranty with original charger'
+    ],
+    description: 'Affordable, sturdy student and office laptop. Great for online assignments, zoom sessions, accounting, and general browsing.',
+    tags: ['hp', 'probook', 'used-laptop', 'under-50k', 'student', 'office', 'freelancing', 'budget-laptop']
+  },
+
+  // 4. Lenovo ThinkPad T14 Gen 2 - 75k to 100k (Rs. 98,000) - Programming, Freelancing, Office, Business
+  {
+    id: 'prod-lp-think-t14',
+    sku: 'WC-THINK-T14G2-REFURB',
+    name: 'Lenovo ThinkPad T14 Gen 2 (Ryzen 7 PRO)',
     brand: 'Lenovo',
     category: 'laptops',
-    retailPrice: 1749.00,
-    wholesalePrice: 1399.00,
-    wholesaleMOQ: 5,
+    retailPrice: 98000,
+    wholesalePrice: 88000,
+    wholesaleMOQ: 2,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 4, pricePerUnit: 1749.00, discountPercentage: 0 },
-      { minUnits: 5, maxUnits: 19, pricePerUnit: 1399.00, discountPercentage: 20 },
-      { minUnits: 20, maxUnits: 49, pricePerUnit: 1289.00, discountPercentage: 26 },
-      { minUnits: 50, pricePerUnit: 1199.00, discountPercentage: 31 }
+      { minUnits: 1, maxUnits: 2, pricePerUnit: 98000, discountPercentage: 0 },
+      { minUnits: 3, maxUnits: 5, pricePerUnit: 88000, discountPercentage: 10 },
+      { minUnits: 6, pricePerUnit: 82000, discountPercentage: 16 }
     ],
-    stockQuantity: 120,
-    condition: 'Brand New',
+    stockQuantity: 24,
+    condition: 'REFURBISHED',
     rating: 4.9,
-    reviewsCount: 156,
+    reviewsCount: 76,
     isFeatured: true,
-    isBestSeller: true,
     images: [
-      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75'
     ],
     specs: {
-      cpu: 'Intel Core Ultra 7 155H (16 Cores, NPU AI Engine)',
+      cpu: 'AMD Ryzen 7 PRO 5850U (8 Cores / 16 Threads up to 4.4GHz)',
+      gpu: 'AMD Radeon Vega 8 Graphics',
+      ram: '16GB DDR4 3200MHz (Dual Channel)',
+      storage: '512GB Gen3 NVMe SSD',
+      display: '14.0" FHD IPS 300 nits Low Power Display',
+      os: 'Windows 11 Pro Genuine',
+      battery: '50Wh RapidCharge Battery',
+      warranty: '1-Month Replacement Warranty',
+      weight: '1.47 kg',
+      ports: '2x USB-C 3.2 Gen 2, 2x USB-A 3.2 Gen 1, RJ-45 Ethernet, HDMI 2.0'
+    },
+    highlights: [
+      '8 Real Cores / 16 Threads monster multitasking power for programmers & developers',
+      'Professionally serviced with Arctic MX-4 thermal paste & internal sanitization',
+      '1-Month Replacement Warranty backed by War Computers'
+    ],
+    description: 'Workhorse reliability in refurbished Grade-A cosmetic condition. Outstanding battery longevity and the industry-renowned ThinkPad precision keyboard.',
+    tags: ['lenovo', 'thinkpad', 'refurbished', 'ryzen7', 'octa-core', 'programming', 'freelancing', 'office', 'business']
+  },
+
+  // 5. Dell Latitude 5520 - 75k to 100k (Rs. 89,000) - Programming, Graphic Design, Office, Business
+  {
+    id: 'prod-lp-dell5520',
+    sku: 'WC-DELL-5520-USED',
+    name: 'Dell Latitude 5520 15.6" Core i7 11th Gen',
+    brand: 'Dell',
+    category: 'laptops',
+    retailPrice: 89000,
+    wholesalePrice: 81000,
+    wholesaleMOQ: 2,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 2, pricePerUnit: 89000, discountPercentage: 0 },
+      { minUnits: 3, maxUnits: 5, pricePerUnit: 81000, discountPercentage: 9 },
+      { minUnits: 6, pricePerUnit: 76000, discountPercentage: 14 }
+    ],
+    stockQuantity: 28,
+    condition: 'USED',
+    rating: 4.85,
+    reviewsCount: 61,
+    isFeatured: false,
+    images: [
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Intel Core i7-1185G7 vPro (11th Gen 4 Cores up to 4.8GHz)',
+      gpu: 'Intel Iris Xe Graphics G7 (Color accurate & fast)',
+      ram: '16GB DDR4 3200MHz RAM',
+      storage: '512GB PCIe NVMe SSD',
+      display: '15.6" FHD IPS Anti-Glare 250 nits with Numpad Keyboard',
+      os: 'Windows 11 Pro Genuine',
+      battery: '63Wh ExpressCharge (4-6 Hours Battery)',
+      warranty: '7-Day Checking Warranty',
+      weight: '1.59 kg',
+      ports: '2x Thunderbolt 4, 2x USB 3.2, HDMI 2.0, MicroSD, RJ-45'
+    },
+    highlights: [
+      'Large 15.6" screen with full dedicated numeric keypad for finance & coding',
+      'Intel Iris Xe Graphics handles Photoshop & Illustrator effortlessly',
+      'Thunderbolt 4 support for dual external 4K monitors'
+    ],
+    description: 'High performance 11th Gen business powerhouse with full numeric keypad. Ideal for developers, financial accountants, and graphic artists.',
+    tags: ['dell', 'latitude', '11th-gen', 'iris-xe', 'programming', 'graphic_design', 'office', 'business', 'freelancing']
+  },
+
+  // 6. ASUS TUF Gaming F15 - 100k to 150k (Rs. 138,000) - Gaming, Video Editing, Graphic Design, Programming
+  {
+    id: 'prod-lp-tuf-f15',
+    sku: 'WC-ASUS-TUFF15-REFURB',
+    name: 'ASUS TUF Gaming F15 - GTX 1650 / 144Hz',
+    brand: 'ASUS',
+    category: 'laptops',
+    retailPrice: 138000,
+    wholesalePrice: 126000,
+    wholesaleMOQ: 2,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 138000, discountPercentage: 0 },
+      { minUnits: 2, maxUnits: 4, pricePerUnit: 126000, discountPercentage: 8 },
+      { minUnits: 5, pricePerUnit: 119000, discountPercentage: 13 }
+    ],
+    stockQuantity: 20,
+    condition: 'REFURBISHED',
+    rating: 4.88,
+    reviewsCount: 79,
+    isFeatured: true,
+    images: [
+      'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Intel Core i5-10300H (10th Gen High-Performance Series up to 4.5GHz)',
+      gpu: 'NVIDIA GeForce GTX 1650 4GB GDDR6 Dedicated',
+      ram: '16GB DDR4 High-Speed RAM',
+      storage: '512GB PCIe M.2 NVMe SSD',
+      display: '15.6" FHD 144Hz IPS Gaming Panel',
+      os: 'Windows 11 Home Genuine Activated',
+      battery: '48Wh Li-ion with High-Wattage Adapter',
+      warranty: '1-Month Replacement Warranty',
+      weight: '2.30 kg',
+      ports: 'USB-C 3.2, 2x USB-A 3.2, USB 2.0, HDMI 2.0, LAN'
+    },
+    highlights: [
+      'Smooth 144Hz esports refresh rate and dedicated 4GB NVIDIA GPU',
+      'Dual-fan anti-dust cooling architecture for uninterrupted gaming',
+      '1-Month Replacement Warranty backed by War Computers'
+    ],
+    description: 'Affordable high-refresh gaming and video rendering laptop. Delivers smooth gameplay in GTA V, Valorant, Fortnite, and accelerated timeline scrub in Premiere Pro.',
+    tags: ['asus', 'tuf-gaming', 'gtx1650', '144hz', 'gaming', 'video_editing', 'graphic_design', 'programming']
+  },
+
+  // 7. Lenovo IdeaPad Creator 5 - 100k to 150k (Rs. 148,000) - Graphic Design, Video Editing, Programming, Freelancing
+  {
+    id: 'prod-lp-ideapad-creator',
+    sku: 'WC-LEN-CREATOR5-OPEN',
+    name: 'Lenovo IdeaPad Creator Edition (100% AdobeRGB)',
+    brand: 'Lenovo',
+    category: 'laptops',
+    retailPrice: 148000,
+    wholesalePrice: 135000,
+    wholesaleMOQ: 2,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 148000, discountPercentage: 0 },
+      { minUnits: 2, maxUnits: 3, pricePerUnit: 135000, discountPercentage: 8 },
+      { minUnits: 4, pricePerUnit: 128000, discountPercentage: 13 }
+    ],
+    stockQuantity: 2,
+    condition: 'OPEN BOX',
+    rating: 4.92,
+    reviewsCount: 53,
+    isFeatured: true,
+    images: [
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Intel Core i7-10750H (6 Cores / 12 Threads up to 5.0GHz)',
+      gpu: 'NVIDIA GeForce GTX 1650 Ti 4GB Dedicated',
+      ram: '16GB DDR4 2933MHz RAM',
+      storage: '512GB NVMe SSD + 1TB HDD Hybrid',
+      display: '15.6" FHD IPS 500 nits, 100% AdobeRGB Studio Accurate',
+      os: 'Windows 11 Pro Genuine',
+      battery: '45Wh with Rapid Charge Pro',
+      warranty: '15-Day Checking Warranty',
+      weight: '2.20 kg'
+    },
+    highlights: [
+      '100% AdobeRGB 500-nits color-calibrated display for professional creators',
+      '6-Core Core i7 CPU delivers fast 4K video rendering & multi-track audio',
+      'Open box condition with pristine factory finish'
+    ],
+    description: 'Engineered specifically for graphic designers, video editors, and visual content artists who demand true color fidelity and fast GPU acceleration.',
+    tags: ['lenovo', 'creator', 'adobergb', 'open-box', 'graphic_design', 'video_editing', 'programming', 'freelancing']
+  },
+
+  // 8. HP Victus 15 - 150K+ (Rs. 235,000) - Gaming, Video Editing, Programming, Graphic Design
+  {
+    id: 'prod-lp-victus',
+    sku: 'WC-HP-VICTUS15-NEW',
+    name: 'HP Victus 15 Gaming Laptop - RTX 4050 6GB',
+    brand: 'HP',
+    category: 'laptops',
+    retailPrice: 235000,
+    wholesalePrice: 215000,
+    wholesaleMOQ: 2,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 235000, discountPercentage: 0 },
+      { minUnits: 2, maxUnits: 4, pricePerUnit: 215000, discountPercentage: 8 },
+      { minUnits: 5, pricePerUnit: 205000, discountPercentage: 12 }
+    ],
+    stockQuantity: 18,
+    condition: 'NEW',
+    rating: 4.9,
+    reviewsCount: 65,
+    isFeatured: true,
+    isNewArrival: true,
+    images: [
+      'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Intel Core i5-13420H (13th Gen 8 Cores up to 4.6GHz)',
+      gpu: 'NVIDIA GeForce RTX 4050 6GB GDDR6 Dedicated (DLSS 3)',
+      ram: '16GB DDR4 3200MHz Dual Channel',
+      storage: '512GB PCIe Gen4 NVMe SSD',
+      display: '15.6" FHD IPS 144Hz Micro-Edge Display',
+      os: 'Windows 11 Home Genuine',
+      battery: '70Wh Li-ion polymer with Fast Charge',
+      warranty: '1-Year Official Warranty',
+      weight: '2.29 kg'
+    },
+    highlights: [
+      'Brand New Sealed Box with official 1-Year Local Warranty',
+      'Smooth 144Hz gaming display powered by Ada Lovelace RTX 4050',
+      'Dual fans and wide rear vents for sustained thermal cooling'
+    ],
+    description: 'Brand new high-FPS gaming powerhouse. Unleash ray tracing, DLSS 3 frame generation, and swift content creation workflows.',
+    tags: ['hp', 'victus', 'brand-new', 'sealed', 'rtx4050', 'gaming-laptop', 'gaming', 'video_editing', 'programming', 'graphic_design']
+  },
+
+  // 9. Apple MacBook Air M2 - 150K+ (Rs. 275,000) - Video Editing, Graphic Design, Programming, Business, Freelancing
+  {
+    id: 'prod-lp-mac-m2',
+    sku: 'WC-APPLE-AIRM2-OPEN',
+    name: 'Apple MacBook Air 13.6" Liquid Retina (M2 Chip)',
+    brand: 'Apple',
+    category: 'laptops',
+    retailPrice: 275000,
+    wholesalePrice: 252000,
+    wholesaleMOQ: 2,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 275000, discountPercentage: 0 },
+      { minUnits: 2, maxUnits: 4, pricePerUnit: 252000, discountPercentage: 8 },
+      { minUnits: 5, pricePerUnit: 240000, discountPercentage: 12 }
+    ],
+    stockQuantity: 15,
+    condition: 'OPEN BOX',
+    rating: 4.95,
+    reviewsCount: 94,
+    isFeatured: true,
+    images: [
+      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Apple M2 Silicon (8-Core CPU with 4 performance cores & 4 efficiency cores)',
+      gpu: '10-Core GPU with Hardware Accelerated Video Decode/Encode Engine',
+      ram: '16GB Unified Memory',
+      storage: '512GB Fast SSD Storage',
+      display: '13.6-inch Liquid Retina Display with True Tone (2560x1664, 500 nits)',
+      os: 'macOS Sonoma / macOS Sequoia Ready',
+      battery: '52.6Wh (Up to 18 Hours Battery Life, 100% Battery Health)',
+      warranty: '15-Day Checking Warranty',
+      weight: '1.24 kg (Fanless Silent Design)',
+      ports: 'MagSafe 3 Charging Port, 2x Thunderbolt / USB 4, 3.5mm Headphone Jack'
+    },
+    highlights: [
+      'Open Box condition: Zero scratches, 100% battery cycle health with original MagSafe cable',
+      'Fanless completely silent operation with unmatched 18-hour battery longevity',
+      '15-Day Checking Warranty backed by War Computers'
+    ],
+    description: 'Impossibly thin design in midnight aluminum finish. Delivers astounding speed and power efficiency for creatives and professionals.',
+    tags: ['apple', 'macbook-air', 'm2', 'open-box', 'liquid-retina', 'macos', 'video_editing', 'graphic_design', 'programming', 'business', 'freelancing']
+  },
+
+  // 10. Lenovo ThinkPad X1 Carbon Gen 12 - 150K+ (Rs. 295,000) - Business, Programming, Freelancing, Office
+  {
+    id: 'prod-lp-think-x1',
+    sku: 'WC-THINK-X1G12-OPEN',
+    name: 'Lenovo ThinkPad X1 Carbon Gen 12 (OLED Edition)',
+    brand: 'Lenovo',
+    category: 'laptops',
+    retailPrice: 295000,
+    wholesalePrice: 265000,
+    wholesaleMOQ: 2,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 295000, discountPercentage: 0 },
+      { minUnits: 2, maxUnits: 4, pricePerUnit: 265000, discountPercentage: 10 },
+      { minUnits: 5, pricePerUnit: 249000, discountPercentage: 15 }
+    ],
+    stockQuantity: 1,
+    condition: 'OPEN BOX',
+    rating: 5.0,
+    reviewsCount: 42,
+    isFeatured: true,
+    images: [
+      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Intel Core Ultra 7 155H (16 Cores with Neural AI NPU)',
       gpu: 'Intel Arc Graphics',
-      ram: '32GB LPDDR5x 6400MHz Soldered',
-      storage: '1TB PCIe Gen4 Performance SSD Opal2',
+      ram: '32GB LPDDR5x 6400MHz',
+      storage: '1TB PCIe Gen4 Performance NVMe SSD',
       display: '14" 2.8K (2880x1800) OLED 120Hz 100% DCI-P3 DisplayHDR 500',
       os: 'Windows 11 Pro Enterprise Ready',
       battery: '57Whr (Up to 15 Hours runtime)',
-      warranty: '3-Year Premier Support & Accidental Damage Protection',
-      weight: '1.09 kg (Carbon Fiber Chassis)'
+      warranty: '15-Day Checking Warranty',
+      weight: '1.09 kg (Ultralight Carbon Fiber)'
     },
     highlights: [
-      'Featherlight 1.09kg Military-Spec MIL-STD-810H Durability',
-      'Built-in Intel AI NPU for Copilot+ Enterprise productivity',
-      'Top choice for corporate fleets and executive deployment'
+      'Open Box condition: Activated but pristine zero-wear condition with original box',
+      'Stunning 2.8K 120Hz OLED screen and Core Ultra AI silicon',
+      '15-Day Checking Warranty with complete original Lenovo accessories'
     ],
-    description: 'The definitive enterprise executive ultrabook. Ultra-durable carbon-fiber construction, OLED visual fidelity, and all-day battery efficiency.',
-    tags: ['lenovo', 'thinkpad', 'business-laptop', 'ultralight', 'intel-core-ultra']
+    description: 'The pinnacle of executive mobility. Featherlight carbon-fiber chassis, breathtaking OLED panel, and next-generation Intel AI acceleration.',
+    tags: ['lenovo', 'thinkpad-x1', 'open-box', 'oled', 'core-ultra', 'flagship', 'business', 'programming', 'freelancing', 'office']
   },
+
+  // 11. HP Fortis 14 G10 Chromebook - Under 50K (Rs. 38,000) - Student, Office, Freelancing
   {
-    id: 'prod-cb-01',
-    sku: 'WC-HP-FORTIS14',
+    id: 'prod-cb-fortis',
+    sku: 'WC-HP-FORTIS14-USED',
     name: 'HP Fortis 14 G10 Chromebook Enterprise Rugged',
     brand: 'HP',
     category: 'chromebooks',
-    retailPrice: 429.00,
-    wholesalePrice: 319.00,
-    wholesaleMOQ: 10,
+    retailPrice: 38000,
+    wholesalePrice: 32000,
+    wholesaleMOQ: 5,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 9, pricePerUnit: 429.00, discountPercentage: 0 },
-      { minUnits: 10, maxUnits: 29, pricePerUnit: 319.00, discountPercentage: 25 },
-      { minUnits: 30, maxUnits: 99, pricePerUnit: 289.00, discountPercentage: 32 },
-      { minUnits: 100, pricePerUnit: 259.00, discountPercentage: 40 }
+      { minUnits: 1, maxUnits: 4, pricePerUnit: 38000, discountPercentage: 0 },
+      { minUnits: 5, maxUnits: 14, pricePerUnit: 32000, discountPercentage: 15 },
+      { minUnits: 15, maxUnits: 49, pricePerUnit: 29000, discountPercentage: 23 },
+      { minUnits: 50, pricePerUnit: 26000, discountPercentage: 31 }
     ],
-    stockQuantity: 380,
-    condition: 'Brand New',
-    rating: 4.7,
-    reviewsCount: 82,
+    stockQuantity: 140,
+    condition: 'USED',
+    rating: 4.75,
+    reviewsCount: 92,
     isFeatured: true,
     images: [
-      'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=720&q=75'
     ],
     specs: {
-      cpu: 'Intel Processor N200 (Quad-Core up to 3.7GHz)',
+      cpu: 'Intel Processor N200 Quad-Core (up to 3.7GHz)',
       gpu: 'Intel UHD Graphics',
       ram: '8GB LPDDR5 High-Speed RAM',
       storage: '128GB UFS Fast Flash Storage',
       display: '14.0" FHD IPS Anti-Glare (1920 x 1080) 250 nits',
-      os: 'ChromeOS with Google Chrome Enterprise Upgrade Support',
-      battery: '47Whr Li-ion (Up to 12.5 Hours)',
-      warranty: '2-Year Standard Depot Warranty',
+      os: 'ChromeOS with Google Admin Console Management Support',
+      battery: '47Whr Li-ion (Up to 10 Hours)',
+      warranty: '7-Day Checking Warranty',
       weight: '1.45 kg',
       ports: '2x USB-C 3.2, 2x USB-A 3.2, HDMI 1.4b, Headphone Jack'
     },
     highlights: [
       'Reinforced Rubber Trim & Spill-Resistant Keyboard',
       'Auto-Update Expiration (AUE) verified through June 2033',
-      'Ideal for K-12 education districts, remote call centers, & point of sale'
+      '7-Day Checking Warranty with original Type-C charger'
     ],
-    description: 'Engineered to withstand demanding classroom and enterprise shifts. Co-molded rubber bumpers, anchored keys, and seamless Google Cloud management.',
-    tags: ['hp', 'chromebook', 'education-fleet', 'chromeos', 'rugged']
+    description: 'Engineered for students, online tutoring, web browsing, and call center cloud tools. Rugged build with long battery backup.',
+    tags: ['hp', 'chromebook', 'used', 'tested', 'chromeos', 'budget-laptop', 'student', 'office', 'freelancing', 'under-50k']
   },
+
+  // 11b. Dell Chromebook 3100 Rugged - Under Rs. 30,000 (Rs. 27,000) - Basic, Student, Web Browsing
   {
-    id: 'prod-cb-02',
-    sku: 'WC-ACER-SPIN714',
-    name: 'Acer Chromebook Spin 714 2-in-1 Touchscreen with Stylus',
-    brand: 'Acer',
+    id: 'prod-cb-dell3100',
+    sku: 'WC-DELL-CB3100-USED',
+    name: 'Dell Chromebook 3100 Rugged Education Laptop',
+    brand: 'Dell',
     category: 'chromebooks',
-    retailPrice: 699.00,
-    wholesalePrice: 539.00,
+    retailPrice: 27000,
+    wholesalePrice: 22000,
     wholesaleMOQ: 5,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 4, pricePerUnit: 699.00, discountPercentage: 0 },
-      { minUnits: 5, maxUnits: 19, pricePerUnit: 539.00, discountPercentage: 23 },
-      { minUnits: 20, maxUnits: 49, pricePerUnit: 499.00, discountPercentage: 28 },
-      { minUnits: 50, pricePerUnit: 469.00, discountPercentage: 33 }
+      { minUnits: 1, maxUnits: 4, pricePerUnit: 27000, discountPercentage: 0 },
+      { minUnits: 5, maxUnits: 14, pricePerUnit: 22000, discountPercentage: 18 },
+      { minUnits: 15, pricePerUnit: 19500, discountPercentage: 27 }
     ],
-    stockQuantity: 88,
-    condition: 'Brand New',
-    rating: 4.8,
-    reviewsCount: 65,
-    isFeatured: false,
+    stockQuantity: 180,
+    condition: 'USED',
+    rating: 4.7,
+    reviewsCount: 110,
+    isFeatured: true,
     images: [
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=720&q=75'
     ],
     specs: {
-      cpu: 'Intel Core i5-1335U 10-Core Processor',
-      gpu: 'Intel Iris Xe Graphics',
-      ram: '16GB LPDDR5 RAM',
-      storage: '256GB PCIe Gen4 NVMe SSD',
-      display: '14.0" WQXGA (1920x1200) 16:10 IPS Corning Gorilla Glass Multi-Touch',
-      os: 'ChromeOS (Chromebook Plus Certified)',
-      battery: '56Whr (Up to 11.5 Hours)',
-      warranty: '2-Year War Computers Extended Warranty',
-      weight: '1.37 kg',
-      formFactor: '360° Convertible Tablet / Laptop'
+      cpu: 'Intel Celeron N4020 Dual-Core (up to 2.8GHz)',
+      gpu: 'Intel UHD Graphics 600',
+      ram: '4GB LPDDR4 High-Efficiency RAM',
+      storage: '32GB eMMC Flash (MicroSD Expandable)',
+      display: '11.6" HD Anti-Glare (1366 x 768) Rugged Display',
+      os: 'ChromeOS (Google Play Store & Android App Support)',
+      battery: '42Whr 3-Cell Battery (10-12 Hours Battery Life)',
+      warranty: '7-Day Checking Warranty',
+      weight: '1.29 kg',
+      ports: '2x USB-C (Charging & Display), 2x USB 3.1, Audio Combo, MicroSD'
     },
     highlights: [
-      'Chromebook Plus Tier with Google AI photo & document tools',
-      'Built-in Garaged USI Rechargeable Active Stylus Pen',
-      'Durable Aluminum CNC milled chassis'
+      'Best Price Under Rs. 30,000 in Pakistan with 10+ hours real battery backup',
+      'Rubberized edges and spill-resistant keyboard for maximum durability',
+      '7-Day Checking Warranty with genuine Type-C power adapter included'
     ],
-    description: 'A premium convertible Chromebook featuring Intel 13th Gen power, vivid 16:10 touch display, and garaged active stylus for creators and managers.',
-    tags: ['acer', 'chromebook-plus', '2-in-1', 'stylus', 'convertible']
+    description: 'Ultra-durable, lightweight student and daily browsing laptop. Perfect for YouTube, Google Docs, Zoom lectures, online assignments, and casual web use.',
+    tags: ['dell', 'chromebook', 'under-30k', 'basic', 'student', 'used-laptop', 'tested', 'chromeos', 'budget-laptop']
   },
+
+  // 12. Dell OptiPlex 7070 Micro - Desktops
   {
-    id: 'prod-tab-01',
-    sku: 'WC-IPAD-PRO13M4',
-    name: 'Apple iPad Pro 13" (M4 Chip) 512GB Ultra Retina XDR',
-    brand: 'Apple',
-    category: 'tablets',
-    retailPrice: 1499.00,
-    wholesalePrice: 1299.00,
-    wholesaleMOQ: 5,
+    id: 'prod-dt-optiplex',
+    sku: 'WC-DELL-OPTI7070-USED',
+    name: 'Dell OptiPlex 7070 Micro Desktop PC',
+    brand: 'Dell',
+    category: 'desktops',
+    retailPrice: 42000,
+    wholesalePrice: 36000,
+    wholesaleMOQ: 3,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 4, pricePerUnit: 1499.00, discountPercentage: 0 },
-      { minUnits: 5, maxUnits: 14, pricePerUnit: 1299.00, discountPercentage: 13 },
-      { minUnits: 15, maxUnits: 29, pricePerUnit: 1229.00, discountPercentage: 18 },
-      { minUnits: 30, pricePerUnit: 1169.00, discountPercentage: 22 }
+      { minUnits: 1, maxUnits: 2, pricePerUnit: 42000, discountPercentage: 0 },
+      { minUnits: 3, maxUnits: 5, pricePerUnit: 36000, discountPercentage: 14 },
+      { minUnits: 6, pricePerUnit: 33000, discountPercentage: 21 }
     ],
-    stockQuantity: 52,
-    condition: 'Brand New',
-    rating: 4.95,
-    reviewsCount: 210,
+    stockQuantity: 55,
+    condition: 'USED',
+    rating: 4.85,
+    reviewsCount: 130,
+    isFeatured: true,
+    images: [
+      'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Intel Core i5-9500T 6-Core (up to 3.7GHz)',
+      gpu: 'Intel UHD Graphics 630 (Supports 3 Displays)',
+      ram: '16GB DDR4 RAM',
+      storage: '256GB NVMe SSD + 500GB HDD Storage',
+      os: 'Windows 11 Pro 64-bit Genuine',
+      ports: '2x DisplayPort 1.2, 5x USB 3.1 Gen 2, Gigabit LAN, Wi-Fi Card',
+      warranty: '7-Day Checking Warranty',
+      powerSupply: '65W High-Efficiency AC Adapter Included'
+    },
+    highlights: [
+      'Compact mini PC fits in the palm of your hand - space saving & quiet',
+      '100% Bench Tested: MemTest86, CPU stress test, and port checks passed',
+      '7-Day Checking Warranty with original Dell power adapter included'
+    ],
+    description: 'Reliable micro desktop PC for offices, schools, medical clinics, and call centers. Extremely energy-efficient with snappy SSD performance.',
+    tags: ['dell', 'optiplex', 'micro-pc', 'used-desktop', 'core-i5', 'tested-pc', 'office', 'student']
+  },
+
+  // 13. War Apex Titan X Gaming Rig - Desktops
+  {
+    id: 'prod-dt-titan4090',
+    sku: 'WC-TITAN-4090-NEW',
+    name: 'War Apex Titan X Gaming & AI Workstation Rig',
+    brand: 'Custom Rig',
+    category: 'desktops',
+    retailPrice: 850000,
+    wholesalePrice: 775000,
+    wholesaleMOQ: 2,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 850000, discountPercentage: 0 },
+      { minUnits: 2, maxUnits: 4, pricePerUnit: 775000, discountPercentage: 9 },
+      { minUnits: 5, pricePerUnit: 730000, discountPercentage: 14 }
+    ],
+    stockQuantity: 14,
+    condition: 'NEW',
+    rating: 5.0,
+    reviewsCount: 88,
     isFeatured: true,
     isBestSeller: true,
     images: [
-      'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=720&q=75'
+    ],
+    specs: {
+      cpu: 'Intel Core i9-14900KS (24 Cores / 32 Threads up to 6.2GHz)',
+      gpu: 'NVIDIA GeForce RTX 4090 24GB GDDR6X',
+      ram: '64GB DDR5 6400MHz RGB Dual Channel',
+      storage: '4TB (2x 2TB) PCIe 4.0 NVMe SSD RAID-0',
+      os: 'Windows 11 Pro 64-bit Workstation',
+      ports: '2x Thunderbolt 4, 6x USB 3.2 Gen2, 2.5GbE LAN, Wi-Fi 7',
+      warranty: '3-Year Premium Warranty',
+      cooling: '360mm AIO Liquid Cooler with OLED Display',
+      powerSupply: '1200W 80+ Platinum Fully Modular'
+    },
+    highlights: [
+      'Brand New Sealed components assembled with precision cable management',
+      'Unthrottled 4K/8K Gaming, 3D Rendering, & Local LLM AI Model Fine-Tuning',
+      '3-Year Premium Hardware Warranty & Lifetime Technical Support'
+    ],
+    description: 'The pinnacle of desktop computational power. Engineered for competitive gamers, 3D architectural visualizers, and AI researchers.',
+    tags: ['custom-rig', 'rtx4090', 'intel-i9', 'brand-new', 'gaming-desktop', 'ai-beast']
+  },
+
+  // 14. Apple iPad Pro 13 M4 - Tablets
+  {
+    id: 'prod-tab-ipad-m4',
+    sku: 'WC-APPLE-IPADM4-NEW',
+    name: 'Apple iPad Pro 13" Tandem OLED (M4 Chip)',
+    brand: 'Apple',
+    category: 'tablets',
+    retailPrice: 365000,
+    wholesalePrice: 335000,
+    wholesaleMOQ: 2,
+    wholesaleTiers: [
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 365000, discountPercentage: 0 },
+      { minUnits: 2, maxUnits: 4, pricePerUnit: 335000, discountPercentage: 8 },
+      { minUnits: 5, pricePerUnit: 320000, discountPercentage: 12 }
+    ],
+    stockQuantity: 20,
+    condition: 'NEW',
+    rating: 4.98,
+    reviewsCount: 64,
+    isFeatured: true,
+    isNewArrival: true,
+    images: [
+      'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=720&q=75'
     ],
     specs: {
       cpu: 'Apple M4 Chip (9-Core CPU, 10-Core GPU, 16-Core Neural Engine)',
@@ -258,88 +662,89 @@ export const INITIAL_PRODUCTS: Product[] = [
       ram: '8GB Unified Memory',
       storage: '512GB High-Speed Flash Storage',
       display: '13-inch Tandem OLED Ultra Retina XDR (2752x2064, 1600 nits peak)',
-      os: 'iPadOS 17 / iPadOS 18 Ready',
+      os: 'iPadOS 18 Ready',
       battery: '38.99Whr (Up to 10 hours web/video)',
-      warranty: '1-Year Apple Limited Warranty + War Tech Care',
+      warranty: '1-Year Official Warranty',
       weight: '579 grams (5.1mm Ultra-thin)',
       ports: 'Thunderbolt 4 / USB 4'
     },
     highlights: [
-      'Mind-blowing Tandem OLED display with extreme contrast ratio',
-      'Ultra-thin 5.1mm design powered by revolutionary M4 Silicon',
-      'Supports Apple Pencil Pro and Magic Keyboard'
+      'Brand New Factory Sealed Box with 1-Year Apple International & Local Warranty',
+      'Mind-blowing Tandem OLED display with infinite contrast and 1600 nits HDR',
+      'Ultra-thin 5.1mm engineering powered by M4 Silicon'
     ],
-    description: 'The ultimate iPad experience. Groundbreaking Tandem OLED display technology, next-generation M4 computing speed, and ultra-portable profile.',
-    tags: ['apple', 'ipad-pro', 'm4', 'oled', 'tablet']
+    description: 'The ultimate portable computing canvas. Tandem OLED screen technology, next-generation M4 speed, and ultra-slim profile.',
+    tags: ['apple', 'ipad-pro', 'brand-new', 'm4', 'oled', 'tablet', 'graphic_design']
   },
+
+  // 15. Dell OptiPlex Micro Gen12 Fleet - Wholesale Lot
   {
-    id: 'prod-tab-02',
-    sku: 'WC-SURF-PRO10',
-    name: 'Microsoft Surface Pro 10 Enterprise 2-in-1 Tablet PC',
-    brand: 'Custom Rig',
-    category: 'tablets',
-    retailPrice: 1399.00,
-    wholesalePrice: 1149.00,
-    wholesaleMOQ: 5,
+    id: 'prod-lot-optiplex',
+    sku: 'WC-BULK-OPTI-25LOT',
+    name: 'Dell OptiPlex Micro Gen12 Desktop Fleet [25-Unit Bulk Pallet]',
+    brand: 'Dell',
+    category: 'wholesale_lots',
+    retailPrice: 875000,
+    wholesalePrice: 750000,
+    wholesaleMOQ: 1,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 4, pricePerUnit: 1399.00, discountPercentage: 0 },
-      { minUnits: 5, maxUnits: 14, pricePerUnit: 1149.00, discountPercentage: 18 },
-      { minUnits: 15, maxUnits: 30, pricePerUnit: 1079.00, discountPercentage: 23 },
-      { minUnits: 31, pricePerUnit: 999.00, discountPercentage: 28 }
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 750000, discountPercentage: 14 },
+      { minUnits: 2, maxUnits: 3, pricePerUnit: 700000, discountPercentage: 20 },
+      { minUnits: 4, pricePerUnit: 660000, discountPercentage: 24 }
     ],
-    stockQuantity: 74,
-    condition: 'Brand New',
-    rating: 4.8,
-    reviewsCount: 78,
+    stockQuantity: 8,
+    condition: 'REFURBISHED',
+    rating: 4.9,
+    reviewsCount: 38,
     isFeatured: true,
+    isBulkLot: true,
+    lotUnitCount: 25,
     images: [
-      'https://images.unsplash.com/photo-1589739900243-4b52cd9b104e?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=720&q=75'
     ],
     specs: {
-      cpu: 'Intel Core Ultra 7 165U with Intel AI Boost NPU',
-      gpu: 'Intel Graphics',
-      ram: '16GB LPDDR5x RAM',
-      storage: '512GB Removable Gen4 SSD',
-      display: '13" PixelSense Flow (2880 x 1920) 120Hz Touchscreen Anti-Reflective',
-      os: 'Windows 11 Pro Enterprise Security',
-      battery: '48Whr (Up to 19 Hours Typical Usage)',
-      warranty: '3-Year Commercial Warranty with Advanced Exchange',
-      weight: '879 grams',
-      ports: '2x USB-C with USB 4/Thunderbolt 4, Surface Connect Port'
+      cpu: 'Intel Core i5-12500T 6-Core (per unit)',
+      gpu: 'Intel UHD Graphics 770',
+      ram: '16GB DDR4 3200MHz (per unit, 400GB Total Pallet)',
+      storage: '256GB NVMe SSD (per unit, 6.4TB Total Pallet)',
+      os: 'Windows 11 Pro Genuine Activated on every unit',
+      warranty: '1-Month Replacement Warranty',
+      ports: 'Dual DisplayPort, HDMI, 5x USB 3.2, Gigabit Ethernet'
     },
     highlights: [
-      'Full desktop Windows 11 Pro versatility in a lightweight tablet slate',
-      'Hardware-level Secured-Core PC and NFC authentication ready',
-      'Direct wholesale fleet discounts for medical, field, & corporate teams'
+      'Complete 25-Unit Pallet Lot: Save substantial margin on bulk purchase',
+      'Every unit professionally tested, cleaned, thermal pasted, & Windows 11 pre-installed',
+      'Ships securely boxed on wooden pallets nationwide across Pakistan'
     ],
-    description: 'Designed specifically for professional enterprises. Unites the portability of a tablet with the performance and security of an executive laptop.',
-    tags: ['microsoft', 'surface-pro', 'windows-tablet', '2-in-1', 'enterprise-slate']
+    description: 'The turnkey bulk IT hardware lot for call centers, corporate software companies, and computer labs in Pakistan. Includes 25 micro PC units and 25 original power adapters.',
+    tags: ['wholesale-lot', 'dell-optiplex', 'bulk-desktop', 'pallet-deal', 'b2b-fleet', 'refurbished']
   },
+
+  // 16. Threadripper Workstation
   {
-    id: 'prod-ws-01',
-    sku: 'WC-WORKSTN-THREAD',
-    name: 'War Titan Server Workstation - Threadripper Pro 96-Core',
+    id: 'prod-ws-threadripper',
+    sku: 'WC-WORKSTN-THREAD-NEW',
+    name: 'War Titan Enterprise Workstation - Threadripper 96-Core',
     brand: 'Custom Rig',
     category: 'workstations',
-    retailPrice: 8999.00,
-    wholesalePrice: 7499.00,
-    wholesaleMOQ: 2,
+    retailPrice: 1950000,
+    wholesalePrice: 1780000,
+    wholesaleMOQ: 1,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 1, pricePerUnit: 8999.00, discountPercentage: 0 },
-      { minUnits: 2, maxUnits: 4, pricePerUnit: 7499.00, discountPercentage: 16 },
-      { minUnits: 5, maxUnits: 10, pricePerUnit: 6999.00, discountPercentage: 22 },
-      { minUnits: 11, pricePerUnit: 6499.00, discountPercentage: 28 }
+      { minUnits: 1, maxUnits: 1, pricePerUnit: 1950000, discountPercentage: 0 },
+      { minUnits: 2, maxUnits: 3, pricePerUnit: 1780000, discountPercentage: 8 },
+      { minUnits: 4, pricePerUnit: 1650000, discountPercentage: 15 }
     ],
-    stockQuantity: 18,
-    condition: 'Brand New',
+    stockQuantity: 6,
+    condition: 'NEW',
     rating: 5.0,
-    reviewsCount: 31,
+    reviewsCount: 22,
     isFeatured: true,
     isNewArrival: true,
     images: [
-      'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=720&q=75',
+      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=720&q=75'
     ],
     specs: {
       cpu: 'AMD Ryzen Threadripper PRO 7995WX (96 Cores / 192 Threads, 5.1GHz)',
@@ -347,235 +752,50 @@ export const INITIAL_PRODUCTS: Product[] = [
       ram: '256GB (8x 32GB) DDR5 ECC Registered Octa-Channel',
       storage: '8TB (4x 2TB) PCIe 5.0 NVMe Enterprise SSD Array',
       os: 'Ubuntu Linux 24.04 LTS / Windows Server 2025 Datacenter',
-      warranty: '5-Year 24/7 Mission-Critical Enterprise SLA Support',
+      warranty: '3-Year Enterprise SLA Warranty',
       cooling: 'Custom Dual Loop High-Static Pressure Liquid Cooling',
       powerSupply: '2000W 80+ Titanium Redundant Dual PSU'
     },
     highlights: [
-      '96 Physical Cores / 192 Threads for Massive AI Model Fine-Tuning',
+      '96 Physical Cores / 192 Threads for Massive AI Model Fine-Tuning & VFX',
       'ECC Registered Memory prevents data corruption in mission-critical simulations',
-      'Custom rackmount / tower dual-purpose heavy industrial steel chassis'
+      'Brand New Enterprise Tower with 3-Year On-Site SLA Warranty'
     ],
-    description: 'Industrial-grade compute power. Built for scientific simulations, visual effects rendering studios, automotive CAD, and on-premise AI deployments.',
-    tags: ['threadripper', 'workstation', 'dual-gpu', 'ai-server', 'ecc-memory']
-  },
-  {
-    id: 'prod-lot-01',
-    sku: 'WC-BULK-OPTIPLEX-25',
-    name: 'Dell OptiPlex Micro Gen12 Desktop Fleet [25-Unit Bulk Pallet]',
-    brand: 'Dell',
-    category: 'wholesale_lots',
-    retailPrice: 14750.00, // $590 each retail
-    wholesalePrice: 9875.00, // $395 each wholesale!
-    wholesaleMOQ: 1, // 1 lot (25 pcs)
-    wholesaleTiers: [
-      { minUnits: 1, maxUnits: 1, pricePerUnit: 9875.00, discountPercentage: 33 },
-      { minUnits: 2, maxUnits: 4, pricePerUnit: 9250.00, discountPercentage: 37 },
-      { minUnits: 5, pricePerUnit: 8750.00, discountPercentage: 40 }
-    ],
-    stockQuantity: 14,
-    condition: 'Factory Certified',
-    rating: 4.9,
-    reviewsCount: 47,
-    isFeatured: true,
-    isBulkLot: true,
-    lotUnitCount: 25,
-    images: [
-      'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80'
-    ],
-    specs: {
-      cpu: 'Intel Core i5-13500T 14-Core (per unit)',
-      gpu: 'Intel UHD Graphics 770',
-      ram: '16GB DDR5 4800MHz (per unit, 400GB Total Pallet)',
-      storage: '512GB PCIe M.2 NVMe SSD (per unit, 12.8TB Total Pallet)',
-      os: 'Windows 11 Pro Pre-Activated OEM License on each device',
-      warranty: '3-Year Dell ProSupport Bulk Warranty with direct part dispatch',
-      ports: 'Dual DisplayPort, HDMI, 5x USB 3.2, Gigabit Ethernet'
-    },
-    highlights: [
-      'Complete 25-Unit Pallet Lot: Save over $4,875 vs individual retail MSRP',
-      'Pre-imaged with Windows 11 Pro OEM licenses and zero bloatware',
-      'Ships securely shrink-wrapped on standard freight wooden pallet'
-    ],
-    description: 'The ultimate turnkey bulk IT hardware lot for call centers, hospital check-in desks, corporate offices, and computer labs. Includes 25 micro PC units, power supplies, and keyboard/mouse bundles.',
-    tags: ['wholesale-lot', 'dell-optiplex', 'bulk-desktop', 'pallet-deal', 'b2b-fleet']
-  },
-  {
-    id: 'prod-lot-02',
-    sku: 'WC-BULK-CHROME-30',
-    name: 'Classroom Chromebook 14" Rugged Fleet [30-Unit Education Lot]',
-    brand: 'Lenovo',
-    category: 'wholesale_lots',
-    retailPrice: 9900.00, // $330 each
-    wholesalePrice: 6270.00, // $209 each!
-    wholesaleMOQ: 1, // 1 lot (30 pcs)
-    wholesaleTiers: [
-      { minUnits: 1, maxUnits: 2, pricePerUnit: 6270.00, discountPercentage: 36 },
-      { minUnits: 3, maxUnits: 5, pricePerUnit: 5850.00, discountPercentage: 40 },
-      { minUnits: 6, pricePerUnit: 5400.00, discountPercentage: 45 }
-    ],
-    stockQuantity: 22,
-    condition: 'Brand New',
-    rating: 4.85,
-    reviewsCount: 39,
-    isFeatured: true,
-    isBulkLot: true,
-    lotUnitCount: 30,
-    images: [
-      'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80'
-    ],
-    specs: {
-      cpu: 'Intel Processor N100 Quad-Core (per unit)',
-      gpu: 'Intel HD Graphics',
-      ram: '8GB LPDDR5 (per unit)',
-      storage: '64GB eMMC 5.1 Storage (per unit)',
-      display: '14.0" HD Anti-Glare with Reinforced Glass',
-      os: 'ChromeOS (Zero-Touch Enrollment Compatible)',
-      warranty: '2-Year School District Accidental Protection Plan Included',
-      battery: '12-Hour All-Day Classroom Battery'
-    },
-    highlights: [
-      '30-Pack Turnkey Education Fleet with Barcoded Individual Packaging',
-      'Zero-Touch Enrollment (ZTE) ready for Google Admin Workspace',
-      'Drop-tested to 120cm with reinforced rubberized corners'
-    ],
-    description: 'Designed specifically for educational institutions, charter schools, and training organizations. Comes in organized, master-cartoned crates with individual asset tagging labels.',
-    tags: ['wholesale-lot', 'education-chromebook', 'lenovo', '30-pack', 'school-district']
-  },
-  {
-    id: 'prod-dt-02',
-    sku: 'WC-OMEN-45L',
-    name: 'HP OMEN 45L Cryo Chamber Desktop - RTX 4080 Super',
-    brand: 'HP',
-    category: 'desktops',
-    retailPrice: 2499.00,
-    wholesalePrice: 2049.00,
-    wholesaleMOQ: 3,
-    wholesaleTiers: [
-      { minUnits: 1, maxUnits: 2, pricePerUnit: 2499.00, discountPercentage: 0 },
-      { minUnits: 3, maxUnits: 5, pricePerUnit: 2049.00, discountPercentage: 18 },
-      { minUnits: 6, pricePerUnit: 1899.00, discountPercentage: 24 }
-    ],
-    stockQuantity: 36,
-    condition: 'Brand New',
-    rating: 4.85,
-    reviewsCount: 73,
-    images: [
-      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80'
-    ],
-    specs: {
-      cpu: 'AMD Ryzen 9 7900X (12 Cores / 24 Threads up to 5.6GHz)',
-      gpu: 'NVIDIA GeForce RTX 4080 Super 16GB GDDR6X',
-      ram: '32GB Kingston FURY RGB DDR5 6000MHz',
-      storage: '2TB WD Black PCIe Gen4 NVMe SSD',
-      os: 'Windows 11 Home',
-      warranty: '2-Year HP Onsite Warranty',
-      cooling: 'Patented Cryo Chamber Liquid Cooling',
-      powerSupply: '800W 80+ Gold'
-    },
-    highlights: [
-      'Patented external Cryo Chamber draws cool ambient air directly',
-      'Toolless access chassis with custom glass side panel',
-      'Tested for uninterrupted 4K streaming and ray-traced gaming'
-    ],
-    description: 'Revolutionary cooling with the external Cryo Chamber. Runs 6°C cooler than traditional desktop cases under full sustained load.',
-    tags: ['hp', 'omen', 'rtx4080super', 'ryzen9', 'gaming-desktop']
-  },
-  {
-    id: 'prod-tab-03',
-    sku: 'WC-GALAXY-TABS9U',
-    name: 'Samsung Galaxy Tab S9 Ultra 14.6" Dynamic AMOLED 2X',
-    brand: 'Custom Rig',
-    category: 'tablets',
-    retailPrice: 1199.00,
-    wholesalePrice: 949.00,
-    wholesaleMOQ: 5,
-    wholesaleTiers: [
-      { minUnits: 1, maxUnits: 4, pricePerUnit: 1199.00, discountPercentage: 0 },
-      { minUnits: 5, maxUnits: 15, pricePerUnit: 949.00, discountPercentage: 20 },
-      { minUnits: 16, pricePerUnit: 889.00, discountPercentage: 25 }
-    ],
-    stockQuantity: 45,
-    condition: 'Brand New',
-    rating: 4.88,
-    reviewsCount: 112,
-    images: [
-      'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=1200&q=80'
-    ],
-    specs: {
-      cpu: 'Snapdragon 8 Gen 2 for Galaxy (4nm Octa-core)',
-      gpu: 'Adreno 740',
-      ram: '12GB High-speed RAM',
-      storage: '256GB Internal + MicroSD slot up to 1TB',
-      display: '14.6" Dynamic AMOLED 2X 120Hz (2960 x 1848) HDR10+',
-      os: 'Android 14 with Samsung DeX Multitasking Desktop Mode',
-      battery: '11,200mAh with 45W Super Fast Charging',
-      warranty: '2-Year Standard Warranty',
-      weight: '732 grams',
-      cooling: 'Vapor Chamber Cooling System (IP68 Water & Dust Resistant)'
-    },
-    highlights: [
-      'IP68 Water & Dust Resistance on both Tablet and S Pen',
-      'Samsung DeX provides a full Windows-like multi-window workstation',
-      'Massive 14.6-inch AMOLED display with AKG Quad speakers'
-    ],
-    description: 'Transform how you work and play. The largest, most vibrant Android tablet ever built, complete with waterproof S Pen in the box.',
-    tags: ['samsung', 'galaxy-tab', 'amoled', 'tablet', 'dex-workstation']
+    description: 'Industrial-grade compute power built for local AI model training, animation studios, computational simulations, and heavy server loads.',
+    tags: ['threadripper', 'workstation', 'dual-gpu', 'ai-server', 'ecc-memory', 'brand-new']
   }
 ];
 
 export const HERO_SCROLLING_IMAGES = [
   {
-    url: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
-    title: 'War Apex Titan X Gaming Rigs',
-    category: 'Custom RTX 4090 Systems',
-    tag: 'Extreme Power'
+    url: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=500&q=70',
+    title: 'HP EliteBook 840 G7 - Tested & Certified',
+    category: 'Used Business Laptops',
+    tag: 'Rs. 70,000'
   },
   {
-    url: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80',
-    title: 'ROG Strix SCAR 18 QHD 240Hz',
-    category: 'High-FPS Laptops',
-    tag: 'Nebula HDR'
+    url: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=70',
+    title: 'ThinkPad T14 & X1 Carbon',
+    category: 'Refurbished & Open Box',
+    tag: 'Checking Warranty'
   },
   {
-    url: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80',
-    title: 'Lenovo ThinkPad X1 Carbon Gen 12',
-    category: 'Business Ultrabooks',
-    tag: 'Enterprise Fleet'
+    url: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=70',
+    title: 'War Apex Titan X (RTX 4090)',
+    category: 'Brand New Gaming Rigs',
+    tag: 'Extreme Performance'
   },
   {
-    url: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
-    title: 'HP Fortis Rugged Chromebooks',
-    category: 'Education & Cloud Fleets',
-    tag: 'Bulk Pallets'
+    url: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=500&q=70',
+    title: 'Dell OptiPlex Micro PCs & Fleets',
+    category: 'Tested Used Desktops',
+    tag: 'B2B & Office'
   },
   {
-    url: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80',
-    title: 'iPad Pro M4 Tandem OLED',
-    category: 'Flagship Tablets',
-    tag: 'Ultra Portable'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=800&q=80',
-    title: 'War Threadripper 96-Core Compute',
-    category: 'AI & VFX Server Towers',
-    tag: 'Enterprise SLA'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80',
-    title: 'Dell OptiPlex Bulk 25-Unit Pallets',
-    category: 'B2B Wholesale Lots',
-    tag: 'Instant Dispatch'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80',
-    title: 'HP Omen 45L Cryo Chambers',
-    category: 'Liquid Cooled Desktops',
-    tag: 'Sub-Zero Airflow'
+    url: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=500&q=70',
+    title: 'iPad Pro M4 & MacBook Air M2',
+    category: 'Flagship Apple Devices',
+    tag: 'Official Warranty'
   }
 ];
 
@@ -586,127 +806,76 @@ export const SOCIAL_FEEDS = [
     id: 'soc-1',
     channel: 'YouTube' as const,
     handle: '@WarComputersHQ',
-    title: 'Building a $10,000 Liquid-Cooled RTX 4090 Monster Rig (Zero Throttle Stress Test)',
-    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
-    likes: '14.2k',
+    title: 'HP EliteBook 840 G7 vs Dell Latitude 7400: Best Used Laptop Under Rs. 70k in Pakistan',
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=75',
+    likes: '18.4k',
     url: 'https://youtube.com'
   },
   {
     id: 'soc-2',
     channel: 'Instagram' as const,
-    handle: '@warcomputers_setups',
-    title: 'Dual 4K Studio Battlestation for Apex VFX. Powered by War Titan 96-Core Compute.',
-    image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=800&q=80',
-    likes: '8.9k',
+    handle: '@warcomputers_pk',
+    title: 'Unboxing 50x Tested Dell OptiPlex Units for Lahore Call Center Client.',
+    image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=600&q=75',
+    likes: '12.9k',
     url: 'https://instagram.com'
   },
   {
     id: 'soc-3',
     channel: 'Discord' as const,
     handle: 'discord.gg/warcomputers',
-    title: 'B2B School Fleet Unboxing: 200 HP Fortis Chromebooks Deployed in Record Time.',
-    image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
-    likes: '5.1k',
+    title: 'Pakistan PC Builders Community: Daily Stock Alerts & Verified Deals.',
+    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=600&q=75',
+    likes: '7.1k',
     url: 'https://discord.com'
-  },
-  {
-    id: 'soc-4',
-    channel: 'YouTube' as const,
-    handle: '@WarComputersHQ',
-    title: 'ThinkPad X1 Carbon Gen 12 vs MacBook Pro M3 Max: Enterprise Fleet Benchmark',
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80',
-    likes: '21.5k',
-    url: 'https://youtube.com'
   }
 ];
 
 export const MOCK_ANALYTICS_DATA = {
   timeframe: 'Last 30 Days (Real-Time Synchronized)',
-  totalRevenue: 284590.00,
-  revenueGrowth: 23.4,
-  retailRevenue: 118400.00,
-  wholesaleRevenue: 166190.00,
-  unitsSold: 342,
-  unitsSoldTotal: 342,
-  activeInventoryCount: 4820,
-  wholesaleRatio: 58.4,
-  averageOrderValue: 832.13,
-  totalInventoryUnits: 4820,
-  totalInventoryValuation: 1845000.00,
+  totalRevenue: 3485000.00,
+  revenueGrowth: 28.4,
+  retailRevenue: 1840000.00,
+  wholesaleRevenue: 1645000.00,
+  unitsSold: 142,
+  unitsSoldTotal: 142,
+  activeInventoryCount: 480,
+  wholesaleRatio: 47.2,
+  averageOrderValue: 74500.00,
+  totalInventoryUnits: 480,
+  totalInventoryValuation: 28500000.00,
   lowStockItemsCount: 3,
   salesTrend: [
-    { month: 'Mar', retail: 68000, wholesale: 92000, units: 210 },
-    { month: 'Apr', retail: 74000, wholesale: 110000, units: 245 },
-    { month: 'May', retail: 89000, wholesale: 135000, units: 290 },
-    { month: 'Jun', retail: 98000, wholesale: 148000, units: 310 },
-    { month: 'Jul', retail: 104000, wholesale: 155000, units: 330 },
-    { month: 'Aug', retail: 118400, wholesale: 166190, units: 342 }
+    { month: 'Mar', retail: 1200000, wholesale: 1100000, units: 110 },
+    { month: 'Apr', retail: 1350000, wholesale: 1250000, units: 125 },
+    { month: 'May', retail: 1500000, wholesale: 1400000, units: 130 },
+    { month: 'Jun', retail: 1650000, wholesale: 1480000, units: 135 },
+    { month: 'Jul', retail: 1720000, wholesale: 1550000, units: 138 },
+    { month: 'Aug', retail: 1840000, wholesale: 1645000, units: 142 }
   ],
   monthlyTrends: [
-    { month: 'Mar', retailSales: 68000, wholesaleSales: 92000, units: 210 },
-    { month: 'Apr', retailSales: 74000, wholesaleSales: 110000, units: 245 },
-    { month: 'May', retailSales: 89000, wholesaleSales: 135000, units: 290 },
-    { month: 'Jun', retailSales: 98000, wholesaleSales: 148000, units: 310 },
-    { month: 'Jul', retailSales: 104000, wholesaleSales: 155000, units: 330 },
-    { month: 'Aug', retailSales: 118400, wholesaleSales: 166190, units: 342 }
+    { month: 'Mar', retailSales: 1200000, wholesaleSales: 1100000, units: 110 },
+    { month: 'Apr', retailSales: 1350000, wholesaleSales: 1250000, units: 125 },
+    { month: 'May', retailSales: 1500000, wholesaleSales: 1400000, units: 130 },
+    { month: 'Jun', retailSales: 1650000, wholesaleSales: 1480000, units: 135 },
+    { month: 'Jul', retailSales: 1720000, wholesaleSales: 1550000, units: 138 },
+    { month: 'Aug', retailSales: 1840000, wholesaleSales: 1645000, units: 142 }
   ],
   categoryBreakdown: [
-    { category: 'Laptops & Ultrabooks', percentage: 36, sharePercent: 36, revenue: 102450, units: 118 },
-    { category: 'Desktops & Gaming Towers', percentage: 28, sharePercent: 28, revenue: 79685, units: 62 },
-    { category: 'Wholesale B2B Bulk Lots', percentage: 22, sharePercent: 22, revenue: 62600, units: 12 },
-    { category: 'Chromebooks Fleet', percentage: 8, sharePercent: 8, revenue: 22760, units: 85 },
-    { category: 'Tablets & 2-in-1', percentage: 6, sharePercent: 6, revenue: 17095, units: 65 }
+    { category: 'Laptops & Ultrabooks', percentage: 48, sharePercent: 48, revenue: 1672800, units: 88 },
+    { category: 'Desktops & Mini PCs', percentage: 24, sharePercent: 24, revenue: 836400, units: 34 },
+    { category: 'Wholesale B2B Bulk Lots', percentage: 16, sharePercent: 16, revenue: 557600, units: 8 },
+    { category: 'Chromebooks', percentage: 7, sharePercent: 7, revenue: 243950, units: 22 },
+    { category: 'Tablets & Workstations', percentage: 5, sharePercent: 5, revenue: 174250, units: 10 }
   ],
   topMovingProducts: [
-    { id: 'prod-dt-01', name: 'War Apex Titan X (RTX 4090)', category: 'Desktops', unitsSold: 48, revenue: 142000, stockRemaining: 42 },
-    { id: 'prod-lp-02', name: 'Lenovo ThinkPad X1 Carbon Gen 12', category: 'Laptops', unitsSold: 76, revenue: 108400, stockRemaining: 120 },
-    { id: 'prod-lot-01', name: 'Dell OptiPlex Micro [25-Unit Pallet]', category: 'Wholesale Lots', unitsSold: 8, revenue: 79000, stockRemaining: 14 },
-    { id: 'prod-cb-01', name: 'HP Fortis 14 G10 Chromebook', category: 'Chromebooks', unitsSold: 140, revenue: 44660, stockRemaining: 380 }
+    { id: 'prod-lp-hp840', name: 'HP EliteBook 840 G7 (USED • TESTED)', category: 'Laptops', unitsSold: 42, revenue: 2940000, stockRemaining: 48 },
+    { id: 'prod-lp-dell7400', name: 'Dell Latitude 7400 (USED • TESTED)', category: 'Laptops', unitsSold: 28, revenue: 1624000, stockRemaining: 36 },
+    { id: 'prod-dt-optiplex', name: 'Dell OptiPlex 7070 Micro (USED • TESTED)', category: 'Desktops', unitsSold: 35, revenue: 1470000, stockRemaining: 55 },
+    { id: 'prod-lp-think-t14', name: 'ThinkPad T14 Gen 2 (REFURBISHED)', category: 'Laptops', unitsSold: 18, revenue: 1764000, stockRemaining: 24 }
   ],
   stockAlerts: [
-    { id: 'prod-ws-01', name: 'War Titan Server Workstation (Threadripper 96-Core)', currentStock: 18, reorderLevel: 25, leadTimeDays: 7, supplier: 'AMD Direct Enterprise', status: 'Low' as const },
-    { id: 'prod-dt-01', name: 'War Apex Titan X (RTX 4090)', currentStock: 42, reorderLevel: 50, leadTimeDays: 4, supplier: 'NVIDIA Foundry Tier 1', status: 'Adequate' as const },
-    { id: 'prod-lot-01', name: 'Dell OptiPlex 25-Unit Pallet Lots', currentStock: 14, reorderLevel: 20, leadTimeDays: 5, supplier: 'Dell Global Logistics', status: 'Low' as const }
+    { id: 'prod-lp-think-x1', name: 'ThinkPad X1 Carbon Gen 12 (OPEN BOX)', currentStock: 12, reorderLevel: 15, leadTimeDays: 7, supplier: 'Direct US Import', status: 'Low' as const },
+    { id: 'prod-dt-titan4090', name: 'War Apex Titan X (RTX 4090)', currentStock: 14, reorderLevel: 20, leadTimeDays: 5, supplier: 'Official Distributor', status: 'Low' as const }
   ]
 };
-
-export const MOCK_ORDERS = [
-  {
-    orderId: 'WC-8942',
-    customerName: 'Apex Creative Studio Ltd',
-    orderDate: 'Aug 28, 2026',
-    orderType: 'wholesale' as const,
-    status: 'Shipped' as const,
-    carrier: 'DHL Global Freight Priority',
-    trackingNumber: 'DHL-EXP-88937402-US',
-    estimatedDelivery: 'Tomorrow, Aug 30 by 3:00 PM',
-    totalAmount: 18990.00,
-    itemsCount: 6,
-    timeline: [
-      { status: 'Order Placed & Payment Verified', date: 'Aug 28, 09:15 AM', description: 'Wholesale bank wire confirmed. B2B invoice #INV-9923 generated.', completed: true },
-      { status: 'Assembled & Hardware Stress Tested', date: 'Aug 28, 02:30 PM', description: 'MemTest86, 3DMark 24h loop, and component serial tagging passed 100%.', completed: true },
-      { status: 'Passed Quality Control & Pallet Sealed', date: 'Aug 29, 08:45 AM', description: 'Shrink-wrapped, corner protected, tamper-evident security seal applied.', completed: true },
-      { status: 'Handed to Carrier (DHL Freight)', date: 'Aug 29, 11:20 AM', description: 'Departed War Computers Central Depot Hub (Dock 4B).', completed: true, current: true },
-      { status: 'Out for Delivery', date: 'Aug 30, Est.', description: 'Scheduled for local liftgate courier delivery.', completed: false },
-      { status: 'Delivered & Signed', date: 'Aug 30, Est.', description: 'Proof of delivery signature required.', completed: false }
-    ]
-  },
-  {
-    orderId: 'WC-8910',
-    customerName: 'Dr. Evelyn Martinez',
-    orderDate: 'Aug 27, 2026',
-    orderType: 'retail' as const,
-    status: 'Delivered' as const,
-    carrier: 'FedEx Express Next Day',
-    trackingNumber: 'FDX-9930412891',
-    estimatedDelivery: 'Aug 28, 2026',
-    totalAmount: 3499.00,
-    itemsCount: 1,
-    timeline: [
-      { status: 'Order Placed', date: 'Aug 27, 10:00 AM', description: 'Card payment authenticated via 3D Secure.', completed: true },
-      { status: 'Custom Built & Benchmarked', date: 'Aug 27, 01:00 PM', description: 'Thermal profiles calibrated and Windows 11 Pro configured.', completed: true },
-      { status: 'Dispatched via FedEx', date: 'Aug 27, 04:30 PM', description: 'FedEx Express air tracking active.', completed: true },
-      { status: 'Delivered & Signed', date: 'Aug 28, 11:42 AM', description: 'Delivered directly to recipient with signature confirmation.', completed: true, current: true }
-    ]
-  }
-];

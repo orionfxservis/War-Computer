@@ -379,6 +379,20 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             );
           })}
+
+          <div className="h-4 w-px bg-white/10 mx-1 flex-shrink-0" />
+
+          {/* Direct Jump to Shop By Budget */}
+          <button
+            id="nav-jump-shop-by-budget-btn"
+            onClick={() => {
+              const el = document.getElementById('shop-by-budget');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-orange-300 hover:text-white border border-orange-500/40 hover:border-orange-400 transition-all cursor-pointer shadow-sm ml-auto"
+          >
+            <span>💰 Shop By Budget</span>
+          </button>
         </div>
       </nav>
 

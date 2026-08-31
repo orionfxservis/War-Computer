@@ -36,6 +36,7 @@ import {
 import { Product, ProductCategory, ProductCondition, PricingMode } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
 import { ProductCard } from './ProductCard';
+import { ConditionBadge } from './ConditionBadge';
 
 interface ManageProductsSectionProps {
   products: Product[];
@@ -766,15 +767,19 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[11px] font-bold text-slate-300">Condition Badge</label>
+                    <label className="text-[11px] font-bold text-slate-300">Hardware Condition</label>
                     <select
                       id="admin-input-condition"
                       value={formData.condition}
                       onChange={(e) => handleFieldChange('condition', e.target.value as ProductCondition)}
-                      className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500 cursor-pointer"
+                      className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-orange-500 cursor-pointer font-bold"
                     >
-                      <option value="Brand New">Brand New (Sealed Factory Direct)</option>
-                      <option value="Factory Certified">Factory Certified Refurbished</option>
+                      <option value="NEW">🟢 NEW (Brand new / sealed)</option>
+                      <option value="USED">🔵 USED (Used but tested)</option>
+                      <option value="REFURBISHED">🟠 REFURBISHED (Professionally refurbished)</option>
+                      <option value="OPEN BOX">🟣 OPEN BOX (Opened/activated but unused or lightly used)</option>
+                      <option value="Brand New">Brand New (Sealed)</option>
+                      <option value="Factory Certified">Factory Certified</option>
                       <option value="Bulk Refurbished Grade-A">Bulk Refurbished Grade-A</option>
                     </select>
                   </div>
@@ -1537,13 +1542,7 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
 
                         {/* 3. Condition */}
                         <td className="py-3 px-3">
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${
-                            p.condition === 'Brand New' 
-                              ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
-                              : 'bg-blue-500/20 text-blue-300 border-blue-500/30'
-                          }`}>
-                            {p.condition}
-                          </span>
+                          <ConditionBadge condition={p.condition} size="sm" />
                         </td>
 
                         {/* 4. Retail Price */}

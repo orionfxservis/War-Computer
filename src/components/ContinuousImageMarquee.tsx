@@ -1,18 +1,17 @@
 import React from 'react';
 import { HERO_SCROLLING_IMAGES } from '../data/products';
-import { Sparkles, Eye, ShieldAlert } from 'lucide-react';
+import { Sparkles, Eye } from 'lucide-react';
 
 interface ContinuousImageMarqueeProps {
   onSelectCategory?: (category: any) => void;
 }
 
 export const ContinuousImageMarquee: React.FC<ContinuousImageMarqueeProps> = ({ onSelectCategory }) => {
-  // To create a seamless infinite loop without empty gaps or stutter,
-  // we duplicate the items 3 times so the CSS translateX(-50%) cycle never exposes an edge.
-  const marqueeItems = [...HERO_SCROLLING_IMAGES, ...HERO_SCROLLING_IMAGES, ...HERO_SCROLLING_IMAGES];
+  // Seamless loop with 2 copies instead of 3 for lower memory and faster load
+  const marqueeItems = [...HERO_SCROLLING_IMAGES, ...HERO_SCROLLING_IMAGES];
 
   return (
-    <div className="relative w-full overflow-hidden py-4 select-none">
+    <div className="relative w-full overflow-hidden py-4 select-none" style={{ contain: 'content' }}>
       {/* Left and Right Subtle Fade Gradients for clean edge blending */}
       <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
@@ -21,7 +20,7 @@ export const ContinuousImageMarquee: React.FC<ContinuousImageMarqueeProps> = ({ 
       <div className="animate-marquee-continuous flex items-center gap-4 sm:gap-6 py-2">
         {marqueeItems.map((item, idx) => (
           <div
-            key={`marquee-${idx}`}
+            key={`marquee-${item.title}-${idx}`}
             className="group relative flex-shrink-0 w-64 sm:w-80 h-44 sm:h-52 rounded-2xl overflow-hidden bg-slate-900 border border-slate-800/90 shadow-xl transition-all duration-300 hover:border-orange-500/80 hover:shadow-2xl hover:shadow-orange-500/20"
           >
             {/* HD Image */}
@@ -30,6 +29,7 @@ export const ContinuousImageMarquee: React.FC<ContinuousImageMarqueeProps> = ({ 
               alt={item.title}
               className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
 

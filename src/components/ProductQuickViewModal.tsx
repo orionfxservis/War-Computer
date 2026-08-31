@@ -18,6 +18,8 @@ import {
 } from 'lucide-react';
 import { Product, PricingMode } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
+import { ConditionBadge, getConditionInfo } from './ConditionBadge';
+import { StockBadge } from './StockBadge';
 
 interface ProductQuickViewModalProps {
   product: Product | null;
@@ -93,8 +95,8 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
                   className="w-full h-full object-cover object-center"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur px-2.5 py-1 rounded-md text-[11px] font-bold text-slate-200 border border-slate-700">
-                  {product.condition}
+                <div className="absolute top-3 left-3">
+                  <ConditionBadge condition={product.condition} />
                 </div>
               </div>
 
@@ -117,15 +119,21 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
                 </div>
               )}
 
-              {/* Trust badges */}
-              <div className="bg-slate-950/60 rounded-xl p-3 border border-slate-800 text-xs text-slate-300 space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-orange-400" />
-                  <span>{product.specs.warranty}</span>
+              {/* Condition Guarantee Card */}
+              <div className="bg-slate-950/80 rounded-xl p-3.5 border border-white/10 text-xs space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold uppercase text-slate-400">Verified Condition:</span>
+                  <ConditionBadge condition={product.condition} size="sm" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-orange-400" />
-                  <span>Depot Stock ({product.stockQuantity} units available) • Same-Day Dispatch</span>
+                <p className="text-slate-300 text-[11px]">
+                  {getConditionInfo(product.condition).subLabel}
+                </p>
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between text-emerald-400 font-bold text-[11px]">
+                  <span className="flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                    {product.specs?.warranty || getConditionInfo(product.condition).defaultWarranty}
+                  </span>
+                  <span className="text-slate-400 font-normal">100% Tested OK</span>
                 </div>
               </div>
             </div>
@@ -134,12 +142,16 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
             <div className="space-y-5">
               
               <div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className="flex items-center gap-1 text-amber-400 text-sm font-bold">
-                    <Star className="w-4 h-4 fill-amber-400" />
-                    <span>{product.rating}</span>
+                <div className="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 text-amber-400 text-sm font-bold">
+                      <Star className="w-4 h-4 fill-amber-400" />
+                      <span>{product.rating}</span>
+                    </div>
+                    <span className="text-xs text-slate-500 font-medium">({product.reviewsCount} customer reviews)</span>
                   </div>
-                  <span className="text-xs text-slate-500 font-medium">({product.reviewsCount} customer reviews)</span>
+
+                  <StockBadge stockQuantity={product.stockQuantity} size="sm" showExactUnits />
                 </div>
 
                 <h2 className="text-xl sm:text-2xl font-extrabold text-white leading-snug">
