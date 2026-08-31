@@ -16,7 +16,8 @@ import {
   Building2, 
   ShieldCheck,
   Flame,
-  ArrowRight
+  ArrowRight,
+  Palette
 } from 'lucide-react';
 import { ProductCategory, PricingMode, Product } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
@@ -66,6 +67,21 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
+
+  const THEMES = ['default', 'cyan', 'gold', 'red'];
+  const [themeIndex, setThemeIndex] = useState(() => {
+    return parseInt(localStorage.getItem('wc_theme_idx') || '0', 10);
+  });
+
+  React.useEffect(() => {
+    const theme = THEMES[themeIndex];
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('wc_theme_idx', themeIndex.toString());
+  }, [themeIndex]);
+
+  const cycleTheme = () => {
+    setThemeIndex((prev) => (prev + 1) % THEMES.length);
+  };
 
   const safeQuery = (searchQuery || '').trim();
   const searchResults = safeQuery
@@ -382,17 +398,28 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <div className="h-4 w-px bg-white/10 mx-1 flex-shrink-0" />
 
-          {/* Direct Jump to Shop By Budget */}
-          <button
-            id="nav-jump-shop-by-budget-btn"
-            onClick={() => {
-              const el = document.getElementById('shop-by-budget');
-              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-orange-300 hover:text-white border border-orange-500/40 hover:border-orange-400 transition-all cursor-pointer shadow-sm ml-auto"
-          >
-            <span>💰 Shop By Budget</span>
-          </button>
+          <div className="flex items-center gap-2 ml-auto">
+            {/* Direct Jump to Shop By Budget */}
+            <button
+              id="nav-jump-shop-by-budget-btn"
+              onClick={() => {
+                const el = document.getElementById('shop-by-budget');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-orange-300 hover:text-white border border-orange-500/40 hover:border-orange-400 transition-all cursor-pointer shadow-sm"
+            >
+              <span>💰 Shop By Budget</span>
+            </button>
+
+            {/* Theme Color Toggle */}
+            <button
+              onClick={cycleTheme}
+              className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-orange-500/50 text-slate-300 hover:text-white transition-all cursor-pointer"
+              title="Toggle Theme Color"
+            >
+              <Palette className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </nav>
 
