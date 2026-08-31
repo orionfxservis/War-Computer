@@ -73,6 +73,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <h1 
             id="hero-main-heading"
             className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
           >
             <span className="block">Computers &amp; Laptops</span>
             <span className="block mt-1 sm:mt-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
@@ -83,7 +84,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Subheading */}
           <p 
             id="hero-main-subheading"
-            className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed italic"
+            style={{ fontFamily: 'Arial, sans-serif' }}
           >
             New &amp; Tested Used Laptops, Desktops, Workstations &amp; Accessories at Competitive Prices. Nationwide Delivery Across Pakistan.
           </p>
