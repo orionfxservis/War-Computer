@@ -60,9 +60,12 @@ export default function App() {
     setCurrentRoute(route);
     if (typeof window !== 'undefined') {
       if (route === 'admin') {
-        window.history.pushState({}, '', '/admin.html');
+        window.location.hash = 'admin';
       } else {
-        window.history.pushState({}, '', '/');
+        window.location.hash = '';
+        if (window.location.pathname.endsWith('admin.html')) {
+          window.history.pushState({}, '', window.location.pathname.replace('admin.html', ''));
+        }
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
