@@ -4,19 +4,22 @@ import {
   ProductCategory, 
   Product, 
   CartItem,
-  OrderTrackingInfo
+  OrderTrackingInfo,
+  SiteThemeId
 } from './types';
 import { MOCK_PRODUCTS } from './data/products';
 import { INITIAL_ORDERS } from './data/orders';
+import { getInitialSiteTheme, applySiteTheme } from './utils/themeConstants';
 
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { TodaysDealsSection } from './components/TodaysDealsSection';
 import { WholesaleB2BBanner } from './components/WholesaleB2BBanner';
 import { ProductGrid } from './components/ProductGrid';
 import { SocialMediaSection } from './components/SocialMediaSection';
+import { PaymentInfoSection } from './components/PaymentInfoSection';
 import { FloatingActionBar } from './components/FloatingActionBar';
 import { Footer } from './components/Footer';
-import { BackgroundHardwareStream } from './components/BackgroundHardwareStream';
 import { AdminPortalPage } from './components/AdminPortalPage';
 
 import { ProductQuickViewModal } from './components/ProductQuickViewModal';
@@ -28,19 +31,33 @@ import { WholesaleQuoteModal } from './components/WholesaleQuoteModal';
 import { AnalyticsDashboardModal } from './components/AnalyticsDashboardModal';
 import { OrderTrackingModal } from './components/OrderTrackingModal';
 
-// Helper functions to remove any duplicate entries
+// Helper functions to rigorously validate, clean, and deduplicate products
 const deduplicateProducts = (list: Product[]): Product[] => {
   const seenId = new Set<string>();
   const seenSku = new Set<string>();
+  const seenNormalizedName = new Set<string>();
   const deduped: Product[] = [];
+
   for (const item of list) {
     if (!item) continue;
-    const idKey = item.id || '';
+    // Reject corrupted or incomplete entries
+    if (!item.id || typeof item.id !== 'string' || item.id.trim() === '') continue;
+    if (!item.name || typeof item.name !== 'string' || item.name.trim() === '') continue;
+    if (typeof item.retailPrice !== 'number' || isNaN(item.retailPrice) || item.retailPrice <= 0) continue;
+
+    const idKey = item.id.trim();
     const skuKey = item.sku ? item.sku.toLowerCase().trim() : '';
+    // Normalize alphanumeric name to catch exact duplicates with minor whitespace variance
+    const nameKey = item.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+
     if (idKey && seenId.has(idKey)) continue;
     if (skuKey && seenSku.has(skuKey)) continue;
+    if (nameKey && seenNormalizedName.has(nameKey)) continue;
+
     if (idKey) seenId.add(idKey);
     if (skuKey) seenSku.add(skuKey);
+    if (nameKey) seenNormalizedName.add(nameKey);
+
     deduped.push(item);
   }
   return deduped;
@@ -50,8 +67,8 @@ const deduplicateOrders = (list: OrderTrackingInfo[]): OrderTrackingInfo[] => {
   const seen = new Set<string>();
   const deduped: OrderTrackingInfo[] = [];
   for (const order of list) {
-    if (!order || !order.orderId) continue;
-    const key = order.orderId.trim();
+    if (!order || !order.orderId || typeof order.orderId !== 'string' || order.orderId.trim() === '') continue;
+    const key = order.orderId.trim().toUpperCase();
     if (seen.has(key)) continue;
     seen.add(key);
     deduped.push(order);
@@ -107,6 +124,22 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  // Interactive Color Theme (Theme 1 War Blue, Theme 2 Tech Cyan, Theme 3 Premium Gold, Theme 4 Modern Red)
+  const [siteTheme, setSiteTheme] = useState<SiteThemeId>(() => {
+    const initial = getInitialSiteTheme();
+    applySiteTheme(initial);
+    return initial;
+  });
+
+  const handleThemeChange = (newTheme: SiteThemeId) => {
+    setSiteTheme(newTheme);
+    applySiteTheme(newTheme);
+  };
+
+  useEffect(() => {
+    applySiteTheme(siteTheme);
+  }, [siteTheme]);
+
   // Dynamic Catalog State with LocalStorage Persistence & Auto-Deduplication
   const [products, setProducts] = useState<Product[]>(() => {
     try {
@@ -114,13 +147,23 @@ export default function App() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return deduplicateProducts(parsed);
+          // Merge custom products with base MOCK_PRODUCTS and deduplicate strictly
+          const cleaned = deduplicateProducts([...parsed, ...MOCK_PRODUCTS]);
+          if (cleaned.length > 0) {
+            // Write back cleaned list to localStorage to purge stale/corrupt/duplicate items
+            localStorage.setItem('war_computers_custom_products', JSON.stringify(cleaned));
+            return cleaned;
+          }
         }
       }
     } catch (e) {
       console.error(e);
     }
-    return deduplicateProducts(MOCK_PRODUCTS);
+    const baseCleaned = deduplicateProducts(MOCK_PRODUCTS);
+    try {
+      localStorage.setItem('war_computers_custom_products', JSON.stringify(baseCleaned));
+    } catch (e) {}
+    return baseCleaned;
   });
 
   useEffect(() => {
@@ -138,13 +181,21 @@ export default function App() {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return deduplicateOrders(parsed);
+          const cleaned = deduplicateOrders([...parsed, ...INITIAL_ORDERS]);
+          if (cleaned.length > 0) {
+            localStorage.setItem('war_computers_orders', JSON.stringify(cleaned));
+            return cleaned;
+          }
         }
       }
     } catch (e) {
       console.error(e);
     }
-    return deduplicateOrders(INITIAL_ORDERS);
+    const baseOrders = deduplicateOrders(INITIAL_ORDERS);
+    try {
+      localStorage.setItem('war_computers_orders', JSON.stringify(baseOrders));
+    } catch (e) {}
+    return baseOrders;
   });
 
   useEffect(() => {
@@ -318,6 +369,20 @@ export default function App() {
     }
   };
 
+  // Quick action: Scroll to Today's Deals section
+  const handleScrollToDeals = () => {
+    const el = document.getElementById('todays-deals-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Quick action: Direct Buy Now from Deal Card
+  const handleBuyNow = (product: Product) => {
+    handleAddToCart(product, 1, pricingMode === 'wholesale');
+    setIsCheckoutOpen(true);
+  };
+
   // Handle successful order from checkout
   const handleOrderCompleted = (orderId: string, details?: any) => {
     setCart([]);
@@ -349,7 +414,7 @@ export default function App() {
   // ==========================================
   if (currentRoute === 'admin') {
     return (
-      <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-orange-500 selection:text-white antialiased">
+      <div className="min-h-screen site-theme-canvas bg-slate-950 text-slate-100 font-sans selection:bg-orange-500 selection:text-white antialiased">
         {/* Toast Notification */}
         {toastMessage && (
           <div className="fixed top-20 right-6 z-50 bg-orange-600/90 backdrop-blur-xl text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-2xl shadow-orange-500/30 border border-orange-400 flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-300">
@@ -391,25 +456,22 @@ export default function App() {
   // VIEW 2: MAIN CUSTOMER STOREFRONT (/)
   // ==========================================
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-orange-500 selection:text-white antialiased relative overflow-x-hidden">
+    <div className="min-h-screen site-theme-canvas bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-orange-500 selection:text-white antialiased relative overflow-x-hidden">
       
-      {/* Dynamic Ambient Background with Multi-Layered Frosted Glass & Scrolling Hardware Overlay */}
+      {/* Dynamic Ambient Background with Multi-Layered Frosted Glass */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Continuous Scrolling Hardware Backdrop (Hero-Scale Laptops, Chromebooks, Desktops, Workstations) */}
-        <BackgroundHardwareStream />
-
         {/* Ambient Glowing Blobs with dynamic blur */}
-        <div className="absolute -top-32 -right-32 w-[650px] h-[650px] bg-orange-600/15 rounded-full blur-[160px] animate-pulse-glow" />
-        <div className="absolute top-[35%] -left-48 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[170px]" />
-        <div className="absolute top-[65%] right-[10%] w-[700px] h-[700px] bg-orange-500/12 rounded-full blur-[160px] animate-pulse-glow" />
-        <div className="absolute -bottom-40 left-1/3 w-[750px] h-[750px] bg-orange-600/12 rounded-full blur-[190px]" />
+        <div className="absolute -top-32 -right-32 w-[650px] h-[650px] site-blob-1 rounded-full blur-[160px] animate-pulse-glow" />
+        <div className="absolute top-[35%] -left-48 w-[600px] h-[600px] site-blob-2 rounded-full blur-[170px]" />
+        <div className="absolute top-[65%] right-[10%] w-[700px] h-[700px] site-blob-3 rounded-full blur-[160px] animate-pulse-glow" />
+        <div className="absolute -bottom-40 left-1/3 w-[750px] h-[750px] site-blob-4 rounded-full blur-[190px]" />
 
         {/* Subtle Tech Grid & Dots Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-25" />
         <div className="absolute inset-0 bg-dots-pattern opacity-15" />
 
         {/* Frosted Glass Atmospheric Vignette Layer */}
-        <div className="absolute inset-0 backdrop-blur-[6px] bg-slate-950/45" />
+        <div className="absolute inset-0 backdrop-blur-[6px] site-vignette-layer bg-slate-950/45" />
       </div>
 
       {/* Toast Notification Banner */}
@@ -438,6 +500,7 @@ export default function App() {
           setIsWholesaleQuoteOpen(true);
         }}
         onOpenTracking={() => setIsOrderTrackingOpen(true)}
+        onJumpToDeals={handleScrollToDeals}
         onSelectCategory={(cat) => {
           setSelectedCategory(cat);
           handleScrollToCatalog();
@@ -445,18 +508,31 @@ export default function App() {
         selectedCategory={selectedCategory}
         allProducts={products}
         onSelectProduct={(prod) => setQuickViewProduct(prod)}
+        currentTheme={siteTheme}
+        onThemeChange={handleThemeChange}
       />
 
       {/* Hero Section with HD Continuous Scrolling Stream & CTAs */}
       <HeroSection
         pricingMode={pricingMode}
         onExploreCollections={handleScrollToCatalog}
+        onJumpToDeals={handleScrollToDeals}
         onOpenRFQ={() => {
           setInitialQuoteProduct(null);
           setIsWholesaleQuoteOpen(true);
         }}
         onOpenAiAdvisor={() => setIsAiSupportOpen(true)}
         onSelectCategory={(cat) => setSelectedCategory(cat)}
+      />
+
+      {/* Today's Computer Deals Section with Genuine Price Drops & Hover Glow */}
+      <TodaysDealsSection
+        products={products}
+        pricingMode={pricingMode}
+        onQuickView={(prod) => setQuickViewProduct(prod)}
+        onAddToCart={handleAddToCart}
+        onBuyNow={handleBuyNow}
+        onOpenRFQ={handleOpenRFQWithProduct}
       />
 
       {/* Wholesale & Fleet Volume Discounts Banner */}
@@ -522,6 +598,9 @@ export default function App() {
 
       {/* Social Media & Tech Community Ecosystem */}
       <SocialMediaSection />
+
+      {/* COD & Supported Payment Options Information */}
+      <PaymentInfoSection onOpenAiAdvisor={() => setIsAiSupportOpen(true)} />
 
       {/* Footer with Directory & Trust Assurances */}
       <Footer

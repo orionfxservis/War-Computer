@@ -33,21 +33,34 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
 }) => {
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
 
-  // Filter matching products for a bracket
+  // Filter matching products for a bracket with deduplication
   const getProductsForBracket = (bracketId: BudgetBracket): Product[] => {
     const bracket = BUDGET_BRACKETS.find(b => b.id === bracketId);
     if (!bracket) return [];
 
-    return products.filter(p => {
+    const seen = new Set<string>();
+    const matched: Product[] = [];
+
+    for (const p of products) {
+      if (!p || !p.id) continue;
+      if (seen.has(p.id)) continue;
+
       const price = pricingMode === 'wholesale' ? p.wholesalePrice : p.retailPrice;
-      if (bracket.id === 'under_30k') return price <= 30000;
-      if (bracket.id === '30k_50k') return price >= 30000 && price <= 50000;
-      if (bracket.id === '50k_75k') return price >= 50000 && price <= 75000;
-      if (bracket.id === '75k_100k') return price >= 75000 && price <= 100000;
-      if (bracket.id === '100k_150k') return price >= 100000 && price <= 150000;
-      if (bracket.id === '150k_plus') return price >= 150000;
-      return true;
-    });
+      let inRange = false;
+      if (bracket.id === 'under_30k') inRange = price <= 30000;
+      else if (bracket.id === '30k_50k') inRange = price >= 30000 && price <= 50000;
+      else if (bracket.id === '50k_75k') inRange = price >= 50000 && price <= 75000;
+      else if (bracket.id === '75k_100k') inRange = price >= 75000 && price <= 100000;
+      else if (bracket.id === '100k_150k') inRange = price >= 100000 && price <= 150000;
+      else if (bracket.id === '150k_plus') inRange = price >= 150000;
+      else inRange = true;
+
+      if (inRange) {
+        seen.add(p.id);
+        matched.push(p);
+      }
+    }
+    return matched;
   };
 
   // Get total units in stock for a bracket

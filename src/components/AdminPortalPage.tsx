@@ -20,7 +20,6 @@ import {
 import { Product, PricingMode, OrderTrackingInfo } from '../types';
 import { ManageProductsSection } from './ManageProductsSection';
 import { AdminOrderTrackingSection } from './AdminOrderTrackingSection';
-import { BackgroundHardwareStream } from './BackgroundHardwareStream';
 import { formatPrice } from '../utils/formatCurrency';
 
 interface AdminPortalPageProps {
@@ -68,9 +67,6 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans relative selection:bg-orange-500 selection:text-white pb-20">
       
-      {/* Background Visual Grid */}
-      <BackgroundHardwareStream />
-
       {/* Admin Sticky Header */}
       <header className="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-2xl border-b border-white/10 shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">

@@ -1,47 +1,5 @@
 @import "tailwindcss";
 
-:root[data-theme="cyan"] {
-  --color-orange-300: var(--color-cyan-300);
-  --color-orange-400: var(--color-cyan-400);
-  --color-orange-500: var(--color-cyan-500);
-  --color-orange-600: var(--color-cyan-600);
-  --color-orange-700: var(--color-cyan-700);
-  --color-orange-950: var(--color-cyan-950);
-  
-  --color-amber-300: var(--color-blue-300);
-  --color-amber-400: var(--color-blue-400);
-  --color-amber-500: var(--color-blue-500);
-  --color-amber-600: var(--color-blue-600);
-}
-
-:root[data-theme="gold"] {
-  --color-orange-300: var(--color-yellow-300);
-  --color-orange-400: var(--color-yellow-400);
-  --color-orange-500: var(--color-yellow-500);
-  --color-orange-600: var(--color-yellow-600);
-  --color-orange-700: var(--color-yellow-700);
-  --color-orange-950: var(--color-yellow-950);
-  
-  --color-amber-300: var(--color-slate-300);
-  --color-amber-400: var(--color-slate-400);
-  --color-amber-500: var(--color-slate-500);
-  --color-amber-600: var(--color-slate-600);
-}
-
-:root[data-theme="red"] {
-  --color-orange-300: var(--color-rose-300);
-  --color-orange-400: var(--color-rose-400);
-  --color-orange-500: var(--color-rose-500);
-  --color-orange-600: var(--color-rose-600);
-  --color-orange-700: var(--color-rose-700);
-  --color-orange-950: var(--color-rose-950);
-  
-  --color-amber-300: var(--color-indigo-300);
-  --color-amber-400: var(--color-indigo-400);
-  --color-amber-500: var(--color-indigo-500);
-  --color-amber-600: var(--color-indigo-600);
-}
-
 @layer base {
   body {
     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -59,6 +17,118 @@
   .font-serif-display {
     font-family: 'Times New Roman', Times, 'Tinos', 'Nimbus Roman No9 L', 'Liberation Serif', serif;
   }
+
+  .font-times-regular {
+    font-family: 'Times New Roman', Times, 'Tinos', 'Nimbus Roman No9 L', 'Liberation Serif', serif;
+    font-weight: 400;
+  }
+}
+
+/* ==========================================================================
+   THEME PALETTE SYSTEM:
+   Theme 1 — War Blue: Blue + Orange + Gold (Default)
+   Theme 2 — Tech Cyan: Cyan + Blue
+   Theme 3 — Premium Gold: Gold + Navy
+   Theme 4 — Modern Red: Red + Blue
+   ========================================================================== */
+:root, [data-theme="war-blue"] {
+  --theme-accent-rgb: 249, 115, 22;
+  --theme-secondary-rgb: 37, 99, 235;
+  --theme-gold-rgb: 234, 179, 8;
+  --theme-primary-color: #f97316;
+  --theme-primary-hover: #ea580c;
+  --theme-secondary-color: #2563eb;
+  --theme-highlight-color: #eab308;
+
+  /* Atmospheric Background & Surface */
+  --site-bg-canvas: #060b19;
+  --site-bg-slate-950: #060b19;
+  --site-bg-slate-900: #0b1428;
+  --site-bg-slate-850: #0f1c38;
+  --site-bg-slate-800: #142447;
+  --site-blob-1: rgba(37, 99, 235, 0.22);
+  --site-blob-2: rgba(249, 115, 22, 0.16);
+  --site-blob-3: rgba(234, 179, 8, 0.14);
+  --site-blob-4: rgba(37, 99, 235, 0.18);
+  --site-tagline-gradient: linear-gradient(to right, #fb923c, #fbbf24, #f97316);
+  --site-font-accent: #f97316;
+  --site-font-highlight: #eab308;
+  --site-font-light: #fdba74;
+}
+
+[data-theme="tech-cyan"] {
+  --theme-accent-rgb: 6, 182, 212;
+  --theme-secondary-rgb: 37, 99, 235;
+  --theme-gold-rgb: 56, 189, 248;
+  --theme-primary-color: #06b6d4;
+  --theme-primary-hover: #0891b2;
+  --theme-secondary-color: #2563eb;
+  --theme-highlight-color: #38bdf8;
+
+  /* Atmospheric Cyber Teal-Cyan Background & Surface */
+  --site-bg-canvas: #02121c;
+  --site-bg-slate-950: #02121c;
+  --site-bg-slate-900: #04202e;
+  --site-bg-slate-850: #072d42;
+  --site-bg-slate-800: #0a3a54;
+  --site-blob-1: rgba(6, 182, 212, 0.38);
+  --site-blob-2: rgba(37, 99, 235, 0.28);
+  --site-blob-3: rgba(56, 189, 248, 0.25);
+  --site-blob-4: rgba(6, 182, 212, 0.25);
+  --site-tagline-gradient: linear-gradient(to right, #22d3ee, #38bdf8, #0ea5e9, #67e8f9);
+  --site-font-accent: #06b6d4;
+  --site-font-highlight: #22d3ee;
+  --site-font-light: #67e8f9;
+}
+
+[data-theme="premium-gold"] {
+  --theme-accent-rgb: 234, 179, 8;
+  --theme-secondary-rgb: 30, 58, 138;
+  --theme-gold-rgb: 250, 204, 21;
+  --theme-primary-color: #eab308;
+  --theme-primary-hover: #ca8a04;
+  --theme-secondary-color: #1e3a8a;
+  --theme-highlight-color: #facc15;
+
+  /* Atmospheric Royal Navy & Imperial Gold Background & Surface */
+  --site-bg-canvas: #070c1d;
+  --site-bg-slate-950: #070c1d;
+  --site-bg-slate-900: #0c183a;
+  --site-bg-slate-850: #10214e;
+  --site-bg-slate-800: #162c64;
+  --site-blob-1: rgba(234, 179, 8, 0.35);
+  --site-blob-2: rgba(30, 58, 138, 0.38);
+  --site-blob-3: rgba(250, 204, 21, 0.28);
+  --site-blob-4: rgba(217, 119, 6, 0.25);
+  --site-tagline-gradient: linear-gradient(to right, #fef08a, #facc15, #eab308, #ca8a04);
+  --site-font-accent: #eab308;
+  --site-font-highlight: #facc15;
+  --site-font-light: #fef08a;
+}
+
+[data-theme="modern-red"] {
+  --theme-accent-rgb: 239, 68, 68;
+  --theme-secondary-rgb: 37, 99, 235;
+  --theme-gold-rgb: 248, 113, 113;
+  --theme-primary-color: #ef4444;
+  --theme-primary-hover: #dc2626;
+  --theme-secondary-color: #2563eb;
+  --theme-highlight-color: #f87171;
+
+  /* Atmospheric Obsidian Crimson & Electric Blue Background & Surface */
+  --site-bg-canvas: #120407;
+  --site-bg-slate-950: #140509;
+  --site-bg-slate-900: #20080f;
+  --site-bg-slate-850: #2d0c15;
+  --site-bg-slate-800: #3d101d;
+  --site-blob-1: rgba(239, 68, 68, 0.38);
+  --site-blob-2: rgba(37, 99, 235, 0.32);
+  --site-blob-3: rgba(248, 113, 113, 0.28);
+  --site-blob-4: rgba(220, 38, 38, 0.25);
+  --site-tagline-gradient: linear-gradient(to right, #fca5a5, #f87171, #ef4444, #60a5fa);
+  --site-font-accent: #ef4444;
+  --site-font-highlight: #f87171;
+  --site-font-light: #fca5a5;
 }
 
 /* Glassmorphism utilities & effects */
@@ -81,8 +151,8 @@
   background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(24px) saturate(190%);
   -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(249, 115, 22, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), 0 0 20px rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(var(--theme-accent-rgb), 0.35);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), 0 0 20px rgba(var(--theme-accent-rgb), 0.2);
 }
 
 .glass-card {
@@ -96,8 +166,8 @@
 
 .glass-card:hover {
   background: rgba(22, 33, 58, 0.72);
-  border-color: rgba(249, 115, 22, 0.4);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), 0 0 30px rgba(249, 115, 22, 0.2);
+  border-color: rgba(var(--theme-accent-rgb), 0.45);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), 0 0 30px rgba(var(--theme-accent-rgb), 0.25);
 }
 
 .glass-header {
@@ -112,7 +182,7 @@
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(249, 115, 22, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(var(--theme-accent-rgb), 0.15);
 }
 
 .glass-input {
@@ -124,8 +194,8 @@
 
 .glass-input:focus {
   background: rgba(15, 23, 42, 0.8);
-  border-color: rgba(249, 115, 22, 0.6);
-  box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+  border-color: rgba(var(--theme-accent-rgb), 0.6);
+  box-shadow: 0 0 15px rgba(var(--theme-accent-rgb), 0.2);
 }
 
 .glass-badge {
@@ -250,46 +320,6 @@
   }
 }
 
-.animate-hardware-hero-drift-left {
-  display: flex;
-  width: max-content;
-  animation: hero-drift-left 115s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-.animate-hardware-hero-drift-right {
-  display: flex;
-  width: max-content;
-  animation: hero-drift-right 125s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-/* Background continuous slow hardware scrolling drift */
-.animate-hardware-drift-slow {
-  display: flex;
-  width: max-content;
-  animation: hero-drift-left 95s linear infinite;
-  will-change: transform;
-}
-
-.animate-hardware-drift-reverse {
-  display: flex;
-  width: max-content;
-  animation: hero-drift-right 110s linear infinite;
-  will-change: transform;
-}
-
-.animate-hardware-drift-slow-alt {
-  display: flex;
-  width: max-content;
-  animation: hero-drift-left 85s linear infinite;
-  will-change: transform;
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -306,5 +336,489 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ea580c;
+  background: rgb(var(--theme-accent-rgb));
+}
+
+/* ==========================================================================
+   THEME STYLING & FULL-SITE ATMOSPHERE OVERRIDES (THEMES 1 TO 4)
+   ========================================================================== */
+
+/* Smooth color transitions on theme switch (scoped to structural containers to prevent DOM layout thrashing) */
+body, nav, header, section, footer {
+  transition-property: background-color, border-color;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Canvas & Surfaces */
+html, body {
+  background-color: var(--site-bg-canvas, #060b19) !important;
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+.site-theme-canvas {
+  background-color: var(--site-bg-canvas, #060b19) !important;
+}
+
+/* Background Atmosphere Blobs & Vignette */
+.site-blob-1 {
+  background-color: var(--site-blob-1) !important;
+}
+.site-blob-2 {
+  background-color: var(--site-blob-2) !important;
+}
+.site-blob-3 {
+  background-color: var(--site-blob-3) !important;
+}
+.site-blob-4 {
+  background-color: var(--site-blob-4) !important;
+}
+.site-vignette-layer {
+  background-color: var(--site-bg-canvas) !important;
+  opacity: 0.65;
+}
+
+/* Hero Tagline Gradient & Subtitle Badge */
+.hero-tagline-gradient {
+  background-image: var(--site-tagline-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+.hero-font-accent {
+  color: var(--site-font-highlight) !important;
+}
+
+/* Dynamic Surfaces matching theme atmosphere */
+[data-theme] .bg-slate-950,
+[data-theme] .bg-slate-950\/95,
+[data-theme] .bg-slate-950\/90,
+[data-theme] .bg-slate-950\/80,
+[data-theme] .bg-slate-950\/70,
+[data-theme] .bg-slate-950\/60,
+[data-theme] .bg-slate-950\/45,
+[data-theme] .bg-slate-950\/40 {
+  background-color: var(--site-bg-slate-950) !important;
+}
+
+[data-theme] .bg-slate-900,
+[data-theme] .bg-slate-900\/95,
+[data-theme] .bg-slate-900\/90,
+[data-theme] .bg-slate-900\/80,
+[data-theme] .bg-slate-900\/70,
+[data-theme] .bg-slate-900\/60,
+[data-theme] .bg-slate-900\/50,
+[data-theme] .bg-slate-900\/40 {
+  background-color: var(--site-bg-slate-900) !important;
+}
+
+[data-theme] .bg-slate-850 {
+  background-color: var(--site-bg-slate-850) !important;
+}
+
+[data-theme] .bg-slate-800,
+[data-theme] .bg-slate-800\/90,
+[data-theme] .bg-slate-800\/80,
+[data-theme] .bg-slate-800\/70,
+[data-theme] .bg-slate-800\/60,
+[data-theme] .bg-slate-800\/50 {
+  background-color: var(--site-bg-slate-800) !important;
+}
+
+/* Global Selection colors */
+[data-theme="war-blue"] ::selection {
+  background-color: #f97316;
+  color: #ffffff;
+}
+[data-theme="tech-cyan"] ::selection {
+  background-color: #06b6d4;
+  color: #02121c;
+}
+[data-theme="premium-gold"] ::selection {
+  background-color: #eab308;
+  color: #070c1d;
+}
+[data-theme="modern-red"] ::selection {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   THEME 1: WAR BLUE (Blue + Orange + Gold)
+   ========================================================================== */
+[data-theme="war-blue"] .navbar-brand-logo-text,
+[data-theme="war-blue"] .navbar-brand-w {
+  color: #f97316 !important;
+}
+
+[data-theme="war-blue"] .navbar-brand-badge {
+  background-image: linear-gradient(to bottom right, #f97316, #ea580c, #b45309) !important;
+  box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.4) !important;
+}
+
+/* ==========================================================================
+   THEME 2: TECH CYAN (Cyan + Blue)
+   ========================================================================== */
+
+/* Buttons & Solid Fills */
+[data-theme="tech-cyan"] .bg-orange-500,
+[data-theme="tech-cyan"] .bg-orange-600 {
+  background-color: #06b6d4 !important;
+}
+
+[data-theme="tech-cyan"] .hover\:bg-orange-500:hover,
+[data-theme="tech-cyan"] .hover\:bg-orange-600:hover {
+  background-color: #0891b2 !important;
+}
+
+[data-theme="tech-cyan"] .bg-orange-500\/10,
+[data-theme="tech-cyan"] .bg-orange-500\/15,
+[data-theme="tech-cyan"] .bg-orange-500\/20,
+[data-theme="tech-cyan"] .bg-orange-500\/25 {
+  background-color: rgba(6, 182, 212, 0.18) !important;
+}
+
+[data-theme="tech-cyan"] .bg-orange-950\/40,
+[data-theme="tech-cyan"] .bg-orange-950\/80 {
+  background-color: rgba(4, 32, 46, 0.75) !important;
+}
+
+/* Typography & Font Colors */
+[data-theme="tech-cyan"] .text-orange-500,
+[data-theme="tech-cyan"] .text-orange-400,
+[data-theme="tech-cyan"] .text-amber-500,
+[data-theme="tech-cyan"] .text-amber-400,
+[data-theme="tech-cyan"] .text-yellow-400 {
+  color: #22d3ee !important;
+}
+
+[data-theme="tech-cyan"] .text-orange-300,
+[data-theme="tech-cyan"] .text-amber-300,
+[data-theme="tech-cyan"] .text-yellow-300 {
+  color: #67e8f9 !important;
+}
+
+[data-theme="tech-cyan"] .text-orange-200,
+[data-theme="tech-cyan"] .text-amber-200 {
+  color: #a5f3fc !important;
+}
+
+/* Hover & Group Hover Text */
+[data-theme="tech-cyan"] .group-hover\:text-orange-400:hover,
+[data-theme="tech-cyan"] .group:hover .group-hover\:text-orange-400,
+[data-theme="tech-cyan"] .group:hover .group-hover\:text-orange-200,
+[data-theme="tech-cyan"] .hover\:text-orange-400:hover,
+[data-theme="tech-cyan"] .hover\:text-orange-300:hover {
+  color: #38bdf8 !important;
+}
+
+/* SVG Fill & Stroke (Stars, Badges, Icons) */
+[data-theme="tech-cyan"] .fill-amber-400,
+[data-theme="tech-cyan"] .fill-orange-400,
+[data-theme="tech-cyan"] .fill-orange-500,
+[data-theme="tech-cyan"] .fill-yellow-400 {
+  fill: #22d3ee !important;
+}
+
+/* Borders */
+[data-theme="tech-cyan"] .border-orange-500,
+[data-theme="tech-cyan"] .border-orange-500\/50,
+[data-theme="tech-cyan"] .border-orange-500\/40,
+[data-theme="tech-cyan"] .border-orange-500\/30,
+[data-theme="tech-cyan"] .border-orange-500\/20,
+[data-theme="tech-cyan"] .border-orange-400,
+[data-theme="tech-cyan"] .border-amber-500\/40,
+[data-theme="tech-cyan"] .border-amber-400 {
+  border-color: rgba(6, 182, 212, 0.45) !important;
+}
+
+[data-theme="tech-cyan"] .hover\:border-orange-400:hover,
+[data-theme="tech-cyan"] .hover\:border-orange-500:hover {
+  border-color: #22d3ee !important;
+}
+
+[data-theme="tech-cyan"] .focus\:border-orange-500:focus,
+[data-theme="tech-cyan"] .focus\:border-orange-500\/70:focus {
+  border-color: #06b6d4 !important;
+}
+
+/* Gradients */
+[data-theme="tech-cyan"] .from-orange-600,
+[data-theme="tech-cyan"] .from-orange-500 {
+  --tw-gradient-from: #0891b2 var(--tw-gradient-from-position) !important;
+}
+
+[data-theme="tech-cyan"] .to-amber-600,
+[data-theme="tech-cyan"] .to-amber-500,
+[data-theme="tech-cyan"] .to-orange-500 {
+  --tw-gradient-to: #2563eb var(--tw-gradient-to-position) !important;
+}
+
+[data-theme="tech-cyan"] .via-orange-500,
+[data-theme="tech-cyan"] .via-amber-400 {
+  --tw-gradient-stops: var(--tw-gradient-from), #0284c7 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+/* Shadows */
+[data-theme="tech-cyan"] .shadow-orange-500\/25,
+[data-theme="tech-cyan"] .shadow-orange-600\/30,
+[data-theme="tech-cyan"] .shadow-orange-500\/20,
+[data-theme="tech-cyan"] .shadow-orange-500\/10 {
+  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.4) !important;
+}
+
+/* Logo in Nav */
+[data-theme="tech-cyan"] .navbar-brand-logo-text,
+[data-theme="tech-cyan"] .navbar-brand-w {
+  color: #06b6d4 !important;
+}
+
+[data-theme="tech-cyan"] .navbar-brand-badge {
+  background-image: linear-gradient(to bottom right, #06b6d4, #0284c7, #1e40af) !important;
+  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.45) !important;
+}
+
+/* ==========================================================================
+   THEME 3: PREMIUM GOLD (Gold + Navy)
+   ========================================================================== */
+
+/* Buttons & Solid Fills */
+[data-theme="premium-gold"] .bg-orange-500,
+[data-theme="premium-gold"] .bg-orange-600 {
+  background-color: #d97706 !important;
+}
+
+[data-theme="premium-gold"] .hover\:bg-orange-500:hover,
+[data-theme="premium-gold"] .hover\:bg-orange-600:hover {
+  background-color: #b45309 !important;
+}
+
+[data-theme="premium-gold"] .bg-orange-500\/10,
+[data-theme="premium-gold"] .bg-orange-500\/15,
+[data-theme="premium-gold"] .bg-orange-500\/20,
+[data-theme="premium-gold"] .bg-orange-500\/25 {
+  background-color: rgba(234, 179, 8, 0.18) !important;
+}
+
+[data-theme="premium-gold"] .bg-orange-950\/40,
+[data-theme="premium-gold"] .bg-orange-950\/80 {
+  background-color: rgba(12, 24, 58, 0.75) !important;
+}
+
+/* Typography & Font Colors */
+[data-theme="premium-gold"] .text-orange-500,
+[data-theme="premium-gold"] .text-orange-400,
+[data-theme="premium-gold"] .text-amber-500,
+[data-theme="premium-gold"] .text-amber-400,
+[data-theme="premium-gold"] .text-yellow-400 {
+  color: #fbbf24 !important;
+}
+
+[data-theme="premium-gold"] .text-orange-300,
+[data-theme="premium-gold"] .text-amber-300,
+[data-theme="premium-gold"] .text-yellow-300 {
+  color: #fef08a !important;
+}
+
+[data-theme="premium-gold"] .text-orange-200,
+[data-theme="premium-gold"] .text-amber-200 {
+  color: #fef9c3 !important;
+}
+
+/* Hover & Group Hover Text */
+[data-theme="premium-gold"] .group-hover\:text-orange-400:hover,
+[data-theme="premium-gold"] .group:hover .group-hover\:text-orange-400,
+[data-theme="premium-gold"] .group:hover .group-hover\:text-orange-200,
+[data-theme="premium-gold"] .hover\:text-orange-400:hover,
+[data-theme="premium-gold"] .hover\:text-orange-300:hover {
+  color: #facc15 !important;
+}
+
+/* SVG Fill & Stroke (Stars, Badges, Icons) */
+[data-theme="premium-gold"] .fill-amber-400,
+[data-theme="premium-gold"] .fill-orange-400,
+[data-theme="premium-gold"] .fill-orange-500,
+[data-theme="premium-gold"] .fill-yellow-400 {
+  fill: #facc15 !important;
+}
+
+/* Borders */
+[data-theme="premium-gold"] .border-orange-500,
+[data-theme="premium-gold"] .border-orange-500\/50,
+[data-theme="premium-gold"] .border-orange-500\/40,
+[data-theme="premium-gold"] .border-orange-500\/30,
+[data-theme="premium-gold"] .border-orange-500\/20,
+[data-theme="premium-gold"] .border-orange-400,
+[data-theme="premium-gold"] .border-amber-500\/40,
+[data-theme="premium-gold"] .border-amber-400 {
+  border-color: rgba(234, 179, 8, 0.45) !important;
+}
+
+[data-theme="premium-gold"] .hover\:border-orange-400:hover,
+[data-theme="premium-gold"] .hover\:border-orange-500:hover {
+  border-color: #facc15 !important;
+}
+
+[data-theme="premium-gold"] .focus\:border-orange-500:focus,
+[data-theme="premium-gold"] .focus\:border-orange-500\/70:focus {
+  border-color: #eab308 !important;
+}
+
+/* Gradients */
+[data-theme="premium-gold"] .from-orange-600,
+[data-theme="premium-gold"] .from-orange-500 {
+  --tw-gradient-from: #d97706 var(--tw-gradient-from-position) !important;
+}
+
+[data-theme="premium-gold"] .to-amber-600,
+[data-theme="premium-gold"] .to-amber-500,
+[data-theme="premium-gold"] .to-orange-500 {
+  --tw-gradient-to: #1e3a8a var(--tw-gradient-to-position) !important;
+}
+
+[data-theme="premium-gold"] .via-orange-500,
+[data-theme="premium-gold"] .via-amber-400 {
+  --tw-gradient-stops: var(--tw-gradient-from), #eab308 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+/* Shadows */
+[data-theme="premium-gold"] .shadow-orange-500\/25,
+[data-theme="premium-gold"] .shadow-orange-600\/30,
+[data-theme="premium-gold"] .shadow-orange-500\/20,
+[data-theme="premium-gold"] .shadow-orange-500\/10 {
+  box-shadow: 0 10px 25px -5px rgba(234, 179, 8, 0.4) !important;
+}
+
+/* Logo in Nav */
+[data-theme="premium-gold"] .navbar-brand-logo-text,
+[data-theme="premium-gold"] .navbar-brand-w {
+  color: #facc15 !important;
+}
+
+[data-theme="premium-gold"] .navbar-brand-badge {
+  background-image: linear-gradient(to bottom right, #facc15, #eab308, #1e3a8a) !important;
+  box-shadow: 0 10px 25px -5px rgba(234, 179, 8, 0.45) !important;
+}
+
+/* ==========================================================================
+   THEME 4: MODERN RED (Red + Blue)
+   ========================================================================== */
+
+/* Buttons & Solid Fills */
+[data-theme="modern-red"] .bg-orange-500,
+[data-theme="modern-red"] .bg-orange-600 {
+  background-color: #ef4444 !important;
+}
+
+[data-theme="modern-red"] .hover\:bg-orange-500:hover,
+[data-theme="modern-red"] .hover\:bg-orange-600:hover {
+  background-color: #dc2626 !important;
+}
+
+[data-theme="modern-red"] .bg-orange-500\/10,
+[data-theme="modern-red"] .bg-orange-500\/15,
+[data-theme="modern-red"] .bg-orange-500\/20,
+[data-theme="modern-red"] .bg-orange-500\/25 {
+  background-color: rgba(239, 68, 68, 0.18) !important;
+}
+
+[data-theme="modern-red"] .bg-orange-950\/40,
+[data-theme="modern-red"] .bg-orange-950\/80 {
+  background-color: rgba(45, 12, 21, 0.75) !important;
+}
+
+/* Typography & Font Colors */
+[data-theme="modern-red"] .text-orange-500,
+[data-theme="modern-red"] .text-orange-400,
+[data-theme="modern-red"] .text-amber-500,
+[data-theme="modern-red"] .text-amber-400,
+[data-theme="modern-red"] .text-yellow-400 {
+  color: #f87171 !important;
+}
+
+[data-theme="modern-red"] .text-orange-300,
+[data-theme="modern-red"] .text-amber-300,
+[data-theme="modern-red"] .text-yellow-300 {
+  color: #fca5a5 !important;
+}
+
+[data-theme="modern-red"] .text-orange-200,
+[data-theme="modern-red"] .text-amber-200 {
+  color: #fee2e2 !important;
+}
+
+/* Hover & Group Hover Text */
+[data-theme="modern-red"] .group-hover\:text-orange-400:hover,
+[data-theme="modern-red"] .group:hover .group-hover\:text-orange-400,
+[data-theme="modern-red"] .group:hover .group-hover\:text-orange-200,
+[data-theme="modern-red"] .hover\:text-orange-400:hover,
+[data-theme="modern-red"] .hover\:text-orange-300:hover {
+  color: #ef4444 !important;
+}
+
+/* SVG Fill & Stroke (Stars, Badges, Icons) */
+[data-theme="modern-red"] .fill-amber-400,
+[data-theme="modern-red"] .fill-orange-400,
+[data-theme="modern-red"] .fill-orange-500,
+[data-theme="modern-red"] .fill-yellow-400 {
+  fill: #f87171 !important;
+}
+
+/* Borders */
+[data-theme="modern-red"] .border-orange-500,
+[data-theme="modern-red"] .border-orange-500\/50,
+[data-theme="modern-red"] .border-orange-500\/40,
+[data-theme="modern-red"] .border-orange-500\/30,
+[data-theme="modern-red"] .border-orange-500\/20,
+[data-theme="modern-red"] .border-orange-400,
+[data-theme="modern-red"] .border-amber-500\/40,
+[data-theme="modern-red"] .border-amber-400 {
+  border-color: rgba(239, 68, 68, 0.45) !important;
+}
+
+[data-theme="modern-red"] .hover\:border-orange-400:hover,
+[data-theme="modern-red"] .hover\:border-orange-500:hover {
+  border-color: #f87171 !important;
+}
+
+[data-theme="modern-red"] .focus\:border-orange-500:focus,
+[data-theme="modern-red"] .focus\:border-orange-500\/70:focus {
+  border-color: #ef4444 !important;
+}
+
+/* Gradients */
+[data-theme="modern-red"] .from-orange-600,
+[data-theme="modern-red"] .from-orange-500 {
+  --tw-gradient-from: #dc2626 var(--tw-gradient-from-position) !important;
+}
+
+[data-theme="modern-red"] .to-amber-600,
+[data-theme="modern-red"] .to-amber-500,
+[data-theme="modern-red"] .to-orange-500 {
+  --tw-gradient-to: #2563eb var(--tw-gradient-to-position) !important;
+}
+
+[data-theme="modern-red"] .via-orange-500,
+[data-theme="modern-red"] .via-amber-400 {
+  --tw-gradient-stops: var(--tw-gradient-from), #b91c1c var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+/* Shadows */
+[data-theme="modern-red"] .shadow-orange-500\/25,
+[data-theme="modern-red"] .shadow-orange-600\/30,
+[data-theme="modern-red"] .shadow-orange-500\/20,
+[data-theme="modern-red"] .shadow-orange-500\/10 {
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Logo in Nav */
+[data-theme="modern-red"] .navbar-brand-logo-text,
+[data-theme="modern-red"] .navbar-brand-w {
+  color: #ef4444 !important;
+}
+
+[data-theme="modern-red"] .navbar-brand-badge {
+  background-image: linear-gradient(to bottom right, #ef4444, #dc2626, #1d4ed8) !important;
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.45) !important;
 }

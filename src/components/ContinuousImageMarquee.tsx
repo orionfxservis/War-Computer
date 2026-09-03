@@ -31,6 +31,9 @@ export const ContinuousImageMarquee: React.FC<ContinuousImageMarqueeProps> = ({ 
               loading="lazy"
               decoding="async"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80';
+              }}
             />
 
             {/* Dark gradient overlay for text readability */}

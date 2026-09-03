@@ -222,7 +222,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
-    return products
+    const sorted = products
       .filter((p) => {
         const price = pricingMode === 'wholesale' ? p.wholesalePrice : p.retailPrice;
 
@@ -278,6 +278,17 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
         // featured default
         return (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0);
       });
+
+    // Enforce strict uniqueness by product ID to eliminate duplicate entries
+    const seenIds = new Set<string>();
+    const deduplicatedResult: Product[] = [];
+    for (const item of sorted) {
+      if (!item || !item.id) continue;
+      if (seenIds.has(item.id)) continue;
+      seenIds.add(item.id);
+      deduplicatedResult.push(item);
+    }
+    return deduplicatedResult;
   }, [
     products, 
     safeQuery, 

@@ -250,6 +250,12 @@ export const Footer: React.FC<FooterProps> = ({
                 </a>
               </li>
               <li>
+                <a href="#payment-and-cod-info" className="hover:text-orange-400 text-slate-300 font-medium flex items-center gap-1.5 transition-colors">
+                  <CreditCard className="w-3.5 h-3.5 text-orange-400" />
+                  <span>Payment Options & COD Policy</span>
+                </a>
+              </li>
+              <li>
                 <button onClick={onOpenTracking} className="hover:text-orange-400 transition-colors cursor-pointer text-left">
                   Warranty Claim & RMA Portal
                 </button>
@@ -318,6 +324,31 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
+        </div>
+
+        {/* Payment Methods Verification Ribbon */}
+        <div className="mt-8 pt-6 border-t border-slate-800/60 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2">
+            <CreditCard className="w-4 h-4 text-orange-400" />
+            <span className="font-bold text-slate-300">Supported Payment Methods:</span>
+          </div>
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
+              💵 Cash on Delivery (COD)
+            </span>
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
+              🏦 Bank Transfer (Meezan / Raast)
+            </span>
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
+              📱 Easypaisa
+            </span>
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
+              ⚡ JazzCash
+            </span>
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
+              💳 Online Payment (Visa / Master)
+            </span>
+          </div>
         </div>
 
         {/* Bottom Bar */}

@@ -8,6 +8,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'HP EliteBook 840 G7 Business Ultrabook',
     brand: 'HP',
     category: 'laptops',
+    originalPrice: 75000,
     retailPrice: 70000,
     wholesalePrice: 62000,
     wholesaleMOQ: 3,
@@ -23,6 +24,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     reviewsCount: 184,
     isFeatured: true,
     isBestSeller: true,
+    isDealOfTheDay: true,
     images: [
       'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75',
       'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75',
@@ -56,6 +58,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Dell Latitude 7400 Enterprise Carbon Ultrabook',
     brand: 'Dell',
     category: 'laptops',
+    originalPrice: 63000,
     retailPrice: 58000,
     wholesalePrice: 52000,
     wholesaleMOQ: 3,
@@ -69,6 +72,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     reviewsCount: 112,
     isFeatured: true,
+    isDealOfTheDay: true,
     images: [
       'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75',
       'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75'
@@ -101,6 +105,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'HP ProBook 440 G5 Core i5 (8th Gen)',
     brand: 'HP',
     category: 'laptops',
+    originalPrice: 48000,
     retailPrice: 44000,
     wholesalePrice: 39000,
     wholesaleMOQ: 3,
@@ -114,6 +119,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.8,
     reviewsCount: 88,
     isFeatured: false,
+    isDealOfTheDay: true,
     images: [
       'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75',
       'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75'
@@ -146,6 +152,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Lenovo ThinkPad T14 Gen 2 (Ryzen 7 PRO)',
     brand: 'Lenovo',
     category: 'laptops',
+    originalPrice: 106000,
     retailPrice: 98000,
     wholesalePrice: 88000,
     wholesaleMOQ: 2,
@@ -159,6 +166,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     rating: 4.9,
     reviewsCount: 76,
     isFeatured: true,
+    isDealOfTheDay: true,
     images: [
       'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=720&q=75',
       'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75'
@@ -236,6 +244,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'ASUS TUF Gaming F15 - GTX 1650 / 144Hz',
     brand: 'ASUS',
     category: 'laptops',
+    originalPrice: 148000,
     retailPrice: 138000,
     wholesalePrice: 126000,
     wholesaleMOQ: 2,
@@ -244,11 +253,12 @@ export const INITIAL_PRODUCTS: Product[] = [
       { minUnits: 2, maxUnits: 4, pricePerUnit: 126000, discountPercentage: 8 },
       { minUnits: 5, pricePerUnit: 119000, discountPercentage: 13 }
     ],
-    stockQuantity: 20,
+    stockQuantity: 2,
     condition: 'REFURBISHED',
     rating: 4.88,
     reviewsCount: 79,
     isFeatured: true,
+    isDealOfTheDay: true,
     images: [
       'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=720&q=75',
       'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75'
@@ -550,19 +560,21 @@ export const INITIAL_PRODUCTS: Product[] = [
     name: 'Dell OptiPlex 7070 Micro Desktop PC',
     brand: 'Dell',
     category: 'desktops',
-    retailPrice: 42000,
-    wholesalePrice: 36000,
+    originalPrice: 42000,
+    retailPrice: 38000,
+    wholesalePrice: 34000,
     wholesaleMOQ: 3,
     wholesaleTiers: [
-      { minUnits: 1, maxUnits: 2, pricePerUnit: 42000, discountPercentage: 0 },
-      { minUnits: 3, maxUnits: 5, pricePerUnit: 36000, discountPercentage: 14 },
-      { minUnits: 6, pricePerUnit: 33000, discountPercentage: 21 }
+      { minUnits: 1, maxUnits: 2, pricePerUnit: 38000, discountPercentage: 0 },
+      { minUnits: 3, maxUnits: 5, pricePerUnit: 34000, discountPercentage: 11 },
+      { minUnits: 6, pricePerUnit: 31000, discountPercentage: 18 }
     ],
     stockQuantity: 55,
     condition: 'USED',
     rating: 4.85,
     reviewsCount: 130,
     isFeatured: true,
+    isDealOfTheDay: true,
     images: [
       'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=720&q=75',
       'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=720&q=75'

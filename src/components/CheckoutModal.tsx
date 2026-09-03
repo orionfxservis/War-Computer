@@ -10,7 +10,12 @@ import {
   ArrowRight, 
   Wallet,
   DollarSign,
-  PackageCheck
+  PackageCheck,
+  Smartphone,
+  Banknote,
+  AlertCircle,
+  Copy,
+  Check
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { CartItem, PricingMode } from '../types';
@@ -34,7 +39,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   if (!isOpen) return null;
 
   const [step, setStep] = useState<'details' | 'payment' | 'confirmed'>('details');
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'wire' | 'crypto' | 'cod'>('card');
+  const [paymentMethod, setPaymentMethod] = useState<'cod' | 'bank' | 'easypaisa' | 'jazzcash' | 'card'>('cod');
+  const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [createdOrderId, setCreatedOrderId] = useState<string>('');
 
@@ -250,35 +256,136 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           {step === 'payment' && (
             <div className="space-y-5">
               
-              {/* Payment Method Selector */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {/* Payment Method Selector (5 Supported Methods) */}
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                 {[
-                  { id: 'card', label: 'Credit Card', icon: <CreditCard className="w-4 h-4" /> },
-                  { id: 'wire', label: 'B2B Wire / ACH', icon: <Building2 className="w-4 h-4" /> },
-                  { id: 'crypto', label: 'USDT / Crypto', icon: <Wallet className="w-4 h-4" /> },
-                  { id: 'cod', label: 'Depot Pickup', icon: <Truck className="w-4 h-4" /> }
+                  { id: 'cod', label: 'Cash on Delivery', icon: <Truck className="w-4 h-4" /> },
+                  { id: 'bank', label: 'Bank Transfer', icon: <Building2 className="w-4 h-4" /> },
+                  { id: 'easypaisa', label: 'Easypaisa', icon: <Smartphone className="w-4 h-4" /> },
+                  { id: 'jazzcash', label: 'JazzCash', icon: <Banknote className="w-4 h-4" /> },
+                  { id: 'card', label: 'Online Payment', icon: <CreditCard className="w-4 h-4" /> }
                 ].map((m) => (
                   <button
                     key={m.id}
                     onClick={() => setPaymentMethod(m.id as any)}
-                    className={`p-3 rounded-xl border text-xs font-bold flex flex-col items-center gap-1.5 transition-all cursor-pointer ${
+                    className={`p-2.5 sm:p-3 rounded-xl border text-xs font-bold flex flex-col items-center gap-1.5 transition-all cursor-pointer text-center ${
                       paymentMethod === m.id
                         ? 'bg-orange-500/20 border-orange-500 text-orange-300 shadow-md'
                         : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-white'
                     }`}
                   >
                     {m.icon}
-                    <span>{m.label}</span>
+                    <span className="leading-tight text-[11px]">{m.label}</span>
                   </button>
                 ))}
               </div>
 
-              {/* Card Simulation */}
+              {/* 1. Cash on Delivery (COD) */}
+              {paymentMethod === 'cod' && (
+                <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3 text-xs">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <span className="font-bold text-white flex items-center gap-1.5">
+                      <Truck className="w-4 h-4 text-orange-400" />
+                      Cash on Delivery (Doorstep or Depot Pickup)
+                    </span>
+                    <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                      Nationwide Dispatch
+                    </span>
+                  </div>
+                  <p className="text-slate-300">
+                    Pay with physical cash to the courier representative (TCS / Leopards / Trax) upon doorstep delivery or inspect & pay directly at War Computers (Office # 222, 2nd Floor, Regal Trade Center, Saddar, Karachi).
+                  </p>
+                  
+                  {/* High Value Policy Warning */}
+                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 space-y-1">
+                    <div className="flex items-center gap-1.5 font-bold text-xs text-amber-200">
+                      <AlertCircle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                      <span>Payment confirmation required before dispatch</span>
+                    </div>
+                    <p className="text-[11px] text-amber-300/90 leading-relaxed">
+                      For expensive laptops and high-performance machines, an advance shipping token or verbal telephonic payment confirmation will be verified by our sales desk prior to courier dispatch.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* 2. Bank Transfer */}
+              {paymentMethod === 'bank' && (
+                <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <span className="font-bold text-white flex items-center gap-1.5">
+                      <Building2 className="w-4 h-4 text-blue-400" />
+                      Meezan Bank & Raast Instant Transfer
+                    </span>
+                    <span className="text-blue-400 font-bold bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
+                      0% Bank Fee
+                    </span>
+                  </div>
+                  <div className="space-y-1.5 text-[11px]">
+                    <p>• <strong>Bank:</strong> Meezan Bank Limited</p>
+                    <p>• <strong>Account Title:</strong> WAR COMPUTERS PRIVATE LIMITED</p>
+                    <p>• <strong>Account No:</strong> <span className="font-mono text-orange-400">02010104829104</span></p>
+                    <p>• <strong>IBAN:</strong> <span className="font-mono text-orange-400">PK14MEZN0002010104829104</span></p>
+                    <p>• <strong>Raast Instant ID:</strong> <span className="font-mono text-emerald-400">03002598858</span></p>
+                  </div>
+                  <p className="text-[11px] text-slate-400 pt-1 border-t border-slate-800">
+                    Please share your transfer screenshot on WhatsApp (+92 300 2598858) with your order ID for immediate priority dispatch.
+                  </p>
+                </div>
+              )}
+
+              {/* 3. Easypaisa */}
+              {paymentMethod === 'easypaisa' && (
+                <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <span className="font-bold text-white flex items-center gap-1.5">
+                      <Smartphone className="w-4 h-4 text-emerald-400" />
+                      Easypaisa Mobile Account Transfer
+                    </span>
+                    <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                      Instant Wallet
+                    </span>
+                  </div>
+                  <div className="space-y-1.5 text-[11px]">
+                    <p>• <strong>Provider:</strong> Easypaisa Mobile Wallet</p>
+                    <p>• <strong>Account Title:</strong> WAR COMPUTERS - SALES</p>
+                    <p>• <strong>Account Number:</strong> <span className="font-mono text-emerald-400 font-bold text-xs">0300-2598858</span></p>
+                  </div>
+                  <p className="text-[11px] text-slate-400 pt-1 border-t border-slate-800">
+                    Zero transaction fee. Your order is placed into express queue as soon as the wallet transfer is validated.
+                  </p>
+                </div>
+              )}
+
+              {/* 4. JazzCash */}
+              {paymentMethod === 'jazzcash' && (
+                <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <span className="font-bold text-white flex items-center gap-1.5">
+                      <Banknote className="w-4 h-4 text-amber-400" />
+                      JazzCash Mobile Wallet & Retailer Till
+                    </span>
+                    <span className="text-amber-400 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                      Fast OTC / App
+                    </span>
+                  </div>
+                  <div className="space-y-1.5 text-[11px]">
+                    <p>• <strong>Provider:</strong> JazzCash Mobile Account</p>
+                    <p>• <strong>Account Title:</strong> WAR COMPUTERS KARACHI</p>
+                    <p>• <strong>Account Number:</strong> <span className="font-mono text-amber-400 font-bold text-xs">0300-2598858</span></p>
+                  </div>
+                  <p className="text-[11px] text-slate-400 pt-1 border-t border-slate-800">
+                    You can pay from any JazzCash App or any retail franchise nationwide. Share TID on WhatsApp for quick confirmation.
+                  </p>
+                </div>
+              )}
+
+              {/* 5. Online Payment (Cards) */}
               {paymentMethod === 'card' && (
                 <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4">
                   <div className="flex items-center justify-between text-xs text-slate-400 pb-2 border-b border-slate-800">
-                    <span className="flex items-center gap-1"><Lock className="w-3.5 h-3.5 text-emerald-400" /> 256-Bit Escrow Vault</span>
-                    <span className="font-bold text-white">VISA / Master / Amex</span>
+                    <span className="flex items-center gap-1"><Lock className="w-3.5 h-3.5 text-emerald-400" /> 256-Bit SSL Escrow Gateway</span>
+                    <span className="font-bold text-white">Visa / Mastercard / PayPak</span>
                   </div>
 
                   <div className="space-y-3">
@@ -321,33 +428,6 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
-
-              {paymentMethod === 'wire' && (
-                <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-2">
-                  <p className="font-bold text-orange-400">War Computers B2B Escrow Wire Account:</p>
-                  <p>• <strong>Beneficiary:</strong> War Computers Hardware Logistics Inc.</p>
-                  <p>• <strong>Bank:</strong> JPMorgan Chase Commercial Escrow (Routing: 111000614)</p>
-                  <p>• <strong>Account Ref:</strong> WC-WIRE-DEPOT-{Math.floor(100000 + Math.random() * 900000)}</p>
-                  <p className="text-[11px] text-slate-400">Official Pro-Forma Invoice will be automatically dispatched upon checkout.</p>
-                </div>
-              )}
-
-              {paymentMethod === 'crypto' && (
-                <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-2">
-                  <p className="font-bold text-orange-400">Instant USDT (TRC-20 / ERC-20) Web3 Settlement:</p>
-                  <div className="p-2 bg-slate-900 rounded font-mono text-[10px] text-slate-400 break-all">
-                    0x98A123f890bF20c15949C6b2781b0a9e77148C21
-                  </div>
-                  <p className="text-[11px] text-emerald-400 font-semibold">Zero transaction surcharge for international B2B bulk orders.</p>
-                </div>
-              )}
-
-              {paymentMethod === 'cod' && (
-                <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-2">
-                  <p className="font-bold text-white">Store / Depot Dockside Pickup or COD Carrier:</p>
-                  <p>Pay upon inspection at War Computers (Office # 222, 2nd Floor, Regal Trade Center, Saddar, Karachi).</p>
                 </div>
               )}
 

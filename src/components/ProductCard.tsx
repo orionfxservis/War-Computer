@@ -59,11 +59,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Top Media Banner */}
         <div className="relative aspect-video w-full overflow-hidden bg-slate-950/80">
           <img
-            src={product.images[0]}
+            src={product.images[0] || 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80'}
             alt={product.name}
             className="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-108"
             loading="lazy"
+            decoding="async"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              // Graceful fallback to high reliability hardware image
+              (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80';
+            }}
           />
 
           {/* Glowing bottom border on image */}

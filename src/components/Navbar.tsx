@@ -16,11 +16,11 @@ import {
   Building2, 
   ShieldCheck,
   Flame,
-  ArrowRight,
-  Palette
+  ArrowRight
 } from 'lucide-react';
-import { ProductCategory, PricingMode, Product } from '../types';
+import { ProductCategory, PricingMode, Product, SiteThemeId } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
+import { ThemeColorToggle } from './ThemeColorToggle';
 
 interface NavbarProps {
   pricingMode: PricingMode;
@@ -42,6 +42,9 @@ interface NavbarProps {
   onScrollToManageProducts?: () => void;
   allProducts?: Product[];
   onSelectProduct?: (product: Product) => void;
+  onJumpToDeals?: () => void;
+  currentTheme?: SiteThemeId;
+  onThemeChange?: (themeId: SiteThemeId) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -63,25 +66,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAdmin,
   onScrollToManageProducts,
   allProducts = [],
-  onSelectProduct = (_product: Product) => {}
+  onSelectProduct = (_product: Product) => {},
+  onJumpToDeals,
+  currentTheme = 'war-blue',
+  onThemeChange
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
-
-  const THEMES = ['default', 'cyan', 'gold', 'red'];
-  const [themeIndex, setThemeIndex] = useState(() => {
-    return parseInt(localStorage.getItem('wc_theme_idx') || '0', 10);
-  });
-
-  React.useEffect(() => {
-    const theme = THEMES[themeIndex];
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem('wc_theme_idx', themeIndex.toString());
-  }, [themeIndex]);
-
-  const cycleTheme = () => {
-    setThemeIndex((prev) => (prev + 1) % THEMES.length);
-  };
 
   const safeQuery = (searchQuery || '').trim();
   const searchResults = safeQuery
@@ -164,16 +155,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="brand-logo-btn"
             >
               {/* Glowing Icon Badge */}
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 via-orange-600 to-amber-700 p-0.5 shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 transition-all flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 via-orange-600 to-amber-700 navbar-brand-badge p-0.5 shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 transition-all flex items-center justify-center">
                 <div className="w-full h-full bg-slate-950/90 backdrop-blur-md rounded-[10px] flex items-center justify-center border border-white/10">
-                  <span className="font-brand font-black text-xl text-orange-500 tracking-tighter group-hover:scale-105 transition-transform">
+                  <span className="font-brand font-black text-xl text-orange-500 navbar-brand-w tracking-tighter group-hover:scale-105 transition-transform">
                     W
                   </span>
                 </div>
               </div>
               
               <div className="flex flex-col">
-                <span className="font-brand font-black text-2xl tracking-wider text-orange-500 leading-none group-hover:text-orange-400 transition-colors uppercase drop-shadow-[0_2px_10px_rgba(249,115,22,0.3)]">
+                <span className="font-brand font-black text-2xl tracking-wider text-orange-500 navbar-brand-logo-text leading-none group-hover:text-orange-400 transition-colors uppercase drop-shadow-[0_2px_10px_rgba(249,115,22,0.3)]">
                   WAR <span className="text-white">COMPUTER</span>
                 </span>
                 <span className="text-[10px] tracking-widest text-slate-400 font-semibold uppercase">
@@ -398,7 +389,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <div className="h-4 w-px bg-white/10 mx-1 flex-shrink-0" />
 
-          <div className="flex items-center gap-2 ml-auto">
+          {/* End of All Catalog bar: Shop By Budget + Theme Color Toggle */}
+          <div className="flex items-center gap-1.5 sm:gap-2 ml-auto flex-shrink-0">
             {/* Direct Jump to Shop By Budget */}
             <button
               id="nav-jump-shop-by-budget-btn"
@@ -411,14 +403,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>💰 Shop By Budget</span>
             </button>
 
-            {/* Theme Color Toggle */}
-            <button
-              onClick={cycleTheme}
-              className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-orange-500/50 text-slate-300 hover:text-white transition-all cursor-pointer"
-              title="Toggle Theme Color"
-            >
-              <Palette className="w-4 h-4" />
-            </button>
+            {/* Interactive Theme Color Toggle Button */}
+            {onThemeChange && (
+              <ThemeColorToggle
+                currentTheme={currentTheme}
+                onThemeChange={onThemeChange}
+              />
+            )}
           </div>
         </div>
       </nav>
@@ -426,6 +417,19 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-slate-950 border-b border-slate-800 px-4 py-4 space-y-3">
+          {/* Mobile Theme Selector */}
+          {onThemeChange && (
+            <div className="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-300 flex items-center gap-2">
+                <span>🎨 Color Theme:</span>
+              </span>
+              <ThemeColorToggle
+                currentTheme={currentTheme}
+                onThemeChange={onThemeChange}
+              />
+            </div>
+          )}
+
           <div className="flex flex-col gap-2">
             <button
               onClick={() => { 

@@ -14,7 +14,8 @@ import {
   Cpu,
   BadgeCheck,
   Tag,
-  MessageCircle
+  MessageCircle,
+  Flame
 } from 'lucide-react';
 import { ProductCategory, PricingMode } from '../types';
 import { ContinuousImageMarquee } from './ContinuousImageMarquee';
@@ -25,6 +26,7 @@ interface HeroSectionProps {
   onOpenRFQ: () => void;
   onOpenAiAdvisor: () => void;
   onSelectCategory: (cat: ProductCategory) => void;
+  onJumpToDeals?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -33,6 +35,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenRFQ,
   onOpenAiAdvisor,
   onSelectCategory,
+  onJumpToDeals,
 }) => {
   const handleShopLaptops = () => {
     onSelectCategory('laptops');
@@ -51,6 +54,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     window.open(`https://wa.me/923330257246?text=${message}`, '_blank');
   };
 
+  const handleScrollToDeals = () => {
+    if (onJumpToDeals) {
+      onJumpToDeals();
+    } else {
+      const el = document.getElementById('todays-deals-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="hero-main-section" className="relative overflow-hidden z-10 border-b border-slate-800/80 pt-8 sm:pt-12 pb-12">
       {/* Ambient background glow matching orange WAR COMPUTERS branding */}
@@ -62,21 +74,40 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Main Hero Header Block */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
           
-          {/* Top Pill / Authenticity Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-xl border border-orange-500/40 text-orange-400 text-xs font-semibold shadow-lg shadow-orange-500/10">
-            <span className="flex h-2 w-2 rounded-full bg-orange-500 animate-ping" />
-            <span className="text-slate-200">WAR COMPUTERS PAKISTAN:</span>
-            <span className="text-orange-400 font-bold">Wholesale & Retail Direct Supply</span>
+          {/* Top Badges Row: Authenticity & Today's Deals Badge */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            {/* 1. Today's Deals Hero Badge */}
+            <button
+              id="hero-todays-deals-badge-btn"
+              onClick={handleScrollToDeals}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-red-950/90 via-orange-950/80 to-amber-950/90 hover:from-red-900 hover:to-orange-900 backdrop-blur-xl border border-red-500/60 hover:border-orange-400 text-white text-xs font-bold shadow-lg shadow-red-950/60 hover:shadow-orange-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer group animate-pulse-glow"
+            >
+              <span className="flex h-2 w-2 rounded-full bg-red-500 animate-ping" />
+              <span className="text-red-400 font-black flex items-center gap-1">
+                <Flame className="w-3.5 h-3.5 text-orange-400 fill-orange-400" />
+                Today's Deals
+              </span>
+              <span className="text-slate-300 font-medium hidden sm:inline">• Save up to Rs. 9,000 Today</span>
+              <span className="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
+                View Deals
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 text-orange-400 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+
+            {/* 2. Authenticity Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-xl border border-orange-500/40 text-orange-400 text-xs font-semibold shadow-lg shadow-orange-500/10">
+              <span className="text-slate-300">WAR COMPUTERS:</span>
+              <span className="text-orange-400 font-bold hero-font-accent">Wholesale &amp; Retail Supply</span>
+            </div>
           </div>
 
           {/* Heading */}
           <h1 
             id="hero-main-heading"
-            className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
-            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+            className="text-3xl sm:text-5xl md:text-6xl font-normal font-times-regular font-['Times_New_Roman',Times,serif] tracking-tight text-white leading-[1.15] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
           >
-            <span className="block">Computers &amp; Laptops</span>
-            <span className="block mt-1 sm:mt-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
+            <span className="block font-normal">Computers &amp; Laptops</span>
+            <span className="block mt-1 sm:mt-2 font-normal text-transparent bg-clip-text hero-tagline-gradient bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
               You Can Trust
             </span>
           </h1>
@@ -84,20 +115,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Subheading */}
           <p 
             id="hero-main-subheading"
-            className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed italic"
-            style={{ fontFamily: 'Arial, sans-serif' }}
+            className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed"
           >
             New &amp; Tested Used Laptops, Desktops, Workstations &amp; Accessories at Competitive Prices. Nationwide Delivery Across Pakistan.
           </p>
 
-          {/* Primary Action Buttons: [ Shop Laptops ] [ Shop Computers ] */}
+          {/* Primary Action Buttons: [ Shop Laptops ] [ Shop Computers ] [ Today's Deals ] */}
           <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
             
             {/* 1. Shop Laptops */}
             <button
               id="hero-shop-laptops-btn"
               onClick={handleShopLaptops}
-              className="px-7 sm:px-9 py-4 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white rounded-xl font-bold text-base sm:text-lg shadow-xl shadow-orange-600/30 hover:shadow-orange-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 cursor-pointer border border-white/15"
+              className="px-6 sm:px-8 py-4 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white rounded-xl font-bold text-base sm:text-lg shadow-xl shadow-orange-600/30 hover:shadow-orange-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2.5 cursor-pointer border border-white/15"
             >
               <Laptop className="w-5 h-5 text-orange-200" />
               <span>Shop Laptops</span>
@@ -108,11 +138,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <button
               id="hero-shop-computers-btn"
               onClick={handleShopComputers}
-              className="px-7 sm:px-9 py-4 bg-slate-900/80 hover:bg-slate-800/90 backdrop-blur-xl border-2 border-orange-500/60 hover:border-orange-400 text-white rounded-xl font-bold text-base sm:text-lg shadow-xl shadow-black/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 cursor-pointer"
+              className="px-6 sm:px-8 py-4 bg-slate-900/80 hover:bg-slate-800/90 backdrop-blur-xl border-2 border-orange-500/60 hover:border-orange-400 text-white rounded-xl font-bold text-base sm:text-lg shadow-xl shadow-black/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2.5 cursor-pointer"
             >
               <Monitor className="w-5 h-5 text-orange-400" />
               <span>Shop Computers</span>
               <ArrowRight className="w-5 h-5 text-orange-400" />
+            </button>
+
+            {/* 3. Today's Deals Button */}
+            <button
+              id="hero-todays-deals-btn"
+              onClick={handleScrollToDeals}
+              className="px-6 sm:px-8 py-4 bg-gradient-to-r from-red-600/90 via-red-500/90 to-orange-600/90 hover:from-red-500 hover:to-orange-500 text-white rounded-xl font-extrabold text-base sm:text-lg shadow-xl shadow-red-600/30 hover:shadow-red-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2.5 cursor-pointer border border-red-400/40"
+            >
+              <Flame className="w-5 h-5 text-amber-300 fill-amber-300 animate-bounce" />
+              <span>Today's Deals</span>
+              <span className="bg-black/40 text-amber-300 text-xs px-2 py-0.5 rounded-full font-black ml-0.5">HOT</span>
             </button>
           </div>
 

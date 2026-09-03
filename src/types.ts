@@ -54,6 +54,7 @@ export interface Product {
   brand: 'Apple' | 'ASUS' | 'Dell' | 'HP' | 'Lenovo' | 'MSI' | 'Razer' | 'Acer' | 'Custom Rig';
   category: 'desktops' | 'laptops' | 'chromebooks' | 'tablets' | 'workstations' | 'wholesale_lots';
   retailPrice: number;
+  originalPrice?: number; // Regular market price before genuine deal discount
   wholesalePrice: number; // base wholesale price
   wholesaleMOQ: number; // Minimum Order Quantity for wholesale
   wholesaleTiers: WholesaleTier[];
@@ -64,6 +65,7 @@ export interface Product {
   isFeatured?: boolean;
   isBestSeller?: boolean;
   isNewArrival?: boolean;
+  isDealOfTheDay?: boolean; // Featured in Today's Deals section
   isBulkLot?: boolean;
   lotUnitCount?: number; // e.g. 10 or 25 units per lot
   images: string[];
@@ -194,4 +196,26 @@ export interface SalesAnalytics {
     supplier: string;
     status: 'Critical' | 'Low' | 'Adequate';
   }[];
+}
+
+export type SiteThemeId = 'war-blue' | 'tech-cyan' | 'premium-gold' | 'modern-red';
+
+export interface SiteThemeConfig {
+  id: SiteThemeId;
+  name: string;
+  badge: string;
+  paletteLabel: string;
+  description: string;
+  bgCanvas?: string;
+  bgSurface?: string;
+  fontAccent?: string;
+  fontHighlight?: string;
+  heroGradient?: string;
+  colors: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    icon: string;
+    glow: string;
+  };
 }
