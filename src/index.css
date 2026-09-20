@@ -54,6 +54,16 @@
   --site-font-accent: #f97316;
   --site-font-highlight: #eab308;
   --site-font-light: #fdba74;
+
+  /* Official War Computers Logo Tokens: War Blue Palette */
+  --logo-text-primary: #0284c7;
+  --logo-text-secondary: #0369a1;
+  --logo-hardware: #0d9488;
+  --logo-hardware-light: #10b981;
+  --logo-arrow-start: #0284c7;
+  --logo-arrow-mid: #06b6d4;
+  --logo-arrow-end: #10b981;
+  --logo-glow: rgba(2, 132, 199, 0.45);
 }
 
 [data-theme="tech-cyan"] {
@@ -79,6 +89,16 @@
   --site-font-accent: #06b6d4;
   --site-font-highlight: #22d3ee;
   --site-font-light: #67e8f9;
+
+  /* Official War Computers Logo Tokens: Tech Cyan Palette */
+  --logo-text-primary: #22d3ee;
+  --logo-text-secondary: #06b6d4;
+  --logo-hardware: #06b6d4;
+  --logo-hardware-light: #67e8f9;
+  --logo-arrow-start: #38bdf8;
+  --logo-arrow-mid: #22d3ee;
+  --logo-arrow-end: #06b6d4;
+  --logo-glow: rgba(6, 182, 212, 0.55);
 }
 
 [data-theme="premium-gold"] {
@@ -104,6 +124,16 @@
   --site-font-accent: #eab308;
   --site-font-highlight: #facc15;
   --site-font-light: #fef08a;
+
+  /* Official War Computers Logo Tokens: Premium Gold Palette */
+  --logo-text-primary: #facc15;
+  --logo-text-secondary: #eab308;
+  --logo-hardware: #eab308;
+  --logo-hardware-light: #fde047;
+  --logo-arrow-start: #fef08a;
+  --logo-arrow-mid: #facc15;
+  --logo-arrow-end: #d97706;
+  --logo-glow: rgba(234, 179, 8, 0.5);
 }
 
 [data-theme="modern-red"] {
@@ -129,6 +159,16 @@
   --site-font-accent: #ef4444;
   --site-font-highlight: #f87171;
   --site-font-light: #fca5a5;
+
+  /* Official War Computers Logo Tokens: Modern Red Palette */
+  --logo-text-primary: #f87171;
+  --logo-text-secondary: #ef4444;
+  --logo-hardware: #ef4444;
+  --logo-hardware-light: #fca5a5;
+  --logo-arrow-start: #f87171;
+  --logo-arrow-mid: #ef4444;
+  --logo-arrow-end: #b91c1c;
+  --logo-glow: rgba(239, 68, 68, 0.5);
 }
 
 /* Glassmorphism utilities & effects */
@@ -263,19 +303,19 @@
 
 @keyframes marquee-infinite {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes marquee-reverse {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -283,6 +323,8 @@
   display: flex;
   width: max-content;
   animation: marquee-infinite 32s linear infinite;
+  will-change: transform;
+  contain: layout paint;
 }
 
 .animate-marquee-continuous:hover {
@@ -293,12 +335,16 @@
   display: flex;
   width: max-content;
   animation: marquee-infinite 22s linear infinite;
+  will-change: transform;
+  contain: layout paint;
 }
 
 .animate-marquee-reverse {
   display: flex;
   width: max-content;
   animation: marquee-reverse 35s linear infinite;
+  will-change: transform;
+  contain: layout paint;
 }
 
 /* Background continuous smooth hardware hero scrolling drift */

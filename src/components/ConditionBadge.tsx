@@ -103,7 +103,7 @@ export const ConditionBadge: React.FC<ConditionBadgeProps> = ({
   if (size === 'sm') {
     return (
       <span 
-        className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md font-bold text-[10px] tracking-wide border backdrop-blur-md shadow-sm ${info.badgeBg} ${info.badgeBorder} ${info.badgeText} ${info.badgeGlow} ${className}`}
+        className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md font-bold text-[10px] tracking-wide border shadow-sm ${info.badgeBg} ${info.badgeBorder} ${info.badgeText} ${info.badgeGlow} ${className}`}
       >
         <span className={`w-1.5 h-1.5 rounded-full ${info.badgeDotColor} animate-pulse`} />
         <span>{info.label}</span>
@@ -113,7 +113,7 @@ export const ConditionBadge: React.FC<ConditionBadgeProps> = ({
 
   if (size === 'lg') {
     return (
-      <div className={`flex flex-col gap-0.5 p-2 rounded-xl border backdrop-blur-md ${info.badgeBg} ${info.badgeBorder} ${info.badgeGlow} ${className}`}>
+      <div className={`flex flex-col gap-0.5 p-2 rounded-xl border ${info.badgeBg} ${info.badgeBorder} ${info.badgeGlow} ${className}`}>
         <div className="flex items-center gap-2">
           <span className="text-sm">{info.badgeEmoji}</span>
           <span className={`font-black text-xs sm:text-sm tracking-wider uppercase ${info.badgeText}`}>
@@ -129,7 +129,7 @@ export const ConditionBadge: React.FC<ConditionBadgeProps> = ({
 
   // Medium (default for cards & lists)
   return (
-    <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border backdrop-blur-md shadow-md ${info.badgeBg} ${info.badgeBorder} ${info.badgeText} ${info.badgeGlow} ${className}`}>
+    <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border shadow-md ${info.badgeBg} ${info.badgeBorder} ${info.badgeText} ${info.badgeGlow} ${className}`}>
       <span className="text-xs">{info.badgeEmoji}</span>
       <span className="font-extrabold text-[11px] uppercase tracking-wider">
         {info.label}

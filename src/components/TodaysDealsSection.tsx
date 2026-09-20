@@ -18,6 +18,7 @@ import {
 import { Product, PricingMode } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
 import { ConditionBadge } from './ConditionBadge';
+import { SectionCollapseButton } from './SectionCollapseButton';
 
 interface TodaysDealsSectionProps {
   products: Product[];
@@ -36,19 +37,40 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
   onBuyNow,
   onOpenRFQ
 }) => {
-  // Filter for products marked with isDealOfTheDay or having genuine originalPrice > currentPrice, deduplicating by ID
+  // Filter exclusively for genuine top flash deals of the day (marked with isDealOfTheDay or highest discount), strictly capped at top 4 unique picks
   const dealProducts = React.useMemo(() => {
     const seenIds = new Set<string>();
+    const seenModels = new Set<string>();
     const uniqueDeals: Product[] = [];
-    for (const p of products) {
+
+    // Prioritize products explicitly marked as Deal of the Day
+    const explicitDeals = products.filter(p => p && p.id && p.isDealOfTheDay);
+    const sortedCandidates = [...explicitDeals];
+
+    // If fewer than 4, pull highest savings products
+    if (sortedCandidates.length < 4) {
+      const remainingWithSavings = products
+        .filter(p => p && p.id && !p.isDealOfTheDay)
+        .sort((a, b) => {
+          const priceA = pricingMode === 'wholesale' ? a.wholesalePrice : a.retailPrice;
+          const priceB = pricingMode === 'wholesale' ? b.wholesalePrice : b.retailPrice;
+          const savA = (a.originalPrice || priceA) - priceA;
+          const savB = (b.originalPrice || priceB) - priceB;
+          return savB - savA;
+        });
+      sortedCandidates.push(...remainingWithSavings);
+    }
+
+    for (const p of sortedCandidates) {
       if (!p || !p.id) continue;
-      const currentPrice = pricingMode === 'wholesale' ? p.wholesalePrice : p.retailPrice;
-      const orig = p.originalPrice || 0;
-      const isEligible = p.isDealOfTheDay || (orig > currentPrice);
-      if (isEligible && !seenIds.has(p.id)) {
+      // Core model token to ensure no duplicate variants
+      const modelKey = p.name.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 16);
+      if (!seenIds.has(p.id) && !seenModels.has(modelKey)) {
         seenIds.add(p.id);
+        seenModels.add(modelKey);
         uniqueDeals.push(p);
       }
+      if (uniqueDeals.length >= 4) break; // Limit to top 4 exclusive flash deals
     }
     return uniqueDeals;
   }, [products, pricingMode]);
@@ -59,6 +81,7 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
     minutes: 42,
     seconds: 19
   });
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -97,74 +120,84 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
       id="todays-deals-section" 
       className="relative z-10 py-12 sm:py-16 border-b border-orange-500/20 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950"
     >
-      {/* Background Radial Glow Effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-orange-600/15 via-red-600/10 to-amber-500/15 blur-[140px] pointer-events-none" />
+      {/* Background Subtle Ambient Radial Glow (Hardware CSS, No Heavy Filter Blur) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(249,115,22,0.12)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          
-          <div className="space-y-3 max-w-2xl">
-            {/* Top Deal Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/80 border border-red-500/50 text-red-300 text-xs font-bold shadow-lg shadow-red-950/50">
-              <Flame className="w-4 h-4 text-orange-400 fill-orange-400 animate-pulse" />
-              <span>LIMITED TIME DAILY OFFERS • DIRECT PAKISTAN STOCK</span>
-            </div>
+        <div className={`relative z-10 ${isCollapsed ? 'mb-0' : 'mb-8 sm:mb-10'}`}>
+          {/* Top Deal Pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/80 border border-red-500/50 text-red-300 text-xs font-bold shadow-lg shadow-red-950/50 mb-3">
+            <Flame className="w-4 h-4 text-cyan-400 fill-cyan-400 animate-pulse" />
+            <span>LIMITED TIME DAILY OFFERS • DIRECT PAKISTAN STOCK</span>
+          </div>
 
-            {/* Main Section Title */}
+          {/* Main Section Title - Collapse - Counter on the EXACT same line */}
+          <div className="flex flex-wrap items-center justify-between gap-4">
             <h2 
               id="todays-deals-heading"
-              className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight flex items-center gap-3 flex-wrap"
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight flex items-center gap-3"
             >
               <span>🔥 Today's Computer Deals</span>
             </h2>
 
-            {/* Subtitle with Genuine Price Assurance */}
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-              100% genuine market price drops on tested laptops &amp; desktops. No inflated pre-discount rates — real verified savings with 7-Day Checking Warranty and nationwide delivery across Pakistan.
-            </p>
-          </div>
+            {/* Right: Collapse Button + Live Counter Box in Same Line */}
+            <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
+              <SectionCollapseButton
+                isCollapsed={isCollapsed}
+                onToggle={() => setIsCollapsed(!isCollapsed)}
+                id="todays-deals-collapse-btn"
+              />
 
-          {/* Right Header Box: Live Deal Timer & Genuine Guarantee */}
-          <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end gap-3 flex-shrink-0">
-            {/* Countdown Clock */}
-            <div className="bg-slate-900/90 backdrop-blur-xl border border-orange-500/40 rounded-2xl p-3.5 shadow-xl shadow-orange-950/40 flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-400">
-                <Clock className="w-5 h-5 animate-spin-slow" />
-              </div>
-              <div>
-                <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Today's Deals Expire In</p>
-                <div className="flex items-center gap-1.5 font-mono text-base sm:text-lg font-extrabold text-white mt-0.5">
-                  <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-white/10 text-orange-400">
-                    {String(timeLeft.hours).padStart(2, '0')}h
-                  </span>
-                  <span className="text-orange-500">:</span>
-                  <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-white/10 text-orange-400">
-                    {String(timeLeft.minutes).padStart(2, '0')}m
-                  </span>
-                  <span className="text-orange-500">:</span>
-                  <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-white/10 text-red-400 animate-pulse">
-                    {String(timeLeft.seconds).padStart(2, '0')}s
-                  </span>
+              {!isCollapsed && (
+                <div className="bg-slate-900/90 border border-cyan-500/40 rounded-2xl p-2.5 sm:p-3 shadow-xl shadow-cyan-950/40 flex items-center gap-3">
+                  <div className="p-2 rounded-xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400">
+                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Today's Deals Expire In</p>
+                    <div className="flex items-center gap-1.5 font-mono text-sm sm:text-base font-extrabold text-white mt-0.5">
+                      <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-cyan-500/20 text-cyan-400">
+                        {String(timeLeft.hours).padStart(2, '0')}h
+                      </span>
+                      <span className="text-cyan-400 font-bold">:</span>
+                      <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-cyan-500/20 text-cyan-400">
+                        {String(timeLeft.minutes).padStart(2, '0')}m
+                      </span>
+                      <span className="text-cyan-400 font-bold">:</span>
+                      <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-red-500/30 text-red-400 animate-pulse">
+                        {String(timeLeft.seconds).padStart(2, '0')}s
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Genuine Price Tag Badge */}
-            <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold bg-emerald-950/60 px-3 py-1 rounded-xl border border-emerald-500/30">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Genuine Direct-Import Rates (Zero Fake Markups)</span>
+              )}
             </div>
           </div>
 
+          {/* Subtitle row with description and genuine rate badge underneath */}
+          {!isCollapsed && (
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-3">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-2xl">
+                100% genuine market price drops on tested laptops &amp; desktops. No inflated pre-discount rates — real verified savings with 7-Day Checking Warranty and nationwide delivery across Pakistan.
+              </p>
+
+              <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold bg-emerald-950/60 px-3 py-1 rounded-xl border border-emerald-500/30 self-start md:self-auto flex-shrink-0">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Genuine Direct-Import Rates (Zero Fake Markups)</span>
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Deals Cards Grid with Stunning Hover Glow Effects */}
-        <div 
-          id="todays-deals-cards-grid"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        {!isCollapsed && (
+          <>
+            {/* Deals Cards Grid with Stunning Hover Glow Effects */}
+            <div 
+              id="todays-deals-cards-grid"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
           {dealProducts.map((product) => {
             const currentPrice = pricingMode === 'wholesale' ? product.wholesalePrice : product.retailPrice;
             const originalPrice = product.originalPrice || (currentPrice + 5000);
@@ -177,15 +210,16 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
               <div
                 key={product.id}
                 id={`deal-card-${product.id}`}
-                className="group relative bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-950/95 rounded-3xl border-2 border-orange-500/30 hover:border-orange-400 p-5 sm:p-6 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between shadow-xl hover:shadow-[0_0_40px_rgba(249,115,22,0.4)] backdrop-blur-xl"
+                style={{ contain: 'content' }}
+                className="group relative bg-slate-900 rounded-3xl border-2 border-orange-500/30 hover:border-orange-400 p-5 sm:p-6 transition-all duration-200 transform hover:-translate-y-1 flex flex-col justify-between shadow-xl hover:shadow-[0_0_35px_rgba(249,115,22,0.3)]"
               >
                 {/* Background Card Hover Glow Highlight */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 via-transparent to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 via-transparent to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-3xl pointer-events-none" />
 
                 {/* Top Badge Strip: Deal Tag + SAVE Rs. X */}
                 <div className="flex items-center justify-between gap-2 mb-4 relative z-10">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-white font-extrabold text-[11px] sm:text-xs uppercase tracking-wider shadow-md shadow-red-600/30">
-                    <Flame className="w-3.5 h-3.5 fill-white text-white animate-bounce" />
+                    <Flame className="w-3.5 h-3.5 fill-white text-white" />
                     <span>Today's Deal</span>
                   </div>
 
@@ -203,14 +237,14 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
                 {/* Product Image Area */}
                 <div className="relative w-full h-48 sm:h-52 rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 mb-4 group/img">
                   <img
-                    src={product.images[0] || 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80'}
+                    src={product.images[0] || 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=70'}
                     alt={product.name}
-                    className="w-full h-full object-cover transform group-hover:scale-108 transition-transform duration-500"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80';
+                      (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=70';
                     }}
                   />
 
@@ -222,9 +256,9 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
                   {/* Quick View Button on Image Hover */}
                   <button
                     onClick={() => onQuickView(product)}
-                    className="absolute inset-0 bg-slate-950/50 backdrop-blur-[2px] opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-bold text-xs cursor-pointer"
+                    className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-bold text-xs cursor-pointer"
                   >
-                    <span className="bg-slate-900/90 border border-orange-500/60 px-3.5 py-1.5 rounded-xl shadow-lg flex items-center gap-1.5 text-orange-300 hover:text-white hover:bg-orange-600 transition-all">
+                    <span className="bg-slate-900 border border-orange-500/60 px-3.5 py-1.5 rounded-xl shadow-lg flex items-center gap-1.5 text-orange-300 hover:text-white hover:bg-orange-600 transition-all">
                       <Eye className="w-4 h-4" /> Quick Specs
                     </span>
                   </button>
@@ -361,7 +395,7 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
         </div>
 
         {/* Bottom Trust & Assurance Footer Strip */}
-        <div className="mt-10 p-4 sm:p-5 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-10 p-4 sm:p-5 rounded-2xl bg-slate-900 border border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-xl bg-orange-500/15 text-orange-400 border border-orange-500/30 flex-shrink-0">
               <BadgePercent className="w-5 h-5" />
@@ -402,6 +436,8 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
             </div>
           </div>
         </div>
+        </>
+      )}
 
       </div>
     </section>

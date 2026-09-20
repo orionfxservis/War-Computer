@@ -41,7 +41,7 @@ export const ContinuousImageMarquee: React.FC<ContinuousImageMarqueeProps> = ({ 
 
             {/* Floating Top Tag */}
             <div className="absolute top-3 left-3">
-              <span className="bg-orange-500/90 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold uppercase px-2.5 py-1 rounded-md shadow flex items-center gap-1">
+              <span className="bg-orange-500 text-white text-[10px] sm:text-xs font-bold uppercase px-2.5 py-1 rounded-md shadow flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
                 {item.tag}
               </span>
@@ -58,8 +58,8 @@ export const ContinuousImageMarquee: React.FC<ContinuousImageMarqueeProps> = ({ 
             </div>
 
             {/* Hover Quick Look Overlay */}
-            <div className="absolute inset-0 bg-orange-950/20 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-              <span className="bg-slate-900/90 border border-orange-500/60 text-orange-300 text-xs font-semibold px-3 py-1.5 rounded-xl shadow-lg flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+            <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+              <span className="bg-slate-900 border border-orange-500/60 text-orange-300 text-xs font-semibold px-3 py-1.5 rounded-xl shadow-lg flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
                 <Eye className="w-3.5 h-3.5" /> High Performance
               </span>
             </div>

@@ -134,7 +134,7 @@ export const AdminOrderTrackingSection: React.FC<AdminOrderTrackingSectionProps>
     <div className="space-y-6">
       
       {/* Top Banner & KPI Row */}
-      <div className="bg-slate-900/70 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+      <div className="bg-slate-900 border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pb-6 border-b border-white/10">
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-wider">
@@ -241,7 +241,7 @@ export const AdminOrderTrackingSection: React.FC<AdminOrderTrackingSectionProps>
         
         {/* Left Column (5 Cols): Orders Search & Management Table */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="p-4 sm:p-5 rounded-3xl bg-slate-900/80 backdrop-blur-2xl border border-white/10 space-y-4 shadow-xl">
+          <div className="p-4 sm:p-5 rounded-3xl bg-slate-900 border border-white/10 space-y-4 shadow-xl">
             
             {/* Search & Filters Header */}
             <div className="space-y-3">
@@ -352,7 +352,7 @@ export const AdminOrderTrackingSection: React.FC<AdminOrderTrackingSectionProps>
         {/* Right Column (7 Cols): Selected Order Deep Logistics Inspector & Status Controller */}
         <div className="lg:col-span-7 space-y-5">
           {selectedOrder ? (
-            <div className="p-5 sm:p-7 rounded-3xl bg-slate-900/80 backdrop-blur-2xl border border-white/10 shadow-2xl space-y-6">
+            <div className="p-5 sm:p-7 rounded-3xl bg-slate-900 border border-white/10 shadow-2xl space-y-6">
               
               {/* Order Header Summary */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-5 border-b border-white/10">

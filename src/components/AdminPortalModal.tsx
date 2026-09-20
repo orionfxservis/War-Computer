@@ -2,6 +2,7 @@ import React from 'react';
 import { X, ShieldCheck } from 'lucide-react';
 import { Product, PricingMode } from '../types';
 import { ManageProductsSection } from './ManageProductsSection';
+import { WarComputersLogo } from './WarComputersLogo';
 
 interface AdminPortalModalProps {
   isOpen: boolean;
@@ -29,23 +30,19 @@ export const AdminPortalModal: React.FC<AdminPortalModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/85 backdrop-blur-2xl flex items-start justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-7xl bg-slate-900/90 backdrop-blur-2xl border border-white/15 rounded-3xl shadow-2xl shadow-black/90 overflow-hidden my-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/90 flex items-start justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-7xl bg-slate-900 border border-white/15 rounded-3xl shadow-2xl shadow-black/90 overflow-hidden my-4">
         
         {/* Sticky Modal Top Bar */}
-        <div className="sticky top-0 z-30 bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-4 flex items-center justify-between">
+        <div className="sticky top-0 z-30 bg-slate-950 border-b border-white/10 px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-600 p-0.5 shadow-lg shadow-orange-500/20 flex items-center justify-center">
-              <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5 text-orange-500" />
-              </div>
-            </div>
-            <div>
-              <h2 className="text-lg font-black text-white tracking-wide uppercase">
-                WAR COMPUTERS • Admin Management Portal
+            <WarComputersLogo size="sm" variant="full" className="max-w-[200px]" />
+            <div className="border-l border-white/10 pl-3 hidden sm:block">
+              <h2 className="text-sm font-black text-white tracking-wide uppercase flex items-center gap-1.5">
+                <span className="text-orange-400">Admin Management Portal</span>
               </h2>
-              <p className="text-xs text-slate-400">
-                Product Catalog Desk & Live Product Card Table Editor
+              <p className="text-[11px] text-slate-400">
+                Product Catalog Desk & Live Inventory Controller
               </p>
             </div>
           </div>

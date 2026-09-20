@@ -17,6 +17,7 @@ import {
   Lock,
   BadgeAlert
 } from 'lucide-react';
+import { SectionCollapseButton } from './SectionCollapseButton';
 
 interface PaymentInfoSectionProps {
   onOpenAiAdvisor?: () => void;
@@ -25,6 +26,7 @@ interface PaymentInfoSectionProps {
 export const PaymentInfoSection: React.FC<PaymentInfoSectionProps> = ({ onOpenAiAdvisor }) => {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'cod' | 'bank' | 'easypaisa' | 'jazzcash' | 'online'>('cod');
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleCopy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
@@ -142,37 +144,52 @@ export const PaymentInfoSection: React.FC<PaymentInfoSectionProps> = ({ onOpenAi
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-6 border-b border-slate-800/80">
-          <div>
+        <div className={`flex flex-col md:flex-row md:items-end justify-between gap-4 ${isCollapsed ? 'mb-0 pb-0 border-b-0' : 'mb-8 pb-6 border-b border-slate-800/80'}`}>
+          <div className="flex-1">
             <div className="flex items-center gap-2">
               <span className="text-lg">💳</span>
               <span className="text-xs font-bold text-orange-400 uppercase tracking-widest font-mono">
                 TRANSPARENT TRANSACTION METHODS • VERIFIED LOGISTICS
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase mt-1">
-              Payment Options & COD Policy
-            </h2>
-            <p className="text-sm text-slate-400 mt-1 max-w-2xl">
-              Clear, transparent, and secure payment methods for retail customers and corporate procurement across Pakistan.
-            </p>
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase mt-1">
+                Payment Options & COD Policy
+              </h2>
+
+              {/* Collapse / Expand Button aligned with heading */}
+              <SectionCollapseButton
+                isCollapsed={isCollapsed}
+                onToggle={() => setIsCollapsed(!isCollapsed)}
+                id="payment-info-collapse-btn"
+              />
+            </div>
+            {!isCollapsed && (
+              <p className="text-sm text-slate-400 mt-1 max-w-2xl">
+                Clear, transparent, and secure payment methods for retail customers and corporate procurement across Pakistan.
+              </p>
+            )}
           </div>
 
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              Verified Accounts
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-xs font-semibold">
-              <Lock className="w-3.5 h-3.5 text-orange-400" />
-              256-Bit Escrow Vault
-            </span>
-          </div>
+          {!isCollapsed && (
+            <div className="flex items-center gap-3">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                Verified Accounts
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-xs font-semibold">
+                <Lock className="w-3.5 h-3.5 text-orange-400" />
+                256-Bit Escrow Vault
+              </span>
+            </div>
+          )}
         </div>
 
-        {/* PROMINENT EXPENSIVE LAPTOPS POLICY CALLOUT */}
+        {!isCollapsed && (
+          <>
+            {/* PROMINENT EXPENSIVE LAPTOPS POLICY CALLOUT */}
         <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-amber-950/40 via-orange-950/30 to-slate-900/60 border border-amber-500/40 shadow-xl relative overflow-hidden">
-          <div className="absolute -top-10 -right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-40 h-40 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.12),transparent)] pointer-events-none" />
           
           <div className="flex flex-col sm:flex-row sm:items-start gap-4 relative z-10">
             <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/20">
@@ -262,7 +279,7 @@ export const PaymentInfoSection: React.FC<PaymentInfoSectionProps> = ({ onOpenAi
           </div>
 
           {/* Detailed Method Information Card */}
-          <div className="lg:col-span-7 bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+          <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
             <div className="flex items-start justify-between gap-4 mb-5 pb-5 border-b border-slate-800">
               <div className="flex items-center gap-3.5">
                 <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700/80 flex items-center justify-center">
@@ -456,6 +473,8 @@ export const PaymentInfoSection: React.FC<PaymentInfoSectionProps> = ({ onOpenAi
           </div>
 
         </div>
+        </>
+        )}
 
       </div>
     </section>

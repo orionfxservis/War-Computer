@@ -118,7 +118,7 @@ export const AiSupportDrawer: React.FC<AiSupportDrawerProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-slate-950/60 backdrop-blur-sm transition-all">
+    <div className="fixed inset-0 z-50 flex justify-end bg-slate-950/80 transition-all">
       <div className="w-full max-w-lg bg-slate-900 border-l border-slate-700 shadow-2xl flex flex-col h-full animate-in slide-in-from-right duration-300">
         
         {/* Header */}

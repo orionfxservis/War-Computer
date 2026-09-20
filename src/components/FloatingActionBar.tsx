@@ -44,7 +44,7 @@ export const FloatingActionBar: React.FC<FloatingActionBarProps> = ({
   return (
     <div 
       id="floating-action-bar-container"
-      className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 sm:gap-3 bg-slate-950/90 backdrop-blur-md p-2 rounded-2xl border border-slate-800 shadow-2xl shadow-black/80"
+      className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 sm:gap-3 bg-slate-950 p-2 rounded-2xl border border-slate-800 shadow-2xl shadow-black/80"
     >
       
       {/* 1. Floating WhatsApp Button */}

@@ -417,7 +417,7 @@ export default function App() {
       <div className="min-h-screen site-theme-canvas bg-slate-950 text-slate-100 font-sans selection:bg-orange-500 selection:text-white antialiased">
         {/* Toast Notification */}
         {toastMessage && (
-          <div className="fixed top-20 right-6 z-50 bg-orange-600/90 backdrop-blur-xl text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-2xl shadow-orange-500/30 border border-orange-400 flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="fixed top-20 right-6 z-50 bg-orange-600 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-2xl shadow-orange-500/30 border border-orange-400 flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-300">
             <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
             <span>{toastMessage}</span>
           </div>
@@ -458,25 +458,23 @@ export default function App() {
   return (
     <div className="min-h-screen site-theme-canvas bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-orange-500 selection:text-white antialiased relative overflow-x-hidden">
       
-      {/* Dynamic Ambient Background with Multi-Layered Frosted Glass */}
+      {/* Dynamic Ambient Background Optimized for High-FPS Scrolling (No GPU Blur Filters) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Ambient Glowing Blobs with dynamic blur */}
-        <div className="absolute -top-32 -right-32 w-[650px] h-[650px] site-blob-1 rounded-full blur-[160px] animate-pulse-glow" />
-        <div className="absolute top-[35%] -left-48 w-[600px] h-[600px] site-blob-2 rounded-full blur-[170px]" />
-        <div className="absolute top-[65%] right-[10%] w-[700px] h-[700px] site-blob-3 rounded-full blur-[160px] animate-pulse-glow" />
-        <div className="absolute -bottom-40 left-1/3 w-[750px] h-[750px] site-blob-4 rounded-full blur-[190px]" />
+        {/* Hardware-accelerated ambient color gradients */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(249,115,22,0.12),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_90%_60%,rgba(245,158,11,0.08),transparent)]" />
 
         {/* Subtle Tech Grid & Dots Pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-25" />
-        <div className="absolute inset-0 bg-dots-pattern opacity-15" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
+        <div className="absolute inset-0 bg-dots-pattern opacity-10" />
 
-        {/* Frosted Glass Atmospheric Vignette Layer */}
-        <div className="absolute inset-0 backdrop-blur-[6px] site-vignette-layer bg-slate-950/45" />
+        {/* Atmospheric Vignette Layer */}
+        <div className="absolute inset-0 site-vignette-layer bg-slate-950/40" />
       </div>
 
       {/* Toast Notification Banner */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-orange-600/90 backdrop-blur-xl text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-2xl shadow-orange-500/30 border border-orange-400 flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="fixed top-20 right-6 z-50 bg-orange-600 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-2xl shadow-orange-500/30 border border-orange-400 flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-300">
           <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
           <span>{toastMessage}</span>
         </div>
@@ -548,7 +546,7 @@ export default function App() {
       {/* Floating Comparison Bar Trigger if items are selected */}
       {comparedProducts.length > 0 && (
         <div className="sticky top-28 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mb-4 pt-2">
-          <div className="bg-slate-900/95 border border-orange-500/50 backdrop-blur-md rounded-2xl p-3 shadow-2xl flex items-center justify-between gap-4">
+          <div className="bg-slate-900 border border-orange-500/50 rounded-2xl p-3 shadow-2xl flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <span className="text-xs font-bold text-orange-400">Comparing {comparedProducts.length} Systems:</span>
               <div className="hidden sm:flex items-center gap-2">
@@ -618,6 +616,7 @@ export default function App() {
         onOpenAiAdvisor={() => setIsAiSupportOpen(true)}
         pricingMode={pricingMode}
         onTogglePricingMode={setPricingMode}
+        currentTheme={siteTheme}
       />
 
       {/* Floating Action Bar (WhatsApp, AI Support, Admin Desk, Go to Top) */}

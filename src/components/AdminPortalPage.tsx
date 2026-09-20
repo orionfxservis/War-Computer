@@ -21,6 +21,7 @@ import { Product, PricingMode, OrderTrackingInfo } from '../types';
 import { ManageProductsSection } from './ManageProductsSection';
 import { AdminOrderTrackingSection } from './AdminOrderTrackingSection';
 import { formatPrice } from '../utils/formatCurrency';
+import { WarComputersLogo } from './WarComputersLogo';
 
 interface AdminPortalPageProps {
   products: Product[];
@@ -68,23 +69,25 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans relative selection:bg-orange-500 selection:text-white pb-20">
       
       {/* Admin Sticky Header */}
-      <header className="sticky top-0 z-40 bg-slate-950/85 backdrop-blur-2xl border-b border-white/10 shadow-2xl">
+      <header className="sticky top-0 z-40 bg-slate-950 border-b border-white/10 shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           
           {/* Left: Brand & Admin Badge */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 via-orange-600 to-amber-600 p-0.5 shadow-lg shadow-orange-500/25 flex items-center justify-center flex-shrink-0">
-              <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5 text-orange-500" />
-              </div>
-            </div>
+            <button 
+              onClick={onNavigateToStore} 
+              className="group cursor-pointer focus:outline-none flex items-center"
+              title="Return to Store"
+            >
+              <WarComputersLogo size="sm" variant="full" className="max-w-[210px]" />
+            </button>
 
-            <div>
+            <div className="border-l border-white/10 pl-3 hidden sm:block">
               <div className="flex items-center gap-2">
-                <h1 className="text-base sm:text-lg font-black text-white tracking-wider uppercase font-brand">
-                  WAR COMPUTERS <span className="text-orange-500">• ADMIN HUB</span>
-                </h1>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">
+                <span className="text-xs font-black tracking-wider uppercase font-brand px-2 py-0.5 rounded bg-orange-500/20 text-orange-400 border border-orange-500/30">
+                  ADMIN HUB
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   AUTHENTICATED
                 </span>
@@ -197,7 +200,7 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
         {activeTab === 'depot' && (
           <div className="space-y-6">
             
-            <div className="bg-slate-900/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+            <div className="bg-slate-900 border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
               <div className="space-y-1.5 pb-5 border-b border-white/10">
                 <h3 className="text-xl font-black text-white flex items-center gap-2">
                   <Database className="w-5 h-5 text-orange-500" />

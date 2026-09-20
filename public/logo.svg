@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 90" width="330" height="90">
+  <defs>
+    <linearGradient id="hw-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="arrow-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25" flood-color="#000000" />
+    </filter>
+  </defs>
+
+  <!-- 1. HARDWARE EMBLEM -->
+  <g id="emblem">
+    <!-- Desktop PC Tower -->
+    <g id="pc-tower" filter="url(#shadow)">
+      <rect x="12" y="22" width="22" height="48" rx="2.5" fill="url(#hw-grad)" />
+      <rect x="13.5" y="23.5" width="19" height="45" rx="1.5" fill="none" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.25" />
+      <rect x="16" y="27" width="14" height="3" rx="0.8" fill="#04202e" fill-opacity="0.8" />
+      <rect x="16" y="32" width="14" height="3" rx="0.8" fill="#04202e" fill-opacity="0.8" />
+      <circle cx="17.5" cy="40" r="1.5" fill="#ffffff" fill-opacity="0.9" />
+      <circle cx="23" cy="40" r="1.2" fill="#38bdf8" />
+      <circle cx="27.5" cy="40" r="1.2" fill="#22c55e" />
+      <rect x="16" y="56" width="14" height="4.5" rx="1" fill="#04202e" fill-opacity="0.8" />
+      <line x1="18" y1="58.2" x2="28" y2="58.2" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.6" />
+      <rect x="13.5" y="70" width="19" height="1.8" rx="0.9" fill="#04202e" fill-opacity="0.9" />
+    </g>
+
+    <!-- Desktop Monitor -->
+    <g id="monitor">
+      <path d="M 62,64 L 66,64 L 66,70 L 62,70 Z" fill="url(#hw-grad)" />
+      <rect x="50" y="70" width="28" height="3.5" rx="1.5" fill="url(#hw-grad)" />
+      <rect x="37" y="22" width="56" height="42" rx="3" fill="none" stroke="url(#hw-grad)" stroke-width="3.2" />
+      <rect x="40" y="25" width="50" height="36" rx="1.5" fill="#02121c" fill-opacity="0.6" />
+    </g>
+
+    <!-- Open Laptop -->
+    <g id="laptop">
+      <rect x="68" y="28" width="48" height="35" rx="2.5" fill="none" stroke="url(#hw-grad)" stroke-width="3.2" />
+      <rect x="71.5" y="31.5" width="41" height="28" rx="1.5" fill="#02121c" fill-opacity="0.8" />
+      <polygon points="66,63 118,63 124,72 60,72" fill="url(#hw-grad)" />
+      <polygon points="68,64.5 116,64.5 121,70.5 63,70.5" fill="#02121c" fill-opacity="0.65" />
+      <polygon points="88,66 96,66 97,69.5 87,69.5" fill="url(#hw-grad)" fill-opacity="0.7" />
+    </g>
+
+    <!-- Velocity Orbit Swirl & Arrows -->
+    <g id="orbit-arrow" filter="url(#shadow)">
+      <path d="M 46,74 C 44,61 48,45 61,31 C 72,19 86,13 103,13 C 109,13 113,15 116,18" fill="none" stroke="url(#arrow-grad)" stroke-width="4.8" stroke-linecap="round" />
+      <path d="M 116,18 C 122,23 124,31 123,41 C 121,54 112,65 99,73 C 86,81 71,84 57,80 C 51,78 46,74 46,74" fill="none" stroke="url(#arrow-grad)" stroke-width="5.2" stroke-linecap="round" />
+      <!-- Upper Arrowhead -->
+      <path d="M 103,4 L 123,12 L 115,28 L 111,19 L 102,15 Z" fill="url(#arrow-grad)" />
+      <!-- Lower Tail Arrow -->
+      <path d="M 92,79 L 108,82 L 102,70 L 100,75 Z" fill="url(#arrow-grad)" fill-opacity="0.9" />
+    </g>
+  </g>
+
+  <!-- 2. TYPOGRAPHY 'WAR COMPUTERS' -->
+  <g id="typography">
+    <!-- 'WAR' -->
+    <g id="text-war" fill="url(#text-grad)">
+      <path d="M 144,44 L 151.5,18 L 158,18 L 163,35.5 L 168,18 L 174.5,18 L 182,44 L 175.5,44 L 171.5,28 L 166.5,44 L 159.5,44 L 154.5,28 L 150.5,44 Z" />
+      <path d="M 183.5,44 L 193.5,18 L 202,18 L 212,44 L 205,44 L 202.8,38 L 192.2,38 L 190.2,44 Z M 194,32.5 L 201,32.5 L 197.5,22.5 Z" />
+      <path d="M 214.5,18 L 227.5,18 C 233.5,18 237.5,21.5 237.5,27 C 237.5,31 234.5,33.8 230.5,35 L 238.5,44 L 230.5,44 L 224,36 L 221,36 L 221,44 L 214.5,44 Z M 221,30.5 L 226.5,30.5 C 229.5,30.5 231,29.2 231,27 C 231,24.8 229.5,23.5 226.5,23.5 L 221,23.5 Z" />
+    </g>
+
+    <!-- 'COMPUTERS' -->
+    <text x="144" y="68" fill="url(#text-grad)" font-family="'Chakra Petch', 'Space Grotesk', -apple-system, sans-serif" font-weight="800" font-size="21.5" letter-spacing="2.6">
+      COMPUTERS
+    </text>
+  </g>
+</svg>

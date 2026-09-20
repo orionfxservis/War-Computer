@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  DollarSign, 
   Sparkles, 
   Check, 
   ArrowRight, 
@@ -17,6 +16,7 @@ import {
 import { BUDGET_BRACKETS, BudgetBracket } from './LaptopFinder';
 import { Product } from '../types';
 import { StockBadge, getStockStatusInfo } from './StockBadge';
+import { SectionCollapseButton } from './SectionCollapseButton';
 
 interface ShopByBudgetProps {
   products: Product[];
@@ -32,6 +32,7 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
   pricingMode = 'retail'
 }) => {
   const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   // Filter matching products for a bracket with deduplication
   const getProductsForBracket = (bracketId: BudgetBracket): Product[] => {
@@ -85,73 +86,94 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
   return (
     <div 
       id="shop-by-budget" 
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900/90 via-slate-950/90 to-slate-900/90 border border-white/10 p-5 sm:p-7 shadow-2xl backdrop-blur-2xl mb-10 ring-1 ring-white/5"
+      className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 border border-white/10 p-5 sm:p-7 shadow-2xl mb-10 ring-1 ring-white/5"
     >
       {/* Ambient background lighting */}
-      <div className="absolute top-0 left-1/4 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl pointer-events-none -mt-20" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none -mb-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_25%_0%,rgba(249,115,22,0.08),transparent)] pointer-events-none" />
 
       {/* Header Section */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-[11px] font-black uppercase text-emerald-400 tracking-wider shadow-sm">
-              <DollarSign className="w-3.5 h-3.5" /> MERA BUDGET • PAKISTAN PRICE BRACKETS
-            </span>
-            <span className="text-[11px] text-slate-400 hidden sm:inline">• 100% Bench Tested & Verified</span>
-          </div>
+      <div className={`relative z-10 ${isCollapsed ? '' : 'pb-6 border-b border-white/10'}`}>
+        {/* Top Eyebrow Tag */}
+        <div className="flex items-center gap-2 mb-2">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-[11px] font-black uppercase text-cyan-400 tracking-wider shadow-sm">
+            <span className="font-extrabold text-cyan-300">RS.</span> MERA BUDGET • PAKISTAN PRICE BRACKETS
+          </span>
+          <span className="text-[11px] text-slate-400 hidden sm:inline">• 100% Bench Tested &amp; Verified</span>
+        </div>
 
+        {/* Heading - Collapse - Cards / Guide Table on the EXACT same line */}
+        <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+          {/* Left: Heading with Rs. */}
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
-            <span className="text-orange-400">💰</span> Shop By Budget
+            <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-lg bg-cyan-950/70 border border-cyan-500/40 text-cyan-400 font-extrabold text-lg sm:text-xl shadow-sm">
+              Rs.
+            </span>
+            <span>Shop By Budget</span>
           </h2>
 
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
-            In Pakistan, shopping by your exact budget saves time. Select your price range below to instantly view certified laptops with live ready-to-dispatch availability.
-          </p>
-        </div>
+          {/* Right: Collapse and Cards / Guide Table in same line */}
+          <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+            {selectedBudget && !isCollapsed && (
+              <button
+                id="clear-budget-filter-btn"
+                onClick={() => onSelectBudget(null)}
+                className="px-3 py-1.5 rounded-xl bg-orange-500/15 border border-orange-500/30 hover:bg-orange-500/25 text-orange-300 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-sm"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Budget</span>
+              </button>
+            )}
 
-        {/* View Toggle & Clear Actions */}
-        <div className="flex items-center gap-2.5 self-start md:self-auto flex-wrap">
-          {selectedBudget && (
-            <button
-              id="clear-budget-filter-btn"
-              onClick={() => onSelectBudget(null)}
-              className="px-3 py-1.5 rounded-xl bg-orange-500/15 border border-orange-500/30 hover:bg-orange-500/25 text-orange-300 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-sm"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset Budget</span>
-            </button>
-          )}
+            {/* Collapse / Expand Button */}
+            <SectionCollapseButton
+              isCollapsed={isCollapsed}
+              onToggle={() => setIsCollapsed(!isCollapsed)}
+              id="shop-by-budget-collapse-btn"
+            />
 
-          <div className="flex items-center bg-slate-900 border border-white/10 rounded-xl p-0.5 text-xs">
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`px-3 py-1 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                viewMode === 'grid' 
-                  ? 'bg-orange-500 text-slate-950 shadow-sm' 
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span>Cards</span>
-            </button>
-            <button
-              onClick={() => setViewMode('table')}
-              className={`px-3 py-1 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                viewMode === 'table' 
-                  ? 'bg-orange-500 text-slate-950 shadow-sm' 
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <Table className="w-3.5 h-3.5" />
-              <span>Guide Table</span>
-            </button>
+            {/* Cards / Guide Table Toggle */}
+            {!isCollapsed && (
+              <div className="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-1 text-xs">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                    viewMode === 'grid' 
+                      ? 'bg-cyan-500 text-slate-950 shadow-sm' 
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  <LayoutGrid className="w-3.5 h-3.5" />
+                  <span>Cards</span>
+                </button>
+                <button
+                  onClick={() => setViewMode('table')}
+                  className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                    viewMode === 'table' 
+                      ? 'bg-cyan-500 text-slate-950 shadow-sm' 
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  <Table className="w-3.5 h-3.5" />
+                  <span>Guide Table</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Subtitle description below the heading line */}
+        {!isCollapsed && (
+          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl mt-2 leading-relaxed">
+            In Pakistan, shopping by your exact budget saves time. Select your price range below to instantly view certified laptops with live ready-to-dispatch availability.
+          </p>
+        )}
       </div>
 
-      {/* Main Budget Grid View */}
-      {viewMode === 'grid' ? (
+      {/* Main Budget Content when expanded */}
+      {!isCollapsed && (
+        <>
+          {/* Main Budget Grid View */}
+          {viewMode === 'grid' ? (
         <div className="relative z-10 pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5">
             {BUDGET_BRACKETS.map((bracket) => {
@@ -253,7 +275,7 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
           <table className="w-full text-left text-xs border-collapse">
             <thead>
               <tr className="border-b border-white/15 text-slate-400 uppercase tracking-wider font-bold">
-                <th className="py-3 px-4">💰 Budget Range</th>
+                <th className="py-3 px-4"><span className="text-orange-400 font-bold mr-1">Rs.</span> Budget Range</th>
                 <th className="py-3 px-4">Suggested Category</th>
                 <th className="py-3 px-4">Ideal Use Case</th>
                 <th className="py-3 px-4">Popular Certified Models</th>
@@ -357,6 +379,8 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
             </a>
           </div>
         </div>
+      )}
+        </>
       )}
     </div>
   );

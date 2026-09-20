@@ -21,6 +21,7 @@ import {
 import { ProductCategory, PricingMode, Product, SiteThemeId } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
 import { ThemeColorToggle } from './ThemeColorToggle';
+import { WarComputersLogo } from './WarComputersLogo';
 
 interface NavbarProps {
   pricingMode: PricingMode;
@@ -96,12 +97,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-950/75 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all">
+    <header className="sticky top-0 z-40 bg-slate-950 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all">
       {/* Top Notification & Wholesale Announcement Bar */}
-      <div className="bg-gradient-to-r from-orange-600/90 via-amber-600/90 to-orange-700/90 backdrop-blur-md text-white text-xs font-medium py-1.5 px-4 border-b border-orange-500/20">
+      <div className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-700 text-white text-xs font-medium py-1.5 px-4 border-b border-orange-500/20">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="bg-black/30 backdrop-blur-sm text-white px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase flex items-center gap-1 border border-white/10">
+            <span className="bg-black/40 text-white px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase flex items-center gap-1 border border-white/10">
               <ShieldCheck className="w-3 h-3 text-orange-200" /> Authorized OEM Distributor
             </span>
             <span className="hidden sm:inline">
@@ -147,30 +148,20 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
         <div className="flex items-center justify-between gap-4">
           
-          {/* Logo with WAR COMPUTERS branding in custom orange/slate industrial styling */}
+          {/* Official WAR COMPUTERS Logo with dynamic multi-theme adaptation */}
           <div className="flex items-center gap-3">
             <button 
               onClick={() => { onSelectCategory('all'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="flex items-center gap-2.5 text-left group cursor-pointer focus:outline-none"
+              className="flex items-center text-left group cursor-pointer focus:outline-none py-1 transition-opacity hover:opacity-95"
               id="brand-logo-btn"
+              title="WAR COMPUTERS — Direct Wholesale & Retail Tech Hub"
             >
-              {/* Glowing Icon Badge */}
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 via-orange-600 to-amber-700 navbar-brand-badge p-0.5 shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 transition-all flex items-center justify-center">
-                <div className="w-full h-full bg-slate-950/90 backdrop-blur-md rounded-[10px] flex items-center justify-center border border-white/10">
-                  <span className="font-brand font-black text-xl text-orange-500 navbar-brand-w tracking-tighter group-hover:scale-105 transition-transform">
-                    W
-                  </span>
-                </div>
-              </div>
-              
-              <div className="flex flex-col">
-                <span className="font-brand font-black text-2xl tracking-wider text-orange-500 navbar-brand-logo-text leading-none group-hover:text-orange-400 transition-colors uppercase drop-shadow-[0_2px_10px_rgba(249,115,22,0.3)]">
-                  WAR <span className="text-white">COMPUTER</span>
-                </span>
-                <span className="text-[10px] tracking-widest text-slate-400 font-semibold uppercase">
-                  Wholesale & Retail Direct
-                </span>
-              </div>
+              <WarComputersLogo 
+                size="md" 
+                themeOverride={currentTheme} 
+                variant="full" 
+                className="max-w-[200px] sm:max-w-[240px] md:max-w-[270px]"
+              />
             </button>
           </div>
 
@@ -188,7 +179,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onFocus={() => setSearchFocused(true)}
                 onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
                 placeholder="Search RTX 4090, ThinkPad, Chromebooks, Bulk lots, M4 iPad..."
-                className="w-full bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-xl pl-10 pr-10 py-2 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-orange-500/70 focus:bg-slate-900/80 focus:ring-2 focus:ring-orange-500/20 shadow-inner transition-all"
+                className="w-full bg-slate-900 border border-white/10 rounded-xl pl-10 pr-10 py-2 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-orange-500/70 focus:bg-slate-900 focus:ring-2 focus:ring-orange-500/20 shadow-inner transition-all"
               />
               {searchQuery && (
                 <button
@@ -202,8 +193,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Live Autocomplete Dropdown */}
             {searchFocused && searchResults.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900/90 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-slate-800/80">
-                <div className="p-2 text-xs font-semibold text-slate-400 bg-slate-950/80 backdrop-blur-md uppercase tracking-wider flex justify-between">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-white/15 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-slate-800">
+                <div className="p-2 text-xs font-semibold text-slate-400 bg-slate-950 uppercase tracking-wider flex justify-between">
                   <span>Matching Hardware</span>
                   <span>{searchResults.length} results</span>
                 </div>
@@ -242,13 +233,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2 sm:gap-3">
             
             {/* Wholesale vs. Retail Mode Switcher */}
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 p-1 rounded-xl flex items-center shadow-inner">
+            <div className="bg-slate-900 border border-white/10 p-1 rounded-xl flex items-center shadow-inner">
               <button
                 id="toggle-retail-mode-btn"
                 onClick={() => onTogglePricingMode('retail')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   pricingMode === 'retail'
-                    ? 'bg-slate-800/90 text-white shadow-sm border border-white/10'
+                    ? 'bg-slate-800 text-white shadow-sm border border-white/10'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
@@ -273,7 +264,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="nav-b2b-quote-btn"
               onClick={onOpenRFQ}
-              className="hidden lg:flex items-center gap-1.5 px-3.5 py-2 bg-slate-900/60 hover:bg-slate-800/80 backdrop-blur-xl border border-orange-500/40 text-orange-400 hover:text-orange-300 rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-sm"
+              className="hidden lg:flex items-center gap-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 border border-orange-500/40 text-orange-400 hover:text-orange-300 rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-sm"
             >
               <FileText className="w-3.5 h-3.5" />
               Request Bulk RFQ
@@ -283,7 +274,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="nav-ai-advisor-btn"
               onClick={() => (onOpenAiSupport || onOpenAiAdvisor)?.()}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-2 bg-orange-500/15 hover:bg-orange-500/25 backdrop-blur-xl border border-orange-500/40 text-orange-300 hover:text-white rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-sm"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-2 bg-orange-500/20 hover:bg-orange-500/30 border border-orange-500/40 text-orange-300 hover:text-white rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-sm"
             >
               <Sparkles className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
               <span>AI Advisor</span>
@@ -296,7 +287,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 if (onScrollToManageProducts) onScrollToManageProducts();
                 else if (onOpenAdmin) onOpenAdmin();
               }}
-              className="hidden xl:flex items-center gap-1.5 px-3 py-2 bg-slate-900/80 hover:bg-slate-800 backdrop-blur-xl border border-orange-500/30 hover:border-orange-500 text-orange-300 hover:text-white rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-sm"
+              className="hidden xl:flex items-center gap-1.5 px-3 py-2 bg-slate-900 hover:bg-slate-800 border border-orange-500/30 hover:border-orange-500 text-orange-300 hover:text-white rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-sm"
               title="Manage Products Table & Editor"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-orange-400" />
@@ -308,7 +299,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 id="nav-compare-trigger-btn"
                 onClick={onOpenComparison}
-                className="relative p-2.5 bg-slate-900/60 hover:bg-slate-800/80 backdrop-blur-xl border border-white/10 text-slate-200 rounded-xl transition-all cursor-pointer shadow-sm"
+                className="relative p-2.5 bg-slate-900 hover:bg-slate-800 border border-white/10 text-slate-200 rounded-xl transition-all cursor-pointer shadow-sm"
                 title="Compare Selected Products"
               >
                 <Layers className="w-4 h-4 text-orange-400" />
@@ -322,7 +313,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="nav-cart-trigger-btn"
               onClick={onOpenCart}
-              className="relative p-2.5 bg-slate-900/60 hover:bg-slate-800/80 backdrop-blur-xl border border-white/10 hover:border-orange-500/50 text-slate-100 rounded-xl transition-all flex items-center gap-2 cursor-pointer shadow-md"
+              className="relative p-2.5 bg-slate-900 hover:bg-slate-800 border border-white/10 hover:border-orange-500/50 text-slate-100 rounded-xl transition-all flex items-center gap-2 cursor-pointer shadow-md"
             >
               <ShoppingCart className="w-4 h-4 text-orange-400" />
               <span className="hidden sm:inline text-xs font-semibold">Cart</span>
@@ -337,7 +328,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-400 hover:text-white rounded-lg bg-slate-900/70 backdrop-blur-md border border-white/10 cursor-pointer"
+              className="md:hidden p-2 text-slate-400 hover:text-white rounded-lg bg-slate-900 border border-white/10 cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -355,14 +346,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search laptops, desktops, bulk lots..."
-              className="w-full bg-slate-900/70 backdrop-blur-md border border-white/10 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-orange-500"
+              className="w-full bg-slate-900 border border-white/10 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-orange-500"
             />
           </div>
         </div>
       </div>
 
       {/* Category Navigation Bar */}
-      <nav className="bg-slate-950/60 backdrop-blur-xl border-t border-white/5 overflow-x-auto scrollbar-none">
+      <nav className="bg-slate-950 border-t border-white/5 overflow-x-auto scrollbar-none">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-1 sm:gap-2 py-2">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
@@ -400,7 +391,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-orange-300 hover:text-white border border-orange-500/40 hover:border-orange-400 transition-all cursor-pointer shadow-sm"
             >
-              <span>💰 Shop By Budget</span>
+              <span className="text-orange-400 font-extrabold">Rs.</span>
+              <span>Shop By Budget</span>
             </button>
 
             {/* Interactive Theme Color Toggle Button */}

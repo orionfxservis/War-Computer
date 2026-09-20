@@ -46,28 +46,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const displayWarranty = product.specs?.warranty || conditionInfo.defaultWarranty;
 
   return (
-    <div className="group relative flex flex-col">
+    <div className="group relative flex flex-col" style={{ contain: 'content' }}>
       {/* Radiant Glowing Aura on Hover */}
-      <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 opacity-0 group-hover:opacity-75 blur-md group-hover:blur-lg transition-all duration-500 pointer-events-none" />
+      <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 opacity-0 group-hover:opacity-75 blur-md transition-all duration-300 pointer-events-none" />
 
-      {/* Card Body with Glassmorphism & Shadow Depth */}
-      <div className="relative z-10 flex-1 flex flex-col bg-slate-900/50 backdrop-blur-2xl rounded-2xl border border-white/10 group-hover:border-orange-500/60 group-hover:bg-slate-900/70 transition-all duration-300 overflow-hidden shadow-xl group-hover:shadow-[0_0_35px_rgba(249,115,22,0.25)]">
+      {/* Card Body with Clean Opaque Background & Solid Contrast */}
+      <div className="relative z-10 flex-1 flex flex-col bg-slate-900 rounded-2xl border border-white/10 group-hover:border-orange-500/60 group-hover:bg-slate-850 transition-all duration-200 overflow-hidden shadow-lg group-hover:shadow-[0_0_30px_rgba(249,115,22,0.2)]">
         
         {/* Subtle Glass Light Sheen Sweep Effect on Hover */}
-        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none z-30 transform -skew-x-12" />
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent pointer-events-none z-30 transform -skew-x-12" />
 
         {/* Top Media Banner */}
-        <div className="relative aspect-video w-full overflow-hidden bg-slate-950/80">
+        <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
           <img
-            src={product.images[0] || 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80'}
+            src={product.images[0] || 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=70'}
             alt={product.name}
-            className="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-108"
+            className="w-full h-full object-cover object-center transform transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer"
             onError={(e) => {
               // Graceful fallback to high reliability hardware image
-              (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80';
+              (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=70';
             }}
           />
 
@@ -77,7 +77,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Condition & Lot Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
             {product.isBulkLot ? (
-              <span className="bg-amber-500/90 backdrop-blur-xl text-slate-950 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-md shadow-lg shadow-amber-500/30 flex items-center gap-1 border border-white/20">
+              <span className="bg-amber-500 text-slate-950 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-md shadow-md flex items-center gap-1 border border-white/20">
                 <PackageCheck className="w-3 h-3" />
                 {product.lotUnitCount}-Unit Pallet Lot
               </span>
@@ -86,25 +86,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             )}
 
             {product.isFeatured && (
-              <span className="bg-gradient-to-r from-orange-500/90 to-amber-500/90 backdrop-blur-xl text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded-md shadow-lg shadow-orange-500/30 flex items-center gap-1 border border-white/20">
-                <Sparkles className="w-2.5 h-2.5 animate-pulse" /> Featured
+              <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded-md shadow-md flex items-center gap-1 border border-white/20">
+                <Sparkles className="w-2.5 h-2.5" /> Featured
               </span>
             )}
           </div>
 
-          {/* Brand Chip with Glass Blur */}
+          {/* Brand Chip with Solid Dark Layer */}
           <div className="absolute top-3 right-3 z-10">
-            <span className="bg-slate-950/70 backdrop-blur-xl border border-white/15 text-slate-200 text-[11px] font-semibold px-2.5 py-0.5 rounded-md shadow-sm">
+            <span className="bg-slate-950/90 border border-white/15 text-slate-200 text-[11px] font-semibold px-2.5 py-0.5 rounded-md shadow-sm">
               {product.brand}
             </span>
           </div>
 
           {/* Hover Quick View Button */}
-          <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[6px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 p-4 z-20">
+          <div className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 p-4 z-20">
             <button
               id={`quick-view-btn-${product.id}`}
               onClick={() => onQuickView(product)}
-              className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-400 hover:to-amber-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-orange-500/30 flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-all cursor-pointer border border-white/10"
+              className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-400 hover:to-amber-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-orange-500/30 flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-all cursor-pointer border border-white/10"
             >
               <Eye className="w-3.5 h-3.5" /> Quick View & Specs
             </button>
@@ -156,8 +156,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               {product.name}
             </h3>
 
-            {/* Specs Micro-Grid with Frosted Glass */}
-            <div className="bg-slate-950/45 backdrop-blur-xl rounded-xl p-2.5 border border-white/5 group-hover:border-white/10 text-[11px] space-y-1 text-slate-300 shadow-inner">
+            {/* Specs Micro-Grid with Clean High-Contrast Box */}
+            <div className="bg-slate-950/60 rounded-xl p-2.5 border border-white/5 group-hover:border-white/10 text-[11px] space-y-1 text-slate-300 shadow-inner">
               <div className="flex items-center gap-1.5 truncate">
                 <Cpu className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />
                 <span className="truncate">{product.specs.cpu}</span>
@@ -213,7 +213,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 className={`p-2 rounded-lg border text-xs transition-all cursor-pointer ${
                   isCompared 
                     ? 'bg-orange-500 text-white border-orange-500 shadow-md shadow-orange-500/30' 
-                    : 'bg-slate-950/60 backdrop-blur-md text-slate-400 border-white/10 hover:text-white hover:border-white/20'
+                    : 'bg-slate-950/80 text-slate-400 border-white/10 hover:text-white hover:border-white/20'
                 }`}
                 title={isCompared ? 'Remove from Compare' : 'Add to Compare'}
               >
@@ -226,7 +226,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               <button
                 id={`card-specs-btn-${product.id}`}
                 onClick={() => onQuickView(product)}
-                className="py-2.5 px-3 rounded-xl bg-slate-950/60 hover:bg-slate-800/80 backdrop-blur-xl border border-white/10 hover:border-orange-500/40 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                className="py-2.5 px-3 rounded-xl bg-slate-950/80 hover:bg-slate-800 border border-white/10 hover:border-orange-500/40 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
               >
                 <Eye className="w-3.5 h-3.5 text-slate-400" />
                 <span>Full Specs</span>

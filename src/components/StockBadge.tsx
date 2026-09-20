@@ -78,7 +78,7 @@ export const StockBadge: React.FC<StockBadgeProps> = ({
 
   return (
     <span
-      className={`inline-flex items-center font-bold rounded-full border backdrop-blur-md transition-all shadow-sm ${info.bgClass} ${info.borderClass} ${info.textClass} ${sizeClasses[size]} ${className}`}
+      className={`inline-flex items-center font-bold rounded-full border transition-all shadow-sm ${info.bgClass} ${info.borderClass} ${info.textClass} ${sizeClasses[size]} ${className}`}
     >
       <span className="text-[1.1em] leading-none">{info.emoji}</span>
       <span className="tracking-tight whitespace-nowrap">

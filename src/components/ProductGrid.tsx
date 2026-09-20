@@ -25,6 +25,7 @@ import {
   BUDGET_BRACKETS 
 } from './LaptopFinder';
 import { ShopByBudget } from './ShopByBudget';
+import { SectionCollapseButton } from './SectionCollapseButton';
 
 interface ProductGridProps {
   products: Product[];
@@ -60,6 +61,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
   const [maxPrice, setMaxPrice] = useState<number>(500000);
   const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'rating'>('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState<boolean>(false);
+  const [isCatalogCollapsed, setIsCatalogCollapsed] = useState<boolean>(false);
 
   // Dedicated "Laptop Finder" States
   const [finderUseCase, setFinderUseCase] = useState<LaptopUseCase | null>(null);
@@ -279,13 +281,25 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
         return (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0);
       });
 
-    // Enforce strict uniqueness by product ID to eliminate duplicate entries
+    // Enforce strict uniqueness by product ID, SKU, and core model to eliminate any duplicate entries
     const seenIds = new Set<string>();
+    const seenSkus = new Set<string>();
+    const seenModels = new Set<string>();
     const deduplicatedResult: Product[] = [];
+
     for (const item of sorted) {
       if (!item || !item.id) continue;
-      if (seenIds.has(item.id)) continue;
-      seenIds.add(item.id);
+      const idKey = item.id.toLowerCase().trim();
+      const skuKey = item.sku ? item.sku.toLowerCase().trim() : '';
+      const modelKey = item.name.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 16);
+
+      if (seenIds.has(idKey)) continue;
+      if (skuKey && seenSkus.has(skuKey)) continue;
+      if (modelKey && seenModels.has(modelKey)) continue;
+
+      seenIds.add(idKey);
+      if (skuKey) seenSkus.add(skuKey);
+      if (modelKey) seenModels.add(modelKey);
       deduplicatedResult.push(item);
     }
     return deduplicatedResult;
@@ -358,18 +372,63 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
         />
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_8px_#f97316] animate-pulse" />
-              <span className="text-xs font-bold text-orange-400 uppercase tracking-widest font-mono">
-                WAR COMPUTERS CERTIFIED INVENTORY
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase mt-1">
+        <div className={`relative z-10 ${isCatalogCollapsed ? '' : 'pb-6 border-b border-white/10'}`}>
+          {/* Eyebrow */}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
+            <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest font-mono">
+              WAR COMPUTERS CERTIFIED INVENTORY
+            </span>
+          </div>
+
+          {/* Heading - Collapse - Sort on the EXACT same line */}
+          <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase">
               {selectedCategory === 'all' ? 'Hardware & System Catalog' : `${selectedCategory.replace('_', ' ')} Collection`}
             </h2>
-            <p className="text-sm text-slate-400 mt-1">
+
+            {/* Right: Collapse + Mobile Filters + Sort in same line */}
+            <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+              {/* Collapse / Expand Button */}
+              <SectionCollapseButton
+                isCollapsed={isCatalogCollapsed}
+                onToggle={() => setIsCatalogCollapsed(!isCatalogCollapsed)}
+                id="catalog-collapse-btn"
+              />
+
+              {!isCatalogCollapsed && (
+                <>
+                  <button
+                    id="mobile-filters-trigger-btn"
+                    onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
+                    className="lg:hidden px-3.5 py-1.5 rounded-xl bg-slate-900 border border-white/10 text-slate-200 text-xs font-bold flex items-center gap-2 cursor-pointer shadow-sm hover:bg-slate-800"
+                  >
+                    <Filter className="w-4 h-4 text-orange-400" />
+                    <span>Filters ({activeFiltersCount})</span>
+                  </button>
+
+                  <div className="flex items-center gap-2 bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs text-slate-300 shadow-sm">
+                    <span className="text-slate-400 font-semibold">Sort:</span>
+                    <select
+                      id="sort-by-select"
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value as any)}
+                      className="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer"
+                    >
+                      <option value="featured" className="bg-slate-900">Featured First</option>
+                      <option value="price-low" className="bg-slate-900">Price: Low to High</option>
+                      <option value="price-high" className="bg-slate-900">Price: High to Low</option>
+                      <option value="rating" className="bg-slate-900">Customer Rating</option>
+                    </select>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Subtitle description below heading line */}
+          {!isCatalogCollapsed && (
+            <p className="text-sm text-slate-400 mt-2">
               {finderUseCase || finderBudget ? (
                 <span className="text-orange-300 font-semibold">
                   Showing {filteredProducts.length} matching laptops for {activeUseCaseObj ? activeUseCaseObj.label : 'Any Use Case'} {activeBudgetObj ? `within ${activeBudgetObj.label}` : ''}
@@ -378,38 +437,13 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
                 `Showing ${filteredProducts.length} certified machines with clear condition badges & checking warranties`
               )}
             </p>
-          </div>
-
-          {/* Quick Sort & Mobile Filter Trigger */}
-          <div className="flex items-center gap-3">
-            <button
-              id="mobile-filters-trigger-btn"
-              onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-              className="lg:hidden px-3.5 py-2 rounded-xl bg-slate-900/60 backdrop-blur-xl border border-white/10 text-slate-200 text-xs font-bold flex items-center gap-2 cursor-pointer shadow-sm"
-            >
-              <Filter className="w-4 h-4 text-orange-400" />
-              <span>Filters ({activeFiltersCount})</span>
-            </button>
-
-            <div className="flex items-center gap-2 bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-xl px-3 py-1.5 text-xs text-slate-300 shadow-sm">
-              <span className="text-slate-400 font-semibold">Sort:</span>
-              <select
-                id="sort-by-select"
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer"
-              >
-                <option value="featured" className="bg-slate-900">Featured First</option>
-                <option value="price-low" className="bg-slate-900">Price: Low to High</option>
-                <option value="price-high" className="bg-slate-900">Price: High to Low</option>
-                <option value="rating" className="bg-slate-900">Customer Rating</option>
-              </select>
-            </div>
-          </div>
+          )}
         </div>
 
-        {/* CONDITION SEPARATION TABS BAR - Transparently Separates NEW / USED / REFURBISHED / OPEN BOX */}
-        <div className="mt-6 p-3 sm:p-4 bg-slate-900/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-xl">
+        {!isCatalogCollapsed && (
+          <>
+            {/* CONDITION SEPARATION TABS BAR - Transparently Separates NEW / USED / REFURBISHED / OPEN BOX */}
+        <div className="mt-6 p-3 sm:p-4 bg-slate-900 border border-white/10 rounded-2xl shadow-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
             <div className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
               <span className="w-2 h-2 rounded-full bg-orange-400" />
@@ -459,7 +493,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
           
           {/* Left Sidebar Filter Column (Desktop) */}
           <aside className={`lg:col-span-3 space-y-6 ${mobileFilterOpen ? 'block' : 'hidden lg:block'}`}>
-            <div className="bg-slate-900/50 backdrop-blur-2xl border border-white/10 rounded-2xl p-5 space-y-6 shadow-2xl sticky top-32">
+            <div className="bg-slate-900 border border-white/10 rounded-2xl p-5 space-y-6 shadow-2xl sticky top-32">
               
               {/* Filter Title & Reset */}
               <div className="flex items-center justify-between pb-3 border-b border-white/10">
@@ -535,7 +569,8 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
               <div className="space-y-2 pt-2 border-t border-slate-800/80">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                    <span>💰 Shop By Budget</span>
+                    <span className="text-orange-400 font-extrabold">Rs.</span>
+                    <span>Shop By Budget</span>
                   </label>
                   {finderBudget && (
                     <button
@@ -674,6 +709,8 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
           </main>
 
         </div>
+        </>
+      )}
 
       </div>
     </section>

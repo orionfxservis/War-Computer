@@ -21,6 +21,7 @@ import {
   Filter
 } from 'lucide-react';
 import { Product } from '../types';
+import { SectionCollapseButton } from './SectionCollapseButton';
 
 export type LaptopUseCase = 
   | 'student' 
@@ -207,15 +208,14 @@ export const LaptopFinder: React.FC<LaptopFinderProps> = ({
   return (
     <div 
       id="laptop-finder-container"
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900/95 via-slate-950/95 to-slate-900/95 border border-orange-500/30 p-5 sm:p-7 shadow-2xl backdrop-blur-2xl mb-10 ring-1 ring-orange-500/20"
+      className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 border border-orange-500/30 p-5 sm:p-7 shadow-2xl mb-10 ring-1 ring-orange-500/20"
     >
       {/* Decorative ambient background glows */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_0%,rgba(249,115,22,0.08),transparent)] pointer-events-none" />
 
       {/* Header Banner */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
-        <div className="space-y-1.5">
+      <div className={`relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 ${isExpanded ? 'pb-6 border-b border-white/10' : ''}`}>
+        <div className="space-y-1.5 flex-1">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-orange-500/20 border border-orange-500/40 text-[11px] font-black uppercase text-orange-400 tracking-wider shadow-sm">
               <Sparkles className="w-3.5 h-3.5" /> SMART RECOMMENDATION ASSISTANT
@@ -223,42 +223,48 @@ export const LaptopFinder: React.FC<LaptopFinderProps> = ({
             <span className="text-[11px] text-slate-400 hidden sm:inline">• Built for Pakistan Hardware Buyers</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
-            <span className="text-orange-400">🔎</span> Find Your Perfect Laptop
-          </h2>
+          <div className="flex items-center justify-between gap-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
+              <span className="text-orange-400">🔎</span> Find Your Perfect Laptop
+            </h2>
+
+            {/* Collapse / Expand Button aligned with heading */}
+            <SectionCollapseButton
+              isCollapsed={!isExpanded}
+              onToggle={() => setIsExpanded(!isExpanded)}
+              id="laptop-finder-collapse-btn"
+            />
+          </div>
           
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
-            Don't worry about complicated processor model numbers or generations. Simply tell us your <strong>use case</strong> and <strong>budget</strong>, and we’ll match you with verified, 100% tested machines.
-          </p>
+          {isExpanded && (
+            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
+              Don't worry about complicated processor model numbers or generations. Simply tell us your <strong>use case</strong> and <strong>budget</strong>, and we’ll match you with verified, 100% tested machines.
+            </p>
+          )}
         </div>
 
         {/* Status / Reset Actions */}
-        <div className="flex items-center gap-2.5 self-start md:self-auto flex-wrap">
-          {hasActiveFinder && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-orange-500/15 border border-orange-500/30 text-orange-300 font-bold text-xs">
-              <CheckCircle2 className="w-4 h-4 text-orange-400" />
-              <span>{matchCount} Matching {matchCount === 1 ? 'Laptop' : 'Laptops'}</span>
-            </div>
-          )}
+        {isExpanded && (
+          <div className="flex items-center gap-2.5 self-start md:self-auto flex-wrap">
+            {hasActiveFinder && (
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-orange-500/15 border border-orange-500/30 text-orange-300 font-bold text-xs">
+                <CheckCircle2 className="w-4 h-4 text-orange-400" />
+                <span>{matchCount} Matching {matchCount === 1 ? 'Laptop' : 'Laptops'}</span>
+              </div>
+            )}
 
-          {hasActiveFinder && (
-            <button
-              id="laptop-finder-reset-btn"
-              onClick={onReset}
-              className="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/10 hover:border-orange-500/40 text-slate-300 hover:text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-sm"
-            >
-              <RotateCcw className="w-3.5 h-3.5 text-orange-400" />
-              <span>Clear Finder</span>
-            </button>
-          )}
-
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-white/10 text-slate-300 hover:text-white text-xs font-semibold cursor-pointer transition-all"
-          >
-            {isExpanded ? 'Collapse' : 'Expand'}
-          </button>
-        </div>
+            {hasActiveFinder && (
+              <button
+                id="laptop-finder-reset-btn"
+                onClick={onReset}
+                className="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/10 hover:border-orange-500/40 text-slate-300 hover:text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-sm"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-orange-400" />
+                <span>Clear Finder</span>
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       {isExpanded && (

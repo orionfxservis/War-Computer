@@ -18,7 +18,8 @@ import {
   FileText,
   CreditCard
 } from 'lucide-react';
-import { ProductCategory, PricingMode } from '../types';
+import { ProductCategory, PricingMode, SiteThemeId } from '../types';
+import { WarComputersLogo } from './WarComputersLogo';
 
 interface FooterProps {
   onSelectCategory: (cat: ProductCategory) => void;
@@ -30,6 +31,7 @@ interface FooterProps {
   onScrollToManageProducts?: () => void;
   pricingMode: PricingMode;
   onTogglePricingMode: (mode: PricingMode) => void;
+  currentTheme?: SiteThemeId;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -41,7 +43,8 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenAdmin,
   onScrollToManageProducts,
   pricingMode,
-  onTogglePricingMode
+  onTogglePricingMode,
+  currentTheme
 }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
@@ -57,10 +60,10 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-slate-950/80 backdrop-blur-2xl border-t border-white/10 text-slate-400 text-xs relative z-10 shadow-[0_-10px_40px_rgba(0,0,0,0.6)]">
+    <footer className="bg-slate-950 border-t border-white/10 text-slate-400 text-xs relative z-10 shadow-[0_-10px_40px_rgba(0,0,0,0.6)]">
       
       {/* Top Value Assurance Ribbon */}
-      <div className="border-b border-white/10 py-6 bg-slate-900/40 backdrop-blur-xl">
+      <div className="border-b border-white/10 py-6 bg-slate-900/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-5">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center flex-shrink-0">
@@ -110,18 +113,16 @@ export const Footer: React.FC<FooterProps> = ({
           
           {/* Column 1: Brand & Company Identity */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white font-black text-lg shadow-lg shadow-orange-500/20">
-                W
-              </div>
-              <div>
-                <span className="font-extrabold text-lg text-white tracking-wider">
-                  WAR <span className="text-orange-500">COMPUTERS</span>
-                </span>
-                <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-mono">
-                  Wholesale & Retail Direct
-                </span>
-              </div>
+            <div className="flex flex-col items-start gap-1">
+              <WarComputersLogo 
+                size="md" 
+                themeOverride={currentTheme} 
+                variant="full" 
+                className="max-w-[240px]"
+              />
+              <span className="block text-[10px] text-slate-400 uppercase tracking-widest font-mono pl-1">
+                Wholesale & Retail Direct
+              </span>
             </div>
 
             <p className="text-xs text-slate-400 leading-relaxed">

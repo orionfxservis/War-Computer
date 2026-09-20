@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Check, Sparkles } from 'lucide-react';
 import { SiteThemeId, SiteThemeConfig } from '../types';
 import { SITE_THEMES } from '../utils/themeConstants';
+import { WarComputersLogo } from './WarComputersLogo';
 
 interface ThemeColorToggleProps {
   currentTheme: SiteThemeId;
@@ -132,7 +133,7 @@ export const ThemeColorToggle: React.FC<ThemeColorToggleProps> = ({
       {toastMessage && (
         <div 
           id="theme-toast-indicator"
-          className="absolute bottom-full mb-2 right-0 z-50 pointer-events-none whitespace-nowrap bg-slate-900/95 text-white text-xs font-bold px-3 py-1.5 rounded-xl border border-white/20 shadow-2xl backdrop-blur-xl animate-fade-in flex items-center gap-2"
+          className="absolute bottom-full mb-2 right-0 z-50 pointer-events-none whitespace-nowrap bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-xl border border-white/20 shadow-2xl animate-fade-in flex items-center gap-2"
           style={{
             boxShadow: `0 4px 20px ${activeThemeConfig.colors.glow}`
           }}
@@ -149,7 +150,7 @@ export const ThemeColorToggle: React.FC<ThemeColorToggleProps> = ({
       {menuOpen && (
         <div 
           id="theme-selection-menu"
-          className="absolute right-0 top-full mt-2 w-72 sm:w-80 bg-slate-950/95 border border-slate-700/80 rounded-2xl p-3 shadow-2xl backdrop-blur-2xl z-50 space-y-1.5 animate-in fade-in zoom-in-95 duration-150"
+          className="absolute right-0 top-full mt-2 w-72 sm:w-80 bg-slate-950 border border-slate-700/80 rounded-2xl p-3 shadow-2xl z-50 space-y-1.5 animate-in fade-in zoom-in-95 duration-150"
           style={{
             boxShadow: `0 20px 50px rgba(0,0,0,0.8), 0 0 30px ${activeThemeConfig.colors.glow}`
           }}
@@ -220,6 +221,17 @@ export const ThemeColorToggle: React.FC<ThemeColorToggleProps> = ({
                         {theme.paletteLabel}
                       </p>
                     </div>
+                  </div>
+
+                  {/* Mini Logo Preview for this theme */}
+                  <div className="hidden sm:flex items-center px-1.5 py-0.5 bg-slate-950/70 rounded-lg border border-white/5 flex-shrink-0">
+                    <WarComputersLogo 
+                      themeOverride={theme.id} 
+                      size="xs" 
+                      variant="full" 
+                      className="max-w-[95px]" 
+                      glowOnHover={false} 
+                    />
                   </div>
 
                   {/* Active Indicator Checkmark */}

@@ -451,10 +451,10 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
       className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-20"
     >
       {/* Section Ambient Glow */}
-      <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-orange-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_30%_at_50%_0%,rgba(249,115,22,0.08),transparent)] pointer-events-none" />
 
       {/* Admin Title & Overview Banner */}
-      <div className="bg-slate-900/70 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+      <div className="bg-slate-900 border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
         
         {/* Top Header Row */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pb-6 border-b border-white/10">
@@ -513,7 +513,7 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
 
         {/* Catalog KPIs & Stock Summary Bar */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          <div className="p-4 rounded-2xl bg-slate-950/60 backdrop-blur-xl border border-white/5 shadow-inner flex items-center gap-3.5">
+          <div className="p-4 rounded-2xl bg-slate-950 border border-white/5 shadow-inner flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center flex-shrink-0">
               <Boxes className="w-5 h-5" />
             </div>
@@ -523,7 +523,7 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-950/60 backdrop-blur-xl border border-white/5 shadow-inner flex items-center gap-3.5">
+          <div className="p-4 rounded-2xl bg-slate-950 border border-white/5 shadow-inner flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0">
               <PackageCheck className="w-5 h-5" />
             </div>
@@ -533,7 +533,7 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-950/60 backdrop-blur-xl border border-white/5 shadow-inner flex items-center gap-3.5">
+          <div className="p-4 rounded-2xl bg-slate-950 border border-white/5 shadow-inner flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
               <Shield className="w-5 h-5" />
             </div>
@@ -545,7 +545,7 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-950/60 backdrop-blur-xl border border-white/5 shadow-inner flex items-center gap-3.5">
+          <div className="p-4 rounded-2xl bg-slate-950 border border-white/5 shadow-inner flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center flex-shrink-0">
               <DollarSign className="w-5 h-5" />
             </div>
@@ -572,7 +572,7 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
         {/* ========================================================================= */}
         {/* SECTION 1: ADD NEW PRODUCT CATEGORY DROPDOWN MENU & DYNAMIC FORM FIELDS */}
         {/* ========================================================================= */}
-        <div id="manage-products-form-panel" className="bg-slate-950/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-6">
+        <div id="manage-products-form-panel" className="bg-slate-950 border border-white/10 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-6">
           
           {/* Top Dropdown Header Bar */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 rounded-2xl bg-slate-900/90 border border-orange-500/30 shadow-md">
@@ -1415,7 +1415,7 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
         {/* ========================================================================= */}
         {/* SECTION 2: ALL PRODUCTS MANAGEMENT TABLE (Used for Editing & Inventory)   */}
         {/* ========================================================================= */}
-        <div id="all-products-management-table" className="bg-slate-950/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
+        <div id="all-products-management-table" className="bg-slate-950 border border-white/10 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5">
           
           {/* Table Controls & Filters Header */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-4 border-b border-white/10">
