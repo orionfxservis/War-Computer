@@ -13,11 +13,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     environment:
@@ -25,21 +25,26 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # 1. Get the website files
       - name: Checkout Code
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
-      # 2. Configure GitHub Pages
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build Website
+        run: bun run build
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      # 3. Upload the website
-      - name: Upload Website
+      - name: Upload Build
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: ./dist
 
-      # 4. Deploy
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
