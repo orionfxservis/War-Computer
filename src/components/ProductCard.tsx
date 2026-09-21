@@ -92,11 +92,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             )}
           </div>
 
-          {/* Brand Chip with Solid Dark Layer */}
-          <div className="absolute top-3 right-3 z-10">
+          {/* Brand Chip & Category Tag with Solid Dark Layer */}
+          <div className="absolute top-3 right-3 z-10 flex flex-col items-end gap-1">
             <span className="bg-slate-950/90 border border-white/15 text-slate-200 text-[11px] font-semibold px-2.5 py-0.5 rounded-md shadow-sm">
               {product.brand}
             </span>
+            {product.warComputerCategory && (
+              <span className="bg-orange-950/90 border border-orange-500/40 text-orange-300 text-[9.5px] font-bold px-2 py-0.5 rounded shadow-sm max-w-[130px] truncate">
+                {product.warComputerCategory}
+              </span>
+            )}
           </div>
 
           {/* Hover Quick View Button */}

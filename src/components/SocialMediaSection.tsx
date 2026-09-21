@@ -37,36 +37,37 @@ export const SocialMediaSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className={`flex flex-col md:flex-row md:items-end justify-between gap-4 ${isCollapsed ? 'mb-0 pb-0 border-b-0' : 'mb-10 pb-6 border-b border-slate-800/80'}`}>
-          <div className="flex-1">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
-              <span className="text-xs font-bold text-orange-400 uppercase tracking-widest font-mono">
-                WAR COMPUTERS COMMUNITY & BENCHMARKS
-              </span>
-            </div>
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase mt-1">
-                Social Media & Creator Ecosystem
-              </h2>
-
-              {/* Collapse / Expand button in same alignment with heading */}
-              <SectionCollapseButton
-                isCollapsed={isCollapsed}
-                onToggle={() => setIsCollapsed(!isCollapsed)}
-                id="social-media-collapse-btn"
-              />
-            </div>
-            {!isCollapsed && (
-              <p className="text-sm text-slate-400 mt-1">
-                Watch live stress-tests, custom liquid loop battlestations, and B2B classroom deployments.
-              </p>
-            )}
+        {/* Section Header - Persistent layout matching 833.JPG */}
+        <div className={`relative z-10 ${isCollapsed ? '' : 'pb-6 border-b border-slate-800/80'}`}>
+          {/* Eyebrow */}
+          <div className="flex items-center gap-2 mb-2">
+            <Sparkles className="w-4 h-4 text-orange-400 animate-pulse" />
+            <span className="text-xs font-bold text-orange-400 uppercase tracking-widest font-mono">
+              WAR COMPUTERS COMMUNITY &amp; BENCHMARKS
+            </span>
           </div>
 
-          {/* Social Hub Links & Share */}
-          {!isCollapsed && (
+          {/* Heading Line with Collapse / Expand Button on Right */}
+          <div className="flex items-center justify-between gap-4">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight uppercase">
+              Social Media &amp; Creator Ecosystem
+            </h2>
+
+            {/* Collapse / Expand button on the right side */}
+            <SectionCollapseButton
+              isCollapsed={isCollapsed}
+              onToggle={() => setIsCollapsed(!isCollapsed)}
+              id="social-media-collapse-btn"
+            />
+          </div>
+
+          {/* Subtitle & Social Links Row - Always visible as shown in 833.JPG */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mt-2">
+            <p className="text-sm text-slate-400">
+              Watch live stress-tests, custom liquid loop battlestations, and B2B classroom deployments.
+            </p>
+
+            {/* Social Hub Links & Share */}
             <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               <button
                 onClick={handleCopyShare}
@@ -115,11 +116,17 @@ export const SocialMediaSection: React.FC = () => {
                 <span>Discord (12.4k Builders)</span>
               </a>
             </div>
-          )}
+          </div>
         </div>
 
-        {/* Dynamic Social Feeds Grid */}
-        {!isCollapsed && (
+        {/* Dynamic Social Feeds Grid - Smoothly collapsible */}
+        <div 
+          className={`transition-all duration-500 ease-in-out overflow-hidden ${
+            isCollapsed 
+              ? 'max-h-0 opacity-0 pointer-events-none mt-0' 
+              : 'max-h-[3000px] opacity-100 pt-8'
+          }`}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {SOCIAL_FEEDS.map((feed) => {
             const isLiked = likedPosts[feed.id];
@@ -188,8 +195,8 @@ export const SocialMediaSection: React.FC = () => {
               </div>
             );
           })}
+          </div>
         </div>
-        )}
 
       </div>
     </section>

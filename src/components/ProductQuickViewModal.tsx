@@ -14,7 +14,8 @@ import {
   Layers, 
   Check, 
   PackageCheck,
-  FileText
+  FileText,
+  ExternalLink
 } from 'lucide-react';
 import { Product, PricingMode } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
@@ -62,15 +63,32 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
       <div className="relative w-full max-w-4xl bg-slate-900 border border-slate-700/80 rounded-3xl shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col">
         
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/60">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/60 flex-wrap gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-bold text-orange-400 uppercase tracking-wider">
               {product.brand} • SKU: {product.sku}
             </span>
+            {product.warComputerCategory && (
+              <span className="bg-orange-500/10 border border-orange-500/30 text-orange-300 text-[10px] font-bold uppercase px-2 py-0.5 rounded">
+                {product.warComputerCategory}
+              </span>
+            )}
             {product.isBulkLot && (
               <span className="bg-amber-500 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5 rounded">
                 Pallet Lot ({product.lotUnitCount} Units)
               </span>
+            )}
+            {product.warComputerUrl && (
+              <a
+                href={product.warComputerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[11px] text-slate-400 hover:text-orange-400 transition-colors ml-2"
+                title="View original product on warcomputer.com"
+              >
+                <span>warcomputer.com</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
             )}
           </div>
           <button

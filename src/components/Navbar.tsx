@@ -16,7 +16,8 @@ import {
   Building2, 
   ShieldCheck,
   Flame,
-  ArrowRight
+  ArrowRight,
+  Cpu
 } from 'lucide-react';
 import { ProductCategory, PricingMode, Product, SiteThemeId } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
@@ -88,11 +89,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const categories: { id: ProductCategory; label: string; icon: React.ReactNode }[] = [
     { id: 'all', label: 'All Catalog', icon: <Layers className="w-4 h-4" /> },
-    { id: 'desktops', label: 'Desktops & Gaming', icon: <Monitor className="w-4 h-4" /> },
-    { id: 'laptops', label: 'Laptops & ThinkPads', icon: <Laptop className="w-4 h-4" /> },
-    { id: 'chromebooks', label: 'Chromebooks', icon: <Laptop className="w-4 h-4 text-orange-400" /> },
-    { id: 'tablets', label: 'Tablets & 2-in-1', icon: <Tablet className="w-4 h-4" /> },
-    { id: 'workstations', label: 'AI Workstations', icon: <Flame className="w-4 h-4 text-orange-500" /> },
+    { id: 'business_laptops', label: 'Business Laptops', icon: <Laptop className="w-4 h-4" /> },
+    { id: 'gaming_laptops', label: 'Gaming Laptops', icon: <Flame className="w-4 h-4 text-orange-500" /> },
+    { id: 'workstations', label: 'Workstations', icon: <Cpu className="w-4 h-4 text-purple-400" /> },
+    { id: 'chromebooks', label: 'Chromebooks', icon: <Laptop className="w-4 h-4 text-cyan-400" /> },
+    { id: 'desktops', label: 'Chromebox & Desktops', icon: <Monitor className="w-4 h-4 text-emerald-400" /> },
     { id: 'wholesale_lots', label: 'Bulk Pallets (B2B)', icon: <PackageCheck className="w-4 h-4 text-amber-400" /> }
   ];
 

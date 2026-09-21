@@ -126,14 +126,14 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className={`relative z-10 ${isCollapsed ? 'mb-0' : 'mb-8 sm:mb-10'}`}>
+        <div className="relative z-10">
           {/* Top Deal Pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/80 border border-red-500/50 text-red-300 text-xs font-bold shadow-lg shadow-red-950/50 mb-3">
             <Flame className="w-4 h-4 text-cyan-400 fill-cyan-400 animate-pulse" />
             <span>LIMITED TIME DAILY OFFERS • DIRECT PAKISTAN STOCK</span>
           </div>
 
-          {/* Main Section Title - Collapse - Counter on the EXACT same line */}
+          {/* Main Section Title - Collapse/Expand - Counter on the EXACT same line */}
           <div className="flex flex-wrap items-center justify-between gap-4">
             <h2 
               id="todays-deals-heading"
@@ -150,54 +150,56 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
                 id="todays-deals-collapse-btn"
               />
 
-              {!isCollapsed && (
-                <div className="bg-slate-900/90 border border-cyan-500/40 rounded-2xl p-2.5 sm:p-3 shadow-xl shadow-cyan-950/40 flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Today's Deals Expire In</p>
-                    <div className="flex items-center gap-1.5 font-mono text-sm sm:text-base font-extrabold text-white mt-0.5">
-                      <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-cyan-500/20 text-cyan-400">
-                        {String(timeLeft.hours).padStart(2, '0')}h
-                      </span>
-                      <span className="text-cyan-400 font-bold">:</span>
-                      <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-cyan-500/20 text-cyan-400">
-                        {String(timeLeft.minutes).padStart(2, '0')}m
-                      </span>
-                      <span className="text-cyan-400 font-bold">:</span>
-                      <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-red-500/30 text-red-400 animate-pulse">
-                        {String(timeLeft.seconds).padStart(2, '0')}s
-                      </span>
-                    </div>
+              <div className="bg-slate-900/90 border border-cyan-500/40 rounded-2xl p-2.5 sm:p-3 shadow-xl shadow-cyan-950/40 flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400">
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Today's Deals Expire In</p>
+                  <div className="flex items-center gap-1.5 font-mono text-sm sm:text-base font-extrabold text-white mt-0.5">
+                    <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-cyan-500/20 text-cyan-400">
+                      {String(timeLeft.hours).padStart(2, '0')}h
+                    </span>
+                    <span className="text-cyan-400 font-bold">:</span>
+                    <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-cyan-500/20 text-cyan-400">
+                      {String(timeLeft.minutes).padStart(2, '0')}m
+                    </span>
+                    <span className="text-cyan-400 font-bold">:</span>
+                    <span className="bg-slate-950 px-2 py-0.5 rounded-md border border-red-500/30 text-red-400 animate-pulse">
+                      {String(timeLeft.seconds).padStart(2, '0')}s
+                    </span>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
 
           {/* Subtitle row with description and genuine rate badge underneath */}
-          {!isCollapsed && (
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-3">
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-2xl">
-                100% genuine market price drops on tested laptops &amp; desktops. No inflated pre-discount rates — real verified savings with 7-Day Checking Warranty and nationwide delivery across Pakistan.
-              </p>
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-3">
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-2xl">
+              100% genuine market price drops on tested laptops &amp; desktops. No inflated pre-discount rates — real verified savings with 7-Day Checking Warranty and nationwide delivery across Pakistan.
+            </p>
 
-              <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold bg-emerald-950/60 px-3 py-1 rounded-xl border border-emerald-500/30 self-start md:self-auto flex-shrink-0">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Genuine Direct-Import Rates (Zero Fake Markups)</span>
-              </div>
+            <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold bg-emerald-950/60 px-3 py-1 rounded-xl border border-emerald-500/30 self-start md:self-auto flex-shrink-0">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Genuine Direct-Import Rates (Zero Fake Markups)</span>
             </div>
-          )}
+          </div>
         </div>
 
-        {!isCollapsed && (
-          <>
-            {/* Deals Cards Grid with Stunning Hover Glow Effects */}
-            <div 
-              id="todays-deals-cards-grid"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
+        {/* Collapsible Cards Container (Smoothly scrolls/folds up on collapse) */}
+        <div 
+          className={`transition-all duration-500 ease-in-out overflow-hidden ${
+            isCollapsed 
+              ? 'max-h-0 opacity-0 pointer-events-none mt-0' 
+              : 'max-h-[8000px] opacity-100 mt-8 sm:mt-10'
+          }`}
+        >
+          {/* Deals Cards Grid with Stunning Hover Glow Effects */}
+          <div 
+            id="todays-deals-cards-grid"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
           {dealProducts.map((product) => {
             const currentPrice = pricingMode === 'wholesale' ? product.wholesalePrice : product.retailPrice;
             const originalPrice = product.originalPrice || (currentPrice + 5000);
@@ -216,19 +218,21 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
                 {/* Background Card Hover Glow Highlight */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 via-transparent to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-3xl pointer-events-none" />
 
-                {/* Top Badge Strip: Deal Tag + SAVE Rs. X */}
-                <div className="flex items-center justify-between gap-2 mb-4 relative z-10">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-white font-extrabold text-[11px] sm:text-xs uppercase tracking-wider shadow-md shadow-red-600/30">
-                    <Flame className="w-3.5 h-3.5 fill-white text-white" />
+                {/* Top Badge Strip: Deal Tag + SAVE Rs. X (X% OFF in single line) with reduced size and balanced margins */}
+                <div className="flex items-center justify-between gap-1.5 sm:gap-2 mb-3.5 px-0.5 relative z-10 flex-nowrap">
+                  <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-r from-red-600 to-orange-600 text-white font-extrabold text-[10px] sm:text-[11px] uppercase tracking-wider shadow-sm whitespace-nowrap shrink-0">
+                    <Flame className="w-3 h-3 fill-white text-white shrink-0" />
                     <span>Today's Deal</span>
                   </div>
 
                   {savings > 0 && (
-                    <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-950/90 border border-red-500/60 text-red-300 font-extrabold text-xs sm:text-sm shadow-inner">
-                      <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                      <span>SAVE {formatPrice(savings)}</span>
+                    <div className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-red-950/85 border border-red-500/50 text-red-200 font-bold text-[10px] sm:text-[11px] shadow-inner whitespace-nowrap shrink-0">
+                      <Zap className="w-3 h-3 text-cyan-400 fill-cyan-400 shrink-0" />
+                      <span className="whitespace-nowrap font-bold">SAVE {formatPrice(savings)}</span>
                       {discountPercent > 0 && (
-                        <span className="text-[10px] text-red-400 font-normal ml-0.5">({discountPercent}% OFF)</span>
+                        <span className="text-[9px] sm:text-[10px] text-red-300 font-bold whitespace-nowrap ml-1 shrink-0 inline-block">
+                          ({discountPercent}% OFF)
+                        </span>
                       )}
                     </div>
                   )}
@@ -435,9 +439,8 @@ export const TodaysDealsSection: React.FC<TodaysDealsSectionProps> = ({
               <p className="text-[11px] text-slate-400">Secure bubble packaging &amp; tracking.</p>
             </div>
           </div>
+          </div>
         </div>
-        </>
-      )}
 
       </div>
     </section>

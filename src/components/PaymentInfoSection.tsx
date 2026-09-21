@@ -143,51 +143,57 @@ export const PaymentInfoSection: React.FC<PaymentInfoSectionProps> = ({ onOpenAi
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className={`flex flex-col md:flex-row md:items-end justify-between gap-4 ${isCollapsed ? 'mb-0 pb-0 border-b-0' : 'mb-8 pb-6 border-b border-slate-800/80'}`}>
-          <div className="flex-1">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">💳</span>
-              <span className="text-xs font-bold text-orange-400 uppercase tracking-widest font-mono">
-                TRANSPARENT TRANSACTION METHODS • VERIFIED LOGISTICS
-              </span>
-            </div>
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase mt-1">
-                Payment Options & COD Policy
-              </h2>
+        {/* Section Header - Persistent layout matching 834.JPG */}
+        <div className={`relative z-10 ${isCollapsed ? '' : 'mb-8 pb-6 border-b border-slate-800/80'}`}>
+          {/* Eyebrow */}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-lg">💳</span>
+            <span className="text-xs font-bold text-orange-400 uppercase tracking-widest font-mono">
+              TRANSPARENT TRANSACTION METHODS • VERIFIED LOGISTICS
+            </span>
+          </div>
 
-              {/* Collapse / Expand Button aligned with heading */}
+          {/* Heading Line with Collapse, Verified Accounts, and 256-Bit Escrow Vault all in the SAME LINE */}
+          <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase">
+              Payment Options &amp; COD Policy
+            </h2>
+
+            {/* Right side: Collapse / Expand + Verified Accounts + 256-Bit Escrow Vault in the SAME LINE */}
+            <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
               <SectionCollapseButton
                 isCollapsed={isCollapsed}
                 onToggle={() => setIsCollapsed(!isCollapsed)}
                 id="payment-info-collapse-btn"
               />
-            </div>
-            {!isCollapsed && (
-              <p className="text-sm text-slate-400 mt-1 max-w-2xl">
-                Clear, transparent, and secure payment methods for retail customers and corporate procurement across Pakistan.
-              </p>
-            )}
-          </div>
 
-          {!isCollapsed && (
-            <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold whitespace-nowrap">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 Verified Accounts
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-xs font-semibold">
+
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-xs font-semibold whitespace-nowrap">
                 <Lock className="w-3.5 h-3.5 text-orange-400" />
                 256-Bit Escrow Vault
               </span>
             </div>
-          )}
+          </div>
+
+          {/* Subtitle description below heading line - always visible as in 834.JPG */}
+          <p className="text-sm text-slate-400 mt-2 max-w-2xl leading-relaxed">
+            Clear, transparent, and secure payment methods for retail customers and corporate procurement across Pakistan.
+          </p>
         </div>
 
-        {!isCollapsed && (
-          <>
-            {/* PROMINENT EXPENSIVE LAPTOPS POLICY CALLOUT */}
+        {/* Collapsible Content: Policy Callout, Payment Cards, Bank Accounts, Steps */}
+        <div 
+          className={`transition-all duration-500 ease-in-out overflow-hidden ${
+            isCollapsed 
+              ? 'max-h-0 opacity-0 pointer-events-none mt-0' 
+              : 'max-h-[10000px] opacity-100'
+          }`}
+        >
+          {/* PROMINENT EXPENSIVE LAPTOPS POLICY CALLOUT */}
         <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-amber-950/40 via-orange-950/30 to-slate-900/60 border border-amber-500/40 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-40 h-40 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.12),transparent)] pointer-events-none" />
           
@@ -473,8 +479,7 @@ export const PaymentInfoSection: React.FC<PaymentInfoSectionProps> = ({ onOpenAi
           </div>
 
         </div>
-        </>
-        )}
+        </div>
 
       </div>
     </section>

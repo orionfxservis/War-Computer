@@ -1,6 +1,4 @@
-import { Product } from '../types';
-
-export const INITIAL_PRODUCTS: Product[] = [
+[
   {
     "id": "prod-wc-184",
     "sku": "WC-DELL-184",
@@ -36,7 +34,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 12,
+    "stockQuantity": 31,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 15,
@@ -46,8 +44,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small184-DELL-7490-LAPTOP1909090588.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -65,7 +62,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8gb RAM, 256GB SSD M2, and clear 74\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8gb RAM, 256GB SSD M2, and clear 74\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -114,7 +111,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 19,
+    "stockQuantity": 32,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 18,
@@ -124,8 +121,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small100-images_-_2026-09-19T1728664830.933.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 4th Generation",
@@ -143,7 +139,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 4th Generation, 8GB RAM, 256GB SSD, and clear 35\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 4th Generation, 8GB RAM, 256GB SSD, and clear 35\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -192,7 +188,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 26,
+    "stockQuantity": 19,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 21,
@@ -202,8 +198,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small99-images_-_2026-09-19T300098840.353.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i3 12th Generation",
@@ -221,7 +216,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i3 12th Generation, 8GB RAM, 256 GB SSD, and clear 35\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i3 12th Generation, 8GB RAM, 256 GB SSD, and clear 35\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -280,8 +275,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small98-images_-_2026-09-19T98527002.099.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i3 7th Generation",
@@ -299,7 +293,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i3 7th Generation, 8gb DDR4, 256 gb SSD, and clear 15\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i3 7th Generation, 8gb DDR4, 256 gb SSD, and clear 15\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -348,7 +342,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 15,
+    "stockQuantity": 23,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 27,
@@ -358,8 +352,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small97-images_-_2026-09-19T486917154.211.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 10th Generation",
@@ -377,7 +370,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8GB RAM, 256 GB SSD, and clear 34\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8GB RAM, 256 GB SSD, and clear 34\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -426,7 +419,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 22,
+    "stockQuantity": 32,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 30,
@@ -436,8 +429,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small96-61AjKt7tseL745179707._ac_uf350,350_ql50_.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 8th generation",
@@ -455,7 +447,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th generation, 8GB RAM, 256 GB SSD, and clear 53\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th generation, 8GB RAM, 256 GB SSD, and clear 53\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -504,18 +496,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 29,
+    "stockQuantity": 32,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 33,
     "isFeatured": true,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small95-71owJtHwgEL1633111409._ac_ul450_sy450_ql70_.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7th",
@@ -533,7 +524,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7th, 8 gb RAM, 256 gb SSD, and clear 33\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7th, 8 gb RAM, 256 gb SSD, and clear 33\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -582,18 +573,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 36,
+    "stockQuantity": 20,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 36,
     "isFeatured": true,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small94-download_(8)1155026431.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 8th generation",
@@ -611,7 +601,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th generation, 8 GB RAM, 256 GB SSD, and clear 33\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th generation, 8 GB RAM, 256 GB SSD, and clear 33\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -670,8 +660,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small93-images_-_2026-09-19T1277616717.170.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -689,7 +678,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 15\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 15\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -745,11 +734,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isFeatured": true,
     "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small92-51Jp6nYEkmL412316896._ac_uf894,1000_ql80_.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "i3 12",
@@ -767,7 +755,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features i3 12, 8GB RAM, 256 GB SSD, and clear 11\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features i3 12, 8GB RAM, 256 GB SSD, and clear 11\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -816,7 +804,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 32,
+    "stockQuantity": 29,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 45,
@@ -826,8 +814,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small91-images_-_2026-09-19T903546325.918.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 6th generation",
@@ -845,7 +832,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 6th generation, 8GB RAM, 256 GB SSD, and clear 14\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 6th generation, 8GB RAM, 256 GB SSD, and clear 14\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "tablets",
@@ -894,18 +881,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 14,
+    "stockQuantity": 17,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 48,
     "isFeatured": true,
     "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": false,
+    "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small90-images_-_2026-09-19T233577000.414.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 10th Generation",
@@ -923,7 +909,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8GB DDR4, 256 GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8GB DDR4, 256 GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -972,18 +958,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 21,
+    "stockQuantity": 15,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 51,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small89-images_-_2026-09-19T364207009.079.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -1001,7 +986,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB DDR4, 256 GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB DDR4, 256 GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1050,7 +1035,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 28,
+    "stockQuantity": 24,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 54,
@@ -1060,8 +1045,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small88-images_-_2026-09-19T1418864148.298.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 8th generation",
@@ -1079,7 +1063,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th generation, 8gb RAM, 256 gb SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th generation, 8gb RAM, 256 gb SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1128,18 +1112,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 35,
+    "stockQuantity": 16,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 57,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small87-images_-_2026-09-19T1955849403.597.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "CORE i7 10th generation",
@@ -1157,7 +1140,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features CORE i7 10th generation, 8GB RAM, 256GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features CORE i7 10th generation, 8GB RAM, 256GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1206,7 +1189,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 17,
+    "stockQuantity": 34,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 60,
@@ -1216,8 +1199,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small86-images_-_2026-09-19T112875159.452.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i7 8 generation",
@@ -1235,7 +1217,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 8 generation, 8gb DDR4, 256gb SSD 15, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 8 generation, 8gb DDR4, 256gb SSD 15, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1284,7 +1266,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 24,
+    "stockQuantity": 29,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 63,
@@ -1294,8 +1276,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small85-images_-_2026-09-19T359626299.985.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 8 generation",
@@ -1313,7 +1294,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8 generation, 8gb DDR4, 256GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8 generation, 8gb DDR4, 256GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1362,7 +1343,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 31,
+    "stockQuantity": 16,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 66,
@@ -1372,8 +1353,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small84-images_-_2026-09-19T1002233203.300.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -1391,7 +1371,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB RAM, 256 GB HDD, and clear 17\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB RAM, 256 GB HDD, and clear 17\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1440,18 +1420,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 13,
+    "stockQuantity": 18,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 69,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small83-images_-_2026-09-19T1369636282.181.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 8th generation",
@@ -1469,7 +1448,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th generation, 8gb DDR4, 256gb Storage, and clear 17\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th generation, 8gb DDR4, 256gb Storage, and clear 17\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1518,7 +1497,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 20,
+    "stockQuantity": 24,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 72,
@@ -1528,8 +1507,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small82-images_-_2026-09-19T1104761604.667.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -1547,7 +1525,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256 GB SSD, and clear 25\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256 GB SSD, and clear 25\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1596,7 +1574,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 27,
+    "stockQuantity": 18,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 75,
@@ -1606,8 +1584,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small81-images_(7)1271503034.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -1625,7 +1602,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1674,18 +1651,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 34,
+    "stockQuantity": 32,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 78,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small80-images_-_2026-09-19T514247595.002.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -1703,7 +1679,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 55\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 55\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -1752,18 +1728,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 16,
+    "stockQuantity": 20,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 81,
     "isFeatured": false,
     "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": false,
+    "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small79-images_(6)1216257428.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 8th GENE",
@@ -1781,7 +1756,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th GENE, 16GB RAM, 256GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th GENE, 16GB RAM, 256GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1830,7 +1805,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 23,
+    "stockQuantity": 26,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 84,
@@ -1840,8 +1815,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small78-images_-_2026-09-19T1793699560.728.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel core",
@@ -1859,7 +1833,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel core, 16GB RAM, 256GB SSD, and clear 10\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel core, 16GB RAM, 256GB SSD, and clear 10\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1908,18 +1882,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 30,
+    "stockQuantity": 29,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 87,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small77-images_-_2026-09-19T1836428988.730.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -1937,7 +1910,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 10\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 10\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -1986,7 +1959,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 12,
+    "stockQuantity": 19,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 90,
@@ -1996,8 +1969,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small76-images_-_2026-09-19T1707149062.778.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -2015,7 +1987,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 16GB RAM, 256GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 16GB RAM, 256GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2064,7 +2036,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 19,
+    "stockQuantity": 26,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 93,
@@ -2074,8 +2046,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small75-images_-_2026-09-19T1055382110.629.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 8th generation",
@@ -2093,7 +2064,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th generation, 8 GB DDR4, 256 GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th generation, 8 GB DDR4, 256 GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "tablets",
@@ -2142,18 +2113,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 26,
+    "stockQuantity": 27,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 96,
     "isFeatured": false,
     "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small74-download_(7)1509655567.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 10th Generation",
@@ -2171,7 +2141,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 10th Generation, 16 GB RAM, 256 GB SSD, and clear 95\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 10th Generation, 16 GB RAM, 256 GB SSD, and clear 95\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -2220,18 +2190,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 33,
+    "stockQuantity": 29,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 99,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small73-images_(7)1385028345.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -2249,7 +2218,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "tablets",
@@ -2308,8 +2277,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small72-images_-_2026-09-19T31797590.792.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 8th Generation",
@@ -2327,7 +2295,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th Generation, 16GB RAM, 256GB SSD, and clear 36\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th Generation, 16GB RAM, 256GB SSD, and clear 36\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2376,18 +2344,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 22,
+    "stockQuantity": 27,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 20,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": true,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small71-images_(3)938074219.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -2405,7 +2372,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 16GB Ram, 512GB SSD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 16GB Ram, 512GB SSD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2454,7 +2421,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 29,
+    "stockQuantity": 32,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 23,
@@ -2464,8 +2431,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small70-images_-_2026-09-18T1962383150.978.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "INTEL Core",
@@ -2483,7 +2449,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features INTEL Core, 16GB RAM, 256GB SSD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features INTEL Core, 16GB RAM, 256GB SSD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2532,7 +2498,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 36,
+    "stockQuantity": 22,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 26,
@@ -2542,8 +2508,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small69-images_-_2026-09-18T955744424.144.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -2561,7 +2526,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8 GB RAM, 256GB SSD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8 GB RAM, 256GB SSD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2617,11 +2582,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isFeatured": false,
     "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": false,
+    "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small68-images_-_2026-09-18T1505743472.368.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 10th generation",
@@ -2639,7 +2603,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th generation, 8GB RAM, 256GB SSD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th generation, 8GB RAM, 256GB SSD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2688,7 +2652,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 25,
+    "stockQuantity": 19,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 32,
@@ -2698,8 +2662,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small67-images_-_2026-09-18T2066499450.483.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 8th Generation",
@@ -2717,7 +2680,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th Generation, 8gb RAM, 256gb SSD Storage, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th Generation, 8gb RAM, 256gb SSD Storage, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2766,18 +2729,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 32,
+    "stockQuantity": 28,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 35,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": true,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small66-images_(14)1065070686.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 7th generation",
@@ -2795,7 +2757,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 7th generation, 8gb Ram, 256gb SSD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 7th generation, 8gb Ram, 256gb SSD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2844,18 +2806,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 14,
+    "stockQuantity": 20,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 38,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small65-images_-_2026-09-18T212372765.792.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 8th Generation",
@@ -2873,7 +2834,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th Generation, 8GB RAM, 256GB Storage, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th Generation, 8GB RAM, 256GB Storage, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -2922,7 +2883,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 21,
+    "stockQuantity": 33,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 41,
@@ -2932,8 +2893,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small64-HP-850-G6-Front429166447.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 8th Generation",
@@ -2951,7 +2911,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th Generation, 8GB RAM, 256GB Storage, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th Generation, 8GB RAM, 256GB Storage, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3000,7 +2960,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 28,
+    "stockQuantity": 20,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 44,
@@ -3010,8 +2970,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small63-images_(3)1639066640.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i5 7th genrration",
@@ -3029,7 +2988,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i5 7th genrration, 8gb RAM, 256 gb Storage, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i5 7th genrration, 8gb RAM, 256 gb Storage, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3078,7 +3037,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 35,
+    "stockQuantity": 21,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 47,
@@ -3088,8 +3047,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small62-images_-_2026-09-18T1871253482.983.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -3107,7 +3065,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8gb Ram, 256gb SSD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8gb Ram, 256gb SSD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3156,7 +3114,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 17,
+    "stockQuantity": 31,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 50,
@@ -3166,8 +3124,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small61-images_-_2026-09-18T1481325647.611.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i7 4th generation",
@@ -3185,7 +3142,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 4th generation, 8gb RAM, 500gb HDD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 4th generation, 8gb RAM, 500gb HDD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3234,7 +3191,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 24,
+    "stockQuantity": 15,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 53,
@@ -3244,8 +3201,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small59-images_-_2026-09-18T16973624.601.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 10th Generation",
@@ -3263,7 +3219,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8gb RAM, 256 gb SSD, and clear 84\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8gb RAM, 256 gb SSD, and clear 84\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3312,7 +3268,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 31,
+    "stockQuantity": 27,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 56,
@@ -3322,8 +3278,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small58-images_(2)941944771.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 8th generation",
@@ -3341,7 +3296,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th generation, 16gb DDR4, 256GB SSD, and clear 84\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 8th generation, 16gb DDR4, 256GB SSD, and clear 84\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3390,7 +3345,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 13,
+    "stockQuantity": 19,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 59,
@@ -3400,8 +3355,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small57-images_-_2026-09-18T2004010675.205.jfif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i7 8th geneartion",
@@ -3419,7 +3373,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 8th geneartion, 8gb RAM, 256 gb SSD, and clear 84\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 8th geneartion, 8gb RAM, 256 gb SSD, and clear 84\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3468,18 +3422,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 20,
+    "stockQuantity": 15,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 62,
     "isFeatured": false,
     "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": false,
+    "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small56-images_(2)968171945.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 Processor",
@@ -3497,7 +3450,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 Processor, 8GB RAM, 256GB SSD, and clear 84\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 Processor, 8GB RAM, 256GB SSD, and clear 84\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3546,18 +3499,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 27,
+    "stockQuantity": 17,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 65,
     "isFeatured": false,
     "isBestSeller": false,
     "isNewArrival": true,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small55-images_(2)1273952822.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i7 13th Generation",
@@ -3575,7 +3527,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 13th Generation, 16GB, 512GB M2 SSD, and clear 84\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 13th Generation, 16GB, 512GB M2 SSD, and clear 84\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3624,7 +3576,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 34,
+    "stockQuantity": 29,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 68,
@@ -3634,8 +3586,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small54-images836843216.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -3653,7 +3604,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB DDR4 Ram, 256 gb SSD, and clear 83\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB DDR4 Ram, 256 gb SSD, and clear 83\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3702,7 +3653,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 16,
+    "stockQuantity": 25,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 71,
@@ -3712,8 +3663,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small53-Screenshot_2026-09-11011185624.16.28 am.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 8th Generation",
@@ -3731,7 +3681,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th Generation, 8 gb Ram, 256 gb Storage, and clear 83\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th Generation, 8 gb Ram, 256 gb Storage, and clear 83\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3785,13 +3735,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     "rating": 4.6,
     "reviewsCount": 74,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small52-Screenshot_2026-09-11775591706.08.54 am.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -3809,7 +3758,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB DDR4, 256GB SSD M2 NVME, and clear 74\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB DDR4, 256GB SSD M2 NVME, and clear 74\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -3858,18 +3807,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 30,
+    "stockQuantity": 34,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 77,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small51-Screenshot_2026-09-11229494461.56.57 am.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i7 8th generation",
@@ -3887,7 +3835,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 8th generation, 16 gb ram, 256GB ssd 13, and clear 10\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 8th generation, 16 gb ram, 256GB ssd 13, and clear 10\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "tablets",
@@ -3946,8 +3894,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small50-OIP_(7)1722677552.webp",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "i7 16GB",
@@ -3965,7 +3912,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features i7 16GB, 16GB, 256GB SSD 2GB Nvidia GTX 960m 13, and clear 13\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features i7 16GB, 16GB, 256GB SSD 2GB Nvidia GTX 960m 13, and clear 13\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "gaming_laptops",
@@ -4014,7 +3961,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 19,
+    "stockQuantity": 26,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 83,
@@ -4024,8 +3971,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small44-Screenshot_2026-09-1861693647.38.46 am.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -4043,7 +3989,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8 gb RAM, 256 gb SSD, and clear 45\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8 gb RAM, 256 gb SSD, and clear 45\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -4092,7 +4038,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 26,
+    "stockQuantity": 15,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 86,
@@ -4102,8 +4048,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small43-Screenshot_2026-09-12103832414.19.06 am.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 10th Generation",
@@ -4121,7 +4066,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 10th Generation, 8GB RAM, 256GB SSD, and clear 84\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 10th Generation, 8GB RAM, 256GB SSD, and clear 84\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -4170,7 +4115,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 33,
+    "stockQuantity": 19,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 89,
@@ -4180,8 +4125,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small42-Screenshot_2026-09-148441928.08.51 am.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i5 11 generation",
@@ -4199,7 +4143,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i5 11 generation, 16 GB RAM, 256GB SSD M2, and clear 45\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i5 11 generation, 16 GB RAM, 256GB SSD M2, and clear 45\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -4248,18 +4192,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 15,
+    "stockQuantity": 33,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 92,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small41-Screenshot_2026-09-11908663452.59.44 am.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i5 7th generation",
@@ -4277,7 +4220,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i5 7th generation, 8 gb Ram, 256 gb SSD 15, and clear 64\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i5 7th generation, 8 gb Ram, 256 gb SSD 15, and clear 64\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -4333,11 +4276,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isFeatured": false,
     "isBestSeller": false,
     "isNewArrival": true,
-    "isDealOfTheDay": false,
+    "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small40-hp_eilte_850_g5_43831080",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "CORE i7 8th GENE",
@@ -4355,7 +4297,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features CORE i7 8th GENE, 8 GB RAM, 256 GB SSD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features CORE i7 8th GENE, 8 GB RAM, 256 GB SSD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -4404,18 +4346,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 29,
+    "stockQuantity": 32,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 98,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small39-Gemini_Generated_Ima585989489.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -4433,7 +4374,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB NVMe SSD, and clear 54\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB NVMe SSD, and clear 54\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -4482,7 +4423,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 36,
+    "stockQuantity": 33,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 16,
@@ -4492,8 +4433,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small38-Screenshot_2026-09-11203177855.44.02 am.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i5 8th gen",
@@ -4511,7 +4451,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i5 8th gen, 8 GB ram, 256 GB SSD, and clear 64\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i5 8th gen, 8 GB ram, 256 GB SSD, and clear 64\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -4560,7 +4500,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 18,
+    "stockQuantity": 16,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 19,
@@ -4570,8 +4510,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small36-Gemini_Generated_Ima8186703.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i7 8th generation",
@@ -4589,7 +4528,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 8th generation, 8 gb Ram, 256 gb SSD, and clear 65\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 8th generation, 8 gb Ram, 256 gb SSD, and clear 65\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -4638,7 +4577,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 25,
+    "stockQuantity": 28,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 22,
@@ -4648,8 +4587,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small34-Gemini_Generated_Ima1738163030.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core",
@@ -4667,7 +4605,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 14\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core, 8GB RAM, 256GB SSD, and clear 14\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -4716,18 +4654,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 32,
+    "stockQuantity": 26,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 25,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": true,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small33-Gemini_Generated_Ima1501922286.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 8th Gen",
@@ -4745,7 +4682,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th Gen, 8gb ram, 256GB SSD, and clear 25\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 8th Gen, 8gb ram, 256GB SSD, and clear 25\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -4794,7 +4731,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 14,
+    "stockQuantity": 21,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 28,
@@ -4804,8 +4741,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small32-Gemini_Generated_Ima1484954682.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 10th Gen",
@@ -4823,7 +4759,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Gen, 8GB RAM, 256GB SSD, and clear 54\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Gen, 8GB RAM, 256GB SSD, and clear 54\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -4882,8 +4818,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small31-Gemini_Generated_Ima1405385591.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 13th Generation",
@@ -4901,7 +4836,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 13th Generation, 16GB RAM, 256GB SSD 14, and clear 54\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 13th Generation, 16GB RAM, 256GB SSD 14, and clear 54\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -4950,18 +4885,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 28,
+    "stockQuantity": 18,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 34,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small30-HP_840_g72039409929",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core I5 1oth gene",
@@ -4979,7 +4913,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core I5 1oth gene, 8gb ddr4, 256GB SSD, and clear 84\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core I5 1oth gene, 8gb ddr4, 256GB SSD, and clear 84\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -5028,7 +4962,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 35,
+    "stockQuantity": 22,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 37,
@@ -5038,8 +4972,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small28-download_(1)1288596499.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -5057,7 +4990,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8gb, 256GB SSD, and clear 54\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8gb, 256GB SSD, and clear 54\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -5106,7 +5039,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 17,
+    "stockQuantity": 27,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 40,
@@ -5116,8 +5049,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small27-Screenshot_2026-06-12076162211.29.15 pm.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -5135,7 +5067,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB RAM, 256GB SSD, and clear 46\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB RAM, 256GB SSD, and clear 46\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -5184,18 +5116,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 24,
+    "stockQuantity": 15,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 43,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": false,
+    "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small23-hp-probook-430-g8-1118669739.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 1135G7",
@@ -5213,7 +5144,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 1135G7, 16GB RAM, 512GB m2 Intel Iris Xe Graphics 13, and clear 43\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 1135G7, 16GB RAM, 512GB m2 Intel Iris Xe Graphics 13, and clear 43\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -5262,7 +5193,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 31,
+    "stockQuantity": 15,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 46,
@@ -5272,8 +5203,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small22-IMG-20250116-WA03521798130448.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 QuadCore",
@@ -5291,7 +5221,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 QuadCore, 08GB, 256GB SSD, and clear 85\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 QuadCore, 08GB, 256GB SSD, and clear 85\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -5350,8 +5280,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small21-notebook-latitude-14282812504.avif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -5369,7 +5298,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB RAM, 256GB SSD, and clear 14\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB RAM, 256GB SSD, and clear 14\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -5428,8 +5357,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small20-images_(4)715897377.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -5447,7 +5375,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB RAM, 256GB SSD, and clear 65\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 8GB RAM, 256GB SSD, and clear 65\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -5496,18 +5424,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 27,
+    "stockQuantity": 17,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 55,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": true,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small19-lenovo-yoga-7i1157645939.6.png",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -5525,7 +5452,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 16GB RAM, 512GB m2 SSD, and clear 11\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 16GB RAM, 512GB m2 SSD, and clear 11\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -5574,7 +5501,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 34,
+    "stockQuantity": 18,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 58,
@@ -5584,8 +5511,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small16-hp-1040-g21555648051.1-768x768.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "i5-6th",
@@ -5603,7 +5529,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features i5-6th, 8GB RAM, 256GB SSD, and clear 10\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features i5-6th, 8GB RAM, 256GB SSD, and clear 10\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -5652,18 +5578,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 16,
+    "stockQuantity": 29,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 61,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small14-dell-latitude-5410-p1684243433.webp",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -5681,7 +5606,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 08GB RAM, 256GB SSD, and clear 14\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 08GB RAM, 256GB SSD, and clear 14\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -5730,7 +5655,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 23,
+    "stockQuantity": 19,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 64,
@@ -5740,8 +5665,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small13-IMG-20241223-WA0251160025797.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 2nd Gen",
@@ -5759,7 +5683,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 2nd Gen, 4GB RAM, 250GB HDD, and clear 54\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 2nd Gen, 4GB RAM, 250GB HDD, and clear 54\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -5808,7 +5732,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 30,
+    "stockQuantity": 24,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 67,
@@ -5818,8 +5742,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small12-IMG-20241223-WA02412022662755.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 2nd Gen",
@@ -5837,7 +5760,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 2nd Gen, 4GB RAM, 250GB HDD, and clear 64\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 2nd Gen, 4GB RAM, 250GB HDD, and clear 64\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -5896,8 +5819,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small11-IMG-20241210-WA0127(878764539.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -5915,7 +5837,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 08GB RAM, 256GB SSD, and clear 13\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 08GB RAM, 256GB SSD, and clear 13\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -5964,7 +5886,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 19,
+    "stockQuantity": 25,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 73,
@@ -5974,8 +5896,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small9-HP_840_g5383332895.webp",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel HD",
@@ -5993,7 +5914,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel HD, 8GB DDR4, 256GB SSD, and clear 84\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel HD, 8GB DDR4, 256GB SSD, and clear 84\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -6042,18 +5963,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 26,
+    "stockQuantity": 20,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 76,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
-    "isDealOfTheDay": false,
+    "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small4-IMG-20241212-WA0064662891401.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 7th Generation",
@@ -6071,7 +5991,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 7th Generation, 8GB ddr4, 256GB SSD, and clear 57\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 7th Generation, 8GB ddr4, 256GB SSD, and clear 57\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "laptops",
@@ -6120,18 +6040,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 33,
+    "stockQuantity": 20,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 79,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small3-IMG-20241021-WA01471755715405.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 10th Generation",
@@ -6149,7 +6068,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8GB RAM, 256GB SSD, and clear 44\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8GB RAM, 256GB SSD, and clear 44\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -6198,7 +6117,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 15,
+    "stockQuantity": 18,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 82,
@@ -6208,8 +6127,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small2-dell_64401252583298.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "i5 4th",
@@ -6227,7 +6145,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features i5 4th, 16 GB RAM, 320GB HDD, and clear 64\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features i5 4th, 16 GB RAM, 320GB HDD, and clear 64\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "laptops",
@@ -6276,7 +6194,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 22,
+    "stockQuantity": 20,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 85,
@@ -6286,8 +6204,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small1-Gemini_Generated_Ima56225813.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i5 10th Generation",
@@ -6305,7 +6222,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8GB RAM, 256 GB SSD, and clear 43\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i5 10th Generation, 8GB RAM, 256 GB SSD, and clear 43\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "laptops",
@@ -6361,11 +6278,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isFeatured": false,
     "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small37-premium-materials-8-1690336246.avif",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "core i7 6th gen",
@@ -6383,7 +6299,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 6th gen, 16 gb RAM, 256GB SSD, and clear 13\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features core i7 6th gen, 16 gb RAM, 256GB SSD, and clear 13\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "gaming_laptops",
@@ -6432,7 +6348,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 36,
+    "stockQuantity": 17,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 91,
@@ -6442,8 +6358,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small29-dell_presion_55602029574660.webp",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Xeon w-11955M",
@@ -6461,7 +6376,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Xeon w-11955M, 8GB RAM, 256GB SSD, and clear 55\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Xeon w-11955M, 8GB RAM, 256GB SSD, and clear 55\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "workstations",
@@ -6510,7 +6425,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 18,
+    "stockQuantity": 23,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 94,
@@ -6520,8 +6435,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small10-dell7550_795285640.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Core i7 10th Generation",
@@ -6539,7 +6453,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 10th Generation, 16GB RAM, 512GB SSD, and clear 75\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Core i7 10th Generation, 16GB RAM, 512GB SSD, and clear 75\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "workstations",
@@ -6588,7 +6502,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 25,
+    "stockQuantity": 24,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 97,
@@ -6598,8 +6512,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small35-Gemini_Generated_Ima789887921.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -6617,7 +6530,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 4GB RAM, 16GB ROM, and clear 16\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 4GB RAM, 16GB ROM, and clear 16\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "samsung",
       "chromebooks",
@@ -6666,7 +6579,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 32,
+    "stockQuantity": 22,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 15,
@@ -6676,8 +6589,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small26-3100_dell781379576",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -6695,7 +6607,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 4gb ram, 32gb rom Android 13 update 2029, and clear 31\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 4gb ram, 32gb rom Android 13 update 2029, and clear 31\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "chromebooks",
@@ -6744,7 +6656,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 14,
+    "stockQuantity": 21,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 18,
@@ -6754,8 +6666,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small25-images_(8)1544626716.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "intel 8th",
@@ -6773,7 +6684,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features intel 8th, 4 GB DDR4 RAM, 32 GB Rom11, and clear 10\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features intel 8th, 4 GB DDR4 RAM, 32 GB Rom11, and clear 10\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "lenovo",
       "desktops",
@@ -6822,7 +6733,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 21,
+    "stockQuantity": 30,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 21,
@@ -6832,8 +6743,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small17-images_(1)769112821.jpeg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Celeron",
@@ -6851,7 +6761,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Celeron, 32GB, 32GB Storage, and clear 32\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Celeron, 32GB, 32GB Storage, and clear 32\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "samsung",
       "desktops",
@@ -6900,18 +6810,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 28,
+    "stockQuantity": 25,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 24,
     "isFeatured": false,
     "isBestSeller": false,
     "isNewArrival": false,
-    "isDealOfTheDay": false,
+    "isDealOfTheDay": true,
     "images": [
       "https://www.warcomputer.com/products/small15-IMG-20241223-WA02721514775931.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -6929,7 +6838,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 2GB RAM, 16GB ROM, and clear 16\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 2GB RAM, 16GB ROM, and clear 16\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "ctl",
       "desktops",
@@ -6978,7 +6887,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 35,
+    "stockQuantity": 23,
     "condition": "USED",
     "rating": 4.7,
     "reviewsCount": 27,
@@ -6988,8 +6897,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small8-IMG-20240527-WA0059(1743935.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel Core Processor",
@@ -7007,7 +6915,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 2GB, 16GB ROM, and clear 31\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel Core Processor, 2GB, 16GB ROM, and clear 31\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "desktops",
@@ -7056,18 +6964,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 17,
+    "stockQuantity": 22,
     "condition": "USED",
     "rating": 4.8,
     "reviewsCount": 30,
     "isFeatured": false,
-    "isBestSeller": true,
+    "isBestSeller": false,
     "isNewArrival": true,
-    "isDealOfTheDay": true,
+    "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small7-IMG-20240419-WA0178(1997015086.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Celeron 4gGB",
@@ -7085,7 +6992,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Celeron 4gGB, 32GB, 32GB SSD Good Bttery Backup, and clear 31\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Celeron 4gGB, 32GB, 32GB SSD Good Bttery Backup, and clear 31\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "dell",
       "desktops",
@@ -7134,18 +7041,17 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 24,
+    "stockQuantity": 32,
     "condition": "USED",
     "rating": 4.9,
     "reviewsCount": 33,
     "isFeatured": false,
-    "isBestSeller": false,
+    "isBestSeller": true,
     "isNewArrival": false,
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small6-IMG-20240419-WA0173(1206144044.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Dual-core",
@@ -7163,7 +7069,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Dual-core, 16GB, 16GB Storage, and clear 30\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Dual-core, 16GB, 16GB Storage, and clear 30\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "samsung",
       "desktops",
@@ -7212,7 +7118,7 @@ export const INITIAL_PRODUCTS: Product[] = [
         "discountPercentage": 20
       }
     ],
-    "stockQuantity": 31,
+    "stockQuantity": 25,
     "condition": "USED",
     "rating": 4.6,
     "reviewsCount": 36,
@@ -7222,8 +7128,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "isDealOfTheDay": false,
     "images": [
       "https://www.warcomputer.com/products/small5-IMG-20241021-WA01391347970885.jpg",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75"
     ],
     "specs": {
       "cpu": "Intel HD",
@@ -7241,7 +7146,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       "100% Inspected & Tested: Motherboard, Thermals, Keyboard, Screen & Battery",
       "Official War Computer 7-Day Checking Warranty & Nationwide COD Support"
     ],
-    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel HD, 4GB Ram, 32GB Storage, and clear 11\" Display. Inspected and certified by War Computer technicians for retail customers and wholesale procurement across Pakistan.",
+    "description": "Official listing from War Computer (warcomputer.com). Grade-A UK fresh import unit verified for performance and longevity. Features Intel HD, 4GB Ram, 32GB Storage, and clear 11\" Display. Verified by War Computer technicians for retail and wholesale procurement.",
     "tags": [
       "hp",
       "desktops",
@@ -7254,246 +7159,5 @@ export const INITIAL_PRODUCTS: Product[] = [
     ],
     "warComputerUrl": "https://www.warcomputer.com/detail/uk-fresh-import-hp-chromebook-11-g8-ee-10-th-generation-intel-hd-graphics-400-4gb-ram-32gb-storage-116quot-inch-display-intel-celeron-n4020-playstore-supported-android-11-update-2027-2029-war-computer-best-deals--5.html",
     "warComputerCategory": "chromebox"
-  },
-  {
-    "id": "prod-bulk-opti-25lot",
-    "sku": "WC-BULK-OPTI-25LOT",
-    "name": "Dell OptiPlex Micro Gen12 Desktop Fleet [25-Unit Bulk Pallet]",
-    "brand": "Dell",
-    "category": "wholesale_lots",
-    "retailPrice": 875000,
-    "wholesalePrice": 750000,
-    "wholesaleMOQ": 1,
-    "wholesaleTiers": [
-      {
-        "minUnits": 1,
-        "maxUnits": 1,
-        "pricePerUnit": 750000,
-        "discountPercentage": 14
-      },
-      {
-        "minUnits": 2,
-        "maxUnits": 3,
-        "pricePerUnit": 700000,
-        "discountPercentage": 20
-      },
-      {
-        "minUnits": 4,
-        "pricePerUnit": 660000,
-        "discountPercentage": 24
-      }
-    ],
-    "stockQuantity": 8,
-    "condition": "REFURBISHED",
-    "rating": 4.9,
-    "reviewsCount": 38,
-    "isFeatured": true,
-    "isBulkLot": true,
-    "lotUnitCount": 25,
-    "images": [
-      "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=720&q=75"
-    ],
-    "specs": {
-      "cpu": "Intel Core i5-12500T 6-Core (per unit)",
-      "gpu": "Intel UHD Graphics 770",
-      "ram": "16GB DDR4 3200MHz (per unit, 400GB Total Pallet)",
-      "storage": "256GB NVMe SSD (per unit, 6.4TB Total Pallet)",
-      "os": "Windows 11 Pro Genuine Activated on every unit",
-      "warranty": "1-Month Replacement Warranty",
-      "ports": "Dual DisplayPort, HDMI, 5x USB 3.2, Gigabit Ethernet"
-    },
-    "highlights": [
-      "Complete 25-Unit Pallet Lot: Save substantial margin on bulk purchase",
-      "Every unit professionally tested, cleaned, thermal pasted, & Windows 11 pre-installed",
-      "Ships securely boxed on wooden pallets nationwide across Pakistan"
-    ],
-    "description": "The turnkey bulk IT hardware lot for call centers, corporate software companies, and computer labs in Pakistan. Includes 25 micro PC units and 25 original power adapters.",
-    "tags": [
-      "wholesale-lot",
-      "dell-optiplex",
-      "bulk-desktop",
-      "pallet-deal",
-      "b2b-fleet",
-      "refurbished"
-    ],
-    "warComputerCategory": "Bulk Wholesale Pallets"
-  },
-  {
-    "id": "prod-bulk-hp840-10lot",
-    "sku": "WC-BULK-HP840-10LOT",
-    "name": "HP EliteBook 840 Corporate Fleet [10-Unit Bulk Lot]",
-    "brand": "HP",
-    "category": "wholesale_lots",
-    "retailPrice": 650000,
-    "wholesalePrice": 580000,
-    "wholesaleMOQ": 1,
-    "wholesaleTiers": [
-      {
-        "minUnits": 1,
-        "maxUnits": 1,
-        "pricePerUnit": 580000,
-        "discountPercentage": 11
-      },
-      {
-        "minUnits": 2,
-        "maxUnits": 3,
-        "pricePerUnit": 550000,
-        "discountPercentage": 15
-      },
-      {
-        "minUnits": 4,
-        "pricePerUnit": 520000,
-        "discountPercentage": 20
-      }
-    ],
-    "stockQuantity": 6,
-    "condition": "USED",
-    "rating": 4.8,
-    "reviewsCount": 26,
-    "isFeatured": true,
-    "isBulkLot": true,
-    "lotUnitCount": 10,
-    "images": [
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=720&q=75",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=720&q=75"
-    ],
-    "specs": {
-      "cpu": "Intel Core i5-8th/10th Gen (per unit)",
-      "gpu": "Intel UHD Graphics",
-      "ram": "16GB DDR4 (per unit, 160GB Total Lot)",
-      "storage": "256GB / 512GB SSD (per unit, 3.8TB Total Lot)",
-      "os": "Windows 11 Pro Genuine Activated",
-      "warranty": "15-Day Wholesale Checking Warranty",
-      "ports": "Thunderbolt Type-C, USB 3.1, HDMI"
-    },
-    "highlights": [
-      "10-Unit Corporate Ultrabook Lot for Office Resellers & Companies",
-      "Fully battery tested (3+ hours backup minimum guaranteed per unit)",
-      "Grade-A Clean Cosmetically with matching original chargers"
-    ],
-    "description": "Bulk lot of 10 clean Grade-A HP EliteBook business ultrabooks. Tested, packed, and ready for deployment in corporate offices or retail resale across Pakistan.",
-    "tags": [
-      "wholesale-lot",
-      "hp-elitebook",
-      "bulk-laptop",
-      "b2b-lot",
-      "corporate-fleet"
-    ],
-    "warComputerCategory": "Bulk Wholesale Pallets"
   }
-];
-
-export const HERO_SCROLLING_IMAGES = [
-  {
-    url: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=500&q=70',
-    title: 'HP EliteBook 840 G7 - Tested & Certified',
-    category: 'Used Business Laptops',
-    tag: 'Rs. 70,000'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=70',
-    title: 'ThinkPad T14 & X1 Carbon',
-    category: 'Refurbished & Open Box',
-    tag: 'Checking Warranty'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=70',
-    title: 'War Apex Titan X (RTX 4090)',
-    category: 'Brand New Gaming Rigs',
-    tag: 'Extreme Performance'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=500&q=70',
-    title: 'Dell OptiPlex Micro PCs & Fleets',
-    category: 'Tested Used Desktops',
-    tag: 'B2B & Office'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=500&q=70',
-    title: 'iPad Pro M4 & MacBook Air M2',
-    category: 'Flagship Apple Devices',
-    tag: 'Official Warranty'
-  }
-];
-
-export const MOCK_PRODUCTS = INITIAL_PRODUCTS;
-
-export const SOCIAL_FEEDS = [
-  {
-    id: 'soc-1',
-    channel: 'YouTube' as const,
-    handle: '@WarComputersHQ',
-    title: 'HP EliteBook 840 G7 vs Dell Latitude 7400: Best Used Laptop Under Rs. 70k in Pakistan',
-    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=75',
-    likes: '18.4k',
-    url: 'https://youtube.com'
-  },
-  {
-    id: 'soc-2',
-    channel: 'Instagram' as const,
-    handle: '@warcomputers_pk',
-    title: 'Unboxing 50x Tested Dell OptiPlex Units for Lahore Call Center Client.',
-    image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=600&q=75',
-    likes: '12.9k',
-    url: 'https://instagram.com'
-  },
-  {
-    id: 'soc-3',
-    channel: 'Discord' as const,
-    handle: 'discord.gg/warcomputers',
-    title: 'Pakistan PC Builders Community: Daily Stock Alerts & Verified Deals.',
-    image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=600&q=75',
-    likes: '7.1k',
-    url: 'https://discord.com'
-  }
-];
-
-export const MOCK_ANALYTICS_DATA = {
-  timeframe: 'Last 30 Days (Real-Time Synchronized)',
-  totalRevenue: 3485000.00,
-  revenueGrowth: 28.4,
-  retailRevenue: 1840000.00,
-  wholesaleRevenue: 1645000.00,
-  unitsSold: 142,
-  unitsSoldTotal: 142,
-  activeInventoryCount: 480,
-  wholesaleRatio: 47.2,
-  averageOrderValue: 74500.00,
-  totalInventoryUnits: 480,
-  totalInventoryValuation: 28500000.00,
-  lowStockItemsCount: 3,
-  salesTrend: [
-    { month: 'Mar', retail: 1200000, wholesale: 1100000, units: 110 },
-    { month: 'Apr', retail: 1350000, wholesale: 1250000, units: 125 },
-    { month: 'May', retail: 1500000, wholesale: 1400000, units: 130 },
-    { month: 'Jun', retail: 1650000, wholesale: 1480000, units: 135 },
-    { month: 'Jul', retail: 1720000, wholesale: 1550000, units: 138 },
-    { month: 'Aug', retail: 1840000, wholesale: 1645000, units: 142 }
-  ],
-  monthlyTrends: [
-    { month: 'Mar', retailSales: 1200000, wholesaleSales: 1100000, units: 110 },
-    { month: 'Apr', retailSales: 1350000, wholesaleSales: 1250000, units: 125 },
-    { month: 'May', retailSales: 1500000, wholesaleSales: 1400000, units: 130 },
-    { month: 'Jun', retailSales: 1650000, wholesaleSales: 1480000, units: 135 },
-    { month: 'Jul', retailSales: 1720000, wholesaleSales: 1550000, units: 138 },
-    { month: 'Aug', retailSales: 1840000, wholesaleSales: 1645000, units: 142 }
-  ],
-  categoryBreakdown: [
-    { category: 'Laptops & Ultrabooks', percentage: 48, sharePercent: 48, revenue: 1672800, units: 88 },
-    { category: 'Desktops & Mini PCs', percentage: 24, sharePercent: 24, revenue: 836400, units: 34 },
-    { category: 'Wholesale B2B Bulk Lots', percentage: 16, sharePercent: 16, revenue: 557600, units: 8 },
-    { category: 'Chromebooks', percentage: 7, sharePercent: 7, revenue: 243950, units: 22 },
-    { category: 'Tablets & Workstations', percentage: 5, sharePercent: 5, revenue: 174250, units: 10 }
-  ],
-  topMovingProducts: [
-    { id: 'prod-wc-184', name: 'Dell Latitude 7490 Core i7 8th Gen', category: 'Laptops', unitsSold: 42, revenue: 2016000, stockRemaining: 48 },
-    { id: 'prod-wc-100', name: 'Dell Inspiron 3542 Core i5 4th Gen', category: 'Laptops', unitsSold: 28, revenue: 2520000, stockRemaining: 36 },
-    { id: 'prod-wc-99', name: 'Dell Inspiron 3520 Core i3 12th Gen', category: 'Laptops', unitsSold: 35, revenue: 2100000, stockRemaining: 55 },
-    { id: 'prod-wc-97', name: 'Lenovo IdeaPad S340 Core i5 10th Gen', category: 'Laptops', unitsSold: 18, revenue: 810000, stockRemaining: 24 }
-  ],
-  stockAlerts: [
-    { id: 'prod-wc-37', name: 'Dell Alienware 13 R2 Gaming Laptop', currentStock: 4, reorderLevel: 5, leadTimeDays: 7, supplier: 'War Computer UK Import', status: 'Low' as const },
-    { id: 'prod-wc-29', name: 'Dell Precision 5560 Xeon Touch UHD Workstation', currentStock: 3, reorderLevel: 5, leadTimeDays: 5, supplier: 'War Computer UK Import', status: 'Low' as const }
-  ]
-};
+]

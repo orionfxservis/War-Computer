@@ -75,6 +75,46 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
     });
     return ['all', ...Array.from(brandSet).sort()];
   }, [products]);
+
+  // Live Category Counts matching warcomputer.com imported inventory
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = {
+      all: products.length,
+      business_laptops: 0,
+      gaming_laptops: 0,
+      workstations: 0,
+      chromebooks: 0,
+      desktops: 0,
+      wholesale_lots: 0,
+    };
+    products.forEach(p => {
+      if (p.category === 'laptops' || p.category === 'business_laptops') {
+        counts.business_laptops++;
+      } else if (p.category === 'gaming_laptops') {
+        counts.gaming_laptops++;
+      } else if (p.category === 'workstations') {
+        counts.workstations++;
+      } else if (p.category === 'chromebooks') {
+        counts.chromebooks++;
+      } else if (p.category === 'desktops') {
+        counts.desktops++;
+      } else if (p.category === 'wholesale_lots' || p.isBulkLot) {
+        counts.wholesale_lots++;
+      }
+    });
+    return counts;
+  }, [products]);
+
+  const warCategories: { id: ProductCategory; label: string; icon: string; count: number; desc: string }[] = [
+    { id: 'all', label: 'All Equipment', icon: '💻', count: categoryCounts.all, desc: 'Complete Inventory' },
+    { id: 'business_laptops', label: 'Business Laptops', icon: '💼', count: categoryCounts.business_laptops, desc: 'Dell, HP, Lenovo' },
+    { id: 'gaming_laptops', label: 'Gaming Laptops', icon: '🎮', count: categoryCounts.gaming_laptops, desc: 'Alienware High-FPS' },
+    { id: 'workstations', label: 'Laptop Workstations', icon: '⚡', count: categoryCounts.workstations, desc: 'Xeon & Quadro GPUs' },
+    { id: 'chromebooks', label: 'Chromebooks', icon: '🌐', count: categoryCounts.chromebooks, desc: 'Samsung, Dell Education' },
+    { id: 'desktops', label: 'Chromebox & Desktops', icon: '🖥️', count: categoryCounts.desktops, desc: 'Mini PCs & Chromebox' },
+    { id: 'wholesale_lots', label: 'Bulk Pallets (B2B)', icon: '📦', count: categoryCounts.wholesale_lots, desc: 'High-Margin Lots' },
+  ];
+
   const conditionTabs = [
     { id: 'all', label: 'ALL CONDITIONS', icon: '⚡', desc: 'Browse full catalog' },
     { id: 'NEW', label: 'NEW', icon: '🟢', desc: 'Brand new / sealed' },
@@ -250,8 +290,24 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
           }
         }
 
-        // Category filter
-        if (selectedCategory !== 'all' && p.category !== selectedCategory) return false;
+        // Category filter matching warcomputer.com categories
+        if (selectedCategory !== 'all') {
+          if (selectedCategory === 'business_laptops' || selectedCategory === 'laptops') {
+            if (p.category !== 'business_laptops' && p.category !== 'laptops') return false;
+          } else if (selectedCategory === 'gaming_laptops') {
+            if (p.category !== 'gaming_laptops') return false;
+          } else if (selectedCategory === 'workstations') {
+            if (p.category !== 'workstations') return false;
+          } else if (selectedCategory === 'chromebooks') {
+            if (p.category !== 'chromebooks') return false;
+          } else if (selectedCategory === 'desktops') {
+            if (p.category !== 'desktops') return false;
+          } else if (selectedCategory === 'wholesale_lots') {
+            if (p.category !== 'wholesale_lots' && !p.isBulkLot) return false;
+          } else if (p.category !== selectedCategory) {
+            return false;
+          }
+        }
 
         // Brand filter
         if (selectedBrand !== 'all' && p.brand !== selectedBrand) return false;
@@ -371,7 +427,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
           pricingMode={pricingMode}
         />
 
-        {/* Section Header */}
+        {/* Section Header - Persistent layout matching 832.JPG */}
         <div className={`relative z-10 ${isCatalogCollapsed ? '' : 'pb-6 border-b border-white/10'}`}>
           {/* Eyebrow */}
           <div className="flex items-center gap-2 mb-2">
@@ -381,67 +437,134 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
             </span>
           </div>
 
-          {/* Heading - Collapse - Sort on the EXACT same line */}
+          {/* Heading - Collapse/Expand - Sort on the EXACT same line */}
           <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase">
-              {selectedCategory === 'all' ? 'Hardware & System Catalog' : `${selectedCategory.replace('_', ' ')} Collection`}
+              {selectedCategory === 'all' 
+                ? 'Hardware & System Catalog' 
+                : selectedCategory === 'business_laptops' 
+                ? 'Business Laptops' 
+                : selectedCategory === 'gaming_laptops' 
+                ? 'Gaming Laptops' 
+                : selectedCategory === 'workstations' 
+                ? 'Laptop Workstations' 
+                : selectedCategory === 'chromebooks' 
+                ? 'Chromebooks' 
+                : selectedCategory === 'desktops' 
+                ? 'Chromebox & Desktops' 
+                : `${selectedCategory.replace('_', ' ')} Collection`}
             </h2>
 
-            {/* Right: Collapse + Mobile Filters + Sort in same line */}
+            {/* Right: Collapse + Mobile Filters + Sort in same line with fixed placement */}
             <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
-              {/* Collapse / Expand Button */}
+              {/* Collapse / Expand Button - maintains fixed width and placement */}
               <SectionCollapseButton
                 isCollapsed={isCatalogCollapsed}
                 onToggle={() => setIsCatalogCollapsed(!isCatalogCollapsed)}
                 id="catalog-collapse-btn"
               />
 
-              {!isCatalogCollapsed && (
-                <>
-                  <button
-                    id="mobile-filters-trigger-btn"
-                    onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-                    className="lg:hidden px-3.5 py-1.5 rounded-xl bg-slate-900 border border-white/10 text-slate-200 text-xs font-bold flex items-center gap-2 cursor-pointer shadow-sm hover:bg-slate-800"
-                  >
-                    <Filter className="w-4 h-4 text-orange-400" />
-                    <span>Filters ({activeFiltersCount})</span>
-                  </button>
+              <button
+                id="mobile-filters-trigger-btn"
+                onClick={() => {
+                  setMobileFilterOpen(!mobileFilterOpen);
+                  if (isCatalogCollapsed) setIsCatalogCollapsed(false);
+                }}
+                className="lg:hidden px-3.5 py-1.5 rounded-xl bg-slate-900 border border-white/10 text-slate-200 text-xs font-bold flex items-center gap-2 cursor-pointer shadow-sm hover:bg-slate-800"
+              >
+                <Filter className="w-4 h-4 text-orange-400" />
+                <span>Filters ({activeFiltersCount})</span>
+              </button>
 
-                  <div className="flex items-center gap-2 bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs text-slate-300 shadow-sm">
-                    <span className="text-slate-400 font-semibold">Sort:</span>
-                    <select
-                      id="sort-by-select"
-                      value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value as any)}
-                      className="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer"
-                    >
-                      <option value="featured" className="bg-slate-900">Featured First</option>
-                      <option value="price-low" className="bg-slate-900">Price: Low to High</option>
-                      <option value="price-high" className="bg-slate-900">Price: High to Low</option>
-                      <option value="rating" className="bg-slate-900">Customer Rating</option>
-                    </select>
-                  </div>
-                </>
-              )}
+              <div className="flex items-center gap-2 bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs text-slate-300 shadow-sm">
+                <span className="text-slate-400 font-semibold">Sort:</span>
+                <select
+                  id="sort-by-select"
+                  value={sortBy}
+                  onChange={(e) => {
+                    setSortBy(e.target.value as any);
+                    if (isCatalogCollapsed) setIsCatalogCollapsed(false);
+                  }}
+                  className="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer"
+                >
+                  <option value="featured" className="bg-slate-900">Featured First</option>
+                  <option value="price-low" className="bg-slate-900">Price: Low to High</option>
+                  <option value="price-high" className="bg-slate-900">Price: High to Low</option>
+                  <option value="rating" className="bg-slate-900">Customer Rating</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          {/* Subtitle description below heading line */}
-          {!isCatalogCollapsed && (
-            <p className="text-sm text-slate-400 mt-2">
-              {finderUseCase || finderBudget ? (
-                <span className="text-orange-300 font-semibold">
-                  Showing {filteredProducts.length} matching laptops for {activeUseCaseObj ? activeUseCaseObj.label : 'Any Use Case'} {activeBudgetObj ? `within ${activeBudgetObj.label}` : ''}
-                </span>
-              ) : (
-                `Showing ${filteredProducts.length} certified machines with clear condition badges & checking warranties`
-              )}
-            </p>
-          )}
+          {/* Subtitle description below heading line - Always visible as shown in 832.JPG */}
+          <p className="text-sm text-slate-400 mt-2">
+            {finderUseCase || finderBudget ? (
+              <span className="text-orange-300 font-semibold">
+                Showing {filteredProducts.length} matching laptops for {activeUseCaseObj ? activeUseCaseObj.label : 'Any Use Case'} {activeBudgetObj ? `within ${activeBudgetObj.label}` : ''}
+              </span>
+            ) : (
+              `Showing ${filteredProducts.length} certified machines from warcomputer.com with clear condition badges & checking warranties`
+            )}
+          </p>
         </div>
 
-        {!isCatalogCollapsed && (
-          <>
+        {/* Collapsible Content: Condition Tabs, Filters, and Product Grid */}
+        <div 
+          className={`transition-all duration-500 ease-in-out overflow-hidden ${
+            isCatalogCollapsed 
+              ? 'max-h-0 opacity-0 pointer-events-none mt-0' 
+              : 'max-h-[25000px] opacity-100'
+          }`}
+        >
+          {/* WARCOMPUTER.COM CATEGORY SELECTION TABS */}
+          <div className="mt-6 p-3 sm:p-4 bg-slate-900 border border-white/10 rounded-2xl shadow-xl">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-orange-400 uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-orange-400" />
+                <span>War Computer Categories (Imported from warcomputer.com):</span>
+              </div>
+              <span className="text-xs text-slate-400 font-medium">
+                {products.length} Total Verified Hardware Items
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2">
+              {warCategories.map((cat) => {
+                const isSelected = selectedCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    id={`cat-pill-${cat.id}`}
+                    onClick={() => {
+                      onSelectCategory(cat.id);
+                      if (isCatalogCollapsed) setIsCatalogCollapsed(false);
+                    }}
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                      isSelected
+                        ? 'bg-orange-500/20 border-orange-500 text-white shadow-lg shadow-orange-500/15 ring-1 ring-orange-500/30'
+                        : 'bg-slate-950/60 border-white/10 text-slate-400 hover:text-slate-200 hover:border-white/20 hover:bg-slate-900/80'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-1">
+                      <span className="text-base">{cat.icon}</span>
+                      <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-full ${
+                        isSelected ? 'bg-orange-500 text-white' : 'bg-slate-800 text-slate-300'
+                      }`}>
+                        {cat.count}
+                      </span>
+                    </div>
+                    <div className="mt-1.5">
+                      <div className={`font-bold text-xs truncate ${isSelected ? 'text-orange-300' : 'text-slate-200'}`}>
+                        {cat.label}
+                      </div>
+                      <div className="text-[10px] text-slate-500 truncate mt-0.5">
+                        {cat.desc}
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
             {/* CONDITION SEPARATION TABS BAR - Transparently Separates NEW / USED / REFURBISHED / OPEN BOX */}
         <div className="mt-6 p-3 sm:p-4 bg-slate-900 border border-white/10 rounded-2xl shadow-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
@@ -540,15 +663,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Category</label>
                 <div className="space-y-1">
-                  {[
-                    { id: 'all', label: 'All Equipment' },
-                    { id: 'laptops', label: 'Laptops & Ultrabooks' },
-                    { id: 'desktops', label: 'Desktop & Gaming PCs' },
-                    { id: 'chromebooks', label: 'Chromebooks' },
-                    { id: 'tablets', label: 'Tablets & 2-in-1' },
-                    { id: 'workstations', label: 'AI Compute Workstations' },
-                    { id: 'wholesale_lots', label: 'Bulk Wholesale Pallets' },
-                  ].map((cat) => (
+                  {warCategories.map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => onSelectCategory(cat.id as ProductCategory)}
@@ -558,8 +673,14 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
                           : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
                       }`}
                     >
-                      <span>{cat.label}</span>
-                      {selectedCategory === cat.id && <Check className="w-3.5 h-3.5 text-orange-400" />}
+                      <span className="flex items-center gap-1.5 truncate">
+                        <span>{cat.icon}</span>
+                        <span className="truncate">{cat.label}</span>
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <span className="text-[10px] text-slate-400 font-bold">({cat.count})</span>
+                        {selectedCategory === cat.id && <Check className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />}
+                      </div>
                     </button>
                   ))}
                 </div>
@@ -709,8 +830,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
           </main>
 
         </div>
-        </>
-      )}
+        </div>
 
       </div>
     </section>

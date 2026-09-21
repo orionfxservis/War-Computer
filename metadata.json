@@ -1,6 +1,6 @@
 {
   "name": "War Computers",
-  "description": "Wholesale and retail computer e-commerce platform for computers, laptops, chromebooks, tablets, and bulk inventory with AI customer support and real-time analytics.",
+  "description": "Shop laptops, desktop computers, gaming PCs, business laptops, monitors and computer accessories at War Computer. Based in Saddar Karachi with delivery across Pakistan.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

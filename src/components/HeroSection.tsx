@@ -106,11 +106,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="relative flex items-center justify-center">
             <h1 
               id="hero-main-heading"
-              className="text-3xl sm:text-5xl md:text-6xl font-normal font-times-regular font-['Times_New_Roman',Times,serif] tracking-tight text-white leading-[1.15] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+              className="text-3xl sm:text-5xl md:text-6xl font-normal font-times-regular font-['Times_New_Roman',Times,serif] tracking-tight text-white leading-[1.18] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+              style={{ fontFamily: "'Times New Roman', Times, 'Tinos', 'Nimbus Roman No9 L', 'Liberation Serif', serif", fontWeight: 400 }}
             >
-              <span className="block font-normal">Computers &amp; Laptops</span>
+              <span className="block font-normal">Computers, Laptops &amp;</span>
               <span className="block mt-1 sm:mt-2 font-normal text-transparent bg-clip-text hero-tagline-gradient bg-gradient-to-r from-orange-400 via-amber-400 to-orange-500">
-                You Can Trust
+                Accessories in Pakistan
               </span>
             </h1>
 
@@ -131,7 +132,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 id="hero-main-subheading"
                 className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed"
               >
-                New &amp; Tested Used Laptops, Desktops, Workstations &amp; Accessories at Competitive Prices. Nationwide Delivery Across Pakistan.
+                Shop Laptops, Desktop PCs, Business Laptops, Gaming Computers from War Computer. Visit our Saddar Karachi store or order online with delivery across Pakistan.
               </p>
 
               {/* Primary Action Buttons: [ Shop Laptops ] [ Shop Computers ] [ Today's Deals ] */}

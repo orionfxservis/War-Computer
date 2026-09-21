@@ -143,6 +143,14 @@ export default function App() {
   // Dynamic Catalog State with LocalStorage Persistence & Auto-Deduplication
   const [products, setProducts] = useState<Product[]>(() => {
     try {
+      const savedVersion = localStorage.getItem('war_computers_catalog_version');
+      // If version is not 'warcomputer-catalog-v2', seed with the newly imported warcomputer.com catalog
+      if (savedVersion !== 'warcomputer-catalog-v2') {
+        const base = deduplicateProducts(MOCK_PRODUCTS);
+        localStorage.setItem('war_computers_custom_products', JSON.stringify(base));
+        localStorage.setItem('war_computers_catalog_version', 'warcomputer-catalog-v2');
+        return base;
+      }
       const saved = localStorage.getItem('war_computers_custom_products');
       if (saved) {
         const parsed = JSON.parse(saved);
@@ -162,6 +170,7 @@ export default function App() {
     const baseCleaned = deduplicateProducts(MOCK_PRODUCTS);
     try {
       localStorage.setItem('war_computers_custom_products', JSON.stringify(baseCleaned));
+      localStorage.setItem('war_computers_catalog_version', 'warcomputer-catalog-v2');
     } catch (e) {}
     return baseCleaned;
   });

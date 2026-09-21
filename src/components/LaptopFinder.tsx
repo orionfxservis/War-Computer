@@ -213,46 +213,23 @@ export const LaptopFinder: React.FC<LaptopFinderProps> = ({
       {/* Decorative ambient background glows */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_0%,rgba(249,115,22,0.08),transparent)] pointer-events-none" />
 
-      {/* Header Banner */}
-      <div className={`relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 ${isExpanded ? 'pb-6 border-b border-white/10' : ''}`}>
-        <div className="space-y-1.5 flex-1">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-orange-500/20 border border-orange-500/40 text-[11px] font-black uppercase text-orange-400 tracking-wider shadow-sm">
-              <Sparkles className="w-3.5 h-3.5" /> SMART RECOMMENDATION ASSISTANT
-            </span>
-            <span className="text-[11px] text-slate-400 hidden sm:inline">• Built for Pakistan Hardware Buyers</span>
-          </div>
-
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
-              <span className="text-orange-400">🔎</span> Find Your Perfect Laptop
-            </h2>
-
-            {/* Collapse / Expand Button aligned with heading */}
-            <SectionCollapseButton
-              isCollapsed={!isExpanded}
-              onToggle={() => setIsExpanded(!isExpanded)}
-              id="laptop-finder-collapse-btn"
-            />
-          </div>
-          
-          {isExpanded && (
-            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl">
-              Don't worry about complicated processor model numbers or generations. Simply tell us your <strong>use case</strong> and <strong>budget</strong>, and we’ll match you with verified, 100% tested machines.
-            </p>
-          )}
+      {/* Header Banner - Stays intact as shown in 830.JPG */}
+      <div className={`relative z-10 ${isExpanded ? 'pb-6 border-b border-white/10' : ''}`}>
+        {/* Top Eyebrow Tag */}
+        <div className="flex items-center gap-2 mb-2">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-950/70 border border-cyan-500/40 text-[11px] font-black uppercase text-cyan-400 tracking-wider shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" /> SMART RECOMMENDATION ASSISTANT
+          </span>
+          <span className="text-[11px] text-slate-400 hidden sm:inline">• Built for Pakistan Hardware Buyers</span>
         </div>
 
-        {/* Status / Reset Actions */}
-        {isExpanded && (
-          <div className="flex items-center gap-2.5 self-start md:self-auto flex-wrap">
-            {hasActiveFinder && (
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-orange-500/15 border border-orange-500/30 text-orange-300 font-bold text-xs">
-                <CheckCircle2 className="w-4 h-4 text-orange-400" />
-                <span>{matchCount} Matching {matchCount === 1 ? 'Laptop' : 'Laptops'}</span>
-              </div>
-            )}
+        {/* Heading and Collapse / Expand Button on the EXACT same line */}
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
+            <span className="text-orange-400">🔎</span> Find Your Perfect Laptop
+          </h2>
 
+          <div className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
             {hasActiveFinder && (
               <button
                 id="laptop-finder-reset-btn"
@@ -260,18 +237,44 @@ export const LaptopFinder: React.FC<LaptopFinderProps> = ({
                 className="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/10 hover:border-orange-500/40 text-slate-300 hover:text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-sm"
               >
                 <RotateCcw className="w-3.5 h-3.5 text-orange-400" />
-                <span>Clear Finder</span>
+                <span className="hidden sm:inline">Clear Finder</span>
               </button>
             )}
+
+            {/* Collapse / Expand Button - fixed position and width */}
+            <SectionCollapseButton
+              isCollapsed={!isExpanded}
+              onToggle={() => setIsExpanded(!isExpanded)}
+              id="laptop-finder-collapse-btn"
+            />
           </div>
-        )}
+        </div>
+        
+        {/* Description underneath - ALWAYS visible as shown in 830.JPG */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mt-2">
+          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+            Don't worry about complicated processor model numbers or generations. Simply tell us your <strong>use case</strong> and <strong>budget</strong>, and we’ll match you with verified, 100% tested machines.
+          </p>
+
+          {hasActiveFinder && (
+            <div className="flex items-center gap-2 px-3 py-1 rounded-xl bg-orange-500/15 border border-orange-500/30 text-orange-300 font-bold text-xs self-start sm:self-auto flex-shrink-0">
+              <CheckCircle2 className="w-3.5 h-3.5 text-orange-400" />
+              <span>{matchCount} {matchCount === 1 ? 'Match' : 'Matches'}</span>
+            </div>
+          )}
+        </div>
       </div>
 
-      {isExpanded && (
-        <div className="relative z-10 pt-6 space-y-8">
-          
-          {/* STEP 1: What do you need it for? */}
-          <div className="space-y-3.5">
+      {/* Collapsible Steps Container - smoothly folds up when collapsed */}
+      <div 
+        className={`transition-all duration-500 ease-in-out overflow-hidden ${
+          !isExpanded 
+            ? 'max-h-0 opacity-0 pointer-events-none mt-0' 
+            : 'max-h-[5000px] opacity-100 relative z-10 pt-6 space-y-8'
+        }`}
+      >
+        {/* STEP 1: What do you need it for? */}
+        <div className="space-y-3.5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-orange-500 text-white font-black text-xs flex items-center justify-center shadow-md shadow-orange-500/30">
@@ -428,9 +431,7 @@ export const LaptopFinder: React.FC<LaptopFinderProps> = ({
               </a>
             </div>
           )}
-
         </div>
-      )}
-    </div>
+      </div>
   );
 };

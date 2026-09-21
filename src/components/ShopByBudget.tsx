@@ -91,7 +91,7 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
       {/* Ambient background lighting */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_25%_0%,rgba(249,115,22,0.08),transparent)] pointer-events-none" />
 
-      {/* Header Section */}
+      {/* Header Section - Exactly as pictured in 831.JPG, persistent across Collapse/Expand */}
       <div className={`relative z-10 ${isCollapsed ? '' : 'pb-6 border-b border-white/10'}`}>
         {/* Top Eyebrow Tag */}
         <div className="flex items-center gap-2 mb-2">
@@ -101,7 +101,7 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
           <span className="text-[11px] text-slate-400 hidden sm:inline">• 100% Bench Tested &amp; Verified</span>
         </div>
 
-        {/* Heading - Collapse - Cards / Guide Table on the EXACT same line */}
+        {/* Heading - Collapse/Expand - Cards / Guide Table on the EXACT same line */}
         <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
           {/* Left: Heading with Rs. */}
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-2.5">
@@ -111,69 +111,76 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
             <span>Shop By Budget</span>
           </h2>
 
-          {/* Right: Collapse and Cards / Guide Table in same line */}
+          {/* Right: Collapse and Cards / Guide Table in same line with fixed placement */}
           <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
-            {selectedBudget && !isCollapsed && (
+            {selectedBudget && (
               <button
                 id="clear-budget-filter-btn"
                 onClick={() => onSelectBudget(null)}
                 className="px-3 py-1.5 rounded-xl bg-orange-500/15 border border-orange-500/30 hover:bg-orange-500/25 text-orange-300 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-sm"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span>Reset Budget</span>
+                <span className="hidden sm:inline">Reset Budget</span>
               </button>
             )}
 
-            {/* Collapse / Expand Button */}
+            {/* Collapse / Expand Button - strictly maintains position */}
             <SectionCollapseButton
               isCollapsed={isCollapsed}
               onToggle={() => setIsCollapsed(!isCollapsed)}
               id="shop-by-budget-collapse-btn"
             />
 
-            {/* Cards / Guide Table Toggle */}
-            {!isCollapsed && (
-              <div className="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-1 text-xs">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                    viewMode === 'grid' 
-                      ? 'bg-cyan-500 text-slate-950 shadow-sm' 
-                      : 'text-slate-300 hover:text-white'
-                  }`}
-                >
-                  <LayoutGrid className="w-3.5 h-3.5" />
-                  <span>Cards</span>
-                </button>
-                <button
-                  onClick={() => setViewMode('table')}
-                  className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                    viewMode === 'table' 
-                      ? 'bg-cyan-500 text-slate-950 shadow-sm' 
-                      : 'text-slate-300 hover:text-white'
-                  }`}
-                >
-                  <Table className="w-3.5 h-3.5" />
-                  <span>Guide Table</span>
-                </button>
-              </div>
-            )}
+            {/* Cards / Guide Table Toggle - stays visible in same position */}
+            <div className="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-1 text-xs">
+              <button
+                onClick={() => {
+                  setViewMode('grid');
+                  if (isCollapsed) setIsCollapsed(false);
+                }}
+                className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                  viewMode === 'grid' 
+                    ? 'bg-cyan-500 text-slate-950 shadow-sm' 
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                <LayoutGrid className="w-3.5 h-3.5" />
+                <span>Cards</span>
+              </button>
+              <button
+                onClick={() => {
+                  setViewMode('table');
+                  if (isCollapsed) setIsCollapsed(false);
+                }}
+                className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                  viewMode === 'table' 
+                    ? 'bg-cyan-500 text-slate-950 shadow-sm' 
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                <Table className="w-3.5 h-3.5" />
+                <span>Guide Table</span>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Subtitle description below the heading line */}
-        {!isCollapsed && (
-          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl mt-2 leading-relaxed">
-            In Pakistan, shopping by your exact budget saves time. Select your price range below to instantly view certified laptops with live ready-to-dispatch availability.
-          </p>
-        )}
+        {/* Subtitle description below the heading line - persistent as shown in 831.JPG */}
+        <p className="text-xs sm:text-sm text-slate-300 max-w-3xl mt-2 leading-relaxed">
+          In Pakistan, shopping by your exact budget saves time. Select your price range below to instantly view certified laptops with live ready-to-dispatch availability.
+        </p>
       </div>
 
-      {/* Main Budget Content when expanded */}
-      {!isCollapsed && (
-        <>
-          {/* Main Budget Grid View */}
-          {viewMode === 'grid' ? (
+      {/* Main Budget Content - Smoothly collapses/folds up while preserving header */}
+      <div 
+        className={`transition-all duration-500 ease-in-out overflow-hidden ${
+          isCollapsed 
+            ? 'max-h-0 opacity-0 pointer-events-none mt-0' 
+            : 'max-h-[8000px] opacity-100'
+        }`}
+      >
+        {/* Main Budget Grid View */}
+        {viewMode === 'grid' ? (
         <div className="relative z-10 pt-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5">
             {BUDGET_BRACKETS.map((bracket) => {
@@ -380,8 +387,7 @@ export const ShopByBudget: React.FC<ShopByBudgetProps> = ({
           </div>
         </div>
       )}
-        </>
-      )}
+      </div>
     </div>
   );
 };

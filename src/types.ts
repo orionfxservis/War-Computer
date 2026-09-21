@@ -1,10 +1,12 @@
 export type ProductCategory = 
   | 'all' 
-  | 'desktops' 
   | 'laptops' 
-  | 'chromebooks' 
-  | 'tablets' 
+  | 'business_laptops'
+  | 'gaming_laptops'
   | 'workstations' 
+  | 'chromebooks' 
+  | 'desktops' 
+  | 'tablets' 
   | 'wholesale_lots';
 
 export type ProductCondition = 
@@ -51,8 +53,8 @@ export interface Product {
   id: string;
   sku: string;
   name: string;
-  brand: 'Apple' | 'ASUS' | 'Dell' | 'HP' | 'Lenovo' | 'MSI' | 'Razer' | 'Acer' | 'Custom Rig';
-  category: 'desktops' | 'laptops' | 'chromebooks' | 'tablets' | 'workstations' | 'wholesale_lots';
+  brand: 'Apple' | 'ASUS' | 'Dell' | 'HP' | 'Lenovo' | 'MSI' | 'Razer' | 'Acer' | 'Samsung' | 'CTL' | '1st Player' | 'Custom Rig' | string;
+  category: ProductCategory | string;
   retailPrice: number;
   originalPrice?: number; // Regular market price before genuine deal discount
   wholesalePrice: number; // base wholesale price
@@ -73,6 +75,8 @@ export interface Product {
   highlights: string[];
   description: string;
   tags: string[];
+  warComputerUrl?: string;
+  warComputerCategory?: string;
 }
 
 export interface CartItem {
