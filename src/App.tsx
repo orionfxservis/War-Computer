@@ -5,10 +5,12 @@ import {
   Product, 
   CartItem,
   OrderTrackingInfo,
-  SiteThemeId
+  SiteThemeId,
+  CustomerInquiry
 } from './types';
 import { MOCK_PRODUCTS } from './data/products';
 import { INITIAL_ORDERS } from './data/orders';
+import { INITIAL_INQUIRIES } from './data/inquiries';
 import { getInitialSiteTheme, applySiteTheme } from './utils/themeConstants';
 
 import { Navbar } from './components/Navbar';
@@ -224,6 +226,42 @@ export default function App() {
   const handleAddOrder = (newOrder: OrderTrackingInfo) => {
     setOrders(prev => deduplicateOrders([newOrder, ...prev]));
     showToast(`Added Order #${newOrder.orderId} to logistics desk.`);
+  };
+
+  // Dynamic Inquiries & Communication Inbox State with LocalStorage Persistence
+  const [inquiries, setInquiries] = useState<CustomerInquiry[]>(() => {
+    try {
+      const saved = localStorage.getItem('war_computers_inquiries');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return INITIAL_INQUIRIES;
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('war_computers_inquiries', JSON.stringify(inquiries));
+    } catch (e) {}
+  }, [inquiries]);
+
+  const handleUpdateInquiry = (updated: CustomerInquiry) => {
+    setInquiries(prev => prev.map(inq => inq.id === updated.id ? updated : inq));
+  };
+
+  const handleAddInquiry = (newInquiry: CustomerInquiry) => {
+    setInquiries(prev => [newInquiry, ...prev]);
+    showToast(`New inquiry from ${newInquiry.customerName} logged!`);
+  };
+
+  const handleDeleteInquiry = (id: string) => {
+    setInquiries(prev => prev.filter(inq => inq.id !== id));
+    showToast('Inquiry ticket removed.');
   };
 
   // Product CRUD Handlers
@@ -442,6 +480,10 @@ export default function App() {
           orders={orders}
           onUpdateOrder={handleUpdateOrder}
           onAddOrder={handleAddOrder}
+          inquiries={inquiries}
+          onUpdateInquiry={handleUpdateInquiry}
+          onAddInquiry={handleAddInquiry}
+          onDeleteInquiry={handleDeleteInquiry}
           pricingMode={pricingMode}
           onTogglePricingMode={setPricingMode}
           onNavigateToStore={() => navigateTo('store')}
@@ -700,6 +742,7 @@ export default function App() {
         onClose={() => setIsWholesaleQuoteOpen(false)}
         allProducts={products}
         initialProduct={initialQuoteProduct}
+        onAddInquiry={handleAddInquiry}
       />
 
       {/* 7. Comprehensive Sales & Inventory Analytics Dashboard */}

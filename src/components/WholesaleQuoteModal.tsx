@@ -12,7 +12,7 @@ import {
   MessageSquare
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { Product, WholesaleQuoteRequest } from '../types';
+import { Product, WholesaleQuoteRequest, CustomerInquiry } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
 
 interface WholesaleQuoteModalProps {
@@ -20,13 +20,15 @@ interface WholesaleQuoteModalProps {
   onClose: () => void;
   allProducts: Product[];
   initialProduct?: Product | null;
+  onAddInquiry?: (newInquiry: CustomerInquiry) => void;
 }
 
 export const WholesaleQuoteModal: React.FC<WholesaleQuoteModalProps> = ({
   isOpen,
   onClose,
   allProducts,
-  initialProduct
+  initialProduct,
+  onAddInquiry
 }) => {
   if (!isOpen) return null;
 
@@ -96,6 +98,32 @@ export const WholesaleQuoteModal: React.FC<WholesaleQuoteModalProps> = ({
     } finally {
       setCreatedQuoteId(quoteId);
       setSubmitted(true);
+
+      // Automatically register this wholesale inquiry in the Admin Communications Hub
+      if (onAddInquiry) {
+        const itemNames = selectedItems
+          .map(it => {
+            const p = allProducts.find(x => x.id === it.productId);
+            return p ? `${it.quantity}x ${p.name}` : `${it.quantity}x Units`;
+          })
+          .join(', ');
+
+        onAddInquiry({
+          id: quoteId,
+          customerName: contactName ? `${contactName} (${companyName})` : companyName,
+          email,
+          phone,
+          city: 'Pakistan',
+          subject: `Wholesale B2B RFQ Quote Request: ${itemNames.slice(0, 50)}...`,
+          message: `Company: ${companyName}\nBusiness Type: ${businessType}\nNTN/Tax ID: ${taxId || 'N/A'}\nFreight: ${freightPreference}\nRequested Items:\n${itemNames}\nEstimated Total: Rs. ${estimatedTotal.toLocaleString()}\n\nClient Notes: ${notes || 'Standard B2B Quotation requested.'}`,
+          inquiryType: 'wholesale',
+          createdAt: 'Just now',
+          status: 'new',
+          priority: 'urgent',
+          replies: []
+        });
+      }
+
       try {
         confetti({
           particleCount: 80,

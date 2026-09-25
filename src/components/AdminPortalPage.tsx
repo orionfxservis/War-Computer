@@ -15,11 +15,14 @@ import {
   Database,
   Globe,
   Sliders,
-  Laptop
+  Laptop,
+  Mail,
+  MessageCircle
 } from 'lucide-react';
-import { Product, PricingMode, OrderTrackingInfo } from '../types';
+import { Product, PricingMode, OrderTrackingInfo, CustomerInquiry } from '../types';
 import { ManageProductsSection } from './ManageProductsSection';
 import { AdminOrderTrackingSection } from './AdminOrderTrackingSection';
+import { AdminCommunicationHub } from './AdminCommunicationHub';
 import { formatPrice } from '../utils/formatCurrency';
 import { WarComputersLogo } from './WarComputersLogo';
 
@@ -33,6 +36,10 @@ interface AdminPortalPageProps {
   orders: OrderTrackingInfo[];
   onUpdateOrder: (updatedOrder: OrderTrackingInfo) => void;
   onAddOrder?: (newOrder: OrderTrackingInfo) => void;
+  inquiries?: CustomerInquiry[];
+  onUpdateInquiry?: (updated: CustomerInquiry) => void;
+  onAddInquiry?: (newInquiry: CustomerInquiry) => void;
+  onDeleteInquiry?: (id: string) => void;
   pricingMode: PricingMode;
   onTogglePricingMode: (mode: PricingMode) => void;
   onNavigateToStore: () => void;
@@ -48,12 +55,18 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
   orders,
   onUpdateOrder,
   onAddOrder,
+  inquiries = [],
+  onUpdateInquiry = () => {},
+  onAddInquiry = () => {},
+  onDeleteInquiry = () => {},
   pricingMode,
   onTogglePricingMode,
   onNavigateToStore
 }) => {
-  const [activeTab, setActiveTab] = useState<'products' | 'orders' | 'depot'>('products');
+  const [activeTab, setActiveTab] = useState<'products' | 'orders' | 'inquiries' | 'depot'>('products');
   const [copiedUrl, setCopiedUrl] = useState(false);
+
+  const unreadInquiriesCount = inquiries.filter(i => i.status === 'new').length;
 
   const handleCopyAdminUrl = () => {
     const adminUrl = `${window.location.origin}/admin.html`;
@@ -139,6 +152,24 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
             </button>
 
             <button
+              id="admin-tab-inquiries"
+              onClick={() => setActiveTab('inquiries')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer relative ${
+                activeTab === 'inquiries'
+                  ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/30'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              <Mail className="w-4 h-4" />
+              <span>Inquiries & Messages</span>
+              {unreadInquiriesCount > 0 && (
+                <span className="px-1.5 py-0.2 rounded-full bg-red-600 text-white text-[10px] font-black animate-pulse">
+                  {unreadInquiriesCount}
+                </span>
+              )}
+            </button>
+
+            <button
               id="admin-tab-depot"
               onClick={() => setActiveTab('depot')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
@@ -196,7 +227,20 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
           </div>
         )}
 
-        {/* Tab 3: Depot Inventory & System Stats */}
+        {/* Tab 3: Customer Inquiries & Unified Communications Hub */}
+        {activeTab === 'inquiries' && (
+          <div className="space-y-6">
+            <AdminCommunicationHub
+              inquiries={inquiries}
+              onUpdateInquiry={onUpdateInquiry}
+              onAddInquiry={onAddInquiry}
+              onDeleteInquiry={onDeleteInquiry}
+              products={products}
+            />
+          </div>
+        )}
+
+        {/* Tab 4: Depot Inventory & System Stats */}
         {activeTab === 'depot' && (
           <div className="space-y-6">
             

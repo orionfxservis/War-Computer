@@ -223,3 +223,31 @@ export interface SiteThemeConfig {
     glow: string;
   };
 }
+
+export interface InquiryReply {
+  id: string;
+  channel: 'email' | 'whatsapp' | 'internal_note';
+  sender: string; // e.g. "War Computers Admin (Support Desk)"
+  message: string;
+  sentAt: string;
+  subject?: string;
+  deliveryStatus?: 'sent' | 'delivered' | 'opened' | 'draft';
+}
+
+export interface CustomerInquiry {
+  id: string;
+  customerName: string;
+  email: string;
+  phone: string; // WhatsApp phone number (e.g. +92 333 1234567)
+  city?: string;
+  subject: string;
+  message: string;
+  inquiryType: 'general' | 'order' | 'quote' | 'wholesale' | 'support' | 'product_availability';
+  productId?: string;
+  productName?: string;
+  createdAt: string;
+  status: 'new' | 'replied_email' | 'replied_whatsapp' | 'resolved' | 'pending';
+  priority?: 'high' | 'normal' | 'urgent';
+  internalNotes?: string;
+  replies: InquiryReply[];
+}
