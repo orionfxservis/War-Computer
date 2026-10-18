@@ -11,7 +11,9 @@ import {
   Tablet, 
   PackageCheck,
   Building2,
-  CheckCircle2
+  CheckCircle2,
+  X,
+  ArrowRight
 } from 'lucide-react';
 import { Product, ProductCategory, PricingMode, FilterState } from '../types';
 import { ProductCard } from './ProductCard';
@@ -60,7 +62,6 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
   const [inStockOnly, setInStockOnly] = useState<boolean>(false);
   const [maxPrice, setMaxPrice] = useState<number>(500000);
   const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'rating'>('featured');
-  const [mobileFilterOpen, setMobileFilterOpen] = useState<boolean>(false);
   const [isCatalogCollapsed, setIsCatalogCollapsed] = useState<boolean>(false);
 
   // Dedicated "Laptop Finder" States
@@ -111,8 +112,8 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
     { id: 'gaming_laptops', label: 'Gaming Laptops', icon: '🎮', count: categoryCounts.gaming_laptops, desc: 'Alienware High-FPS' },
     { id: 'workstations', label: 'Laptop Workstations', icon: '⚡', count: categoryCounts.workstations, desc: 'Xeon & Quadro GPUs' },
     { id: 'chromebooks', label: 'Chromebooks', icon: '🌐', count: categoryCounts.chromebooks, desc: 'Samsung, Dell Education' },
-    { id: 'desktops', label: 'Chromebox & Desktops', icon: '🖥️', count: categoryCounts.desktops, desc: 'Mini PCs & Chromebox' },
-    { id: 'wholesale_lots', label: 'Bulk Pallets (B2B)', icon: '📦', count: categoryCounts.wholesale_lots, desc: 'High-Margin Lots' },
+    { id: 'desktops', label: 'Desktops', icon: '🖥️', count: categoryCounts.desktops, desc: 'Mini PCs & Desktops' },
+    { id: 'wholesale_lots', label: 'Bulk Orders', icon: '📦', count: categoryCounts.wholesale_lots, desc: 'High-Margin Lots' },
   ];
 
   const conditionTabs = [
@@ -283,9 +284,12 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
           const matchBrand = p.brand && p.brand.toLowerCase().includes(safeQuery);
           const matchCpu = p.specs?.cpu && p.specs.cpu.toLowerCase().includes(safeQuery);
           const matchGpu = p.specs?.gpu && p.specs.gpu.toLowerCase().includes(safeQuery);
+          const matchRam = p.specs?.ram && p.specs.ram.toLowerCase().includes(safeQuery);
+          const matchStorage = p.specs?.storage && p.specs.storage.toLowerCase().includes(safeQuery);
+          const matchSku = p.sku && p.sku.toLowerCase().includes(safeQuery);
           const matchDesc = p.description && p.description.toLowerCase().includes(safeQuery);
           const matchCondition = p.condition && p.condition.toLowerCase().includes(safeQuery);
-          if (!matchName && !matchBrand && !matchCpu && !matchGpu && !matchDesc && !matchCondition) {
+          if (!matchName && !matchBrand && !matchCpu && !matchGpu && !matchRam && !matchStorage && !matchSku && !matchDesc && !matchCondition) {
             return false;
           }
         }
@@ -467,8 +471,10 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
               <button
                 id="mobile-filters-trigger-btn"
                 onClick={() => {
-                  setMobileFilterOpen(!mobileFilterOpen);
                   if (isCatalogCollapsed) setIsCatalogCollapsed(false);
+                  setTimeout(() => {
+                    document.getElementById('horizontal-refine-catalog')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 50);
                 }}
                 className="lg:hidden px-3.5 py-1.5 rounded-xl bg-slate-900 border border-white/10 text-slate-200 text-xs font-bold flex items-center gap-2 cursor-pointer shadow-sm hover:bg-slate-800"
               >
@@ -516,304 +522,396 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
               : 'max-h-[25000px] opacity-100'
           }`}
         >
-          {/* WARCOMPUTER.COM CATEGORY SELECTION TABS */}
+          {/* 1. CONDITION SEPARATION TABS BAR - Transparently Separates NEW / USED / REFURBISHED / OPEN BOX */}
           <div className="mt-6 p-3 sm:p-4 bg-slate-900 border border-white/10 rounded-2xl shadow-xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-              <div className="flex items-center gap-2 text-xs font-bold text-orange-400 uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-orange-400" />
-                <span>War Computer Categories (Imported from warcomputer.com):</span>
+                <span>Filter by Condition (Clearly Separated):</span>
               </div>
-              <span className="text-xs text-slate-400 font-medium">
-                {products.length} Total Verified Hardware Items
-              </span>
+              {selectedCondition !== 'all' && (
+                <button
+                  onClick={() => setSelectedCondition('all')}
+                  className="text-xs text-orange-400 hover:text-orange-300 flex items-center gap-1 cursor-pointer font-semibold self-start sm:self-auto"
+                >
+                  <RotateCcw className="w-3 h-3" /> Reset Condition
+                </button>
+              )}
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2">
-              {warCategories.map((cat) => {
-                const isSelected = selectedCategory === cat.id;
+
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3">
+              {conditionTabs.map((cond) => {
+                const isSelected = selectedCondition === cond.id;
                 return (
                   <button
-                    key={cat.id}
-                    id={`cat-pill-${cat.id}`}
-                    onClick={() => {
-                      onSelectCategory(cat.id);
-                      if (isCatalogCollapsed) setIsCatalogCollapsed(false);
-                    }}
-                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                    key={cond.id}
+                    onClick={() => setSelectedCondition(cond.id)}
+                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected
                         ? 'bg-orange-500/20 border-orange-500 text-white shadow-lg shadow-orange-500/15 ring-1 ring-orange-500/30'
                         : 'bg-slate-950/60 border-white/10 text-slate-400 hover:text-slate-200 hover:border-white/20 hover:bg-slate-900/80'
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-1">
-                      <span className="text-base">{cat.icon}</span>
-                      <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-full ${
-                        isSelected ? 'bg-orange-500 text-white' : 'bg-slate-800 text-slate-300'
-                      }`}>
-                        {cat.count}
+                    <div className="flex items-center justify-between">
+                      <span className="font-black text-xs uppercase flex items-center gap-1.5">
+                        <span>{cond.icon}</span>
+                        <span className={isSelected ? 'text-orange-300' : 'text-slate-200'}>{cond.label}</span>
                       </span>
+                      {isSelected && <Check className="w-3.5 h-3.5 text-orange-400" />}
                     </div>
-                    <div className="mt-1.5">
-                      <div className={`font-bold text-xs truncate ${isSelected ? 'text-orange-300' : 'text-slate-200'}`}>
-                        {cat.label}
-                      </div>
-                      <div className="text-[10px] text-slate-500 truncate mt-0.5">
-                        {cat.desc}
-                      </div>
-                    </div>
+                    <span className="text-[11px] text-slate-400 mt-1 line-clamp-1">
+                      {cond.desc}
+                    </span>
                   </button>
                 );
               })}
             </div>
           </div>
-            {/* CONDITION SEPARATION TABS BAR - Transparently Separates NEW / USED / REFURBISHED / OPEN BOX */}
-        <div className="mt-6 p-3 sm:p-4 bg-slate-900 border border-white/10 rounded-2xl shadow-xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-orange-400" />
-              <span>Filter by Condition (Clearly Separated):</span>
-            </div>
-            {selectedCondition !== 'all' && (
-              <button
-                onClick={() => setSelectedCondition('all')}
-                className="text-xs text-orange-400 hover:text-orange-300 flex items-center gap-1 cursor-pointer font-semibold self-start sm:self-auto"
-              >
-                <RotateCcw className="w-3 h-3" /> Reset Condition
-              </button>
-            )}
-          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3">
-            {conditionTabs.map((cond) => {
-              const isSelected = selectedCondition === cond.id;
-              return (
-                <button
-                  key={cond.id}
-                  onClick={() => setSelectedCondition(cond.id)}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
-                    isSelected
-                      ? 'bg-orange-500/20 border-orange-500 text-white shadow-lg shadow-orange-500/15 ring-1 ring-orange-500/30'
-                      : 'bg-slate-950/60 border-white/10 text-slate-400 hover:text-slate-200 hover:border-white/20 hover:bg-slate-900/80'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-black text-xs uppercase flex items-center gap-1.5">
-                      <span>{cond.icon}</span>
-                      <span className={isSelected ? 'text-orange-300' : 'text-slate-200'}>{cond.label}</span>
-                    </span>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-orange-400" />}
-                  </div>
-                  <span className="text-[11px] text-slate-400 mt-1 line-clamp-1">
-                    {cond.desc}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+          {/* 2. SEARCH & REFINE SECTION IN HORIZONTAL DIRECTION (Placed Under Condition Filter as shown in 887.JPG) */}
+          <div id="horizontal-refine-catalog" className="mt-6 p-4 sm:p-5 bg-slate-900 border border-white/10 rounded-2xl shadow-xl space-y-4">
+            
+            {/* Top Toolbar: Refine Catalog Title + Live Search Input Bar + In-Stock Toggle + Reset All */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pb-3 border-b border-white/10">
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <SlidersHorizontal className="w-4 h-4 text-orange-400" />
+                <span className="text-sm font-bold text-white uppercase tracking-wider">Refine Catalog</span>
+                <span className="text-xs text-slate-400 font-medium">({filteredProducts.length} Items)</span>
+              </div>
 
-        {/* Main Catalog Layout */}
-        <div id="catalog-product-list" className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8">
-          
-          {/* Left Sidebar Filter Column (Desktop) */}
-          <aside className={`lg:col-span-3 space-y-6 ${mobileFilterOpen ? 'block' : 'hidden lg:block'}`}>
-            <div className="bg-slate-900 border border-white/10 rounded-2xl p-5 space-y-6 shadow-2xl sticky top-32">
-              
-              {/* Filter Title & Reset */}
-              <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                <div className="flex items-center gap-2 text-sm font-bold text-white">
-                  <SlidersHorizontal className="w-4 h-4 text-orange-400" />
-                  <span>Refine Catalog</span>
-                </div>
+              {/* Prominent Live Search Input */}
+              <div className="relative flex-1 max-w-xl">
+                <Search className="w-4 h-4 text-orange-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => onSearchChange?.(e.target.value)}
+                  placeholder="Search catalog by model (e.g. Latitude 5440, ThinkPad, EliteBook, i5, i7, 16GB)..."
+                  className="w-full pl-9 pr-8 py-2 bg-slate-950/80 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => onSearchChange?.('')}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-0.5 cursor-pointer"
+                    title="Clear search"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
+
+              {/* In-Stock Toggle & Quick Reset */}
+              <div className="flex items-center gap-4 self-end lg:self-auto flex-wrap">
+                <label className="flex items-center gap-2 text-xs font-medium text-slate-300 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={inStockOnly}
+                    onChange={(e) => setInStockOnly(e.target.checked)}
+                    className="rounded accent-orange-500 w-4 h-4 bg-slate-950 cursor-pointer"
+                  />
+                  <span>In-Stock Ready Units Only</span>
+                </label>
+
                 {activeFiltersCount > 0 && (
                   <button
                     onClick={handleResetFilters}
-                    className="text-xs text-orange-400 hover:text-orange-300 flex items-center gap-1 cursor-pointer font-semibold"
+                    className="text-xs text-orange-400 hover:text-orange-300 flex items-center gap-1 cursor-pointer font-semibold ml-2"
                   >
                     <RotateCcw className="w-3 h-3" /> Reset All
                   </button>
                 )}
               </div>
+            </div>
 
-              {/* Laptop Finder Quick Status in Sidebar */}
-              {(finderUseCase || finderBudget) && (
-                <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/30 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-orange-400 flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5" /> Finder Active
-                    </span>
-                    <button
-                      onClick={handleResetFinder}
-                      className="text-[10px] text-orange-300 hover:text-white underline cursor-pointer"
-                    >
-                      Clear
-                    </button>
-                  </div>
-                  <div className="text-xs text-slate-300 space-y-1">
-                    {finderUseCase && (
-                      <div>• Role: <strong>{activeUseCaseObj?.emoji} {activeUseCaseObj?.label}</strong></div>
-                    )}
-                    {finderBudget && (
-                      <div>• Budget: <strong>{activeBudgetObj?.label}</strong></div>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {/* Category Filter */}
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Category</label>
-                <div className="space-y-1">
-                  {warCategories.map((cat) => (
+            {/* CATEGORY (Horizontal Direction - matching 887.JPG) */}
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <span>CATEGORY</span>
+                </label>
+                {selectedCategory !== 'all' && (
+                  <button
+                    onClick={() => onSelectCategory('all')}
+                    className="text-[10px] text-orange-400 hover:text-orange-300 font-semibold cursor-pointer"
+                  >
+                    View All Categories ({categoryCounts.all})
+                  </button>
+                )}
+              </div>
+              
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700">
+                {warCategories.map((cat) => {
+                  const isSelected = selectedCategory === cat.id;
+                  return (
                     <button
                       key={cat.id}
-                      onClick={() => onSelectCategory(cat.id as ProductCategory)}
-                      className={`w-full text-left px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center justify-between transition-colors cursor-pointer ${
-                        selectedCategory === cat.id
-                          ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40'
-                          : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                      id={`cat-chip-${cat.id}`}
+                      onClick={() => {
+                        onSelectCategory(cat.id as ProductCategory);
+                        if (cat.id === 'wholesale_lots') {
+                          window.dispatchEvent(new CustomEvent('expand-wholesale-hub'));
+                          const el = document.getElementById('b2b-wholesale-hub');
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                      className={`flex-shrink-0 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer border ${
+                        isSelected
+                          ? 'bg-orange-500/20 text-orange-300 border-orange-500/50 shadow-md shadow-orange-500/15 ring-1 ring-orange-500/30'
+                          : 'bg-slate-950/60 border-white/10 text-slate-400 hover:text-slate-200 hover:border-white/20 hover:bg-slate-800/60'
                       }`}
                     >
-                      <span className="flex items-center gap-1.5 truncate">
-                        <span>{cat.icon}</span>
-                        <span className="truncate">{cat.label}</span>
+                      <span className="text-sm">{cat.icon}</span>
+                      <span>{cat.label}</span>
+                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                        isSelected ? 'bg-orange-500 text-white' : 'bg-slate-800 text-slate-400'
+                      }`}>
+                        {cat.count}
                       </span>
-                      <div className="flex items-center gap-1">
-                        <span className="text-[10px] text-slate-400 font-bold">({cat.count})</span>
-                        {selectedCategory === cat.id && <Check className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />}
-                      </div>
+                      {isSelected && <Check className="w-3 h-3 text-orange-400" />}
                     </button>
-                  ))}
-                </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* RS. SHOP BY BUDGET (Horizontal Direction - matching 887.JPG) */}
+            <div className="space-y-1.5 pt-2 border-t border-white/10">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="text-orange-400 font-extrabold">RS.</span>
+                  <span>SHOP BY BUDGET</span>
+                </label>
+                {finderBudget && (
+                  <button
+                    onClick={() => setFinderBudget(null)}
+                    className="text-[10px] text-orange-400 hover:text-orange-300 font-semibold cursor-pointer"
+                  >
+                    Clear Budget
+                  </button>
+                )}
               </div>
 
-              {/* Shop By Budget Sidebar Selector */}
-              <div className="space-y-2 pt-2 border-t border-slate-800/80">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="text-orange-400 font-extrabold">Rs.</span>
-                    <span>Shop By Budget</span>
-                  </label>
-                  {finderBudget && (
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700">
+                {BUDGET_BRACKETS.map((b) => {
+                  const isSelected = finderBudget === b.id;
+                  const matchingList = products.filter(p => matchesBudget(pricingMode === 'wholesale' ? p.wholesalePrice : p.retailPrice, b.id));
+                  const totalBracketStock = matchingList.reduce((acc, p) => acc + (p.stockQuantity || 0), 0);
+                  const stockDot = totalBracketStock <= 0 ? '🔴' : totalBracketStock <= 3 ? '🟡' : '🟢';
+
+                  return (
                     <button
-                      onClick={() => setFinderBudget(null)}
-                      className="text-[10px] text-orange-400 hover:text-orange-300 font-bold cursor-pointer"
+                      key={b.id}
+                      onClick={() => setFinderBudget(isSelected ? null : b.id)}
+                      className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 transition-all cursor-pointer border ${
+                        isSelected
+                          ? 'bg-orange-500/20 text-orange-300 border-orange-500/50 shadow-md ring-1 ring-orange-500/30'
+                          : 'bg-slate-950/60 border-white/10 text-slate-400 hover:text-slate-200 hover:border-white/20 hover:bg-slate-800/60'
+                      }`}
                     >
-                      Clear
+                      <span className="text-[10px]">{stockDot}</span>
+                      <span className="font-semibold text-xs">{b.label}</span>
+                      <span className="text-[10px] text-slate-500 font-bold ml-0.5">({matchingList.length})</span>
+                      {isSelected && <Check className="w-3 h-3 text-orange-400" />}
                     </button>
-                  )}
-                </div>
-                <div className="space-y-1">
-                  {BUDGET_BRACKETS.map((b) => {
-                    const isSelected = finderBudget === b.id;
-                    const matchingList = products.filter(p => matchesBudget(pricingMode === 'wholesale' ? p.wholesalePrice : p.retailPrice, b.id));
-                    const totalBracketStock = matchingList.reduce((acc, p) => acc + (p.stockQuantity || 0), 0);
-                    const stockDot = totalBracketStock <= 0 ? '🔴' : totalBracketStock <= 3 ? '🟡' : '🟢';
+                  );
+                })}
+              </div>
+            </div>
 
-                    return (
-                      <button
-                        key={b.id}
-                        onClick={() => setFinderBudget(isSelected ? null : b.id)}
-                        className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-medium flex items-center justify-between transition-colors cursor-pointer ${
-                          isSelected
-                            ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40 shadow-sm'
-                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
-                        }`}
-                      >
-                        <div className="flex items-center gap-1.5 truncate">
-                          <span className="text-[10px]">{stockDot}</span>
-                          <span className="font-semibold text-[11px] truncate">{b.label}</span>
-                        </div>
-                        <div className="flex items-center gap-1 flex-shrink-0">
-                          <span className="text-[10px] text-slate-500">{matchingList.length}</span>
-                          {isSelected && <Check className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />}
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
+            {/* MANUFACTURER / BRAND (Horizontal Direction) */}
+            <div className="space-y-1.5 pt-2 border-t border-white/10">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                  Manufacturer / Brand
+                </label>
+                {selectedBrand !== 'all' && (
+                  <button
+                    onClick={() => setSelectedBrand('all')}
+                    className="text-[10px] text-orange-400 hover:text-orange-300 font-semibold cursor-pointer"
+                  >
+                    All Brands
+                  </button>
+                )}
               </div>
 
-              {/* Brand Filter */}
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Manufacturer / Brand</label>
-                <div className="grid grid-cols-2 gap-1.5">
-                  {brands.map((b) => (
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700">
+                {brands.map((b) => {
+                  const isSelected = selectedBrand === b;
+                  return (
                     <button
                       key={b}
                       onClick={() => setSelectedBrand(b)}
-                      className={`px-2.5 py-1.5 rounded-lg text-xs font-medium text-center transition-all cursor-pointer ${
-                        selectedBrand === b
-                          ? 'bg-orange-500 text-white font-bold shadow-md shadow-orange-500/25 border border-orange-400/40'
-                          : 'bg-slate-950/60 border border-white/10 text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                      className={`flex-shrink-0 px-3 py-1 rounded-xl text-xs font-medium text-center transition-all cursor-pointer border ${
+                        isSelected
+                          ? 'bg-orange-500 text-white font-bold shadow-md shadow-orange-500/25 border-orange-400/40'
+                          : 'bg-slate-950/60 border-white/10 text-slate-400 hover:text-slate-200 hover:border-white/20 hover:bg-slate-800/60'
                       }`}
                     >
                       {b === 'all' ? 'All Brands' : b}
                     </button>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
+            </div>
 
-              {/* In Stock Toggle */}
-              <div className="pt-2 border-t border-slate-800">
-                <label className="flex items-center gap-2.5 text-xs font-medium text-slate-300 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={inStockOnly}
-                    onChange={(e) => setInStockOnly(e.target.checked)}
-                    className="rounded accent-orange-500 w-4 h-4 bg-slate-950"
-                  />
-                  <span>In-Stock Ready Units Only</span>
-                </label>
-              </div>
-
-              {/* Bulk RFQ helper card in sidebar */}
-              <div className="p-3.5 rounded-xl bg-gradient-to-br from-orange-950/40 to-slate-950 border border-orange-500/30 text-xs space-y-2">
-                <div className="font-bold text-orange-300 flex items-center gap-1.5">
-                  <Building2 className="w-3.5 h-3.5" />
-                  Need 20+ Custom Systems?
-                </div>
-                <p className="text-slate-400 text-[11px]">
-                  Submit our custom B2B configuration sheet for tailored CPU/GPU specs and volume rates.
-                </p>
+            {/* Active Filters Summary Bar */}
+            {(activeFiltersCount > 0 || safeQuery) && (
+              <div className="pt-2 border-t border-white/10 flex items-center gap-2 flex-wrap text-xs">
+                <span className="text-slate-400 text-[11px] font-semibold">Active:</span>
+                {safeQuery && (
+                  <span className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-300 flex items-center gap-1.5">
+                    <span>Search: &ldquo;{searchQuery}&rdquo;</span>
+                    <button onClick={() => onSearchChange?.('')} className="hover:text-white cursor-pointer font-bold">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                )}
+                {selectedCondition !== 'all' && (
+                  <span className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-300 flex items-center gap-1.5">
+                    <span>Condition: {selectedCondition}</span>
+                    <button onClick={() => setSelectedCondition('all')} className="hover:text-white cursor-pointer font-bold">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                )}
+                {selectedCategory !== 'all' && (
+                  <span className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-300 flex items-center gap-1.5">
+                    <span>Category: {warCategories.find(c => c.id === selectedCategory)?.label || selectedCategory}</span>
+                    <button onClick={() => onSelectCategory('all')} className="hover:text-white cursor-pointer font-bold">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                )}
+                {finderBudget && (
+                  <span className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-300 flex items-center gap-1.5">
+                    <span>Budget: {BUDGET_BRACKETS.find(b => b.id === finderBudget)?.label}</span>
+                    <button onClick={() => setFinderBudget(null)} className="hover:text-white cursor-pointer font-bold">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                )}
+                {selectedBrand !== 'all' && (
+                  <span className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-300 flex items-center gap-1.5">
+                    <span>Brand: {selectedBrand}</span>
+                    <button onClick={() => setSelectedBrand('all')} className="hover:text-white cursor-pointer font-bold">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                )}
+                {inStockOnly && (
+                  <span className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-300 flex items-center gap-1.5">
+                    <span>In-Stock Only</span>
+                    <button onClick={() => setInStockOnly(false)} className="hover:text-white cursor-pointer font-bold">
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
+                )}
                 <button
-                  onClick={onOpenRFQ}
-                  className="w-full py-1.5 text-center text-xs font-bold text-orange-400 hover:text-white bg-slate-900 border border-orange-500/40 rounded-lg transition-colors cursor-pointer"
+                  onClick={handleResetFilters}
+                  className="text-[11px] text-orange-400 hover:text-orange-300 underline font-semibold ml-auto cursor-pointer"
                 >
-                  Create Custom RFQ
+                  Clear All Filters
                 </button>
               </div>
+            )}
+          </div>
 
+          {/* 3. THEN SHOWS THE SEARCH RESULTS */}
+          <div id="catalog-product-list" className="pt-8">
+            
+            {/* Results status and quick RFQ prompt bar */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-3 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold text-white">
+                  Showing {filteredProducts.length} Verified Systems
+                </span>
+                {safeQuery && (
+                  <span className="text-xs text-orange-300 bg-orange-500/10 px-2 py-0.5 rounded-full border border-orange-500/30">
+                    for &ldquo;{searchQuery}&rdquo;
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={onOpenRFQ}
+                  className="text-xs font-bold text-orange-400 hover:text-orange-300 flex items-center gap-1.5 cursor-pointer bg-slate-900 border border-orange-500/30 px-3 py-1.5 rounded-xl hover:bg-orange-500/10 transition-colors"
+                >
+                  <Building2 className="w-3.5 h-3.5" />
+                  <span>Need 20+ Bulk Units? Request B2B Quote</span>
+                </button>
+              </div>
             </div>
-          </aside>
 
-          {/* Right Product Grid */}
-          <main className="lg:col-span-9">
+            {/* Dedicated War Computers B2B Wholesale Hub Spotlight Banner */}
+            {selectedCategory === 'wholesale_lots' && (
+              <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-orange-950/60 via-slate-900 to-amber-950/40 border border-orange-500/50 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-start gap-3.5">
+                  <div className="p-3 rounded-xl bg-orange-500/20 border border-orange-500/40 text-orange-400 mt-0.5 flex-shrink-0">
+                    <Building2 className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-orange-500/20 text-orange-300 text-[11px] font-bold uppercase tracking-wider">
+                      War Computers B2B Wholesale Hub
+                    </div>
+                    <h3 className="text-sm sm:text-base font-extrabold text-white">
+                      Bulk Orders &amp; Fleet Deployments With <span className="text-orange-400">Guaranteed Tier Discounts</span>
+                    </h3>
+                    <p className="text-xs text-slate-300">
+                      Tier 1 (15-20% OFF) • Tier 2 (25-30% OFF) • Tier 3 (Up to 40% OFF / Pallets). Net-30 credit terms &amp; insured pallet freight.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2.5 w-full md:w-auto flex-shrink-0">
+                  <button
+                    onClick={() => {
+                      window.dispatchEvent(new CustomEvent('expand-wholesale-hub'));
+                      const el = document.getElementById('b2b-wholesale-hub');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    className="flex-1 md:flex-none px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-xl shadow-lg shadow-orange-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>Jump to Wholesale Hub</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={onOpenRFQ}
+                    className="flex-1 md:flex-none px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-orange-400 border border-orange-500/40 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <span>Request Custom RFQ</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Product Cards Grid - Full Width (1 to 4 cols) */}
             {filteredProducts.length === 0 ? (
               <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-12 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-slate-400">
                   <Search className="w-8 h-8 text-orange-400" />
                 </div>
-                <h3 className="text-lg font-bold text-white">No hardware matching current filters</h3>
+                <h3 className="text-lg font-bold text-white">No hardware matching current search & filters</h3>
                 <p className="text-sm text-slate-400 max-w-md mx-auto">
-                  Try adjusting your budget bracket, clearing your use-case selection, or resetting filters to explore all tested machines.
+                  Try adjusting your budget bracket, clearing your search keyword, or resetting filters to explore all tested machines.
                 </p>
                 <div className="flex items-center justify-center gap-3">
                   <button
                     onClick={handleResetFinder}
-                    className="px-4 py-2 bg-orange-500 text-slate-950 font-bold text-xs rounded-xl shadow cursor-pointer"
+                    className="px-4 py-2 bg-orange-500 text-slate-950 font-bold text-xs rounded-xl shadow cursor-pointer hover:bg-orange-400 transition-colors"
                   >
                     Reset Laptop Finder
                   </button>
                   <button
                     onClick={handleResetFilters}
-                    className="px-4 py-2 bg-slate-800 text-white font-bold text-xs rounded-xl border border-white/10 cursor-pointer"
+                    className="px-4 py-2 bg-slate-800 text-white font-bold text-xs rounded-xl border border-white/10 cursor-pointer hover:bg-slate-700 transition-colors"
                   >
                     Reset All Filters
                   </button>
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {filteredProducts.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -827,9 +925,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
                 ))}
               </div>
             )}
-          </main>
-
-        </div>
+          </div>
         </div>
 
       </div>

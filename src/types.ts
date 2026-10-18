@@ -202,7 +202,7 @@ export interface SalesAnalytics {
   }[];
 }
 
-export type SiteThemeId = 'war-blue' | 'tech-cyan' | 'premium-gold' | 'modern-red';
+export type SiteThemeId = 'war-blue' | 'tech-cyan' | 'premium-gold' | 'modern-red' | 'clean-white';
 
 export interface SiteThemeConfig {
   id: SiteThemeId;
@@ -250,4 +250,91 @@ export interface CustomerInquiry {
   priority?: 'high' | 'normal' | 'urgent';
   internalNotes?: string;
   replies: InquiryReply[];
+}
+
+// ==========================================
+// TRANSACTIONS & FINANCIAL HUB TYPES
+// ==========================================
+
+export type ExpenseHead = 
+  | 'Rent & Warehouse Lease'
+  | 'Utilities & Electricity'
+  | 'Salaries & Staff Wages'
+  | 'Shipping, Freight & Customs'
+  | 'Lab Tools & Repair Consumables'
+  | 'Packaging & Packing Supplies'
+  | 'Marketing & Advertising'
+  | 'Vehicle Fuel & Local Transport'
+  | 'Internet & IT Software'
+  | 'Taxes, Banking & Govt Fees'
+  | 'Office Pantry & Refreshments'
+  | 'Miscellaneous & Repairs'
+  | (string & {});
+
+export interface PurchaseRecord {
+  id: string;
+  poNumber: string;
+  date: string; // YYYY-MM-DD
+  supplierName: string;
+  itemDescription: string;
+  category: 'Laptops' | 'Desktops' | 'Chromebooks' | 'Workstations' | 'Components & Parts' | 'Packaging & Supplies' | 'Accessories' | 'Other';
+  quantity: number;
+  unitCost: number;
+  totalCost: number;
+  paidAmount: number;
+  paymentStatus: 'Paid' | 'Pending' | 'Partial';
+  paymentMethod: 'Bank Transfer' | 'Cash' | 'Cheque' | 'Net-30';
+  invoiceRef?: string;
+  notes?: string;
+}
+
+export interface SaleRecord {
+  id: string;
+  invoiceNumber: string;
+  date: string; // YYYY-MM-DD
+  customerName: string;
+  companyName?: string;
+  channel: 'Retail Store' | 'Wholesale B2B' | 'Depot Walk-in' | 'Online Order';
+  itemDescription: string;
+  quantity: number;
+  unitPrice: number;
+  totalAmount: number;
+  cogsUnitCost: number; // Cost of Goods Sold per unit
+  totalCogs: number; // quantity * cogsUnitCost
+  grossProfit: number; // totalAmount - totalCogs
+  paymentStatus: 'Paid' | 'Pending' | 'Partial';
+  paymentMethod: 'Cash' | 'Bank Transfer / Raast' | 'Card POS' | 'Cheque' | 'Net-30';
+  notes?: string;
+}
+
+export interface ExpenseRecord {
+  id: string;
+  voucherNumber: string;
+  date: string; // YYYY-MM-DD
+  head: ExpenseHead;
+  customHead?: string;
+  payee: string;
+  description: string;
+  amount: number;
+  paymentMethod: 'Cash' | 'Bank Transfer' | 'Cheque' | 'Company Card';
+  paidBy: string;
+  status: 'Cleared' | 'Pending';
+  receiptRef?: string;
+  notes?: string;
+}
+
+export interface MonthlyFinancialSummary {
+  monthKey: string; // e.g. "2026-10"
+  monthLabel: string; // e.g. "October 2026"
+  totalSales: number;
+  totalPurchases: number;
+  cogs: number;
+  grossProfit: number;
+  grossMarginPercent: number;
+  totalExpenses: number;
+  netProfit: number;
+  netMarginPercent: number;
+  cashInflow: number;
+  cashOutflow: number;
+  netCashFlow: number;
 }

@@ -31,7 +31,8 @@ import {
   X,
   RotateCcw,
   CheckCircle2,
-  Tv
+  Tv,
+  Receipt
 } from 'lucide-react';
 import { Product, ProductCategory, ProductCondition, PricingMode } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
@@ -46,6 +47,7 @@ interface ManageProductsSectionProps {
   onResetToDefaults: () => void;
   onQuickView: (product: Product) => void;
   pricingMode: PricingMode;
+  onOpenTransactions?: () => void;
 }
 
 // Category-specific templates with pre-configured defaults
@@ -272,7 +274,8 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
   onDeleteProduct,
   onResetToDefaults,
   onQuickView,
-  pricingMode
+  pricingMode,
+  onOpenTransactions
 }) => {
   // Dropdown category selection state: 'chromebooks' | 'laptops' | 'workstations' | 'desktops'
   const [selectedAddCategory, setSelectedAddCategory] = useState<string>('chromebooks');
@@ -507,6 +510,24 @@ export const ManageProductsSection: React.FC<ManageProductsSectionProps> = ({
             >
               <Server className="w-3.5 h-3.5 text-purple-400" />
               <span>Add Workstation</span>
+            </button>
+
+            {/* User Requested: Transactions Button in Manage Products */}
+            <button
+              id="manage-products-transactions-btn"
+              onClick={() => {
+                if (onOpenTransactions) {
+                  onOpenTransactions();
+                }
+              }}
+              className="px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition-all cursor-pointer bg-gradient-to-r from-emerald-600/30 to-teal-600/30 hover:from-emerald-600/50 hover:to-teal-600/50 text-emerald-300 hover:text-white border-emerald-500/40 shadow-sm shadow-emerald-500/20 group"
+              title="Open Transactions (Purchase, Sale, Expense, Profit)"
+            >
+              <Receipt className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+              <span>Transactions</span>
+              <span className="px-1.5 py-0.2 rounded-md bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold">
+                P&L
+              </span>
             </button>
           </div>
         </div>

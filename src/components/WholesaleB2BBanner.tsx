@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Building2, 
   Percent, 
@@ -25,12 +25,27 @@ export const WholesaleB2BBanner: React.FC<WholesaleB2BBannerProps> = ({
   onOpenRFQ
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isHighlighted, setIsHighlighted] = useState(false);
+
+  useEffect(() => {
+    const handleExpandAndFocus = () => {
+      setIsCollapsed(false);
+      setIsHighlighted(true);
+      setTimeout(() => setIsHighlighted(false), 3000);
+    };
+    window.addEventListener('expand-wholesale-hub', handleExpandAndFocus);
+    return () => window.removeEventListener('expand-wholesale-hub', handleExpandAndFocus);
+  }, []);
 
   return (
-    <section className="py-10 relative z-10 border-y border-slate-800/80">
+    <section id="b2b-wholesale-hub" className="py-10 relative z-10 border-y border-slate-800/80 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className={`rounded-3xl bg-slate-900 border border-orange-500/30 p-6 sm:p-10 shadow-2xl shadow-orange-950/20 relative overflow-hidden transition-all ${isCollapsed ? 'py-6' : ''}`}>
+        <div className={`rounded-3xl bg-slate-900 border p-6 sm:p-10 shadow-2xl relative overflow-hidden transition-all duration-500 ${
+          isHighlighted 
+            ? 'border-orange-500 ring-4 ring-orange-500/60 shadow-orange-500/40' 
+            : 'border-orange-500/30 shadow-orange-950/20'
+        } ${isCollapsed ? 'py-6' : ''}`}>
           
           {/* Decorative subtle background accents */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_20%,rgba(249,115,22,0.1),transparent)] pointer-events-none" />

@@ -6,11 +6,15 @@ import {
   CartItem,
   OrderTrackingInfo,
   SiteThemeId,
-  CustomerInquiry
+  CustomerInquiry,
+  PurchaseRecord,
+  SaleRecord,
+  ExpenseRecord
 } from './types';
 import { MOCK_PRODUCTS } from './data/products';
 import { INITIAL_ORDERS } from './data/orders';
 import { INITIAL_INQUIRIES } from './data/inquiries';
+import { INITIAL_PURCHASES, INITIAL_SALES, INITIAL_EXPENSES } from './data/initialTransactions';
 import { getInitialSiteTheme, applySiteTheme } from './utils/themeConstants';
 
 import { Navbar } from './components/Navbar';
@@ -264,6 +268,155 @@ export default function App() {
     showToast('Inquiry ticket removed.');
   };
 
+  // ==========================================
+  // TRANSACTIONS & FINANCIAL LEDGER STATE
+  // ==========================================
+  const [purchases, setPurchases] = useState<PurchaseRecord[]>(() => {
+    try {
+      const saved = localStorage.getItem('war_computers_purchases');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return INITIAL_PURCHASES;
+  });
+
+  const [sales, setSales] = useState<SaleRecord[]>(() => {
+    try {
+      const saved = localStorage.getItem('war_computers_sales');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return INITIAL_SALES;
+  });
+
+  const [expenses, setExpenses] = useState<ExpenseRecord[]>(() => {
+    try {
+      const saved = localStorage.getItem('war_computers_expenses');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return INITIAL_EXPENSES;
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('war_computers_purchases', JSON.stringify(purchases));
+    } catch (e) {}
+  }, [purchases]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('war_computers_sales', JSON.stringify(sales));
+    } catch (e) {}
+  }, [sales]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('war_computers_expenses', JSON.stringify(expenses));
+    } catch (e) {}
+  }, [expenses]);
+
+  // Purchases Handlers
+  const handleAddPurchase = (record: PurchaseRecord) => {
+    setPurchases(prev => [record, ...prev]);
+    showToast(`Recorded PO "${record.poNumber}" (${record.supplierName})!`);
+  };
+
+  const handleUpdatePurchase = (record: PurchaseRecord) => {
+    setPurchases(prev => prev.map(p => p.id === record.id ? record : p));
+    showToast(`Updated PO "${record.poNumber}"!`);
+  };
+
+  const handleDeletePurchase = (id: string) => {
+    setPurchases(prev => prev.filter(p => p.id !== id));
+    showToast('Purchase record deleted.');
+  };
+
+  // Sales Handlers
+  const handleAddSale = (record: SaleRecord) => {
+    setSales(prev => [record, ...prev]);
+    showToast(`Recorded Sale "${record.invoiceNumber}" for ${record.customerName}!`);
+  };
+
+  const handleUpdateSale = (record: SaleRecord) => {
+    setSales(prev => prev.map(s => s.id === record.id ? record : s));
+    showToast(`Updated Sale Invoice "${record.invoiceNumber}"!`);
+  };
+
+  const handleDeleteSale = (id: string) => {
+    setSales(prev => prev.filter(s => s.id !== id));
+    showToast('Sale record deleted.');
+  };
+
+  // Expenses Handlers
+  const handleAddExpense = (record: ExpenseRecord) => {
+    setExpenses(prev => [record, ...prev]);
+    showToast(`Recorded Expense Voucher "${record.voucherNumber}" under ${record.head}!`);
+  };
+
+  const handleUpdateExpense = (record: ExpenseRecord) => {
+    setExpenses(prev => prev.map(e => e.id === record.id ? record : e));
+    showToast(`Updated Expense Voucher "${record.voucherNumber}"!`);
+  };
+
+  const handleDeleteExpense = (id: string) => {
+    setExpenses(prev => prev.filter(e => e.id !== id));
+    showToast('Expense voucher deleted.');
+  };
+
+  // Sync Store Orders to Sales
+  const handleImportOrdersToSales = () => {
+    let importedCount = 0;
+    const newSales: SaleRecord[] = [];
+    
+    orders.forEach(ord => {
+      const alreadyImported = sales.some(s => s.invoiceNumber === ord.orderId || (s.customerName === ord.customerName && s.date === ord.orderDate));
+      if (!alreadyImported) {
+        const cogsRate = ord.orderType === 'wholesale' ? 0.72 : 0.65;
+        const totalAmount = ord.totalAmount || 85000;
+        const totalCogs = Math.round(totalAmount * cogsRate);
+        const grossProfit = totalAmount - totalCogs;
+
+        newSales.push({
+          id: `SALE-ORD-${ord.orderId}`,
+          invoiceNumber: ord.orderId,
+          date: ord.orderDate || new Date().toISOString().split('T')[0],
+          customerName: ord.customerName,
+          channel: ord.orderType === 'wholesale' ? 'Wholesale B2B' : 'Online Order',
+          itemDescription: `${ord.itemsCount || 1}x Store Order Item(s) [${ord.status}]`,
+          quantity: ord.itemsCount || 1,
+          unitPrice: Math.round(totalAmount / (ord.itemsCount || 1)),
+          totalAmount,
+          cogsUnitCost: Math.round(totalCogs / (ord.itemsCount || 1)),
+          totalCogs,
+          grossProfit,
+          paymentStatus: ord.status === 'Delivered' ? 'Paid' : 'Pending',
+          paymentMethod: 'Bank Transfer / Raast'
+        });
+        importedCount++;
+      }
+    });
+
+    if (importedCount > 0) {
+      setSales(prev => [...newSales, ...prev]);
+      showToast(`Successfully synced ${importedCount} store order(s) to Sales ledger!`);
+    } else {
+      showToast('All current store orders are already synchronized in Sales.');
+    }
+  };
+
   // Product CRUD Handlers
   const handleAddProduct = (newProd: Product) => {
     setProducts(prev => deduplicateProducts([newProd, ...prev]));
@@ -424,6 +577,15 @@ export default function App() {
     }
   };
 
+  // Quick action: Scroll to War Computers B2B Wholesale Hub
+  const handleScrollToWholesaleHub = () => {
+    window.dispatchEvent(new CustomEvent('expand-wholesale-hub'));
+    const el = document.getElementById('b2b-wholesale-hub');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   // Quick action: Direct Buy Now from Deal Card
   const handleBuyNow = (product: Product) => {
     handleAddToCart(product, 1, pricingMode === 'wholesale');
@@ -487,6 +649,19 @@ export default function App() {
           pricingMode={pricingMode}
           onTogglePricingMode={setPricingMode}
           onNavigateToStore={() => navigateTo('store')}
+          purchases={purchases}
+          sales={sales}
+          expenses={expenses}
+          onAddPurchase={handleAddPurchase}
+          onUpdatePurchase={handleUpdatePurchase}
+          onDeletePurchase={handleDeletePurchase}
+          onAddSale={handleAddSale}
+          onUpdateSale={handleUpdateSale}
+          onDeleteSale={handleDeleteSale}
+          onAddExpense={handleAddExpense}
+          onUpdateExpense={handleUpdateExpense}
+          onDeleteExpense={handleDeleteExpense}
+          onImportOrdersToSales={handleImportOrdersToSales}
         />
 
         {/* Product Quick View Modal */}
@@ -550,9 +725,14 @@ export default function App() {
         }}
         onOpenTracking={() => setIsOrderTrackingOpen(true)}
         onJumpToDeals={handleScrollToDeals}
+        onJumpToWholesaleHub={handleScrollToWholesaleHub}
         onSelectCategory={(cat) => {
           setSelectedCategory(cat);
-          handleScrollToCatalog();
+          if (cat === 'wholesale_lots') {
+            handleScrollToWholesaleHub();
+          } else {
+            handleScrollToCatalog();
+          }
         }}
         selectedCategory={selectedCategory}
         allProducts={products}

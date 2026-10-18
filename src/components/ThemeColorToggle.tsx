@@ -162,7 +162,7 @@ export const ThemeColorToggle: React.FC<ThemeColorToggleProps> = ({
               <span>Interactive Color Themes</span>
             </div>
             <span className="text-[10px] uppercase font-mono tracking-wider px-2 py-0.5 rounded-full bg-slate-900 text-slate-400 border border-slate-800">
-              4 Palettes
+              {SITE_THEMES.length} Palettes
             </span>
           </div>
 

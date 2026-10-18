@@ -45,6 +45,7 @@ interface NavbarProps {
   allProducts?: Product[];
   onSelectProduct?: (product: Product) => void;
   onJumpToDeals?: () => void;
+  onJumpToWholesaleHub?: () => void;
   currentTheme?: SiteThemeId;
   onThemeChange?: (themeId: SiteThemeId) => void;
 }
@@ -70,6 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   allProducts = [],
   onSelectProduct = (_product: Product) => {},
   onJumpToDeals,
+  onJumpToWholesaleHub,
   currentTheme = 'war-blue',
   onThemeChange
 }) => {
@@ -93,8 +95,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'gaming_laptops', label: 'Gaming Laptops', icon: <Flame className="w-4 h-4 text-orange-500" /> },
     { id: 'workstations', label: 'Workstations', icon: <Cpu className="w-4 h-4 text-purple-400" /> },
     { id: 'chromebooks', label: 'Chromebooks', icon: <Laptop className="w-4 h-4 text-cyan-400" /> },
-    { id: 'desktops', label: 'Chromebox & Desktops', icon: <Monitor className="w-4 h-4 text-emerald-400" /> },
-    { id: 'wholesale_lots', label: 'Bulk Pallets (B2B)', icon: <PackageCheck className="w-4 h-4 text-amber-400" /> }
+    { id: 'desktops', label: 'Desktops', icon: <Monitor className="w-4 h-4 text-emerald-400" /> },
+    { id: 'wholesale_lots', label: 'Bulk Orders', icon: <PackageCheck className="w-4 h-4 text-amber-400" /> }
   ];
 
   return (
@@ -355,7 +357,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Category Navigation Bar */}
       <nav className="bg-slate-950 border-t border-white/5 overflow-x-auto scrollbar-none">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-1 sm:gap-2 py-2">
+        <div className="w-max min-w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-1 sm:gap-2 py-2">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
@@ -364,10 +366,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                 id={`cat-nav-${cat.id}-btn`}
                 onClick={() => {
                   onSelectCategory(cat.id);
+                  if (cat.id === 'wholesale_lots') {
+                    if (onJumpToWholesaleHub) {
+                      onJumpToWholesaleHub();
+                    } else {
+                      window.dispatchEvent(new CustomEvent('expand-wholesale-hub'));
+                      const el = document.getElementById('b2b-wholesale-hub');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    return;
+                  }
                   const el = document.getElementById('product-catalog-section');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex-shrink-0 ${
                   isActive
                     ? 'bg-orange-500 text-white shadow-md shadow-orange-500/25'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800'
@@ -379,31 +391,33 @@ export const Navbar: React.FC<NavbarProps> = ({
             );
           })}
 
-          <div className="h-4 w-px bg-white/10 mx-1 flex-shrink-0" />
+          <div className="h-4 w-px bg-white/10 mx-0.5 flex-shrink-0" />
 
-          {/* End of All Catalog bar: Shop By Budget + Theme Color Toggle */}
-          <div className="flex items-center gap-1.5 sm:gap-2 ml-auto flex-shrink-0">
-            {/* Direct Jump to Shop By Budget */}
-            <button
-              id="nav-jump-shop-by-budget-btn"
-              onClick={() => {
-                const el = document.getElementById('shop-by-budget');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-orange-300 hover:text-white border border-orange-500/40 hover:border-orange-400 transition-all cursor-pointer shadow-sm"
-            >
-              <span className="text-orange-400 font-extrabold">Rs.</span>
-              <span>Shop By Budget</span>
-            </button>
+          {/* Direct Jump to Shop By Budget */}
+          <button
+            id="nav-jump-shop-by-budget-btn"
+            onClick={() => {
+              const el = document.getElementById('shop-by-budget');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-gradient-to-r from-orange-500/20 to-amber-500/20 text-orange-300 hover:text-white border border-orange-500/40 hover:border-orange-400 transition-all cursor-pointer shadow-sm flex-shrink-0"
+          >
+            <span className="text-orange-400 font-extrabold">Rs.</span>
+            <span>Shop By Budget</span>
+          </button>
 
-            {/* Interactive Theme Color Toggle Button */}
-            {onThemeChange && (
-              <ThemeColorToggle
-                currentTheme={currentTheme}
-                onThemeChange={onThemeChange}
-              />
-            )}
-          </div>
+          {/* Interactive Theme Color Toggle Button */}
+          {onThemeChange && (
+            <>
+              <div className="h-4 w-px bg-white/10 mx-0.5 flex-shrink-0" />
+              <div className="flex-shrink-0 flex items-center">
+                <ThemeColorToggle
+                  currentTheme={currentTheme}
+                  onThemeChange={onThemeChange}
+                />
+              </div>
+            </>
+          )}
         </div>
       </nav>
 
@@ -433,6 +447,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center justify-between p-3 bg-orange-950/40 rounded-xl text-orange-300 font-semibold text-sm border border-orange-500/30"
             >
               <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-orange-400" /> Admin Portal (/admin.html)</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => { 
+                onSelectCategory('wholesale_lots');
+                if (onJumpToWholesaleHub) {
+                  onJumpToWholesaleHub();
+                } else {
+                  window.dispatchEvent(new CustomEvent('expand-wholesale-hub'));
+                  const el = document.getElementById('b2b-wholesale-hub');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                setMobileMenuOpen(false); 
+              }}
+              className="flex items-center justify-between p-3 bg-slate-900 rounded-xl text-amber-400 font-semibold text-sm border border-slate-800 hover:border-amber-500/40"
+            >
+              <span className="flex items-center gap-2"><PackageCheck className="w-4 h-4 text-amber-400" /> Bulk Orders (B2B Wholesale Hub)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button

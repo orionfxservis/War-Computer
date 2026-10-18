@@ -107,6 +107,16 @@ export const WarComputersLogo: React.FC<WarComputersLogoProps> = ({
       arrowEnd: '#b91c1c',       // Ruby Red
       glow: 'rgba(239, 68, 68, 0.5)',
     },
+    'clean-white': {
+      textPrimary: '#1e40af',    // Deep Sapphire Blue
+      textSecondary: '#0284c7',  // Cobalt Cyan
+      hardware: '#0284c7',       // Sky Hardware
+      hardwareLight: '#38bdf8',  // Light Blue
+      arrowStart: '#1d4ed8',     // Deep Blue
+      arrowMid: '#0284c7',       // Electric Blue
+      arrowEnd: '#0ea5e9',       // Sky Blue
+      glow: 'rgba(37, 99, 235, 0.25)',
+    },
   };
 
   const activeColors = themeOverride ? themeColors[themeOverride] : null;

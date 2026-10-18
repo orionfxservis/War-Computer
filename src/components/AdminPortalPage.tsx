@@ -17,12 +17,22 @@ import {
   Sliders,
   Laptop,
   Mail,
-  MessageCircle
+  MessageCircle,
+  Receipt
 } from 'lucide-react';
-import { Product, PricingMode, OrderTrackingInfo, CustomerInquiry } from '../types';
+import { 
+  Product, 
+  PricingMode, 
+  OrderTrackingInfo, 
+  CustomerInquiry, 
+  PurchaseRecord, 
+  SaleRecord, 
+  ExpenseRecord 
+} from '../types';
 import { ManageProductsSection } from './ManageProductsSection';
 import { AdminOrderTrackingSection } from './AdminOrderTrackingSection';
 import { AdminCommunicationHub } from './AdminCommunicationHub';
+import { AdminTransactionsHub } from './AdminTransactionsHub';
 import { formatPrice } from '../utils/formatCurrency';
 import { WarComputersLogo } from './WarComputersLogo';
 
@@ -43,6 +53,19 @@ interface AdminPortalPageProps {
   pricingMode: PricingMode;
   onTogglePricingMode: (mode: PricingMode) => void;
   onNavigateToStore: () => void;
+  purchases?: PurchaseRecord[];
+  sales?: SaleRecord[];
+  expenses?: ExpenseRecord[];
+  onAddPurchase?: (record: PurchaseRecord) => void;
+  onUpdatePurchase?: (record: PurchaseRecord) => void;
+  onDeletePurchase?: (id: string) => void;
+  onAddSale?: (record: SaleRecord) => void;
+  onUpdateSale?: (record: SaleRecord) => void;
+  onDeleteSale?: (id: string) => void;
+  onAddExpense?: (record: ExpenseRecord) => void;
+  onUpdateExpense?: (record: ExpenseRecord) => void;
+  onDeleteExpense?: (id: string) => void;
+  onImportOrdersToSales?: () => void;
 }
 
 export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
@@ -61,9 +84,22 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
   onDeleteInquiry = () => {},
   pricingMode,
   onTogglePricingMode,
-  onNavigateToStore
+  onNavigateToStore,
+  purchases = [],
+  sales = [],
+  expenses = [],
+  onAddPurchase = () => {},
+  onUpdatePurchase = () => {},
+  onDeletePurchase = () => {},
+  onAddSale = () => {},
+  onUpdateSale = () => {},
+  onDeleteSale = () => {},
+  onAddExpense = () => {},
+  onUpdateExpense = () => {},
+  onDeleteExpense = () => {},
+  onImportOrdersToSales
 }) => {
-  const [activeTab, setActiveTab] = useState<'products' | 'orders' | 'inquiries' | 'depot'>('products');
+  const [activeTab, setActiveTab] = useState<'products' | 'transactions' | 'orders' | 'inquiries' | 'depot'>('products');
   const [copiedUrl, setCopiedUrl] = useState(false);
 
   const unreadInquiriesCount = inquiries.filter(i => i.status === 'new').length;
@@ -136,6 +172,23 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
             >
               <Package className="w-4 h-4" />
               <span>Manage Products</span>
+            </button>
+
+            {/* User Requested: Transactions Tab (Purchase, Sale, Expense, Profit) */}
+            <button
+              id="admin-tab-transactions"
+              onClick={() => setActiveTab('transactions')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                activeTab === 'transactions'
+                  ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              }`}
+            >
+              <Receipt className="w-4 h-4 text-emerald-400" />
+              <span>Transactions</span>
+              <span className="px-1.5 py-0.2 rounded-md bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold">
+                P&L
+              </span>
             </button>
 
             <button
@@ -212,6 +265,29 @@ export const AdminPortalPage: React.FC<AdminPortalPageProps> = ({
               onResetToDefaults={onResetToDefaults}
               onQuickView={onQuickView}
               pricingMode={pricingMode}
+              onOpenTransactions={() => setActiveTab('transactions')}
+            />
+          </div>
+        )}
+
+        {/* Tab 2: Transactions & Cash Flow Section (Purchase, Sale, Expense, Profit) */}
+        {activeTab === 'transactions' && (
+          <div className="space-y-6">
+            <AdminTransactionsHub
+              purchases={purchases}
+              sales={sales}
+              expenses={expenses}
+              orders={orders}
+              onAddPurchase={onAddPurchase}
+              onUpdatePurchase={onUpdatePurchase}
+              onDeletePurchase={onDeletePurchase}
+              onAddSale={onAddSale}
+              onUpdateSale={onUpdateSale}
+              onDeleteSale={onDeleteSale}
+              onAddExpense={onAddExpense}
+              onUpdateExpense={onUpdateExpense}
+              onDeleteExpense={onDeleteExpense}
+              onImportOrdersToSales={onImportOrdersToSales}
             />
           </div>
         )}

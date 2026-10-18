@@ -76,6 +76,25 @@ export const SITE_THEMES: SiteThemeConfig[] = [
       icon: '#f87171',
       glow: 'rgba(239, 68, 68, 0.45)'
     }
+  },
+  {
+    id: 'clean-white',
+    name: 'Theme 5 — Clean White',
+    badge: 'Light Mode',
+    paletteLabel: 'White + Sapphire + Slate',
+    description: 'Modern clean light aesthetic featuring a crisp white canvas, deep slate text contrast, crystal surfaces, and vivid sapphire blue accents.',
+    bgCanvas: '#f8fafc',
+    bgSurface: '#ffffff',
+    fontAccent: '#2563eb',
+    fontHighlight: '#1d4ed8',
+    heroGradient: 'linear-gradient(to right, #1d4ed8, #0284c7, #2563eb)',
+    colors: {
+      primary: '#2563eb', // Sapphire Blue
+      secondary: '#0f172a', // Deep Slate
+      accent: '#0284c7', // Sky Blue
+      icon: '#2563eb', // Royal Blue
+      glow: 'rgba(37, 99, 235, 0.25)'
+    }
   }
 ];
 

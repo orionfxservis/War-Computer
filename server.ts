@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 import { INITIAL_PRODUCTS, MOCK_ANALYTICS_DATA } from './src/data/products';
 import { INITIAL_ORDERS } from './src/data/orders';
+import { INITIAL_INQUIRIES } from './src/data/inquiries';
+import { CustomerInquiry, InquiryReply } from './src/types';
 
 dotenv.config();
 
@@ -13,18 +15,25 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// Initialize Gemini Client safely
+// In-memory inquiry store initialized with seed inquiries
+let SERVER_INQUIRIES: CustomerInquiry[] = [...INITIAL_INQUIRIES];
+
+// Initialize Gemini Client safely supporting both GEMINI_API_KEY and GOOGLE_API_KEY
+const getApiKey = () => process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || process.env.Google_API_KEY || '';
+
 let ai: GoogleGenAI | null = null;
-if (process.env.GEMINI_API_KEY) {
+const apiKey = getApiKey();
+if (apiKey) {
   try {
     ai = new GoogleGenAI({
-      apiKey: process.env.GEMINI_API_KEY,
+      apiKey,
       httpOptions: {
         headers: {
           'User-Agent': 'aistudio-build',
         },
       },
     });
+    console.log('[GEMINI] Google AI client successfully initialized.');
   } catch (err) {
     console.warn('Failed to initialize GoogleGenAI with provided key:', err);
   }
@@ -52,6 +61,39 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', service: 'War Computers Platform API', timestamp: new Date().toISOString() });
 });
 
+// Gemini Key verification status endpoint
+app.get('/api/gemini/status', async (req, res) => {
+  const currentKey = getApiKey();
+  if (!currentKey) {
+    return res.json({
+      configured: false,
+      status: 'Missing API Key',
+      message: 'No GEMINI_API_KEY or GOOGLE_API_KEY environment variable detected.'
+    });
+  }
+
+  try {
+    const client = ai || new GoogleGenAI({ apiKey: currentKey });
+    const probe = await client.models.generateContent({
+      model: 'gemini-3.6-flash',
+      contents: 'Respond with 1 word: Online'
+    });
+    return res.json({
+      configured: true,
+      status: 'Active & Verified',
+      model: 'gemini-3.6-flash',
+      response: probe.text?.trim() || 'Online',
+      maskedKey: currentKey.substring(0, 6) + '...' + currentKey.substring(currentKey.length - 4)
+    });
+  } catch (err: any) {
+    return res.json({
+      configured: true,
+      status: 'Error with Key or Model',
+      error: err.message
+    });
+  }
+});
+
 // Chatbot endpoint with Gemini API and smart fallback
 app.post('/api/chat', async (req, res) => {
   try {
@@ -60,8 +102,10 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    if (ai) {
+    const currentKey = getApiKey();
+    if (currentKey) {
       try {
+        const client = ai || new GoogleGenAI({ apiKey: currentKey });
         const contents = [
           ...conversationHistory.slice(-6).map((msg: any) => ({
             role: msg.sender === 'user' ? 'user' : 'model',
@@ -70,8 +114,8 @@ app.post('/api/chat', async (req, res) => {
           { role: 'user', parts: [{ text: message }] },
         ];
 
-        const response = await ai.models.generateContent({
-          model: 'gemini-3.7-flash',
+        const response = await client.models.generateContent({
+          model: 'gemini-3.6-flash',
           contents: contents as any,
           config: {
             systemInstruction: SYSTEM_PROMPT,
@@ -211,6 +255,126 @@ app.post('/api/checkout', (req, res) => {
     estimatedDelivery: '2-3 Business Days via FedEx Priority Express',
     message: `Order #${orderId} confirmed successfully! Confirmation sent to ${customer?.email || 'your email'}.`
   });
+});
+
+// Outbound Email Dispatch API with Resend support & resilient simulation fallback
+app.post('/api/send-email', async (req, res) => {
+  try {
+    const { to, toName, from = 'info@warcomputer.com', fromName = 'War Computers Support Desk', subject, message, inquiryId } = req.body;
+
+    if (!to || !message) {
+      return res.status(400).json({ error: 'Recipient "to" and "message" are required.' });
+    }
+
+    const messageId = `msg_wc_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+    let deliveredLive = false;
+
+    // Optional: Resend API integration if RESEND_API_KEY environment variable is configured
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const resendResponse = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: `${fromName} <${from}>`,
+            to: [to],
+            subject: subject || 'Message from War Computers Pakistan',
+            text: message,
+            html: `
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #0f172a; color: #f8fafc; border-radius: 12px; border: 1px solid #334155;">
+                <div style="border-bottom: 2px solid #f97316; padding-bottom: 12px; margin-bottom: 20px;">
+                  <h2 style="color: #f97316; margin: 0; font-size: 22px; text-transform: uppercase;">WAR COMPUTERS</h2>
+                  <p style="color: #94a3b8; margin: 4px 0 0; font-size: 12px;">Premier Computers & Laptops in Pakistan | Saddar, Karachi & Delivery Nationwide</p>
+                </div>
+                <div style="font-size: 14px; line-height: 1.6; color: #e2e8f0; white-space: pre-line;">
+                  ${message}
+                </div>
+                <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #1e293b; font-size: 11px; color: #64748b;">
+                  <p style="margin: 0;">War Computers Support & Dispatch Desk | info@warcomputer.com | +92 333 0257246</p>
+                  <p style="margin: 4px 0 0;">Reference ID: ${messageId}</p>
+                </div>
+              </div>
+            `
+          })
+        });
+
+        if (resendResponse.ok) {
+          deliveredLive = true;
+        }
+      } catch (externalErr) {
+        console.warn('Live SMTP/Resend API call caught warning (using resilient fallback):', externalErr);
+      }
+    }
+
+    console.log(`[EMAIL DISPATCH] Sent to ${to} (${toName || 'Client'}) | Subject: "${subject}" | Ref: ${messageId} | Live: ${deliveredLive}`);
+
+    // If an inquiryId was provided, update server memory record
+    if (inquiryId) {
+      const match = SERVER_INQUIRIES.find(i => i.id === inquiryId);
+      if (match) {
+        match.status = 'replied_email';
+        match.replies.push({
+          id: `rep_${Date.now()}`,
+          channel: 'email',
+          sender: `${fromName} (${from})`,
+          message,
+          sentAt: 'Just now',
+          subject: subject || 'Re: Customer Inquiry',
+          deliveryStatus: 'sent'
+        });
+      }
+    }
+
+    res.json({
+      success: true,
+      messageId,
+      deliveredLive,
+      status: 'dispatched',
+      recipient: to,
+      sender: from,
+      timestamp: new Date().toISOString()
+    });
+  } catch (err: any) {
+    console.error('Error handling /api/send-email:', err);
+    res.status(500).json({ error: err.message || 'Internal error dispatching email' });
+  }
+});
+
+// Inquiries list endpoint
+app.get('/api/inquiries', (req, res) => {
+  res.json(SERVER_INQUIRIES);
+});
+
+// Create new customer inquiry endpoint
+app.post('/api/inquiries', (req, res) => {
+  const { customerName, email, phone, city, subject, message, inquiryType = 'general', productName } = req.body;
+  
+  if (!customerName || !email || !message) {
+    return res.status(400).json({ error: 'customerName, email, and message are required' });
+  }
+
+  const newInquiry: CustomerInquiry = {
+    id: `INQ-${Math.floor(1000 + Math.random() * 9000)}`,
+    customerName,
+    email,
+    phone: phone || '',
+    city: city || 'Pakistan',
+    subject: subject || 'General Hardware Inquiry',
+    message,
+    inquiryType,
+    productName,
+    createdAt: 'Just now',
+    status: 'new',
+    priority: 'normal',
+    replies: []
+  };
+
+  SERVER_INQUIRIES.unshift(newInquiry);
+  console.log(`[NEW INQUIRY] Logged #${newInquiry.id} from ${customerName} (${email}, ${phone})`);
+  res.json(newInquiry);
 });
 
 // Vite Middleware for development / Static file serving for production
