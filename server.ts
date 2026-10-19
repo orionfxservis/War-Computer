@@ -377,6 +377,9 @@ app.post('/api/inquiries', (req, res) => {
   res.json(newInquiry);
 });
 
+// Static serving for standalone legal pages in /pages/
+app.use('/pages', express.static(path.join(process.cwd(), 'pages')));
+
 // Vite Middleware for development / Static file serving for production
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
