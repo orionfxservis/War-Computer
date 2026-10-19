@@ -20,6 +20,7 @@ import {
 import confetti from 'canvas-confetti';
 import { CartItem, PricingMode } from '../types';
 import { formatPrice } from '../utils/formatCurrency';
+import { EasypaisaLogo, JazzCashLogo } from './PaymentLogos';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -261,8 +262,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 {[
                   { id: 'cod', label: 'Cash on Delivery', icon: <Truck className="w-4 h-4" /> },
                   { id: 'bank', label: 'Bank Transfer', icon: <Building2 className="w-4 h-4" /> },
-                  { id: 'easypaisa', label: 'Easypaisa', icon: <Smartphone className="w-4 h-4" /> },
-                  { id: 'jazzcash', label: 'JazzCash', icon: <Banknote className="w-4 h-4" /> },
+                  { id: 'easypaisa', label: 'Easypaisa', icon: <EasypaisaLogo className="w-4 h-4" /> },
+                  { id: 'jazzcash', label: 'JazzCash', icon: <JazzCashLogo className="w-4 h-4" /> },
                   { id: 'card', label: 'Online Payment', icon: <CreditCard className="w-4 h-4" /> }
                 ].map((m) => (
                   <button
@@ -338,8 +339,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               {paymentMethod === 'easypaisa' && (
                 <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-3">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                    <span className="font-bold text-white flex items-center gap-1.5">
-                      <Smartphone className="w-4 h-4 text-emerald-400" />
+                    <span className="font-bold text-white flex items-center gap-2">
+                      <EasypaisaLogo className="w-5 h-5" />
                       Easypaisa Mobile Account Transfer
                     </span>
                     <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
@@ -361,8 +362,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               {paymentMethod === 'jazzcash' && (
                 <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-3">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                    <span className="font-bold text-white flex items-center gap-1.5">
-                      <Banknote className="w-4 h-4 text-amber-400" />
+                    <span className="font-bold text-white flex items-center gap-2">
+                      <JazzCashLogo className="w-5 h-5" />
                       JazzCash Mobile Wallet & Retailer Till
                     </span>
                     <span className="text-amber-400 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">

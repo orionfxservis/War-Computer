@@ -27,6 +27,12 @@ import { PaymentInfoSection } from './components/PaymentInfoSection';
 import { FloatingActionBar } from './components/FloatingActionBar';
 import { Footer } from './components/Footer';
 import { AdminPortalPage } from './components/AdminPortalPage';
+import { 
+  PrivacyPolicyPage, 
+  TermsOfServicePage, 
+  CookiePolicyPage, 
+  DisclaimerPage 
+} from './pages';
 
 import { ProductQuickViewModal } from './components/ProductQuickViewModal';
 import { ComparisonModal } from './components/ComparisonModal';
@@ -82,44 +88,46 @@ const deduplicateOrders = (list: OrderTrackingInfo[]): OrderTrackingInfo[] => {
   return deduped;
 };
 
+export type AppRoute = 'store' | 'admin' | 'privacy-policy' | 'terms-of-service' | 'cookie-policy' | 'disclaimer';
+
+const parseRouteFromLocation = (): AppRoute => {
+  if (typeof window === 'undefined') return 'store';
+  const path = window.location.pathname.toLowerCase();
+  const hash = window.location.hash.toLowerCase();
+
+  if (path.includes('admin') || hash.includes('admin')) return 'admin';
+  if (path.includes('privacy') || hash.includes('privacy')) return 'privacy-policy';
+  if (path.includes('terms') || hash.includes('terms')) return 'terms-of-service';
+  if (path.includes('cookie') || hash.includes('cookie')) return 'cookie-policy';
+  if (path.includes('disclaimer') || hash.includes('disclaimer')) return 'disclaimer';
+  return 'store';
+};
+
 export default function App() {
-  // Navigation & Route state (Supports /admin.html, /admin, #/admin)
-  const [currentRoute, setCurrentRoute] = useState<'store' | 'admin'>(() => {
-    if (typeof window !== 'undefined') {
-      const path = window.location.pathname.toLowerCase();
-      const hash = window.location.hash.toLowerCase();
-      if (path.includes('admin') || hash.includes('admin')) {
-        return 'admin';
-      }
-    }
-    return 'store';
-  });
+  // Navigation & Route state (Supports store, admin, and /pages/ legal routes)
+  const [currentRoute, setCurrentRoute] = useState<AppRoute>(() => parseRouteFromLocation());
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname.toLowerCase();
-      const hash = window.location.hash.toLowerCase();
-      if (path.includes('admin') || hash.includes('admin')) {
-        setCurrentRoute('admin');
-      } else {
-        setCurrentRoute('store');
-      }
+      setCurrentRoute(parseRouteFromLocation());
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const navigateTo = (route: 'store' | 'admin') => {
+  const navigateTo = (route: AppRoute) => {
     setCurrentRoute(route);
     if (typeof window !== 'undefined') {
       if (route === 'admin') {
         window.location.hash = 'admin';
-      } else {
+      } else if (route === 'store') {
         window.location.hash = '';
         if (window.location.pathname.endsWith('admin.html')) {
           window.history.pushState({}, '', window.location.pathname.replace('admin.html', ''));
         }
+      } else {
+        window.location.hash = route;
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -679,7 +687,23 @@ export default function App() {
   }
 
   // ==========================================
-  // VIEW 2: MAIN CUSTOMER STOREFRONT (/)
+  // VIEW 2: DEDICATED LEGAL PAGES (/pages/)
+  // ==========================================
+  if (currentRoute === 'privacy-policy') {
+    return <PrivacyPolicyPage onBackToStore={() => navigateTo('store')} currentTheme={siteTheme} />;
+  }
+  if (currentRoute === 'terms-of-service') {
+    return <TermsOfServicePage onBackToStore={() => navigateTo('store')} currentTheme={siteTheme} />;
+  }
+  if (currentRoute === 'cookie-policy') {
+    return <CookiePolicyPage onBackToStore={() => navigateTo('store')} currentTheme={siteTheme} />;
+  }
+  if (currentRoute === 'disclaimer') {
+    return <DisclaimerPage onBackToStore={() => navigateTo('store')} currentTheme={siteTheme} />;
+  }
+
+  // ==========================================
+  // VIEW 3: MAIN CUSTOMER STOREFRONT (/)
   // ==========================================
   return (
     <div className="min-h-screen site-theme-canvas bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-orange-500 selection:text-white antialiased relative overflow-x-hidden">
@@ -848,6 +872,7 @@ export default function App() {
         pricingMode={pricingMode}
         onTogglePricingMode={setPricingMode}
         currentTheme={siteTheme}
+        onNavigatePage={(page) => navigateTo(page)}
       />
 
       {/* Floating Action Bar (WhatsApp, AI Support, Admin Desk, Go to Top) */}

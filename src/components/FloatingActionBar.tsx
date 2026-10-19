@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Bot, ArrowUp, Sparkles, ShieldCheck } from 'lucide-react';
+import { MessageCircle, Bot, ArrowUp } from 'lucide-react';
 
 interface FloatingActionBarProps {
   onOpenAiSupport: () => void;
@@ -81,23 +81,6 @@ export const FloatingActionBar: React.FC<FloatingActionBarProps> = ({
         </span>
       </button>
 
-      {/* 3. Floating Admin Portal Button */}
-      <button
-        id="floating-admin-manager-btn"
-        onClick={() => {
-          if (onOpenAdmin) onOpenAdmin();
-          else if (onScrollToManageProducts) onScrollToManageProducts();
-        }}
-        className="group relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-orange-950/80 hover:bg-orange-900 border border-orange-500/40 hover:border-orange-400 text-orange-300 hover:text-white shadow-lg shadow-orange-950/50 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-        title="Admin Portal (/admin.html)"
-      >
-        <ShieldCheck className="w-5 h-5 text-orange-400 group-hover:scale-110 transition-transform" />
-
-        {/* Tooltip */}
-        <span className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-900 text-orange-300 text-[11px] font-bold px-2.5 py-1 rounded-md border border-orange-500/30 shadow opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-          Admin Portal (/admin.html)
-        </span>
-      </button>
 
       {/* 4. Floating Go to Top Button */}
       <button

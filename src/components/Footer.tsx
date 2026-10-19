@@ -16,10 +16,12 @@ import {
   Clock,
   Send,
   FileText,
-  CreditCard
+  CreditCard,
+  X
 } from 'lucide-react';
 import { ProductCategory, PricingMode, SiteThemeId } from '../types';
 import { WarComputersLogo } from './WarComputersLogo';
+import { EasypaisaLogo, JazzCashLogo } from './PaymentLogos';
 
 interface FooterProps {
   onSelectCategory: (cat: ProductCategory) => void;
@@ -32,6 +34,7 @@ interface FooterProps {
   pricingMode: PricingMode;
   onTogglePricingMode: (mode: PricingMode) => void;
   currentTheme?: SiteThemeId;
+  onNavigatePage?: (page: 'privacy-policy' | 'terms-of-service' | 'cookie-policy' | 'disclaimer') => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -44,10 +47,12 @@ export const Footer: React.FC<FooterProps> = ({
   onScrollToManageProducts,
   pricingMode,
   onTogglePricingMode,
-  currentTheme
+  currentTheme,
+  onNavigatePage
 }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [activeLegalDoc, setActiveLegalDoc] = useState<'privacy' | 'terms' | 'cookies' | 'disclaimer' | 'oem' | null>(null);
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,6 +62,118 @@ export const Footer: React.FC<FooterProps> = ({
       setSubscribed(false);
       setNewsletterEmail('');
     }, 4000);
+  };
+
+  const legalContent: Record<'privacy' | 'terms' | 'cookies' | 'disclaimer' | 'oem', { title: string; tag: string; text: React.ReactNode }> = {
+    privacy: {
+      title: 'Privacy Policy',
+      tag: 'Data Protection & Client Security',
+      text: (
+        <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p>War Computers ("we", "our", or "us") is committed to protecting the privacy, security, and confidential records of all retail shoppers and institutional B2B wholesale partners across Pakistan.</p>
+          <div>
+            <h4 className="text-white font-bold mb-1">1. Information Collection</h4>
+            <p>We collect essential order information including shipping addresses, customer contact details (phone, WhatsApp number, email), and transaction manifests solely to process orders, verify shipments, and coordinate door-to-door delivery across Karachi, Lahore, Islamabad, and nationwide.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">2. Payment Security</h4>
+            <p>We do not store credit card numbers or sensitive banking PINs on our servers. Transactions processed via Bank Wire, Raast, POS, or Cash on Delivery (COD) adhere to strict PCI-DSS and financial privacy standards.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">3. Non-Disclosure Commitment</h4>
+            <p>Customer contact lists, wholesale quotation pricing, and corporate dispatch manifests are strictly confidential. We never sell, rent, or distribute client credentials or transaction logs to any third-party marketing brokers.</p>
+          </div>
+        </div>
+      )
+    },
+    terms: {
+      title: 'Terms of Service',
+      tag: 'Order, Warranty & Fulfillment Policy',
+      text: (
+        <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p>Welcome to War Computers. By purchasing through our website, WhatsApp desk, or visiting our Saddar Karachi physical depot, you agree to our standard terms of service.</p>
+          <div>
+            <h4 className="text-white font-bold mb-1">1. Product Quality & Testing</h4>
+            <p>All laptops, desktop workstations, and accessories undergo rigorous multi-point hardware diagnostic testing before dispatch. Technical specifications (RAM, SSD, GPU, display panel, battery health) are guaranteed as described.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">2. Depot Warranty & Checking Period</h4>
+            <p>Brand New hardware carries full manufacturer warranty. Factory Certified and Refurbished Grade-A units include up to 1-Month to 3-Year War Depot checking & replacement warranty against internal hardware defects.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">3. Wholesale & Pallet Supply</h4>
+            <p>Wholesale lots and institutional fleet orders adhere to agreed Minimum Order Quantities (MOQ). Advance pallet reservations require confirmed Purchase Order (PO) or initial token advance.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">4. Insured Nationwide Freight</h4>
+            <p>Shipments across Pakistan are insured with reputable courier partners (TCS, Leopards, Daewoo Cargo). Customers must inspect parcel integrity upon handover.</p>
+          </div>
+        </div>
+      )
+    },
+    cookies: {
+      title: 'Cookie Policy',
+      tag: 'Preferences & Storage Management',
+      text: (
+        <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p>War Computers uses lightweight browser storage (cookies & LocalStorage) exclusively to maintain your shopping cart, pricing mode preferences (Retail vs. Wholesale), and customized visual theme settings.</p>
+          <div>
+            <h4 className="text-white font-bold mb-1">1. Essential Functional Storage</h4>
+            <p>Stores cart items, quick-view session preferences, and order tracking queries so your session persists reliably without losing product selections.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">2. Theme & Display Preferences</h4>
+            <p>Remembers your selected color theme (e.g., War Blue, Tech Cyan, Premium Gold, Modern Red, Clean White) for an optimal personal viewing experience across visits.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">3. No Invasive Tracking</h4>
+            <p>We do not operate behavioral ad networks or cross-site tracking beacons. You may clear your browser cookies at any time without impacting basic browsing.</p>
+          </div>
+        </div>
+      )
+    },
+    disclaimer: {
+      title: 'Disclaimer',
+      tag: 'Hardware Availability & Specifications',
+      text: (
+        <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p>War Computers strives to keep pricing, specs, and real-time inventory counts up-to-date across all computing categories.</p>
+          <div>
+            <h4 className="text-white font-bold mb-1">1. Stock Availability & Market Rates</h4>
+            <p>Due to dynamic international currency fluctuations and import freight schedules, wholesale lot prices and clearance inventory are subject to confirmation at the time of order issuance.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">2. Refurbished & Used Grading Standards</h4>
+            <p>Grade-A refurbished hardware may carry minor cosmetic signs of handling consistent with pre-owned corporate surplus, but 100% operational hardware integrity and genuine internal components are verified.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">3. Brand Trademarks</h4>
+            <p>Apple, ASUS, Dell, HP, Lenovo, MSI, Razer, Acer, Samsung, and Intel/AMD trademarks belong to their respective proprietary owners and are referenced strictly for hardware compatibility identification.</p>
+          </div>
+        </div>
+      )
+    },
+    oem: {
+      title: 'Tier-1 OEM Certified Distributor',
+      tag: 'Direct Commercial Sourcing Standards',
+      text: (
+        <div className="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p>War Computers operates as an authorized distributor and tier-1 source for commercial business laptops, high-performance workstations, and enterprise computing hardware in Pakistan.</p>
+          <div>
+            <h4 className="text-white font-bold mb-1">1. Genuine Hardware Assurance</h4>
+            <p>Every unit distributed through our wholesale channel is backed by genuine BIOS asset tags, authentic Intel/AMD silicon verification, and original power supply units (PSUs).</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">2. Comprehensive Hardware Stress Testing</h4>
+            <p>Our technical depot subjects all machines to rigorous thermal stress tests, memory integrity verification (MemTest86), SSD health diagnostics (SMART 100%), and battery cycle life verification.</p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-1">3. Institutional B2B Fleet Supply</h4>
+            <p>We support corporate IT deployments, university computer laboratories, software house bulk orders, and government institutions with official GST invoices and serial-tracked warranty manifests.</p>
+          </div>
+        </div>
+      )
+    }
   };
 
   return (
@@ -175,11 +292,11 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 3: Wholesale & B2B Solutions */}
+          {/* Column 3: Wholesale Solutions */}
           <div className="space-y-3">
             <h4 className="text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-              Wholesale & B2B
+              Wholesale
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -198,18 +315,6 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button onClick={onOpenTracking} className="hover:text-orange-400 transition-colors cursor-pointer text-left">
                   Pallet Freight Tracking Portal
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => {
-                    if (onOpenAdmin) onOpenAdmin();
-                    else if (onScrollToManageProducts) onScrollToManageProducts();
-                  }} 
-                  className="hover:text-orange-300 text-orange-400 font-bold flex items-center gap-1.5 transition-colors cursor-pointer text-left"
-                >
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Admin Portal & Orders (/admin.html)</span>
                 </button>
               </li>
               <li>
@@ -334,26 +439,31 @@ export const Footer: React.FC<FooterProps> = ({
             <span className="font-bold text-slate-300">Supported Payment Methods:</span>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
-              💵 Cash on Delivery (COD)
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+              <span>💵</span>
+              <span>Cash on Delivery (COD)</span>
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
-              🏦 Bank Transfer (Meezan / Raast)
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+              <span>🏦</span>
+              <span>Bank Transfer (Meezan / Raast)</span>
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
-              📱 Easypaisa
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5 hover:border-emerald-500/40 transition-colors">
+              <EasypaisaLogo className="w-4 h-4" />
+              <span>Easypaisa</span>
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
-              ⚡ JazzCash
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5 hover:border-amber-500/40 transition-colors">
+              <JazzCashLogo className="w-4 h-4" />
+              <span>JazzCash</span>
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium">
-              💳 Online Payment (Visa / Master)
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-medium flex items-center gap-1.5">
+              <span>💳</span>
+              <span>Online Payment (Visa / Master)</span>
             </span>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-10 pt-6 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        {/* Bottom Bar: Links positioned directly under Copyright, spaced clear of bottom-right floating badge */}
+        <div className="mt-10 pt-6 border-t border-slate-800/80 flex flex-col items-start gap-3 text-[11px] text-slate-500 pb-16 md:pb-6 pr-0 md:pr-48">
           <div>
             © 2026 War Computers Inc. All rights reserved. Wholesale & Retail Computing Division. Designed by{' '}
             <a
@@ -365,15 +475,129 @@ export const Footer: React.FC<FooterProps> = ({
               "Orion Fx"
             </a>
           </div>
-          <div className="flex items-center gap-4 flex-wrap">
-            <span className="hover:text-slate-300 cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-slate-300 cursor-pointer">Terms of Escrow</span>
-            <span className="hover:text-slate-300 cursor-pointer">B2B Net-30 Terms</span>
-            <span className="text-orange-500 font-semibold">Tier-1 OEM Certified</span>
+
+          {/* Legal Links under Copyright */}
+          <div className="flex items-center gap-x-3 sm:gap-x-4 gap-y-2 flex-wrap text-[11px]">
+            <button
+              type="button"
+              id="footer-privacy-policy-btn"
+              onClick={() => {
+                if (onNavigatePage) onNavigatePage('privacy-policy');
+                else setActiveLegalDoc('privacy');
+              }}
+              className="hover:text-slate-300 hover:underline cursor-pointer transition-colors text-left"
+            >
+              Privacy Policy
+            </button>
+            <span className="text-slate-700 hidden sm:inline">•</span>
+            <button
+              type="button"
+              id="footer-terms-service-btn"
+              onClick={() => {
+                if (onNavigatePage) onNavigatePage('terms-of-service');
+                else setActiveLegalDoc('terms');
+              }}
+              className="hover:text-slate-300 hover:underline cursor-pointer transition-colors text-left"
+            >
+              Terms of Service
+            </button>
+            <span className="text-slate-700 hidden sm:inline">•</span>
+            <button
+              type="button"
+              id="footer-cookie-policy-btn"
+              onClick={() => {
+                if (onNavigatePage) onNavigatePage('cookie-policy');
+                else setActiveLegalDoc('cookies');
+              }}
+              className="hover:text-slate-300 hover:underline cursor-pointer transition-colors text-left"
+            >
+              Cookie Policy
+            </button>
+            <span className="text-slate-700 hidden sm:inline">•</span>
+            <button
+              type="button"
+              id="footer-disclaimer-btn"
+              onClick={() => {
+                if (onNavigatePage) onNavigatePage('disclaimer');
+                else setActiveLegalDoc('disclaimer');
+              }}
+              className="hover:text-slate-300 hover:underline cursor-pointer transition-colors text-left"
+            >
+              Disclaimer
+            </button>
+            <span className="text-slate-700 hidden sm:inline">•</span>
+            <button
+              type="button"
+              id="footer-oem-certified-btn"
+              onClick={() => setActiveLegalDoc('oem')}
+              className="text-orange-500 hover:text-orange-400 font-semibold cursor-pointer flex items-center gap-1.5 transition-colors text-left"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-orange-400 flex-shrink-0" />
+              <span>Tier-1 OEM Certified</span>
+            </button>
           </div>
         </div>
 
       </div>
+
+      {/* Interactive Legal Policy Modal Dialog */}
+      {activeLegalDoc && (
+        <div 
+          id="legal-policy-modal-overlay"
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={() => setActiveLegalDoc(null)}
+        >
+          <div 
+            id="legal-policy-modal-container"
+            className="relative w-full max-w-2xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-800 bg-slate-950">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white flex items-center gap-2">
+                    {legalContent[activeLegalDoc].title}
+                  </h3>
+                  <p className="text-[11px] text-slate-400">
+                    {legalContent[activeLegalDoc].tag}
+                  </p>
+                </div>
+              </div>
+
+              <button
+                id="close-legal-modal-btn"
+                type="button"
+                onClick={() => setActiveLegalDoc(null)}
+                className="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                title="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Modal Content Body */}
+            <div className="p-5 sm:p-6 max-h-[70vh] overflow-y-auto">
+              {legalContent[activeLegalDoc].text}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 border-t border-slate-800 bg-slate-950/70 flex items-center justify-between gap-3 text-xs">
+              <span className="text-slate-500 text-[11px]">War Computers Legal &amp; Compliance Division</span>
+              <button
+                type="button"
+                onClick={() => setActiveLegalDoc(null)}
+                className="px-4 py-1.5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-bold text-xs transition-colors cursor-pointer"
+              >
+                Understood &amp; Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };

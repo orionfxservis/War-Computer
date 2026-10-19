@@ -391,8 +391,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             );
           })}
 
-          <div className="h-4 w-px bg-white/10 mx-0.5 flex-shrink-0" />
-
           {/* Direct Jump to Shop By Budget */}
           <button
             id="nav-jump-shop-by-budget-btn"
